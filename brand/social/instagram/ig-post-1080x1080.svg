@@ -1,0 +1,38 @@
+<!-- Instagram post square 1080x1080 — szablon insightu/statystyki -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#FFFFFF"/>
+  <!-- subtelna siatka -->
+  <g stroke="#dbe5f1" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="216" x2="1080" y2="216"/><line x1="0" y1="432" x2="1080" y2="432"/>
+    <line x1="0" y1="648" x2="1080" y2="648"/><line x1="0" y1="864" x2="1080" y2="864"/>
+    <line x1="216" y1="0" x2="216" y2="1080"/><line x1="432" y1="0" x2="432" y2="1080"/>
+    <line x1="648" y1="0" x2="648" y2="1080"/><line x1="864" y1="0" x2="864" y2="1080"/>
+  </g>
+  <!-- logo miniatura góra-lewo -->
+  <g transform="translate(64,64) scale(0.148)">
+    <rect x="360" y="310" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <rect x="360" y="310" width="80"  height="200" rx="8" fill="#0B1736"/>
+    <rect x="360" y="500" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <rect x="640" y="500" width="80"  height="200" rx="8" fill="#0B1736"/>
+    <rect x="360" y="690" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+  </g>
+  <text x="230" y="126" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="36" letter-spacing="-1" fill="#0B1736">Sport Pro <tspan fill="#1E3A8A">Space</tspan></text>
+  <!-- badge eyebrow -->
+  <g transform="translate(64,200)">
+    <rect width="260" height="48" rx="24" fill="#F0F4FA"/>
+    <text x="130" y="32" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" text-anchor="middle" fill="#293f66">INSIGHT · 2026</text>
+  </g>
+  <!-- headline -->
+  <text font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="96" letter-spacing="-3.5" fill="#0B1736">
+    <tspan x="64" y="400">68% zawodników</tspan>
+    <tspan x="64" dy="110">odchodzi przez</tspan>
+    <tspan x="64" dy="110" fill="#1E3A8A">brak feedbacku.</tspan>
+  </text>
+  <!-- data strip -->
+  <rect x="64" y="790" width="952" height="180" rx="16" fill="#0B1736"/>
+  <text x="104" y="862" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="19" letter-spacing="2.5" fill="#8aa6cd">BADANIA NPS · SPORT PRO SPACE</text>
+  <text x="104" y="930" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="46" letter-spacing="-1.5" fill="#FFFFFF">412 zawodników · 17 akademii · 2025/26</text>
+  <!-- footer url -->
+  <text x="540" y="1040" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="22" letter-spacing="2.5" text-anchor="middle" fill="#8aa6cd">SPORTPROSPACE.PL</text>
+</svg>

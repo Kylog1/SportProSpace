@@ -1,0 +1,74 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export function CTASection() {
+  return (
+    <section id="contact" className="bg-white">
+      <div className="container py-20 md:py-28">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-navy-200 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-950 px-8 py-16 text-white md:px-16 md:py-20">
+          {/* subtle pattern */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-white/5 blur-3xl"
+          />
+
+          <div className="relative grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-200/90">
+                Zacznij teraz
+              </span>
+              <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight md:text-[40px] md:leading-[1.1]">
+                Zacznij mierzyć doświadczenie w Twoim klubie.
+              </h2>
+              <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-navy-100/80">
+                Pierwsza rozmowa jest niezobowiązująca. Wracamy do Ciebie z
+                rekomendacją zakresu badania w 48 godzin.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 md:items-end">
+              <div className="flex w-full flex-col gap-3 sm:flex-row md:justify-end">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-white text-navy-950 hover:bg-navy-50"
+                >
+                  <Link href="mailto:hello@sportprospace.eu">
+                    Zamów badanie
+                    <ArrowRight />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white"
+                >
+                  <Link href="mailto:hello@sportprospace.eu">Kontakt</Link>
+                </Button>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[12.5px] text-navy-100/70 md:justify-end">
+                <span>Odpowiadamy w 48h</span>
+                <span className="hidden h-3 w-px bg-white/20 sm:block" />
+                <span>Bez zobowiązań</span>
+                <span className="hidden h-3 w-px bg-white/20 sm:block" />
+                <span>NDA na życzenie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,16 @@
+<!-- LinkedIn Company logo — 300x300 min, rekomendowane 400x400, max 8 MB PNG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="liA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0B1736"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#liA)"/>
+  <g transform="translate(112,92) scale(1.5)">
+    <path d="M64 8 L112 24 V60 C112 90 92 112 64 122 C36 112 16 90 16 60 V24 Z" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+    <path d="M46 50 H72 V62 H56 V72 H82 V92 H46" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="82" cy="50" r="5" fill="#FFFFFF"/>
+  </g>
+  <text x="200" y="328" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="32" letter-spacing="-0.8" text-anchor="middle" fill="#FFFFFF">Sport Pro Space</text>
+</svg>

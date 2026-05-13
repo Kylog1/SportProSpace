@@ -1,0 +1,5 @@
+<!-- Wordmark only — bez symbolu · jasne tło -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 280" width="1100" height="280">
+  <rect width="1100" height="280" fill="#FFFFFF"/>
+  <text x="0" y="186" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="186" letter-spacing="-6" fill="#0B1736">Sport Pro <tspan fill="#1E3A8A">Space</tspan></text>
+</svg>

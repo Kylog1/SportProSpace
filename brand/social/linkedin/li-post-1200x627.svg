@@ -1,0 +1,65 @@
+<!-- LinkedIn shared image post — 1200x627 px (1.91:1)
+     Optymalny rozmiar dla zdjęć w feedzie LinkedIn. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 627" width="1200" height="627">
+  <rect width="1200" height="627" fill="#FFFFFF"/>
+  <!-- subtelna lewa kolumna navy -->
+  <rect x="0" y="0" width="72" height="627" fill="#0B1736"/>
+
+  <!-- logo góra-lewo -->
+  <g transform="translate(104,48) scale(0.1)">
+    <rect x="360" y="310" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <rect x="360" y="310" width="80"  height="200" rx="8" fill="#0B1736"/>
+    <rect x="360" y="500" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <rect x="640" y="500" width="80"  height="200" rx="8" fill="#0B1736"/>
+    <rect x="360" y="690" width="360" height="80"  rx="8" fill="#0B1736"/>
+    <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+  </g>
+  <text x="222" y="96" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="28" letter-spacing="-0.8" fill="#0B1736">Sport Pro <tspan fill="#1E3A8A">Space</tspan></text>
+
+  <!-- eyebrow badge -->
+  <g transform="translate(104,128)">
+    <rect width="220" height="38" rx="19" fill="#F0F4FA"/>
+    <text x="110" y="26" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#293f66">RAPORT · Q2 2026</text>
+  </g>
+
+  <!-- headline -->
+  <text font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="60" letter-spacing="-2.2" fill="#0B1736">
+    <tspan x="104" y="280">Dlaczego zawodnicy</tspan>
+    <tspan x="104" dy="74">odchodzą z akademii —</tspan>
+    <tspan x="104" dy="74" fill="#1E3A8A">i jak to zmienić.</tspan>
+  </text>
+
+  <!-- footer meta -->
+  <text x="104" y="592" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="17" letter-spacing="2" fill="#8aa6cd">SPORTPROSPACE.PL · EXPERIENCE INTELLIGENCE</text>
+
+  <!-- prawy panel — mini chart -->
+  <g transform="translate(820,100)">
+    <rect width="340" height="420" rx="16" fill="#F0F4FA"/>
+    <text x="28" y="52" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="14" letter-spacing="1.5" fill="#293f66">NPS · SEGMENTY</text>
+    <g font-family="Inter,system-ui,sans-serif" font-size="15" fill="#293f66">
+      <g transform="translate(28,88)">
+        <text x="0" y="0">U-12</text><text x="284" y="0" text-anchor="end" fill="#1E3A8A" font-weight="600">82</text>
+        <rect x="0" y="10" width="284" height="10" rx="5" fill="#dbe5f1"/>
+        <rect x="0" y="10" width="232" height="10" rx="5" fill="#1E3A8A"/>
+      </g>
+      <g transform="translate(28,144)">
+        <text x="0" y="0">U-16</text><text x="284" y="0" text-anchor="end" fill="#1E3A8A" font-weight="600">71</text>
+        <rect x="0" y="10" width="284" height="10" rx="5" fill="#dbe5f1"/>
+        <rect x="0" y="10" width="201" height="10" rx="5" fill="#1E3A8A"/>
+      </g>
+      <g transform="translate(28,200)">
+        <text x="0" y="0">Rodzice</text><text x="284" y="0" text-anchor="end" fill="#1E3A8A" font-weight="600">66</text>
+        <rect x="0" y="10" width="284" height="10" rx="5" fill="#dbe5f1"/>
+        <rect x="0" y="10" width="187" height="10" rx="5" fill="#1E3A8A"/>
+      </g>
+      <g transform="translate(28,256)">
+        <text x="0" y="0">Kibice</text><text x="284" y="0" text-anchor="end" fill="#1E3A8A" font-weight="600">59</text>
+        <rect x="0" y="10" width="284" height="10" rx="5" fill="#dbe5f1"/>
+        <rect x="0" y="10" width="167" height="10" rx="5" fill="#1E3A8A"/>
+      </g>
+    </g>
+    <!-- NPS summary number -->
+    <text x="170" y="380" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="72" letter-spacing="-3" text-anchor="middle" fill="#0B1736">+62</text>
+    <text x="170" y="410" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="14" letter-spacing="2" text-anchor="middle" fill="#5e80b3">AVG NPS SCORE</text>
+  </g>
+</svg>

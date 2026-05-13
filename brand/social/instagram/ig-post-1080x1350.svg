@@ -1,0 +1,46 @@
+<!-- Instagram post PORTRAIT 4:5 — 1080x1350 px. Rekomendowany format dla zasięgu organicznego.
+     Zajmuje więcej miejsca w feedzie niż 1:1. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bgP" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B1736"/>
+      <stop offset="60%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0B1736"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bgP)"/>
+  <!-- subtle dot pattern -->
+  <g fill="#FFFFFF" opacity="0.04">
+    <circle cx="100" cy="100" r="3"/><circle cx="260" cy="100" r="3"/><circle cx="420" cy="100" r="3"/><circle cx="580" cy="100" r="3"/><circle cx="740" cy="100" r="3"/><circle cx="900" cy="100" r="3"/>
+    <circle cx="100" cy="260" r="3"/><circle cx="260" cy="260" r="3"/><circle cx="420" cy="260" r="3"/><circle cx="580" cy="260" r="3"/><circle cx="740" cy="260" r="3"/><circle cx="900" cy="260" r="3"/>
+  </g>
+  <!-- logo góra-lewo -->
+  <g transform="translate(72,80) scale(0.148)">
+    <rect x="360" y="310" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="310" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="500" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <rect x="640" y="500" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="690" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+  </g>
+  <text x="236" y="142" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="36" letter-spacing="-1" fill="#FFFFFF">Sport Pro <tspan fill="#8aa6cd">Space</tspan></text>
+  <!-- headline block -->
+  <text font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="106" letter-spacing="-4" fill="#FFFFFF">
+    <tspan x="72" y="460">Co naprawdę</tspan>
+    <tspan x="72" dy="120">myślą rodzice</tspan>
+    <tspan x="72" dy="120" fill="#8aa6cd">o Twojej akademii?</tspan>
+  </text>
+  <!-- body -->
+  <text x="72" y="850" font-family="Inter,system-ui,sans-serif" font-weight="400" font-size="34" letter-spacing="-0.5" fill="#dbe5f1">
+    <tspan x="72" dy="0">Niezależne badania NPS, retencji</tspan>
+    <tspan x="72" dy="48">i zaufania dla akademii i klubów.</tspan>
+    <tspan x="72" dy="48">Raport + rekomendacje w 4 tygodnie.</tspan>
+  </text>
+  <!-- CTA -->
+  <g transform="translate(72,1050)">
+    <rect width="440" height="88" rx="44" fill="#FFFFFF"/>
+    <text x="220" y="58" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="28" letter-spacing="-0.5" text-anchor="middle" fill="#0B1736">Zamów badanie →</text>
+  </g>
+  <!-- footer -->
+  <text x="540" y="1300" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="22" letter-spacing="3" text-anchor="middle" fill="#5e80b3">SPORTPROSPACE.PL</text>
+</svg>

@@ -1,0 +1,35 @@
+<!-- Instagram Story / Reel 9:16 — 1080x1920. Safe zone: 250px top + 320px bottom -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bgS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B1736"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bgS)"/>
+  <!-- safe-zone guides (usuń przed exportem do produkcji) -->
+  <g stroke="#FFFFFF" stroke-dasharray="6,8" opacity="0.18" fill="none">
+    <line x1="0" y1="250" x2="1080" y2="250"/>
+    <line x1="0" y1="1600" x2="1080" y2="1600"/>
+  </g>
+  <!-- logo top center (w safe zone) -->
+  <g transform="translate(440,330) scale(2.0)">
+    <path d="M64 8 L112 24 V60 C112 90 92 112 64 122 C36 112 16 90 16 60 V24 Z" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+    <path d="M46 50 H72 V62 H56 V72 H82 V92 H46" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="82" cy="50" r="5" fill="#FFFFFF"/>
+  </g>
+  <!-- headline -->
+  <text x="540" y="780" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="96" letter-spacing="-3" text-anchor="middle" fill="#FFFFFF">
+    <tspan x="540" dy="0">Mierzymy</tspan>
+    <tspan x="540" dy="120">doświadczenie</tspan>
+    <tspan x="540" dy="120" fill="#8aa6cd">w sporcie.</tspan>
+  </text>
+  <!-- CTA card -->
+  <g transform="translate(140,1280)">
+    <rect width="800" height="180" rx="20" fill="#FFFFFF"/>
+    <text x="400" y="82" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="22" letter-spacing="2" text-anchor="middle" fill="#5e80b3">PRZESUŃ W GÓRĘ</text>
+    <text x="400" y="138" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="42" letter-spacing="-1" text-anchor="middle" fill="#0B1736">Zamów badanie NPS</text>
+  </g>
+  <!-- footer mark (safe) -->
+  <text x="540" y="1560" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="22" letter-spacing="4" text-anchor="middle" fill="#dbe5f1">SPORTPROSPACE.PL</text>
+</svg>

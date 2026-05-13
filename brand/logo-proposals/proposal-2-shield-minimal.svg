@@ -1,0 +1,24 @@
+<!-- PROPOZYCJA 2: Minimalna tarcza — czysty kształt z pojedynczym rosnącym pulsem NPS wewnątrz -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#F0F4FA"/>
+
+  <!-- tarcza — flat, modern, ciemna -->
+  <path d="M540 148 L848 268 L848 560 C848 752 716 908 540 960 C364 908 232 752 232 560 L232 268 Z"
+        fill="#0B1736"/>
+
+  <!-- inner shield outline subtle -->
+  <path d="M540 220 L800 322 L800 548 C800 716 688 852 540 896 C392 852 280 716 280 548 L280 322 Z"
+        fill="none" stroke="#1E3A8A" stroke-width="4"/>
+
+  <!-- pulse/NPS line — 3 rosnące kreski = trend up -->
+  <g stroke="#FFFFFF" stroke-width="24" stroke-linecap="square">
+    <line x1="400" y1="680" x2="400" y2="600"/>
+    <line x1="490" y1="680" x2="490" y2="520"/>
+    <line x1="580" y1="680" x2="580" y2="420"/>
+    <line x1="670" y1="680" x2="670" y2="320"/>
+  </g>
+
+  <!-- łącząca linia trendu -->
+  <polyline points="400,600 490,520 580,420 670,320"
+            fill="none" stroke="#FFFFFF" stroke-width="8" stroke-opacity="0.35" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

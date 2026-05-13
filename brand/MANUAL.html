@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Sport Pro Space — Brand Manual v1.1</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-50:#f0f4fa; --navy-100:#dbe5f1; --navy-200:#b8cae3; --navy-300:#8aa6cd;
+    --navy-400:#5e80b3; --navy-500:#3f6398; --navy-600:#314e7e; --navy-700:#293f66;
+    --navy-800:#1e3a8a; --navy-900:#172554; --navy-950:#0b1736;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;color:var(--navy-950);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{font-size:15px;line-height:1.55;letter-spacing:-.005em}
+  .wrap{max-width:980px;margin:0 auto;padding:64px 32px 96px}
+  h1,h2,h3,h4{letter-spacing:-.02em;font-weight:600;color:var(--navy-950);margin:0}
+  h1{font-size:48px;line-height:1.05;letter-spacing:-.035em}
+  h2{font-size:30px;line-height:1.15;margin-top:64px;padding-top:32px;border-top:1px solid var(--navy-100)}
+  h3{font-size:18px;margin-top:32px}
+  h4{font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--navy-700);margin-top:24px}
+  p{margin:12px 0;color:var(--navy-700);max-width:72ch}
+  hr{border:0;border-top:1px solid var(--navy-100);margin:32px 0}
+  code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--navy-50);padding:2px 6px;border-radius:4px;color:var(--navy-900)}
+  .lede{font-size:18px;color:var(--navy-700);max-width:64ch;margin:24px 0 40px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--navy-50);color:var(--navy-700);padding:6px 12px;border-radius:999px;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .grid{display:grid;gap:16px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{border:1px solid var(--navy-100);border-radius:12px;padding:20px;background:#fff}
+  .swatch{height:96px;border-radius:8px;border:1px solid rgba(11,23,54,.05)}
+  .sw-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--navy-700)}
+  .sw-meta strong{color:var(--navy-950);font-size:13px}
+  .preview{border:1px solid var(--navy-100);border-radius:12px;padding:24px;background:repeating-conic-gradient(#fafbfd 0% 25%, #fff 0% 50%) 0/24px 24px}
+  .preview img,.preview svg{display:block;max-width:100%;height:auto;margin:0 auto}
+  .preview.dark{background:var(--navy-950)}
+  .typescale{display:grid;gap:12px}
+  .row{display:flex;align-items:baseline;gap:24px;border-bottom:1px dashed var(--navy-100);padding-bottom:12px}
+  .row .label{flex:0 0 110px;color:var(--navy-500);font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--navy-100)}
+  th{background:var(--navy-50);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--navy-700);font-weight:600}
+  ul.clean{list-style:none;padding:0;margin:12px 0}
+  ul.clean li{padding:8px 0;border-bottom:1px dashed var(--navy-100);color:var(--navy-700)}
+  ul.clean li::before{content:"— ";color:var(--navy-400)}
+  .donts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .do{border:1px solid #cdebd9;background:#f3fbf7;border-radius:10px;padding:16px;color:#0b3b22}
+  .dont{border:1px solid #f5cdcd;background:#fdf3f3;border-radius:10px;padding:16px;color:#7a1f1f}
+  .pillar{background:var(--navy-950);color:#fff;padding:28px 32px;border-radius:16px;margin-top:40px}
+  .pillar h2{color:#fff;border:0;padding:0;margin:0 0 12px;font-size:24px}
+  .pillar p{color:var(--navy-200)}
+  .footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--navy-100);font-size:12px;color:var(--navy-500);text-align:center}
+  @media print{
+    body{font-size:12px} .wrap{padding:24px} h2{page-break-before:always}
+    .preview{background:#fff !important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="badge">Brand Manual · v1.1 · 05/2026</span>
+  <h1 style="margin-top:18px">Sport Pro Space<br><span style="color:var(--navy-800)">Brand Manual</span></h1>
+  <p class="lede">System wizualny niezależnej platformy badań doświadczenia w sporcie. Dokument służy do utrzymania spójności komunikacji w kanałach digital, druku i obecności partnerskiej.</p>
+
+  <!-- 01 BRAND -->
+  <h2>1. Marka</h2>
+  <h3>Nazwa</h3>
+  <p>Pełna nazwa: <strong>Sport Pro Space</strong>. Pisana zawsze z trzema osobnymi słowami, każde z dużej litery. Dopuszczalny skrót w komunikacji wewnętrznej: <code>SPS</code>. W kontekście wzmianek prasowych zawsze pełna nazwa.</p>
+  <h3>Tagline</h3>
+  <p style="font-size:22px;color:var(--navy-950);font-weight:600;letter-spacing:-.02em">Experience Intelligence for Sport.</p>
+  <p>Krótka forma używana pod logo lub w bannerach. PL: <em>„Mierzymy doświadczenie w sporcie."</em></p>
+
+  <div class="pillar">
+    <h2>Pillars</h2>
+    <p><strong style="color:#fff">Independence</strong> · niezależna metodologia, brak konfliktu interesów<br>
+    <strong style="color:#fff">Evidence</strong> · decyzje oparte na danych z badań i ankiet<br>
+    <strong style="color:#fff">Clarity</strong> · raport jest produktem — czytelny, działający, konkret</p>
+  </div>
+
+  <!-- 02 LOGO -->
+  <h2>2. Logo</h2>
+  <p>Logo składa się z <strong>symbolu</strong> (monogram "S" zbudowany geometrycznie z prostokątów, jak segmenty 7-segmentowego wyświetlacza / data bar) oraz <strong>wordmarku</strong> (Sport Pro Space). Mała kropka w prawym górnym rogu to akcent data-point — jedyny element koloru navy-800 na ciemnym tle.</p>
+
+  <h3>Symbol — warianty tła</h3>
+  <div class="grid grid-3" style="margin-top:12px">
+    <div>
+      <div class="preview dark" style="background:#0B1736"><img src="logo/logo-symbol.svg" alt="Symbol dark" style="width:160px"></div>
+      <div class="sw-meta"><strong>Ciemne (główny)</strong><span>logo-symbol.svg</span></div>
+    </div>
+    <div>
+      <div class="preview"><img src="logo/logo-symbol-white-bg.svg" alt="Symbol white" style="width:160px"></div>
+      <div class="sw-meta"><strong>Białe tło</strong><span>logo-symbol-white-bg.svg</span></div>
+    </div>
+    <div>
+      <div class="preview"><img src="logo/logo-symbol-navy50-bg.svg" alt="Symbol navy50" style="width:160px"></div>
+      <div class="sw-meta"><strong>Navy-50 tło</strong><span>logo-symbol-navy50-bg.svg</span></div>
+    </div>
+  </div>
+
+  <h3>Lockup poziomy (preferowany)</h3>
+  <div class="preview"><img src="logo/logo-lockup-horizontal.svg" alt="Lockup jasny" style="max-width:600px"></div>
+  <h3>Lockup poziomy — inverse (ciemne tło)</h3>
+  <div class="preview dark"><img src="logo/logo-lockup-horizontal-inverse.svg" alt="Lockup dark" style="max-width:600px"></div>
+
+  <h3>Lockup pionowy (compact/social)</h3>
+  <div class="preview"><img src="logo/logo-lockup-stacked.svg" alt="Lockup stacked" style="max-width:200px"></div>
+
+  <h3>Strefa ochronna i minimalny rozmiar</h3>
+  <p>Strefa ochronna = <strong>1× wysokość symbolu</strong> ze wszystkich stron — żadne inne elementy graficzne ani teksty nie wchodzą w ten obszar.</p>
+  <p>Minimalny rozmiar:</p>
+  <ul class="clean">
+    <li>Symbol: <strong>16 px</strong> (digital), <strong>8 mm</strong> (druk)</li>
+    <li>Lockup horyzontalny: szerokość <strong>120 px</strong> (digital), <strong>32 mm</strong> (druk)</li>
+  </ul>
+
+  <h3>Czego nie wolno</h3>
+  <div class="donts">
+    <div class="do"><strong>✓ Zostaw oddech</strong><br>Trzymaj strefę ochronną. Używaj wariantu mono na tłach pod-pełnokolorowych.</div>
+    <div class="dont"><strong>✗ Nie rozciągaj</strong><br>Nie zmieniaj proporcji, nie obracaj, nie dodawaj efektów (cień, blask, outline) do oryginalnego SVG.</div>
+    <div class="do"><strong>✓ Kontrast</strong><br>Symbol kolorowy tylko na tłach jaśniejszych niż navy-200. Inaczej — wariant inverse.</div>
+    <div class="dont"><strong>✗ Nie podmieniaj kolorów</strong><br>Wyłącznie warianty zatwierdzone — kolorowy / mono navy / outline white.</div>
+  </div>
+
+  <!-- 03 COLOR -->
+  <h2>3. Kolor</h2>
+  <p>Paleta jest <strong>monochromatyczna navy</strong>. Zero kolorów pomocniczych. Cała hierarchia, kontrast i emocja wynikają z gradacji jasności. Stany systemowe (zielony „success", czerwony „error") nigdy nie pojawiają się w komunikacji marketingowej.</p>
+
+  <h3>Skala navy</h3>
+  <div class="grid grid-3">
+    <div><div class="swatch" style="background:#f0f4fa"></div><div class="sw-meta"><strong>navy-50</strong><span>#F0F4FA</span></div></div>
+    <div><div class="swatch" style="background:#dbe5f1"></div><div class="sw-meta"><strong>navy-100</strong><span>#DBE5F1</span></div></div>
+    <div><div class="swatch" style="background:#b8cae3"></div><div class="sw-meta"><strong>navy-200</strong><span>#B8CAE3</span></div></div>
+    <div><div class="swatch" style="background:#8aa6cd"></div><div class="sw-meta"><strong>navy-300</strong><span>#8AA6CD</span></div></div>
+    <div><div class="swatch" style="background:#5e80b3"></div><div class="sw-meta"><strong>navy-400</strong><span>#5E80B3</span></div></div>
+    <div><div class="swatch" style="background:#3f6398"></div><div class="sw-meta"><strong>navy-500</strong><span>#3F6398</span></div></div>
+    <div><div class="swatch" style="background:#314e7e"></div><div class="sw-meta"><strong>navy-600</strong><span>#314E7E</span></div></div>
+    <div><div class="swatch" style="background:#293f66"></div><div class="sw-meta"><strong>navy-700</strong><span>#293F66</span></div></div>
+    <div><div class="swatch" style="background:#1e3a8a"></div><div class="sw-meta"><strong style="color:#1e3a8a">navy-800 ★</strong><span>#1E3A8A</span></div></div>
+    <div><div class="swatch" style="background:#172554"></div><div class="sw-meta"><strong>navy-900</strong><span>#172554</span></div></div>
+    <div><div class="swatch" style="background:#0b1736"></div><div class="sw-meta"><strong style="color:#0b1736">navy-950 ★</strong><span>#0B1736</span></div></div>
+    <div><div class="swatch" style="background:#fff;border:1px solid var(--navy-100)"></div><div class="sw-meta"><strong>white</strong><span>#FFFFFF</span></div></div>
+  </div>
+  <p>★ <strong>navy-800</strong> i <strong>navy-950</strong> to kolory marki. Pozostałe odcienie pełnią rolę systemową (tła, ramki, hover, muted text).</p>
+
+  <h3>Zastosowanie systemowe</h3>
+  <table>
+    <thead><tr><th>Rola</th><th>Kolor</th><th>Hex</th></tr></thead>
+    <tbody>
+      <tr><td>Tło główne</td><td>white</td><td>#FFFFFF</td></tr>
+      <tr><td>Tło sekundarne</td><td>navy-50</td><td>#F0F4FA</td></tr>
+      <tr><td>Border / divider</td><td>navy-100</td><td>#DBE5F1</td></tr>
+      <tr><td>Muted text</td><td>navy-400 / 500</td><td>#5E80B3 / #3F6398</td></tr>
+      <tr><td>Body text</td><td>navy-700</td><td>#293F66</td></tr>
+      <tr><td>Display text / headlines</td><td>navy-950</td><td>#0B1736</td></tr>
+      <tr><td>Akcent (link, CTA, dane)</td><td>navy-800</td><td>#1E3A8A</td></tr>
+      <tr><td>Dark surface (banner, footer)</td><td>navy-950</td><td>#0B1736</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Kontrast</h3>
+  <p>Wszystkie pary tekst/tło muszą spełniać <strong>WCAG AA</strong> (4.5:1 dla body, 3:1 dla display ≥ 24px). Bezpieczne kombinacje: navy-700/950 na białym, navy-50/100/200 na navy-950.</p>
+
+  <!-- 04 TYPO -->
+  <h2>4. Typografia</h2>
+  <p>Jeden font: <strong>Inter</strong> (Google Fonts, weights 400/500/600/700). Brak fontów dekoracyjnych, brak serif. Display = Inter SemiBold (600) z negatywnym tracking (-0.02 → -0.035em).</p>
+
+  <div class="typescale">
+    <div class="row"><span class="label">Display</span><span style="font-size:48px;font-weight:600;letter-spacing:-.035em;color:var(--navy-950);line-height:1">Headline display</span></div>
+    <div class="row"><span class="label">H1</span><span style="font-size:36px;font-weight:600;letter-spacing:-.03em;color:var(--navy-950)">Strona / sekcja</span></div>
+    <div class="row"><span class="label">H2</span><span style="font-size:24px;font-weight:600;letter-spacing:-.02em;color:var(--navy-950)">Podsekcja</span></div>
+    <div class="row"><span class="label">H3</span><span style="font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--navy-950)">Karta / blok</span></div>
+    <div class="row"><span class="label">Body</span><span style="font-size:16px;font-weight:400;color:var(--navy-700);line-height:1.6">Akapit treści — opis usługi, raport, oferty.</span></div>
+    <div class="row"><span class="label">UI</span><span style="font-size:14px;font-weight:500;color:var(--navy-900)">Etykieta / przycisk / nav</span></div>
+    <div class="row"><span class="label">Caption</span><span style="font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--navy-500);text-transform:uppercase">EYEBROW · TAG · LABEL</span></div>
+    <div class="row"><span class="label">Mono</span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--navy-700)">ID: SPS-2026-00412</span></div>
+  </div>
+
+  <h3>Zasady</h3>
+  <ul class="clean">
+    <li>Headline zawsze SemiBold 600 — nigdy Bold 700 (zarezerwowane do liczb statystyk)</li>
+    <li>Tracking negatywny w nagłówkach: -0.02em (H2-H3) → -0.035em (Display)</li>
+    <li>Line-height: nagłówki 1.05–1.2, body 1.55–1.6, caption 1.4</li>
+    <li>Liczby ≥ 4 cyfr — cienka spacja jako separator (1 200, 12 400)</li>
+  </ul>
+
+  <!-- 05 VOICE -->
+  <h2>5. Voice &amp; Tone</h2>
+  <p><strong>Konkret, dane, brak marketingowego bełkotu.</strong> Mówimy do dyrektorów akademii, prezesów klubów i działu marketingu profesjonalnych zespołów. Oni mają już dość obietnic — chcą liczb i procesu.</p>
+
+  <div class="donts">
+    <div class="do"><strong>✓ Robimy tak</strong>
+      <ul style="margin:8px 0 0;padding-left:18px">
+        <li>"68% zawodników odchodzi przez brak feedbacku"</li>
+        <li>"Raport + rekomendacje w 4 tygodnie"</li>
+        <li>"Niezależna metodologia, bez konfliktu interesów"</li>
+      </ul>
+    </div>
+    <div class="dont"><strong>✗ Tak nie robimy</strong>
+      <ul style="margin:8px 0 0;padding-left:18px">
+        <li>"Rewolucyjna platforma nowej generacji"</li>
+        <li>"Empower your athletes"</li>
+        <li>"Innowacyjne synergiczne rozwiązanie"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Zasady stylistyczne</h3>
+  <ul class="clean">
+    <li>Pisz po polsku. Anglicyzmy tylko branżowe (NPS, retention, engagement) — pisane bez kursywy.</li>
+    <li>Druga osoba l.mn. ("Wiesz", "Pomagamy") — partnerska, ale nie protekcjonalna.</li>
+    <li>Liczby w nagłówkach to siła: zawsze konkretna metryka zamiast przymiotnika.</li>
+    <li>CTA aktywne i krótkie: "Zamów badanie", "Zobacz jak działamy", "Pobierz raport".</li>
+  </ul>
+
+  <!-- 06 SOCIAL -->
+  <h2>6. Social media — specyfikacja</h2>
+
+  <h3>Instagram</h3>
+  <table>
+    <thead><tr><th>Format</th><th>Rozmiar</th><th>Plik</th><th>Display</th></tr></thead>
+    <tbody>
+      <tr><td>Profile picture (upload)</td><td>1080×1080</td><td><code>social/instagram/ig-profile-1080x1080.svg</code></td><td>⬤ koło</td></tr>
+      <tr><td>Post kwadratowy</td><td>1080×1080</td><td><code>social/instagram/ig-post-1080x1080.svg</code></td><td>▪ 1:1</td></tr>
+      <tr><td>Post portrait <em>(rekomendowany — więcej zasięgu)</em></td><td>1080×1350</td><td><code>social/instagram/ig-post-1080x1350.svg</code></td><td>▬ 4:5</td></tr>
+      <tr><td>Story / Reel</td><td>1080×1920</td><td><code>social/instagram/ig-story-1080x1920.svg</code></td><td>▬ 9:16</td></tr>
+    </tbody>
+  </table>
+  <div class="grid grid-2" style="margin-top:16px">
+    <div>
+      <p style="font-size:12px;color:var(--navy-500);margin-bottom:8px">Avatar: kwadrat → wyświetlony jako koło</p>
+      <div style="display:flex;gap:16px;align-items:center">
+        <div class="preview" style="padding:8px;width:180px"><img src="social/instagram/ig-profile-1080x1080.svg" style="width:164px"></div>
+        <div style="border-radius:50%;overflow:hidden;width:160px;height:160px;border:2px solid var(--navy-100)"><img src="social/instagram/ig-profile-1080x1080.svg" style="width:160px"></div>
+      </div>
+    </div>
+    <div class="preview dark"><img src="social/instagram/ig-story-1080x1920.svg" alt="IG story" style="max-width:160px"></div>
+  </div>
+
+  <h3>LinkedIn</h3>
+  <table>
+    <thead><tr><th>Format</th><th>Rozmiar</th><th>Plik</th><th>Display</th></tr></thead>
+    <tbody>
+      <tr><td>Company Page logo</td><td>400×400</td><td><code>social/linkedin/li-company-logo-400x400.svg</code></td><td>▪ zaokrąglony kwadrat</td></tr>
+      <tr><td>Personal profile picture</td><td>800×800</td><td><code>social/linkedin/li-profile-800x800.svg</code></td><td>⬤ koło</td></tr>
+      <tr><td>Banner (firma i profil osobisty)</td><td>1584×396</td><td><code>social/linkedin/li-banner-1584x396.svg</code></td><td>▬ poziomy</td></tr>
+      <tr><td>Post z grafiką</td><td>1200×627</td><td><code>social/linkedin/li-post-1200x627.svg</code></td><td>▬ 1.91:1</td></tr>
+    </tbody>
+  </table>
+  <div class="preview" style="margin-top:16px"><img src="social/linkedin/li-banner-1584x396.svg" alt="LinkedIn banner" style="max-width:100%"></div>
+  <div class="grid grid-2" style="margin-top:12px">
+    <div>
+      <p style="font-size:12px;color:var(--navy-500);margin-bottom:8px">Company logo (kwadrat) vs Personal (koło)</p>
+      <div style="display:flex;gap:16px;align-items:center">
+        <div style="border-radius:16px;overflow:hidden;width:120px;height:120px;border:1px solid var(--navy-100)"><img src="social/linkedin/li-company-logo-400x400.svg" style="width:120px"></div>
+        <div style="border-radius:50%;overflow:hidden;width:120px;height:120px;border:1px solid var(--navy-100)"><img src="social/linkedin/li-profile-800x800.svg" style="width:120px"></div>
+      </div>
+    </div>
+    <div class="preview"><img src="social/linkedin/li-post-1200x627.svg" alt="LI post" style="max-width:400px"></div>
+  </div>
+
+  <h3>Eksport do PNG/JPG</h3>
+  <p>SVG → PNG dla wgrywania na platformy (które wymagają rastra):</p>
+  <ul class="clean">
+    <li><strong>Inkscape:</strong> <code>inkscape input.svg --export-type=png --export-width=1080</code></li>
+    <li><strong>ImageMagick:</strong> <code>magick -density 300 -background none input.svg -resize 1080x1080 output.png</code></li>
+    <li><strong>Online:</strong> cloudconvert.com / svgomg → eksport do PNG w wymaganym rozmiarze</li>
+    <li><strong>Canva:</strong> upload SVG → Download as PNG/JPG (zachowaj wymiar projektu)</li>
+  </ul>
+
+  <!-- 07 CANVA -->
+  <h2>7. Szablony Canva</h2>
+  <p>5 szablonów <code>.svg</code> w folderze <code>brand/canva/</code> — gotowe do importu w Canva (Uploads → Upload files → SVG). Po imporcie zrób <code>Ungroup</code> by edytować poszczególne warstwy tekstowe.</p>
+  <ul class="clean">
+    <li><code>canva-template-quote.svg</code> — cytat / opinia eksperta (1080×1080)</li>
+    <li><code>canva-template-stat.svg</code> — duża liczba / KPI (1080×1080, ciemne tło)</li>
+    <li><code>canva-template-carousel-cover.svg</code> — okładka karuzeli (1080×1080)</li>
+    <li><code>canva-template-announcement.svg</code> — ogłoszenie raportu / wydarzenia (1080×1080)</li>
+    <li><code>canva-template-story-1080x1920.svg</code> — Story / Reel cover (1080×1920)</li>
+  </ul>
+  <div class="grid grid-3">
+    <div class="preview"><img src="canva/canva-template-quote.svg" alt="Quote" style="max-width:200px"></div>
+    <div class="preview"><img src="canva/canva-template-stat.svg" alt="Stat" style="max-width:200px"></div>
+    <div class="preview"><img src="canva/canva-template-carousel-cover.svg" alt="Carousel" style="max-width:200px"></div>
+  </div>
+
+  <!-- 08 CERTIFICATE -->
+  <h2>8. Certyfikat</h2>
+  <p>Niezależny znak jakości doświadczenia w sporcie. Wydawany na 12 miesięcy, z coroczną re-certyfikacją na podstawie powtórnego badania NPS / retencji / trust.</p>
+
+  <h3>Wariant A — Certyfikat A4 landscape (do druku i wysyłki PDF)</h3>
+  <p>Plik: <code>certificate/certificate-a4-landscape.svg</code> · 297×210 mm @ 300 dpi (3508×2480 px). Edytowalne pola: nazwa odbiorcy, sezon, KPI (NPS, retencja, trust), data wydania/ważności, ID, podpisy.</p>
+  <div class="preview"><img src="certificate/certificate-a4-landscape.svg" alt="Certyfikat" style="max-width:100%"></div>
+
+  <h3>Wariant B — Web badge (do osadzania na stronie klienta)</h3>
+  <p>Plik: <code>certificate/certificate-web-badge.svg</code> · 320×400 px, zoptymalizowany jako linkowany badge w footerze / sekcji „O klubie". Snippet osadzania: <code>certificate/embed-snippet.html</code>.</p>
+  <div class="preview"><img src="certificate/certificate-web-badge.svg" alt="Web badge" style="max-width:200px"></div>
+
+  <h3>Zasady wydawania</h3>
+  <ul class="clean">
+    <li>Każdy certyfikat ma unikalny <strong>ID</strong>: <code>SPS-{rok}-{nr seryjny 5-cyfrowy}</code></li>
+    <li>Weryfikacja online: <code>sportprospace.pl/verify/{ID}</code></li>
+    <li>Klient nie może modyfikować pliku certyfikatu — wolno mu wyłącznie wbudować nieedytowaną wersję SVG/PNG/PDF dostarczoną przez Sport Pro Space.</li>
+    <li>Re-certyfikacja: nowy plik z nowym ID, stary traci ważność z dniem określonym w polu "Ważny do".</li>
+  </ul>
+
+  <!-- 09 ASSETS -->
+  <h2>9. Struktura plików</h2>
+  <pre style="background:var(--navy-50);padding:20px;border-radius:10px;font-size:13px;line-height:1.6;color:var(--navy-900);overflow:auto"><code>brand/
+├── MANUAL.html                             ← ten dokument (v1.1)
+├── logo/
+│   ├── logo-symbol.svg                     ← symbol S · ciemne tło (główny)
+│   ├── logo-symbol-white-bg.svg            ← symbol S · białe tło
+│   ├── logo-symbol-navy50-bg.svg           ← symbol S · navy-50 tło
+│   ├── logo-lockup-horizontal.svg          ← lockup poziomy · jasny
+│   ├── logo-lockup-horizontal-inverse.svg  ← lockup poziomy · ciemny
+│   ├── logo-lockup-stacked.svg             ← lockup pionowy
+│   └── logo-wordmark.svg                   ← sam tekst
+├── social/
+│   ├── instagram/
+│   │   ├── ig-profile-1080x1080.svg        ★ WGRAJ NA IG (profil)
+│   │   ├── ig-profile-320x320.svg          ← podgląd małego rozmiaru
+│   │   ├── ig-post-1080x1080.svg           ← szablon post 1:1
+│   │   ├── ig-post-1080x1350.svg           ← szablon post 4:5 (więcej zasięgu)
+│   │   └── ig-story-1080x1920.svg          ← story / reel
+│   └── linkedin/
+│       ├── li-company-logo-400x400.svg     ★ WGRAJ NA LI (company logo)
+│       ├── li-profile-800x800.svg          ★ WGRAJ NA LI (osobisty profil)
+│       ├── li-banner-1584x396.svg          ← banner firmy/profilu
+│       └── li-post-1200x627.svg            ← szablon post
+├── canva/
+│   ├── README.md                    ← jak importować do Canvy
+│   ├── canva-template-quote.svg
+│   ├── canva-template-stat.svg
+│   ├── canva-template-carousel-cover.svg
+│   ├── canva-template-announcement.svg
+│   └── canva-template-story-1080x1920.svg
+└── certificate/
+    ├── certificate-a4-landscape.svg ← główny certyfikat
+    ├── certificate-web-badge.svg    ← badge do www
+    └── embed-snippet.html           ← snippet osadzenia</code></pre>
+
+  <div class="footer">
+    Sport Pro Space · Brand Manual v1.0 · 05/2026 · Kontakt: brand@sportprospace.pl
+  </div>
+</div>
+</body>
+</html>

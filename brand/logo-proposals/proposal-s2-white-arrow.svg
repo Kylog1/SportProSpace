@@ -1,0 +1,27 @@
+<!-- WARIANT A: Białe tło · S geometryczne · akcent = strzałka wzrostu (analityczne) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#FFFFFF"/>
+
+  <!-- subtelna ramka -->
+  <rect x="0" y="0" width="1080" height="1080" fill="none" stroke="#dbe5f1" stroke-width="2"/>
+
+  <!-- S z prostokątów — navy-950 -->
+  <!-- top bar -->
+  <rect x="340" y="296" width="400" height="76" rx="10" fill="#0B1736"/>
+  <!-- top-left vertical -->
+  <rect x="340" y="296" width="76" height="224" rx="10" fill="#0B1736"/>
+  <!-- middle bar -->
+  <rect x="340" y="502" width="400" height="76" rx="10" fill="#0B1736"/>
+  <!-- bottom-right vertical -->
+  <rect x="664" y="502" width="76" height="224" rx="10" fill="#0B1736"/>
+  <!-- bottom bar -->
+  <rect x="340" y="708" width="400" height="76" rx="10" fill="#0B1736"/>
+
+  <!-- AKCENT: strzałka w górę (growth / analytics) — zastępuje kropkę, w navy-800 -->
+  <g transform="translate(668, 248)">
+    <!-- shaft pionowy -->
+    <rect x="18" y="24" width="16" height="56" rx="4" fill="#1E3A8A"/>
+    <!-- grot strzałki -->
+    <polygon points="26,0 52,40 0,40" fill="#1E3A8A"/>
+  </g>
+</svg>

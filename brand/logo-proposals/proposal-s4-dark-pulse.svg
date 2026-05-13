@@ -1,0 +1,36 @@
+<!-- WARIANT C: Ciemne tło · S geometryczne · akcent = linia pulsu EKG / NPS trend (analityczne) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0B1736"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg4)"/>
+
+  <!-- S z prostokątów — biały -->
+  <rect x="340" y="296" width="400" height="76" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="296" width="76" height="224" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="502" width="400" height="76" rx="10" fill="#FFFFFF"/>
+  <rect x="664" y="502" width="76" height="224" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="708" width="400" height="76" rx="10" fill="#FFFFFF"/>
+
+  <!-- AKCENT: linia pulsu (EKG / NPS trend) — pod "S", zamiast kropki -->
+  <!-- linia bazowa ciągła z "pulsem" w środku -->
+  <polyline
+    points="220,880  360,880  400,800  440,940  480,760  520,880  660,880  720,808  780,880  860,880"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.92"
+  />
+  <!-- gradient fade: lewa końcówka gaśnie -->
+  <rect x="220" y="810" width="120" height="120" fill="url(#bg4)" opacity="0.75"/>
+  <!-- gradient fade: prawa końcówka gaśnie -->
+  <rect x="780" y="810" width="120" height="120" fill="url(#bg4)" opacity="0.75"/>
+
+  <!-- punkt kulminacyjny pulsu — highlight dot -->
+  <circle cx="480" cy="760" r="18" fill="#FFFFFF"/>
+</svg>

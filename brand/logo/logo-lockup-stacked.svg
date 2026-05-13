@@ -1,0 +1,14 @@
+<!-- Lockup pionowy: symbol góra + wordmark dół · jasne tło -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1400" width="1080" height="1400">
+  <rect width="1080" height="1400" fill="#FFFFFF"/>
+  <!-- symbol pełny 1080x1080 -->
+  <rect x="360" y="310" width="360" height="80"  rx="8" fill="#0B1736"/>
+  <rect x="360" y="310" width="80"  height="200" rx="8" fill="#0B1736"/>
+  <rect x="360" y="500" width="360" height="80"  rx="8" fill="#0B1736"/>
+  <rect x="640" y="500" width="80"  height="200" rx="8" fill="#0B1736"/>
+  <rect x="360" y="690" width="360" height="80"  rx="8" fill="#0B1736"/>
+  <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+  <!-- wordmark centered pod symbolem -->
+  <text x="540" y="1160" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="112" letter-spacing="-3.5" text-anchor="middle" fill="#0B1736">Sport Pro</text>
+  <text x="540" y="1300" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="112" letter-spacing="-3.5" text-anchor="middle" fill="#1E3A8A">Space</text>
+</svg>

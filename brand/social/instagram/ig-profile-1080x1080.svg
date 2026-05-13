@@ -1,0 +1,13 @@
+<!-- Instagram profile picture — wgrywaj w tym rozmiarze (1080x1080 px)
+     Instagram wyświetla jako KOŁO — cały content musi być w wpisanym kole (safe zone r=480, center 540,540)
+     Nie ma tekstu — sam symbol, czyste i czytelne w małym rozmiarze -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#0B1736"/>
+  <!-- S — taki sam jak logo-symbol, wycentrowany -->
+  <rect x="360" y="310" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+  <rect x="360" y="310" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+  <rect x="360" y="500" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+  <rect x="640" y="500" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+  <rect x="360" y="690" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+  <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+</svg>

@@ -1,0 +1,31 @@
+<!-- PROPOZYCJA 3: Ring mark — okrąg z inicjałami SPS jako negatyw. Delikatna gradacja, bardziej "premium / consulting". -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0B1736"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg3)"/>
+
+  <!-- outer ring -->
+  <circle cx="540" cy="540" r="380" fill="none" stroke="#FFFFFF" stroke-width="28"/>
+
+  <!-- inner ring -->
+  <circle cx="540" cy="540" r="300" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-opacity="0.2"/>
+
+  <!-- litera S z negatywu — gruba, geometryczna, skonstruowana z łuków -->
+  <!-- top arc -->
+  <path d="M 430 400 A 110 110 0 0 1 650 400 A 80 80 0 0 0 540 460"
+        fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+  <!-- middle connector -->
+  <path d="M 430 540 L 650 540"
+        fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+  <!-- bottom arc -->
+  <path d="M 650 680 A 110 110 0 0 1 430 680 A 80 80 0 0 0 540 620"
+        fill="none" stroke="#FFFFFF" stroke-width="56" stroke-linecap="round"/>
+
+  <!-- top-right accent dot -->
+  <circle cx="760" cy="330" r="22" fill="#FFFFFF"/>
+</svg>

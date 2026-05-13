@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 128" width="720" height="128" role="img" aria-label="Sport Pro Space — logo inline">
+  <defs>
+    <linearGradient id="s3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0B1736"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0,0)">
+    <path d="M64 8 L112 24 V60 C112 90 92 112 64 122 C36 112 16 90 16 60 V24 Z" fill="url(#s3)"/>
+    <path d="M46 50 H72 V62 H56 V72 H82 V92 H46" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="82" cy="50" r="5" fill="#FFFFFF"/>
+  </g>
+  <text x="148" y="82" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="48" letter-spacing="-1.6" fill="#0B1736">Sport Pro <tspan fill="#1E3A8A">Space</tspan></text>
+</svg>

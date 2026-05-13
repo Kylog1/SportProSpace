@@ -1,0 +1,19 @@
+<!-- PROPOZYCJA 1: Monogram "S" zbudowany geometrycznie z prostokątów — architektoniczny, data-driven -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#0B1736"/>
+
+  <!-- Litera S skonstruowana z 3 poziomych kresek + 2 pionowych segmentów — jak data bar chart -->
+  <!-- top bar -->
+  <rect x="360" y="310" width="360" height="80" rx="8" fill="#FFFFFF"/>
+  <!-- top-left vertical -->
+  <rect x="360" y="310" width="80" height="200" rx="8" fill="#FFFFFF"/>
+  <!-- middle bar -->
+  <rect x="360" y="500" width="360" height="80" rx="8" fill="#FFFFFF"/>
+  <!-- bottom-right vertical -->
+  <rect x="640" y="500" width="80" height="200" rx="8" fill="#FFFFFF"/>
+  <!-- bottom bar -->
+  <rect x="360" y="690" width="360" height="80" rx="8" fill="#FFFFFF"/>
+
+  <!-- accent dot — data point, top-right -->
+  <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+</svg>

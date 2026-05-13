@@ -1,0 +1,19 @@
+<!-- WARIANT B: Ciemne tło · S geometryczne · akcent = łuk toru / stadionu (sportowe) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <rect width="1080" height="1080" fill="#0B1736"/>
+
+  <!-- S z prostokątów — biały -->
+  <rect x="340" y="296" width="400" height="76" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="296" width="76" height="224" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="502" width="400" height="76" rx="10" fill="#FFFFFF"/>
+  <rect x="664" y="502" width="76" height="224" rx="10" fill="#FFFFFF"/>
+  <rect x="340" y="708" width="400" height="76" rx="10" fill="#FFFFFF"/>
+
+  <!-- AKCENT: ćwierćłuk toru/stadionu — prawy-górny róg, zastępuje kropkę -->
+  <!-- 3 koncentryczne łuki jak bieżnia widziana z lotu ptaka -->
+  <g transform="translate(668, 220)" fill="none" stroke-linecap="round">
+    <path d="M 0 140 A 100 100 0 0 1 100 40" stroke="#FFFFFF" stroke-width="18" opacity="1.0"/>
+    <path d="M 0 140 A 140 140 0 0 1 140 0"  stroke="#FFFFFF" stroke-width="10" opacity="0.45"/>
+    <path d="M 0 140 A 68  68  0 0 1 68  72"  stroke="#FFFFFF" stroke-width="10" opacity="0.20"/>
+  </g>
+</svg>

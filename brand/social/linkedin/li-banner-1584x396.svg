@@ -1,0 +1,39 @@
+<!-- LinkedIn Company + Personal banner — 1584x396 px
+     UWAGA safe zone: mobile tnie do ok. 1128x96 na dole — kluczowy content trzymaj
+     poziomo między x=120 a x=1464 i pionowo między y=80 a y=316
+     Na profilu osobistym lewy dół zasłania zdjęcie profilowe (koło ~220x220 od lewej) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <defs>
+    <linearGradient id="bn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0B1736"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <!-- dot pattern -->
+    <pattern id="dp" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#FFFFFF" opacity="0.07"/>
+    </pattern>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bn)"/>
+  <rect width="1584" height="396" fill="url(#dp)"/>
+
+  <!-- symbol prawy narożnik — dekoracyjny, duży, półprzezroczysty -->
+  <g transform="translate(1280,16) scale(0.34)" opacity="0.18">
+    <rect x="360" y="310" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="310" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="500" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <rect x="640" y="500" width="80"  height="200" rx="8" fill="#FFFFFF"/>
+    <rect x="360" y="690" width="360" height="80"  rx="8" fill="#FFFFFF"/>
+    <circle cx="720" cy="310" r="40" fill="#1E3A8A" stroke="#FFFFFF" stroke-width="12"/>
+  </g>
+
+  <!-- copy — safe zone, uwzględnia avatar po lewej (lewy margines 400px) -->
+  <text x="400" y="112" font-family="Inter,system-ui,sans-serif" font-weight="500" font-size="18" letter-spacing="4.5" fill="#8aa6cd">EXPERIENCE INTELLIGENCE FOR SPORT</text>
+  <text x="400" y="220" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="72" letter-spacing="-2.5" fill="#FFFFFF">Mierzymy. Analizujemy. Rekomendujemy.</text>
+  <text x="400" y="282" font-family="Inter,system-ui,sans-serif" font-weight="400" font-size="28" letter-spacing="-0.3" fill="#dbe5f1">Niezależne badania NPS dla akademii i klubów sportowych.</text>
+
+  <!-- CTA pill -->
+  <g transform="translate(400,310)">
+    <rect width="310" height="60" rx="30" fill="#FFFFFF"/>
+    <text x="155" y="40" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="20" text-anchor="middle" fill="#0B1736">sportprospace.pl →</text>
+  </g>
+</svg>
