@@ -6,6 +6,7 @@ import {
   ArrowRight,
   ArrowLeft,
   ShieldCheck,
+  AlertTriangle,
   TrendingDown,
   MessageSquare,
   Award,
@@ -23,12 +24,15 @@ import {
   QUESTIONS,
   SCALE,
   SECTIONS as DATA_SECTIONS,
+  INSIGHTS,
   MAX_TOTAL,
   getLevel,
   sectionScore,
+  topRisks,
   type Level,
   type LevelId,
   type SectionId,
+  type Question,
 } from "@/lib/assessment/data";
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -754,6 +758,8 @@ function ResultsBlock({
   submittedEmail: string | null;
   onReset: () => void;
 }) {
+  const insights = INSIGHTS[level.id];
+  const risks = topRisks(answers, 3);
   const overallPct = Math.round((total / MAX_TOTAL) * 100);
 
   return (
@@ -792,14 +798,13 @@ function ResultsBlock({
               Wasz klub: <span className="text-navy-800">{level.name}</span>
             </h1>
             <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
-              Pełna diagnoza, ryzyka, najsłabsze obszary i propozycja kolejnego
-              kroku - w raporcie PDF, który właśnie trafił na Twoją skrzynkę.
+              {level.description}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Dashboard — score + section bars only */}
+      {/* Dashboard */}
       <section className="border-b border-navy-100 bg-navy-50/40">
         <div className="container py-12 md:py-16">
           <div className="mx-auto max-w-5xl">
@@ -861,39 +866,164 @@ function ResultsBlock({
               </div>
             </div>
 
-            {/* Inbox + Calendly hint card */}
-            <div className="mt-6 rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)] sm:p-8">
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-                <div className="max-w-xl">
-                  <div className="text-[12px] font-semibold uppercase tracking-wider text-navy-700">
-                    Pełen raport w skrzynce
-                  </div>
-                  <p className="mt-2 text-[15px] leading-relaxed text-navy-900">
-                    Diagnoza, ryzyka, top 3 obszary do pracy i konkretny kolejny
-                    krok znajdziesz w PDF, który właśnie do Ciebie wysłaliśmy.
-                    Tam też jest link do umówienia 30-minutowej rozmowy.
-                  </p>
-                </div>
-                <Button
-                  asChild
-                  size="lg"
-                  className="shrink-0"
-                >
-                  <Link
-                    href="https://calendly.com/grzyb-krzysiek/new-meeting"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Umów rozmowę
-                    <ArrowRight />
-                  </Link>
-                </Button>
+            {/* Level details */}
+            <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <DetailCard title="Ryzyka na tym poziomie" items={level.risks} accent="risk" />
+              <DetailCard title="Typowe problemy" items={level.problems} accent="problem" />
+              <DetailCard title="Konsekwencje biznesowe" items={level.consequences} accent="biz" />
+            </div>
+
+            {/* Top 3 weakest */}
+            <div className="mt-5 rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)] sm:p-8">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="size-4 text-red-600" />
+                <h3 className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Top 3 obszary do natychmiastowej pracy
+                </h3>
               </div>
+              <ul className="mt-4 space-y-3">
+                {risks.map((q: Question, i: number) => {
+                  const s = SECTIONS.find((x) => x.id === q.section)!;
+                  return (
+                    <li
+                      key={q.id}
+                      className="flex items-start gap-4 rounded-lg border border-navy-100 bg-navy-50/40 p-4"
+                    >
+                      <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-[13px] font-semibold text-white">
+                        {i + 1}
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          {s.label} · ocena {answers[q.id]}/5
+                        </div>
+                        <div className="mt-1 text-[14.5px] font-medium leading-snug text-navy-950">
+                          {q.text}
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Insights - "bolące" */}
+            <div className="mt-5 rounded-2xl border border-navy-900 bg-navy-950 p-6 text-white sm:p-8">
+              <div className="text-[12px] font-semibold uppercase tracking-wider text-navy-300">
+                3 rzeczy, które warto przeczytać dwa razy
+              </div>
+              <ul className="mt-4 space-y-4">
+                {insights.map((ins, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-1 text-[14px] font-semibold text-navy-300">
+                      0{i + 1}
+                    </span>
+                    <p className="text-[15.5px] leading-relaxed text-white">
+                      {ins}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Powiązany kalkulator */}
+      <section className="border-b border-navy-100 bg-white">
+        <div className="container py-16 md:py-20">
+          <div className="mx-auto max-w-3xl">
+            <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
+              Twój wynik × Twoje pieniądze
+            </span>
+            <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950">
+              Policz, ile kosztuje Was poziom {level.name}.
+            </h2>
+            <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground">
+              Kalkulator zakłada Wasz oczekiwany churn (
+              <strong>{level.expectedChurn}</strong>) - możesz go nadpisać
+              własną liczbą odejść z zeszłego sezonu.
+            </p>
+
+            <div className="mt-8">
+              <LeakyBucketCalculator suggestedLevel={level} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-navy-950">
+        <div className="container py-16 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-balance text-[32px] font-semibold leading-tight tracking-tight text-white sm:text-[40px]">
+              Znacie już swoje hipotezy.
+              <br />
+              <span className="text-navy-300">
+                Czas sprawdzić, co o klubie myślą rodzice, zawodnicy i trenerzy.
+              </span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed text-navy-200">
+              Badanie satysfakcji to ustrukturyzowane, niezależne ankiety
+              wśród Waszych odbiorców + analiza wyników na tle benchmarków.
+              Tam, gdzie Self Assessment kończy listę pytań, badanie zaczyna
+              dostarczać konkretne odpowiedzi.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Button asChild size="lg" className="bg-white text-navy-950 hover:bg-navy-100">
+                <Link href="https://calendly.com/grzyb-krzysiek/new-meeting" target="_blank" rel="noopener noreferrer">
+                  Umów 30-minutową rozmowę
+                  <ArrowRight />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-navy-700 bg-transparent text-white hover:border-white hover:text-white hover:bg-navy-900"
+              >
+                <Link href="/#contact">Napisz do nas</Link>
+              </Button>
+            </div>
+            <p className="mt-6 text-[13px] text-navy-300">
+              Raport PDF z wyniku Self Assessment masz już w skrzynce - na rozmowie
+              omówimy go i zaproponujemy zakres badania dopasowanego do wyniku.
+            </p>
+          </div>
+        </div>
+      </section>
     </>
+  );
+}
+
+function DetailCard({
+  title,
+  items,
+  accent,
+}: {
+  title: string;
+  items: string[];
+  accent: "risk" | "problem" | "biz";
+}) {
+  const dot =
+    accent === "risk"
+      ? "bg-red-500"
+      : accent === "problem"
+      ? "bg-amber-500"
+      : "bg-navy-800";
+  return (
+    <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)]">
+      <h3 className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+        {title}
+      </h3>
+      <ul className="mt-4 space-y-3">
+        {items.map((it, i) => (
+          <li key={i} className="flex items-start gap-3 text-[14px] leading-relaxed text-navy-900">
+            <span className={cn("mt-2 size-1.5 shrink-0 rounded-full", dot)} />
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

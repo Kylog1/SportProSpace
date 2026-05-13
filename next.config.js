@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    // Ensure PDFKit fonts and AFM files are bundled in serverless deployments (Vercel).
+    // Keep pdfkit as a real Node module at runtime; bundling breaks its
+    // internal AFM/font data file lookups.
+    serverComponentsExternalPackages: ["pdfkit"],
+    // Ensure PDFKit fonts and AFM/data files are bundled into the serverless
+    // function on Vercel.
     outputFileTracingIncludes: {
       "/api/submit-assessment": [
         "./lib/assessment/pdf-fonts/**/*",
