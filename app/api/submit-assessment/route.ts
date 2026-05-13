@@ -19,13 +19,13 @@ const SubmitSchema = z.object({
   name: z.string().trim().min(2, "Podaj imię i nazwisko").max(120),
   email: z.string().trim().email("Niepoprawny adres email").max(200),
   organization: z.string().trim().min(2, "Podaj nazwę klubu / organizacji").max(200),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
-  consent: z.literal(true, {
+  phone: z.string().trim().max(40).optional(),
+  consent: z.boolean().refine((v) => v === true, {
     message: "Wymagana zgoda na otrzymanie raportu",
   }),
   answers: AnswersSchema,
   // honeypot — bots fill this; real users leave it empty
-  website: z.string().max(0).optional().or(z.literal("")),
+  website: z.string().max(0).optional(),
 });
 
 function safeFilename(s: string): string {
@@ -56,6 +56,10 @@ export async function POST(req: Request) {
 
   const parsed = SubmitSchema.safeParse(json);
   if (!parsed.success) {
+    console.error(
+      "[submit-assessment] validation failed:",
+      JSON.stringify(parsed.error.issues)
+    );
     const firstIssue = parsed.error.issues[0]?.message ?? "Niepoprawne dane formularza";
     return NextResponse.json({ error: firstIssue }, { status: 400 });
   }
