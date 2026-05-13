@@ -16,10 +16,6 @@ export function HowWeHelp() {
               Trzy obszary, w których wnosimy mierzalną wartość.
             </h2>
           </div>
-          <p className="max-w-md text-[15px] leading-relaxed text-muted-foreground">
-            Pracujemy modułowo — możesz wybrać jeden obszar lub przejść pełną
-            ścieżkę: od diagnozy, przez badania, po wdrożenie.
-          </p>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
