@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -112,12 +112,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* floating label */}
-            <div className="absolute -bottom-4 -right-2 flex items-center gap-2 rounded-lg border border-navy-100 bg-white px-3 py-2 shadow-md">
-              <div className="size-2 rounded-full bg-green-500" />
-              <span className="text-[12px] font-medium text-navy-950">Raport gotowy</span>
-              <ArrowUpRight className="size-3.5 text-muted-foreground" />
-            </div>
           </div>
         </div>
       </div>
@@ -131,7 +125,7 @@ function Stat({ label, value, delta }: { label: string; value: string; delta: st
       <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground leading-tight">
         {label}
       </div>
-      <div className="mt-1.5 flex items-baseline gap-1.5">
+      <div className="mt-1.5 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1.5">
         <span className="text-xl font-semibold tracking-tight text-navy-950">{value}</span>
         <span className="text-[10px] font-medium text-navy-700">{delta}</span>
       </div>
