@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -406,9 +406,9 @@ function QuizBlock({
 
   // Prevent double-clicks from queueing two auto-advances, which would
   // skip the next question without recording an answer.
-  const lockRef = useRef(false);
+  const [locked, setLocked] = useState(false);
   useEffect(() => {
-    lockRef.current = false;
+    setLocked(false);
   }, [currentQ]);
 
   return (
@@ -454,10 +454,10 @@ function QuizBlock({
                 return (
                   <button
                     key={opt.value}
-                    disabled={lockRef.current}
+                    disabled={locked}
                     onClick={() => {
-                      if (lockRef.current) return;
-                      lockRef.current = true;
+                      if (locked) return;
+                      setLocked(true);
                       onAnswer(q.id, opt.value);
                       setTimeout(onNext, 350);
                     }}
