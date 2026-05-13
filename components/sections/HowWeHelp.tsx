@@ -73,7 +73,7 @@ export function HowWeHelp() {
             </ul>
 
             <Link
-              href="#contact"
+              href="/self-assessment"
               className="relative mt-7 inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-[13.5px] font-semibold text-white transition-all hover:bg-white/20"
             >
               <ArrowRight className="size-4" />
