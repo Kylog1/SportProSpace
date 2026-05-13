@@ -8,318 +8,60 @@ import {
   ShieldCheck,
   AlertTriangle,
   TrendingDown,
-  Users,
   MessageSquare,
   Award,
   Building2,
   CheckCircle2,
   Calculator,
-  Download,
   RefreshCw,
+  Mail,
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import {
+  QUESTIONS,
+  SCALE,
+  SECTIONS as DATA_SECTIONS,
+  INSIGHTS,
+  MAX_TOTAL,
+  getLevel,
+  sectionScore,
+  topRisks,
+  type Level,
+  type LevelId,
+  type SectionId,
+  type Question,
+} from "@/lib/assessment/data";
 
 // ──────────────────────────────────────────────────────────────────────────────
-// DATA
+// Local UI extras — icons per section (kept here, not in data.ts which is pure)
 // ──────────────────────────────────────────────────────────────────────────────
 
-type SectionId = "retention" | "communication" | "experience" | "organization";
-
-type Question = {
-  id: string;
-  section: SectionId;
-  text: string;
-  hint?: string;
+const SECTION_ICONS: Record<SectionId, React.ComponentType<{ className?: string }>> = {
+  retention: TrendingDown,
+  communication: MessageSquare,
+  experience: Award,
+  organization: Building2,
 };
 
-const SECTIONS: {
-  id: SectionId;
-  label: string;
-  short: string;
-  icon: React.ComponentType<{ className?: string }>;
-}[] = [
-  { id: "retention", label: "Retention Risk", short: "Ryzyko odejść", icon: TrendingDown },
-  { id: "communication", label: "Parent & Player Communication", short: "Komunikacja", icon: MessageSquare },
-  { id: "experience", label: "Player Experience & Development", short: "Doświadczenie zawodnika", icon: Award },
-  { id: "organization", label: "Organization & Culture", short: "Organizacja i kultura", icon: Building2 },
-];
-
-const QUESTIONS: Question[] = [
-  // 1. Retention Risk
-  {
-    id: "r1",
-    section: "retention",
-    text: "Mamy powtarzalny proces, w którym co kwartał identyfikujemy zawodników zagrożonych odejściem (spadek frekwencji, zmiana zachowania, sygnały od rodzica).",
-    hint: "Nie chodzi o 'wyczucie trenera' - chodzi o listę nazwisk z konkretnym terminem.",
-  },
-  {
-    id: "r2",
-    section: "retention",
-    text: "Po odejściu zawodnika przeprowadzamy ustrukturyzowaną rozmowę z nim i/lub rodzicem, a wnioski trafiają do osoby odpowiedzialnej za retencję.",
-    hint: "Bez exit-interview tracicie najcenniejsze dane - od osób, które właśnie podjęły decyzję.",
-  },
-  {
-    id: "r3",
-    section: "retention",
-    text: "Znamy dokładną liczbę zawodników, którzy odeszli w ciągu ostatnich 12 miesięcy - w podziale na grupy wiekowe i trenerów.",
-    hint: "Jeśli liczba jest 'gdzieś tam' - w praktyce nie istnieje.",
-  },
-  // 2. Communication
-  {
-    id: "c1",
-    section: "communication",
-    text: "Rodzic w pierwszych 30 dniach od zapisu otrzymuje zaplanowane komunikaty (powitanie, plan sezonu, zasady, kontakt do trenera) - nie ad hoc.",
-    hint: "Onboarding rodzica jest tak samo ważny jak onboarding zawodnika.",
-  },
-  {
-    id: "c2",
-    section: "communication",
-    text: "Mamy jeden oficjalny kanał komunikacji z rodzicami i zdefiniowany czas odpowiedzi - nie 3 grupy WhatsApp prowadzone na własną rękę przez trenerów.",
-    hint: "Każdy dodatkowy kanał to dodatkowe ryzyko konfliktu i utraty informacji.",
-  },
-  {
-    id: "c3",
-    section: "communication",
-    text: "Co najmniej raz w sezonie zbieramy ustrukturyzowany feedback od rodziców i zawodników, a wyniki są omawiane przez zarząd i sztab szkoleniowy.",
-    hint: "Feedback bez decyzji jest tylko teatrem.",
-  },
-  // 3. Experience
-  {
-    id: "e1",
-    section: "experience",
-    text: "Każdy zawodnik ma indywidualny plan rozwoju (cele, kompetencje, mierniki postępu), do którego ma wgląd on i jego rodzic.",
-    hint: "Bez planu rozwoju zawodnik i rodzic nie mają jak ocenić, czy 'idzie do przodu'.",
-  },
-  {
-    id: "e2",
-    section: "experience",
-    text: "Trener przeprowadza udokumentowaną rozmowę indywidualną z zawodnikiem (i/lub rodzicem) co najmniej raz na 3 miesiące.",
-    hint: "Brak rozmowy = rodzic interpretuje sam. Zwykle na Waszą niekorzyść.",
-  },
-  {
-    id: "e3",
-    section: "experience",
-    text: "Mamy zdefiniowany standard treningu i zachowania trenera, który obowiązuje wszystkie grupy - niezależnie od tego, kto je prowadzi.",
-    hint: "Jeśli standard 'zależy od trenera' - to nie jest standard.",
-  },
-  // 4. Organization
-  {
-    id: "o1",
-    section: "organization",
-    text: "Nowy trener przechodzi formalny onboarding (wartości, standard pracy, komunikacji z rodzicem, prowadzenie zawodnika) zanim samodzielnie poprowadzi grupę.",
-    hint: "Trener bez onboardingu to gwarantowany konflikt w pierwszych 6 miesiącach.",
-  },
-  {
-    id: "o2",
-    section: "organization",
-    text: "Mamy spisaną procedurę rozwiązywania konfliktów (rodzic–trener, trener–trener, zawodnik–trener) - wszyscy wiedzą, do kogo i jak eskalować.",
-    hint: "Brak procedury = konflikt trafia na social media zanim trafi do prezesa.",
-  },
-  {
-    id: "o3",
-    section: "organization",
-    text: "Decyzje sportowe i organizacyjne opieramy na danych (frekwencja, retencja, feedback) - a nie tylko na intuicji właściciela lub głównego trenera.",
-    hint: "Intuicja działa, ale tylko do pewnej skali. Potem zaczyna kosztować.",
-  },
-];
-
-const SCALE: { value: number; label: string; sub: string }[] = [
-  { value: 1, label: "Nie", sub: "Nie mamy tego w ogóle" },
-  { value: 2, label: "Raczej nie", sub: "Pojedyncze próby, bez systemu" },
-  { value: 3, label: "Częściowo", sub: "Działa w niektórych grupach" },
-  { value: 4, label: "W większości", sub: "Działa, ale z lukami" },
-  { value: 5, label: "W pełni", sub: "Standard, mierzalny, powtarzalny" },
-];
-
-type LevelId = "chaos" | "reactive" | "developing" | "high";
-
-type Level = {
-  id: LevelId;
-  name: string;
-  range: [number, number];
-  short: string;
-  description: string;
-  risks: string[];
-  problems: string[];
-  consequences: string[];
-  accent: string; // tailwind classes
-  expectedChurn: string;
-};
-
-const LEVELS: Level[] = [
-  {
-    id: "chaos",
-    name: "Chaos Mode",
-    range: [12, 24],
-    short: "Działanie 'na czuja' bez systemu",
-    description:
-      "Klub działa reaktywnie. Nie wiecie, kto, kiedy i dlaczego odchodzi. Komunikacja z rodzicami włącza się dopiero, gdy wybucha problem. Standard pracy zależy od konkretnej osoby - nie od organizacji.",
-    risks: [
-      "Brak danych o odejściach i ich przyczynach",
-      "Komunikacja rozproszona w prywatnych kanałach trenerów",
-      "Brak onboardingu - ani zawodnika, ani rodzica, ani trenera",
-      "Konflikty eskalują, bo nie ma procedury",
-    ],
-    problems: [
-      "Rotacja trenerów = utrata całych grup zawodników (lojalność dotyczy osoby, nie klubu)",
-      "Skargi rodziców trafiają na social media zanim trafią do prezesa",
-      "Nikt w zarządzie nie zna realnego CLV zawodnika ani kosztu pozyskania",
-      "Decyzje sportowe są podejmowane na bazie pojedynczych głosów",
-    ],
-    consequences: [
-      "25–40% odejść rocznie - bez świadomości skali",
-      "Stała utrata przychodu na poziomie kilkudziesięciu do kilkuset tysięcy zł rocznie",
-      "Rosnący koszt pozyskania zawodnika (trzeba 'łatać dziury')",
-      "Reputacja klubu: 'nie wiadomo, co się tam dzieje'",
-    ],
-    accent: "bg-red-50 border-red-200 text-red-900",
-    expectedChurn: "25–40%",
-  },
-  {
-    id: "reactive",
-    name: "Reactive Club",
-    range: [25, 36],
-    short: "Reagujecie sprawnie, ale gasicie pożary",
-    description:
-      "Macie ludzi, którzy 'ogarniają'. Problem w tym, że bez systemu wczesnego ostrzegania reagujecie dopiero, gdy zawodnik już zdecydował o odejściu albo rodzic już napisał maila do prezesa.",
-    risks: [
-      "Brak wczesnych sygnałów ryzyka - wiecie po fakcie",
-      "Komunikacja niespójna między trenerami / grupami",
-      "Onboarding nowego trenera zależy od tego, kto akurat ma czas",
-      "Feedback zbierany ad hoc, bez konsekwencji w decyzjach",
-    ],
-    problems: [
-      "Standard zależy od zaangażowania konkretnego trenera",
-      "Zarząd nie ma twardych danych do strategicznych decyzji",
-      "Rodzic czuje, że 'klub się stara', ale nie wie, czego się spodziewać",
-      "Reputacja zbudowana na nazwiskach trenerów, nie na klubie",
-    ],
-    consequences: [
-      "15–25% odejść rocznie",
-      "Wzrost kosztów pozyskania zawodnika - wciąż łatacie",
-      "Wzrost organiczny zatrzymuje się przy 2–3 lokalizacjach",
-      "Ryzyko utraty kluczowego trenera = utrata 8–22 zawodników",
-    ],
-    accent: "bg-amber-50 border-amber-200 text-amber-900",
-    expectedChurn: "15–25%",
-  },
-  {
-    id: "developing",
-    name: "Developing Experience Club",
-    range: [37, 48],
-    short: "Macie procesy, ale nierówno wdrożone",
-    description:
-      "Część grup działa jak w podręczniku - część 'po staremu'. Macie narzędzia, ale nie wszyscy z nich korzystają. Zaczynacie mierzyć, ale rzadko działać na danych.",
-    risks: [
-      "Nierówny standard między grupami i lokalizacjami",
-      "Dane zbierane, ale nie zawsze wykorzystywane do decyzji",
-      "Onboarding nowego trenera istnieje, ale jest skrócony pod presją czasu",
-      "Procedury konfliktowe są - ale część osób ich nie zna",
-    ],
-    problems: [
-      "Zawodnicy z 'silnych' grup zostają, z 'słabych' odchodzą",
-      "Ryzyko utraty osoby kluczowej = utrata standardu w jej grupie",
-      "Brak benchmarków - nie wiecie, czy 12% odejść to dużo czy mało",
-      "Zarząd ma dane, ale brakuje rytmu pracy z nimi",
-    ],
-    consequences: [
-      "8–15% odejść rocznie",
-      "Stabilna baza, ale ograniczony wzrost organiczny",
-      "Trudność w przyciąganiu najlepszych trenerów (bez wyraźnego employer brandu)",
-      "Klub odporny na pojedyncze problemy, wrażliwy na nakładające się ryzyka",
-    ],
-    accent: "bg-blue-50 border-blue-200 text-blue-900",
-    expectedChurn: "8–15%",
-  },
-  {
-    id: "high",
-    name: "High Retention Organization",
-    range: [49, 60],
-    short: "Organizacja, do której się stoi w kolejce",
-    description:
-      "Standard jest niezależny od konkretnej osoby. Rodzic wie, czego się spodziewać. Zawodnik wie, dokąd idzie. Trener wie, co znaczy 'tak pracujemy'. Klub jest brandem - nie zbiorem grup.",
-    risks: [
-      "Skalowanie standardu na nowe lokalizacje / grupy",
-      "Utrzymanie kultury przy szybkim wzroście kadry",
-      "Ryzyko samozadowolenia i wewnętrznej rotacji standardu",
-      "Konkurencja zaczyna kopiować Wasze procesy",
-    ],
-    problems: [
-      "Wewnętrzna komunikacja zaczyna nie nadążać za rozwojem",
-      "Najlepsze praktyki przestają być przekazywane 'z ust do ust'",
-      "Wzrost wymaga formalizacji ról i odpowiedzialności",
-    ],
-    consequences: [
-      "Poniżej 8% odejść rocznie",
-      "CLV zawodnika nawet 3× wyższy niż w Chaos Mode",
-      "Klub przyciąga najlepszych trenerów - bez aktywnej rekrutacji",
-      "Realna możliwość premium pricingu i skalowania na nowe lokalizacje",
-    ],
-    accent: "bg-emerald-50 border-emerald-200 text-emerald-900",
-    expectedChurn: "<8%",
-  },
-];
-
-// Insighty, które mają "boleć"
-const INSIGHTS: Record<LevelId, string[]> = {
-  chaos: [
-    "Każdy zawodnik, który odszedł, zabrał ze sobą 12–36 miesięcy przychodu. Nikt z Waszego zarządu nie wie dokładnie ile.",
-    "Trener, który odejdzie z Waszego klubu, zabierze od 8 do 22 zawodników. Bo to oni byli przywiązani do niego, nie do Was.",
-    "70% odejść jest poprzedzonych sygnałami widocznymi 60–90 dni wcześniej. Tylko nikt ich u Was nie zbierał.",
-  ],
-  reactive: [
-    "Gasicie pożary skutecznie - ale za każdym z nich stoi zawodnik, który już zdążył napisać do innego klubu.",
-    "Wasza komunikacja jest tak dobra, jak najsłabszy trener prowadzący prywatną grupę WhatsApp.",
-    "67% rodziców nie zgłasza zastrzeżeń wprost. Wy słyszycie dopiero ostatnie 33%.",
-  ],
-  developing: [
-    "Macie dwa kluby w jednym: ten z silnym standardem i ten 'po staremu'. Rodzice to czują w pierwszych 3 miesiącach.",
-    "Wasze dane są dobre. Wasze decyzje są oparte głównie na intuicji. Te dwie rzeczy się nie spotykają wystarczająco często.",
-    "Jeden kluczowy trener = jeden punkt awarii. Wiecie, który to?",
-  ],
-  high: [
-    "Jesteście w 10% klubów w Polsce. To znaczy, że konkurencja zaczyna Was kopiować - pytanie, jak szybko zwiększacie przewagę.",
-    "Największe ryzyko: samozadowolenie. Standard, który nie ewoluuje, w 24 miesiące staje się przeciętny.",
-    "Skalowanie standardu na nowe lokalizacje to inna umiejętność niż jego utrzymanie. Czy macie tę pierwszą?",
-  ],
-};
-
-// ──────────────────────────────────────────────────────────────────────────────
-// HELPERS
-// ──────────────────────────────────────────────────────────────────────────────
-
-function getLevel(total: number): Level {
-  return LEVELS.find((l) => total >= l.range[0] && total <= l.range[1]) ?? LEVELS[0];
-}
-
-function sectionScore(answers: Record<string, number>, section: SectionId) {
-  const qs = QUESTIONS.filter((q) => q.section === section);
-  const answered = qs.filter((q) => answers[q.id] != null);
-  if (answered.length === 0) return { score: 0, max: qs.length * 5, pct: 0 };
-  const score = answered.reduce((acc, q) => acc + (answers[q.id] || 0), 0);
-  const max = qs.length * 5;
-  return { score, max, pct: Math.round((score / max) * 100) };
-}
-
-function topRisks(answers: Record<string, number>): Question[] {
-  return [...QUESTIONS]
-    .filter((q) => answers[q.id] != null)
-    .sort((a, b) => (answers[a.id] || 0) - (answers[b.id] || 0))
-    .slice(0, 3);
-}
+const SECTIONS = DATA_SECTIONS.map((s) => ({
+  ...s,
+  icon: SECTION_ICONS[s.id],
+}));
 
 // ──────────────────────────────────────────────────────────────────────────────
 // MAIN
 // ──────────────────────────────────────────────────────────────────────────────
 
-type Step = "intro" | "quiz" | "results";
+type Step = "intro" | "quiz" | "form" | "results";
 
 export function SelfAssessment() {
   const [step, setStep] = useState<Step>("intro");
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [currentQ, setCurrentQ] = useState(0);
+  const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
 
   const totalAnswered = Object.keys(answers).length;
   const total = useMemo(
@@ -337,7 +79,7 @@ export function SelfAssessment() {
     if (currentQ < QUESTIONS.length - 1) {
       setCurrentQ((i) => i + 1);
     } else {
-      setStep("results");
+      setStep("form");
       if (typeof window !== "undefined") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
@@ -352,6 +94,15 @@ export function SelfAssessment() {
     setAnswers({});
     setCurrentQ(0);
     setStep("intro");
+    setSubmittedEmail(null);
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
+  function onFormSuccess(email: string) {
+    setSubmittedEmail(email);
+    setStep("results");
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -372,11 +123,25 @@ export function SelfAssessment() {
         />
       )}
 
+      {step === "form" && (
+        <FormBlock
+          answers={answers}
+          total={total}
+          level={level}
+          onBack={() => {
+            setCurrentQ(QUESTIONS.length - 1);
+            setStep("quiz");
+          }}
+          onSuccess={onFormSuccess}
+        />
+      )}
+
       {step === "results" && (
         <ResultsBlock
           answers={answers}
           total={total}
           level={level}
+          submittedEmail={submittedEmail}
           onReset={reset}
         />
       )}
@@ -442,7 +207,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="size-1.5 rounded-full bg-navy-800" />
-                Kalkulator strat z odejść
+                Raport PDF na maila
               </span>
             </div>
           </div>
@@ -453,10 +218,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
       <section id="calculator" className="border-b border-navy-100 bg-navy-50/40">
         <div className="container py-16 md:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
-              Krok 0 - The Hook
-            </span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
+            <h2 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
               Kalkulator Dziurawego Wiadra
             </h2>
             <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground">
@@ -742,6 +504,244 @@ function QuizBlock({
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
+// FORM (lead gate)
+// ──────────────────────────────────────────────────────────────────────────────
+
+function FormBlock({
+  answers,
+  total,
+  level,
+  onBack,
+  onSuccess,
+}: {
+  answers: Record<string, number>;
+  total: number;
+  level: Level;
+  onBack: () => void;
+  onSuccess: (email: string) => void;
+}) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [website, setWebsite] = useState(""); // honeypot
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    if (submitting) return;
+    setError(null);
+
+    if (!consent) {
+      setError("Wymagana zgoda na otrzymanie raportu.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/submit-assessment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          organization,
+          phone,
+          consent,
+          website,
+          answers,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error ?? "Nie udało się wysłać raportu. Spróbuj ponownie.");
+        setSubmitting(false);
+        return;
+      }
+      onSuccess(email);
+    } catch {
+      setError("Problem z połączeniem. Spróbuj ponownie.");
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <section className="border-b border-navy-100 bg-navy-50/40">
+      <div className="container py-12 md:py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-6 flex items-center justify-between">
+            <Badge variant="soft" className="gap-1.5 px-3 py-1">
+              <CheckCircle2 className="size-3.5" />
+              Ostatni krok
+            </Badge>
+            <Button variant="ghost" size="sm" onClick={onBack}>
+              <ArrowLeft />
+              Wróć do pytań
+            </Button>
+          </div>
+
+          <h1 className="text-balance text-[32px] font-semibold leading-[1.08] tracking-tightest text-navy-950 sm:text-[38px]">
+            Gdzie wysłać Wasz raport?
+          </h1>
+          <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
+            Wynik i pełny raport PDF (3 strony - diagnoza, ryzyka, następne kroki)
+            wyślemy na podany adres email. Po wysłaniu zobaczysz też wynik
+            tutaj, na stronie.
+          </p>
+
+          {/* Result preview chip */}
+          <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-navy-100 bg-white px-4 py-2 shadow-[0_4px_12px_-8px_rgba(15,23,42,0.18)]">
+            <span className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Wstępny wynik
+            </span>
+            <span className="text-[14px] font-semibold text-navy-950">
+              {total} / {MAX_TOTAL}
+            </span>
+            <span className="text-[12px] text-navy-700">·</span>
+            <span className="text-[13px] font-medium text-navy-800">
+              {level.name}
+            </span>
+          </div>
+
+          <form
+            onSubmit={submit}
+            className="mt-8 grid gap-4 rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)] sm:p-8"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <FormField
+                label="Imię i nazwisko"
+                value={name}
+                onChange={setName}
+                autoComplete="name"
+                required
+                placeholder="Jan Kowalski"
+              />
+              <FormField
+                label="Email"
+                type="email"
+                value={email}
+                onChange={setEmail}
+                autoComplete="email"
+                required
+                placeholder="jan@klub.pl"
+              />
+              <FormField
+                label="Klub / organizacja"
+                value={organization}
+                onChange={setOrganization}
+                autoComplete="organization"
+                required
+                placeholder="Akademia Sport Warszawa"
+              />
+              <FormField
+                label="Telefon (opcjonalnie)"
+                type="tel"
+                value={phone}
+                onChange={setPhone}
+                autoComplete="tel"
+                placeholder="+48 600 000 000"
+              />
+            </div>
+
+            {/* Honeypot — hidden from users */}
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              className="hidden"
+              aria-hidden
+            />
+
+            <label className="mt-2 flex items-start gap-3 text-[13.5px] leading-relaxed text-navy-900">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-1 size-4 shrink-0 rounded border-navy-300 text-navy-800 focus:ring-navy-800/30"
+              />
+              <span>
+                Zgadzam się na otrzymanie raportu PDF i kontakt w sprawie
+                badania satysfakcji. Bez spamu, możesz wypisać się w każdej
+                chwili.
+              </span>
+            </label>
+
+            {error && (
+              <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[13.5px] text-red-900">
+                {error}
+              </div>
+            )}
+
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={submitting || !name || !email || !organization || !consent}
+              >
+                {submitting ? (
+                  <>
+                    <Loader2 className="size-4 animate-spin" />
+                    Wysyłam raport...
+                  </>
+                ) : (
+                  <>
+                    <Mail className="size-4" />
+                    Wyślij mi raport PDF
+                  </>
+                )}
+              </Button>
+              <p className="text-[12px] text-muted-foreground">
+                Raport dotrze w ciągu kilkudziesięciu sekund.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FormField({
+  label,
+  value,
+  onChange,
+  type = "text",
+  required = false,
+  placeholder,
+  autoComplete,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  type?: string;
+  required?: boolean;
+  placeholder?: string;
+  autoComplete?: string;
+}) {
+  return (
+    <label className="flex flex-col gap-1.5">
+      <span className="text-[12px] font-medium text-muted-foreground">
+        {label}
+        {required && <span className="ml-0.5 text-red-600">*</span>}
+      </span>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required={required}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        className="block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-[15px] text-navy-950 outline-none transition-colors placeholder:text-navy-300 focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20"
+      />
+    </label>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // RESULTS
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -749,19 +749,36 @@ function ResultsBlock({
   answers,
   total,
   level,
+  submittedEmail,
   onReset,
 }: {
   answers: Record<string, number>;
   total: number;
   level: Level;
+  submittedEmail: string | null;
   onReset: () => void;
 }) {
   const insights = INSIGHTS[level.id];
-  const risks = topRisks(answers);
-  const overallPct = Math.round((total / 60) * 100);
+  const risks = topRisks(answers, 3);
+  const overallPct = Math.round((total / MAX_TOTAL) * 100);
 
   return (
     <>
+      {/* Email-sent banner */}
+      {submittedEmail && (
+        <section className="border-b border-emerald-200 bg-emerald-50">
+          <div className="container py-4">
+            <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-3 text-[14px] text-emerald-900">
+              <CheckCircle2 className="size-5 shrink-0 text-emerald-700" />
+              <span>
+                Raport PDF wysłany na <strong>{submittedEmail}</strong>. Sprawdź
+                skrzynkę (a na wszelki wypadek - również spam).
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Header */}
       <section className="border-b border-navy-100 bg-white">
         <div className="container py-12 md:py-16">
@@ -797,7 +814,7 @@ function ResultsBlock({
                 <div className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
                   Wynik ogólny
                 </div>
-                <Gauge value={total} max={60} pct={overallPct} />
+                <Gauge value={total} max={MAX_TOTAL} pct={overallPct} />
                 <div className="mt-3 text-center text-[13px] text-muted-foreground">
                   Oczekiwany churn na tym poziomie:{" "}
                   <span className="font-semibold text-navy-900">
@@ -865,7 +882,7 @@ function ResultsBlock({
                 </h3>
               </div>
               <ul className="mt-4 space-y-3">
-                {risks.map((q, i) => {
+                {risks.map((q: Question, i: number) => {
                   const s = SECTIONS.find((x) => x.id === q.section)!;
                   return (
                     <li
@@ -953,8 +970,8 @@ function ResultsBlock({
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild size="lg" className="bg-white text-navy-950 hover:bg-navy-100">
-                <Link href="/#contact">
-                  Zamów badanie satysfakcji
+                <Link href="https://calendly.com/grzyb-krzysiek/new-meeting" target="_blank" rel="noopener noreferrer">
+                  Umów 30-minutową rozmowę
                   <ArrowRight />
                 </Link>
               </Button>
@@ -964,12 +981,12 @@ function ResultsBlock({
                 variant="outline"
                 className="border-navy-700 bg-transparent text-white hover:border-white hover:text-white hover:bg-navy-900"
               >
-                <Link href="/#how-we-help">Zobacz, jak prowadzimy badania</Link>
+                <Link href="/#contact">Napisz do nas</Link>
               </Button>
             </div>
             <p className="mt-6 text-[13px] text-navy-300">
-              Otrzymasz na maila raport PDF z Twojego Self Assessmentu wraz z
-              propozycją zakresu badania dopasowanego do wyniku.
+              Raport PDF z wyniku Self Assessment masz już w skrzynce - na rozmowie
+              omówimy go i zaproponujemy zakres badania dopasowanego do wyniku.
             </p>
           </div>
         </div>
