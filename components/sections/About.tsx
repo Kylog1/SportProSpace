@@ -86,14 +86,6 @@ export function About() {
               ))}
             </div>
 
-            <div className="mt-4 rounded-xl border border-navy-100 bg-navy-50/60 p-6">
-              <p className="text-[14px] leading-relaxed text-navy-900">
-                <span className="font-semibold">Pracujemy w modelu doradczym, nie agencyjnym.</span>{" "}
-                Każdy projekt prowadzi senior z bezpośrednim kontaktem do
-                zarządu klubu. Bez przekazywania zlecenia juniorom, bez
-                skopiowanych szablonów raportów.
-              </p>
-            </div>
           </div>
         </div>
       </div>
