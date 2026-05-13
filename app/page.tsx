@@ -4,7 +4,6 @@ import { Hero } from "@/components/sections/Hero";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { About } from "@/components/sections/About";
 import { HowWeHelp } from "@/components/sections/HowWeHelp";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Certification } from "@/components/sections/Certification";
 import { SportTypes } from "@/components/sections/SportTypes";
 import { CTASection } from "@/components/sections/CTASection";
@@ -19,7 +18,6 @@ export default function Page() {
         <ProblemSection />
         <About />
         <HowWeHelp />
-        <HowItWorks />
         <Certification />
         <SportTypes />
         <Articles />

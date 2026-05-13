@@ -28,11 +28,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#how-it-works" className="hover:text-navy-950">
-                  Proces
-                </Link>
-              </li>
-              <li>
                 <Link href="#certification" className="hover:text-navy-950">
                   Certyfikat
                 </Link>

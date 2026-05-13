@@ -964,7 +964,7 @@ function ResultsBlock({
                 variant="outline"
                 className="border-navy-700 bg-transparent text-white hover:border-white hover:text-white hover:bg-navy-900"
               >
-                <Link href="/#how-it-works">Zobacz, jak prowadzimy badania</Link>
+                <Link href="/#how-we-help">Zobacz, jak prowadzimy badania</Link>
               </Button>
             </div>
             <p className="mt-6 text-[13px] text-navy-300">
