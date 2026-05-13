@@ -13,7 +13,7 @@ const CATEGORIES = [
 ] as const;
 
 export function Articles() {
-  const featured = getFeaturedArticles(6);
+  const featured = getFeaturedArticles(3);
 
   return (
     <section id="articles" className="border-b border-navy-100 bg-white">
