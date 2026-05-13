@@ -85,68 +85,60 @@ export default function ArticlePage({ params }: Props) {
       />
       <Navbar />
       <main>
-        {/* Article header */}
+        {/* Article */}
         <article itemScope itemType="https://schema.org/Article">
-          <header className="border-b border-navy-100 bg-white">
-            <div className="container py-8 md:py-10">
-              {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted-foreground">
-                <Link href="/" className="hover:text-navy-950">
-                  Sport Pro Space
-                </Link>
-                <span>/</span>
-                <Link href="/artykuly" className="hover:text-navy-950">
-                  Artykuły
-                </Link>
-                <span>/</span>
-                <span className="text-navy-950">
-                  {CATEGORY_LABELS[article.category]}
-                </span>
-              </nav>
+          <div className="bg-white">
+            <div className="container py-6 md:py-10">
+              <div className="mx-auto max-w-5xl">
 
-              <div className="mt-5 flex flex-wrap items-center gap-2">
-                <span className="rounded-full border border-navy-200 bg-navy-50 px-3 py-0.5 text-[12px] font-semibold text-navy-800">
-                  {CATEGORY_LABELS[article.category]}
-                </span>
-                {article.tags.map((tag) => (
-                  <Link
-                    key={tag}
-                    href={`/artykuly?q=${tag}`}
-                    className="text-[12px] font-medium text-muted-foreground hover:text-navy-950"
-                  >
-                    #{tag}
-                  </Link>
-                ))}
+                {/* Breadcrumb */}
+                <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted-foreground">
+                  <Link href="/" className="hover:text-navy-950">Sport Pro Space</Link>
+                  <span>/</span>
+                  <Link href="/artykuly" className="hover:text-navy-950">Artykuły</Link>
+                  <span>/</span>
+                  <span className="text-navy-950">{CATEGORY_LABELS[article.category]}</span>
+                </nav>
+
+                {/* Category + tags */}
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <span className="rounded-full border border-navy-200 bg-navy-50 px-3 py-0.5 text-[12px] font-semibold text-navy-800">
+                    {CATEGORY_LABELS[article.category]}
+                  </span>
+                  {article.tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/artykuly?q=${tag}`}
+                      className="text-[12px] font-medium text-muted-foreground hover:text-navy-950"
+                    >
+                      #{tag}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Title */}
+                <h1
+                  itemProp="headline"
+                  className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-[38px] md:leading-[1.15]"
+                >
+                  {article.title}
+                </h1>
+
+                {/* Excerpt */}
+                <p
+                  itemProp="description"
+                  className="mt-3 text-[15.5px] leading-relaxed text-muted-foreground md:max-w-2xl"
+                >
+                  {article.excerpt}
+                </p>
+
+                {/* Divider */}
+                <div className="mt-6 border-t border-navy-100 md:mt-8" />
+
               </div>
 
-              <h1
-                itemProp="headline"
-                className="mt-5 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-[40px] md:leading-[1.1]"
-              >
-                {article.title}
-              </h1>
-
-              <p
-                itemProp="description"
-                className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground"
-              >
-                {article.excerpt}
-              </p>
-
-            </div>
-
-            {/* Cover image placeholder */}
-            <div
-              className={`h-32 w-full bg-gradient-to-br md:h-40 ${article.coverGradient}`}
-              role="img"
-              aria-label={`Cover: ${article.title}`}
-            />
-          </header>
-
-          {/* Article body */}
-          <div className="bg-white">
-            <div className="container py-8 md:py-12">
-              <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1fr_260px]">
+              {/* Body grid */}
+              <div className="mx-auto mt-8 grid max-w-5xl gap-10 lg:grid-cols-[1fr_260px]">
                 {/* Main content */}
                 <div
                   itemProp="articleBody"
