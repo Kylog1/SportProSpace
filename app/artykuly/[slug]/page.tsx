@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Clock, CalendarDays, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import {
   articles,
   getArticleBySlug,
@@ -88,7 +88,7 @@ export default function ArticlePage({ params }: Props) {
         {/* Article header */}
         <article itemScope itemType="https://schema.org/Article">
           <header className="border-b border-navy-100 bg-white">
-            <div className="container py-12 md:py-16">
+            <div className="container py-8 md:py-10">
               {/* Breadcrumb */}
               <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted-foreground">
                 <Link href="/" className="hover:text-navy-950">
@@ -133,31 +133,11 @@ export default function ArticlePage({ params }: Props) {
                 {article.excerpt}
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-[13px] text-muted-foreground">
-                <span itemProp="author" className="font-medium text-navy-900">
-                  {article.author}
-                </span>
-                <span className="h-3 w-px bg-navy-200" />
-                <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays className="size-3.5" />
-                  <time
-                    itemProp="datePublished"
-                    dateTime={article.publishedAt}
-                  >
-                    {formatDate(article.publishedAt)}
-                  </time>
-                </span>
-                <span className="h-3 w-px bg-navy-200" />
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="size-3.5" />
-                  {article.readTime} min czytania
-                </span>
-              </div>
             </div>
 
             {/* Cover image placeholder */}
             <div
-              className={`h-56 w-full bg-gradient-to-br md:h-72 ${article.coverGradient}`}
+              className={`h-32 w-full bg-gradient-to-br md:h-40 ${article.coverGradient}`}
               role="img"
               aria-label={`Cover: ${article.title}`}
             />
@@ -165,7 +145,7 @@ export default function ArticlePage({ params }: Props) {
 
           {/* Article body */}
           <div className="bg-white">
-            <div className="container py-12 md:py-16">
+            <div className="container py-8 md:py-12">
               <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1fr_260px]">
                 {/* Main content */}
                 <div
