@@ -53,7 +53,7 @@ export function ContactForm() {
         <div>
           <h3 className="text-lg font-semibold tracking-tight">Wiadomość wysłana.</h3>
           <p className="mt-1 text-[14.5px] leading-relaxed text-navy-100/80">
-            Dziękujemy. Wracamy do Ciebie z odpowiedzią w ciągu 48 godzin.
+            Dziękujemy. Wracamy do Ciebie z odpowiedzią w ciągu 8 godzin.
           </p>
         </div>
         <button

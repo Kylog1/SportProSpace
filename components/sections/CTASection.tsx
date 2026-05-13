@@ -30,11 +30,11 @@ export function CTASection() {
               </h2>
               <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-navy-100/80">
                 Pierwsza rozmowa jest niezobowiązująca. Wracamy do Ciebie z
-                rekomendacją zakresu badania w 48 godzin.
+                rekomendacją zakresu badania w 8 godzin.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1 text-[12.5px] text-navy-100/70">
-                <span>Odpowiadamy w 48h</span>
+                <span>Odpowiadamy w 8h</span>
                 <span className="hidden h-3 w-px bg-white/20 sm:block" />
                 <span>Bez zobowiązań</span>
                 <span className="hidden h-3 w-px bg-white/20 sm:block" />

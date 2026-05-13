@@ -239,7 +239,7 @@ export default function ArticlePage({ params }: Props) {
                         Chcesz zbadać NPS w swoim klubie?
                       </p>
                       <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/70">
-                        Bezpłatna konsultacja — wrócimy do Ciebie w 48 godzin.
+                        Bezpłatna konsultacja — wrócimy do Ciebie w 8 godzin.
                       </p>
                       <Link
                         href="/#contact"
@@ -341,7 +341,7 @@ export default function ArticlePage({ params }: Props) {
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-[15.5px] leading-relaxed text-muted-foreground">
               Pierwsza rozmowa jest bezpłatna i niezobowiązująca. Wrócimy do
-              Ciebie z propozycją zakresu badania w 48 godzin.
+              Ciebie z propozycją zakresu badania w 8 godzin.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <Button asChild size="lg">
