@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -128,8 +128,10 @@ export function SelfAssessment() {
           answers={answers}
           total={total}
           level={level}
-          onBack={() => {
-            setCurrentQ(QUESTIONS.length - 1);
+          onBack={(targetIdx) => {
+            setCurrentQ(
+              typeof targetIdx === "number" ? targetIdx : QUESTIONS.length - 1
+            );
             setStep("quiz");
           }}
           onSuccess={onFormSuccess}
@@ -402,6 +404,13 @@ function QuizBlock({
   const SectionIcon = section.icon;
   const value = answers[q.id];
 
+  // Prevent double-clicks from queueing two auto-advances, which would
+  // skip the next question without recording an answer.
+  const lockRef = useRef(false);
+  useEffect(() => {
+    lockRef.current = false;
+  }, [currentQ]);
+
   return (
     <section className="border-b border-navy-100 bg-navy-50/40">
       <div className="container py-12 md:py-16">
@@ -445,7 +454,10 @@ function QuizBlock({
                 return (
                   <button
                     key={opt.value}
+                    disabled={lockRef.current}
                     onClick={() => {
+                      if (lockRef.current) return;
+                      lockRef.current = true;
                       onAnswer(q.id, opt.value);
                       setTimeout(onNext, 350);
                     }}
@@ -517,7 +529,7 @@ function FormBlock({
   answers: Record<string, number>;
   total: number;
   level: Level;
-  onBack: () => void;
+  onBack: (targetIdx?: number) => void;
   onSuccess: (email: string) => void;
 }) {
   const [name, setName] = useState("");
@@ -528,11 +540,28 @@ function FormBlock({
   const [website, setWebsite] = useState(""); // honeypot
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [missingIdx, setMissingIdx] = useState<number | null>(null);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (submitting) return;
     setError(null);
+    setMissingIdx(null);
+
+    // Defense in depth: a double-click on a quiz answer could have caused
+    // an auto-advance to skip a question. Refuse to submit if any answer
+    // is missing, and send the user back to the first unanswered one.
+    const firstMissing = QUESTIONS.findIndex((q) => answers[q.id] == null);
+    if (firstMissing !== -1) {
+      const missingCount = QUESTIONS.filter((q) => answers[q.id] == null).length;
+      setMissingIdx(firstMissing);
+      setError(
+        missingCount === 1
+          ? `Brakuje odpowiedzi na 1 pytanie. Uzupełnij je i wyślij ponownie.`
+          : `Brakuje odpowiedzi na ${missingCount} pytań. Uzupełnij je i wyślij ponownie.`
+      );
+      return;
+    }
 
     if (!consent) {
       setError("Wymagana zgoda na otrzymanie raportu.");
@@ -576,7 +605,7 @@ function FormBlock({
               <CheckCircle2 className="size-3.5" />
               Ostatni krok
             </Badge>
-            <Button variant="ghost" size="sm" onClick={onBack}>
+            <Button variant="ghost" size="sm" onClick={() => onBack()}>
               <ArrowLeft />
               Wróć do pytań
             </Button>
@@ -672,7 +701,17 @@ function FormBlock({
 
             {error && (
               <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[13.5px] text-red-900">
-                {error}
+                <div>{error}</div>
+                {missingIdx !== null && (
+                  <button
+                    type="button"
+                    onClick={() => onBack(missingIdx)}
+                    className="mt-2 inline-flex items-center gap-1.5 text-[13px] font-semibold text-red-900 underline underline-offset-2 hover:text-red-700"
+                  >
+                    <ArrowLeft className="size-3.5" />
+                    Wróć do pytania {missingIdx + 1}
+                  </button>
+                )}
               </div>
             )}
 

@@ -60,6 +60,30 @@ export async function POST(req: Request) {
       "[submit-assessment] validation failed:",
       JSON.stringify(parsed.error.issues)
     );
+
+    // If the problem is missing answers, give the user a clear message
+    // pointing to which question numbers they didn't answer.
+    const missingAnswerNums: number[] = [];
+    for (const issue of parsed.error.issues) {
+      if (
+        issue.path.length === 2 &&
+        issue.path[0] === "answers" &&
+        typeof issue.path[1] === "string"
+      ) {
+        const idx = QUESTIONS.findIndex((q) => q.id === issue.path[1]);
+        if (idx !== -1) missingAnswerNums.push(idx + 1);
+      }
+    }
+    if (missingAnswerNums.length > 0) {
+      missingAnswerNums.sort((a, b) => a - b);
+      return NextResponse.json(
+        {
+          error: `Brakuje odpowiedzi na pytanie ${missingAnswerNums.join(", ")}. Wróć do ankiety i uzupełnij.`,
+        },
+        { status: 400 }
+      );
+    }
+
     const firstIssue = parsed.error.issues[0]?.message ?? "Niepoprawne dane formularza";
     return NextResponse.json({ error: firstIssue }, { status: 400 });
   }
