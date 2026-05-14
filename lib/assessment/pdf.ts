@@ -141,8 +141,9 @@ function drawStatusBar(
     segX += segW;
   }
 
-  const clamped = Math.max(12, Math.min(MAX_TOTAL, currentScore));
-  const fracPos = (clamped - 12) / span;
+  const currentLevel = getLevel(currentScore);
+  const segCenter = (currentLevel.range[0] + currentLevel.range[1]) / 2;
+  const fracPos = (segCenter - 12) / span;
   const arrowX = x + width * fracPos;
 
   doc.save()

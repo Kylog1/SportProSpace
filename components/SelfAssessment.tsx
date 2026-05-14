@@ -24,6 +24,7 @@ import {
   QUESTIONS,
   SCALE,
   SECTIONS as DATA_SECTIONS,
+  LEVELS,
   INSIGHTS,
   MAX_TOTAL,
   getLevel,
@@ -55,7 +56,7 @@ const SECTIONS = DATA_SECTIONS.map((s) => ({
 // MAIN
 // ──────────────────────────────────────────────────────────────────────────────
 
-type Step = "intro" | "quiz" | "form" | "results";
+type Step = "intro" | "quiz" | "teaser" | "form" | "results";
 
 export function SelfAssessment() {
   const [step, setStep] = useState<Step>("intro");
@@ -79,7 +80,7 @@ export function SelfAssessment() {
     if (currentQ < QUESTIONS.length - 1) {
       setCurrentQ((i) => i + 1);
     } else {
-      setStep("form");
+      setStep("teaser");
       if (typeof window !== "undefined") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
@@ -123,16 +124,36 @@ export function SelfAssessment() {
         />
       )}
 
+      {step === "teaser" && (
+        <TeaserBlock
+          total={total}
+          level={level}
+          answers={answers}
+          onContinue={() => {
+            setStep("form");
+            if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onBack={() => {
+            setCurrentQ(QUESTIONS.length - 1);
+            setStep("quiz");
+            if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      )}
+
       {step === "form" && (
         <FormBlock
           answers={answers}
           total={total}
           level={level}
           onBack={(targetIdx) => {
-            setCurrentQ(
-              typeof targetIdx === "number" ? targetIdx : QUESTIONS.length - 1
-            );
-            setStep("quiz");
+            if (typeof targetIdx === "number") {
+              setCurrentQ(targetIdx);
+              setStep("quiz");
+            } else {
+              setStep("teaser");
+            }
+            if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           onSuccess={onFormSuccess}
         />
@@ -516,6 +537,214 @@ function QuizBlock({
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
+// TEASER (score + blurred sections — shown after quiz, before form)
+// ──────────────────────────────────────────────────────────────────────────────
+
+const SEG_STYLES = [
+  "bg-red-50 border-red-200",
+  "bg-amber-50 border-amber-200",
+  "bg-blue-50 border-blue-200",
+  "bg-emerald-50 border-emerald-200",
+];
+
+function TeaserBlock({
+  total,
+  level,
+  answers,
+  onContinue,
+  onBack,
+}: {
+  total: number;
+  level: Level;
+  answers: Record<string, number>;
+  onContinue: () => void;
+  onBack: () => void;
+}) {
+  const ptsToHigh = Math.max(0, 49 - total);
+  const levelIdx = (["chaos", "reactive", "developing", "high"] as LevelId[]).indexOf(level.id);
+  // Arrow centered in its 25%-wide segment
+  const arrowPct = levelIdx * 25 + 12.5;
+
+  return (
+    <section className="border-b border-navy-100 bg-navy-50/40">
+      <div className="container py-12 md:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-6 flex items-center justify-between">
+            <Badge variant="soft" className="gap-1.5 px-3 py-1">
+              <CheckCircle2 className="size-3.5" />
+              Assessment ukończony
+            </Badge>
+            <Button variant="ghost" size="sm" onClick={onBack}>
+              <ArrowLeft />
+              Wróć do pytań
+            </Button>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            {/* Left: score + maturity bar */}
+            <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)] sm:p-8">
+              <div className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Wynik ogólny
+              </div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-[52px] font-semibold leading-none tracking-tight text-navy-950">
+                  {total}
+                </span>
+                <span className="text-[22px] font-normal text-muted-foreground">
+                  / {MAX_TOTAL}
+                </span>
+              </div>
+              <div className="mt-2 text-[16px] font-semibold text-navy-800">{level.name}</div>
+              <div className="text-[13px] text-muted-foreground">{level.short}</div>
+
+              {/* Maturity scale bar */}
+              <div className="mt-7">
+                <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Pozycja na skali dojrzałości
+                </div>
+                <div className="relative" style={{ paddingTop: "28px" }}>
+                  {/* Arrow + score label */}
+                  <div
+                    className="absolute top-0 flex flex-col items-center"
+                    style={{ left: `${arrowPct}%`, transform: "translateX(-50%)" }}
+                  >
+                    <span className="text-[12px] font-bold leading-none text-navy-800">
+                      {total} pkt
+                    </span>
+                    <div
+                      className="mt-1"
+                      style={{
+                        width: 0,
+                        height: 0,
+                        borderLeft: "6px solid transparent",
+                        borderRight: "6px solid transparent",
+                        borderTop: "7px solid #1e3a8a",
+                      }}
+                    />
+                  </div>
+                  {/* 4-segment bar */}
+                  <div className="flex overflow-hidden rounded-md">
+                    {LEVELS.map((lvl, i) => (
+                      <div
+                        key={lvl.id}
+                        className={cn(
+                          "h-8 flex-1 border",
+                          SEG_STYLES[i],
+                          i === levelIdx ? "opacity-100" : "opacity-60"
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Labels below */}
+                <div className="mt-1.5 flex">
+                  {LEVELS.map((lvl, i) => (
+                    <div key={lvl.id} className="flex-1 text-center">
+                      <div
+                        className={cn(
+                          "text-[10px] font-medium leading-tight",
+                          i === levelIdx ? "text-navy-900" : "text-muted-foreground"
+                        )}
+                      >
+                        {lvl.name}
+                      </div>
+                      <div className="text-[9px] text-muted-foreground/60">
+                        {lvl.range[0]}-{lvl.range[1]}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Gap to high */}
+              {ptsToHigh > 0 ? (
+                <div className="mt-5 flex items-center justify-between rounded-lg border border-navy-100 bg-navy-50/60 px-4 py-3">
+                  <span className="text-[12px] text-muted-foreground">
+                    Do progu High Retention Organization brakuje:
+                  </span>
+                  <span className="text-[16px] font-bold text-navy-800">{ptsToHigh} pkt</span>
+                </div>
+              ) : (
+                <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-[12px] font-semibold text-emerald-900">
+                  Jesteście w 10% najlepiej zorganizowanych klubów.
+                </div>
+              )}
+            </div>
+
+            {/* Right: blurred section bars */}
+            <div className="relative overflow-hidden rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.12)] sm:p-8">
+              <div className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Wynik wg sekcji
+              </div>
+              <div
+                className="pointer-events-none mt-4 select-none space-y-4"
+                style={{ filter: "blur(5px)" }}
+              >
+                {SECTIONS.map((s) => {
+                  const { score, max, pct } = sectionScore(answers, s.id);
+                  const Icon = s.icon;
+                  return (
+                    <div key={s.id}>
+                      <div className="mb-1.5 flex items-center justify-between text-[13px]">
+                        <span className="inline-flex items-center gap-2 text-navy-900">
+                          <Icon className="size-3.5 text-navy-700" />
+                          {s.label}
+                        </span>
+                        <span className="text-muted-foreground">
+                          {score}/{max} · {pct}%
+                        </span>
+                      </div>
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-navy-50">
+                        <div
+                          className={cn(
+                            "h-full rounded-full",
+                            pct < 50
+                              ? "bg-red-500"
+                              : pct < 70
+                              ? "bg-amber-500"
+                              : pct < 85
+                              ? "bg-blue-600"
+                              : "bg-emerald-600"
+                          )}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* Lock overlay */}
+              <div className="absolute inset-0 flex items-center justify-center rounded-2xl">
+                <div className="mx-6 rounded-xl border border-navy-100 bg-white/95 px-6 py-5 text-center shadow-lg">
+                  <div className="text-[14px] font-semibold text-navy-950">
+                    Pełne wyniki sekcji w raporcie
+                  </div>
+                  <div className="mt-1 text-[12px] leading-relaxed text-muted-foreground">
+                    Podaj adres email — wyślemy raport PDF z diagnozą,
+                    Top 3 obszarami i następnymi krokami.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-8 flex flex-col items-center gap-3 text-center">
+            <Button size="lg" onClick={onContinue}>
+              Odbierz pełny raport PDF
+              <ArrowRight />
+            </Button>
+            <p className="text-[13px] text-muted-foreground">
+              Raport wyślemy na Twój email — podaj adres w następnym kroku.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // FORM (lead gate)
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -623,7 +852,7 @@ function FormBlock({
           {/* Result preview chip */}
           <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-navy-100 bg-white px-4 py-2 shadow-[0_4px_12px_-8px_rgba(15,23,42,0.18)]">
             <span className="text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Wstępny wynik
+              Wynik
             </span>
             <span className="text-[14px] font-semibold text-navy-950">
               {total} / {MAX_TOTAL}
