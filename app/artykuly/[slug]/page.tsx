@@ -68,6 +68,7 @@ export default function ArticlePage({ params }: Props) {
     headline: article.title,
     description: article.excerpt,
     datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     author: {
       "@type": "Organization",
       name: article.author,

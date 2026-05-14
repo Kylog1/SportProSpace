@@ -10,6 +10,7 @@ export interface Article {
   author: string;
   authorRole: string;
   publishedAt: string;
+  updatedAt?: string;
   readTime: number;
   featured: boolean;
   coverGradient: string; // Tailwind gradient classes (placeholder until real images)
