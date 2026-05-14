@@ -4,6 +4,7 @@ import { z } from "zod";
 import { QUESTIONS, getLevel, totalScore } from "@/lib/assessment/data";
 import { generateAssessmentPDF } from "@/lib/assessment/pdf";
 import { buildAdminEmail, buildUserEmail } from "@/lib/assessment/emails";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -38,6 +39,15 @@ function safeFilename(s: string): string {
 }
 
 export async function POST(req: Request) {
+  // 3 submissions per IP per 30 minutes (PDF generation is expensive)
+  const rl = rateLimit(getClientIp(req), 3, 30 * 60 * 1000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Zbyt wiele zapytań. Spróbuj ponownie za kilka minut." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } }
+    );
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("[submit-assessment] RESEND_API_KEY missing");

@@ -20,7 +20,7 @@ export function HowWeHelp() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {/* ─── KARTA 1 — Self Assessment Audit (dark, interactive) ─── */}
-          <div className="group relative flex flex-col overflow-hidden rounded-xl bg-navy-900 p-7 transition-all hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-20px_rgba(15,23,42,0.40)]">
+          <div className="group relative flex flex-col overflow-hidden rounded-xl bg-navy-900 p-4 transition-all hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-20px_rgba(15,23,42,0.40)] md:p-7">
             {/* subtle grid overlay */}
             <div
               aria-hidden
@@ -78,7 +78,7 @@ export function HowWeHelp() {
           </div>
 
           {/* ─── KARTA 2 — Experience Research ─── */}
-          <Card className="group relative flex flex-col p-7 transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-[0_20px_40px_-20px_rgba(15,23,42,0.18)]">
+          <Card className="group relative flex flex-col p-4 transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-[0_20px_40px_-20px_rgba(15,23,42,0.18)] md:p-7">
             <div className="flex items-center justify-between">
               <div className="flex size-11 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800 transition-colors group-hover:bg-navy-800 group-hover:text-white">
                 <BarChart3 className="size-5" />
@@ -119,7 +119,7 @@ export function HowWeHelp() {
           </Card>
 
           {/* ─── KARTA 3 — Brand & Experience Development ─── */}
-          <Card className="group relative flex flex-col p-7 transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-[0_20px_40px_-20px_rgba(15,23,42,0.18)]">
+          <Card className="group relative flex flex-col p-4 transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-[0_20px_40px_-20px_rgba(15,23,42,0.18)] md:p-7">
             <div className="flex items-center justify-between">
               <div className="flex size-11 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800 transition-colors group-hover:bg-navy-800 group-hover:text-white">
                 <Compass className="size-5" />

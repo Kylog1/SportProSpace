@@ -33,8 +33,8 @@ export function About() {
   return (
     <section id="about" className="border-b border-navy-100 bg-white">
       <div className="container py-20 md:py-28">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="md:col-span-1 lg:col-span-5">
             <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
               O nas
             </span>
@@ -66,12 +66,12 @@ export function About() {
             </div>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="md:col-span-1 lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2">
               {pillars.map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="rounded-xl border border-navy-100 bg-white p-6"
+                  className="rounded-xl border border-navy-100 bg-white p-4 sm:p-6"
                 >
                   <div className="flex size-10 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800">
                     <Icon className="size-5" />

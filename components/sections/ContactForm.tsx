@@ -52,14 +52,14 @@ export function ContactForm() {
         <CheckCircle2 className="size-7 text-emerald-300" aria-hidden />
         <div>
           <h3 className="text-lg font-semibold tracking-tight">Wiadomość wysłana.</h3>
-          <p className="mt-1 text-[14.5px] leading-relaxed text-navy-100/80">
+          <p className="mt-1 text-sm leading-relaxed text-navy-100/80">
             Dziękujemy. Wracamy do Ciebie z odpowiedzią w ciągu 8 godzin.
           </p>
         </div>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-2 text-[13px] font-semibold text-white/80 underline-offset-4 hover:underline"
+          className="mt-2 min-h-11 text-xs font-semibold text-white/80 underline-offset-4 hover:underline"
         >
           Wyślij kolejne zapytanie
         </button>
@@ -68,8 +68,8 @@ export function ContactForm() {
   }
 
   const inputCls =
-    "w-full rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 text-[14.5px] text-white placeholder:text-navy-200/50 focus:border-white/40 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20";
-  const labelCls = "mb-1.5 block text-[12.5px] font-medium text-navy-100/85";
+    "w-full rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 text-base text-white placeholder:text-navy-200/50 focus:border-white/40 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20";
+  const labelCls = "mb-1.5 block text-xs font-medium text-navy-100/85";
 
   return (
     <form
@@ -88,7 +88,7 @@ export function ContactForm() {
         defaultValue=""
       />
 
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className={labelCls}>
             Imię i nazwisko *
@@ -122,7 +122,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <div>
           <label htmlFor="cf-org" className={labelCls}>
             Klub / organizacja *
@@ -172,7 +172,7 @@ export function ContactForm() {
       </div>
 
       {errorMsg ? (
-        <p role="alert" className="text-[13px] font-medium text-rose-200">
+        <p role="alert" className="text-sm font-medium text-rose-200">
           {errorMsg}
         </p>
       ) : null}
@@ -180,7 +180,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-[14px] font-semibold text-navy-950 transition-all hover:bg-navy-50 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-1 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-navy-950 transition-all hover:bg-navy-50 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "submitting" ? (
           <>

@@ -8,20 +8,37 @@ import { Certification } from "@/components/sections/Certification";
 import { SportTypes } from "@/components/sections/SportTypes";
 import { CTASection } from "@/components/sections/CTASection";
 import { Articles } from "@/components/sections/Articles";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export default function Page() {
   return (
     <>
       <Navbar />
       <main>
-        <Hero />
-        <ProblemSection />
-        <About />
-        <HowWeHelp />
-        <Certification />
-        <SportTypes />
-        <Articles />
-        <CTASection />
+        <ErrorBoundary>
+          <Hero />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProblemSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <About />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <HowWeHelp />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Certification />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <SportTypes />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Articles />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <CTASection />
+        </ErrorBoundary>
       </main>
       <Footer />
     </>

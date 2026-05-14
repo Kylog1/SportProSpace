@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -24,6 +25,15 @@ function escapeHtml(s: string) {
 }
 
 export async function POST(req: Request) {
+  // 5 submissions per IP per 15 minutes
+  const rl = rateLimit(getClientIp(req), 5, 15 * 60 * 1000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Zbyt wiele zapytań. Spróbuj ponownie za kilka minut." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } }
+    );
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("[contact] RESEND_API_KEY missing");

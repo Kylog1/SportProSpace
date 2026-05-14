@@ -123,8 +123,12 @@ export default function ArticulyPage() {
               ))}
             </div>
 
-            {/* Results count */}
-            <p className="mt-5 text-[13px] text-muted-foreground">
+            {/* Results count — aria-live announces changes to screen readers */}
+            <p
+              aria-live="polite"
+              aria-atomic="true"
+              className="mt-5 text-[13px] text-muted-foreground"
+            >
               {filtered.length === 0
                 ? "Brak wyników"
                 : `${filtered.length} ${filtered.length === 1 ? "wynik" : "wyników"}`}
