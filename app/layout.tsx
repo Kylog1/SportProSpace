@@ -12,13 +12,28 @@ export const metadata: Metadata = {
   title: "Sport Pro Space — Diagnoza i rozwój doświadczenia w sporcie",
   description:
     "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i kibice odchodzą — i co z tym zrobić.",
-  metadataBase: new URL("https://sportprospace.com"),
+  metadataBase: new URL("https://sportprospace.eu"),
   openGraph: {
     title: "Sport Pro Space",
     description:
       "Diagnoza i rozwój doświadczenia w sporcie. Badania zawodników, rodziców, członków Twojego klubu.",
     type: "website",
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Sport Pro Space",
+  url: "https://sportprospace.eu",
+  logo: "https://sportprospace.eu/logo.png",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hello@sportprospace.eu",
+    contactType: "customer support",
+    availableLanguage: "Polish",
+  },
+  sameAs: [],
 };
 
 export default function RootLayout({
@@ -28,7 +43,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl" className={inter.variable}>
-      <body className="min-h-screen bg-background font-sans">{children}</body>
+      <body className="min-h-screen bg-background font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

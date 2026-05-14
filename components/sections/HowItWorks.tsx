@@ -51,7 +51,7 @@ export function HowItWorks() {
             {steps.map((s, i) => (
               <li
                 key={s.n}
-                className="relative rounded-xl border border-navy-100 bg-white p-6"
+                className="relative rounded-xl border border-navy-100 bg-white p-4 md:p-6"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex size-9 items-center justify-center rounded-md bg-navy-800 text-[12px] font-semibold tracking-wider text-white">

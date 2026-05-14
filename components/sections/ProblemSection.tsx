@@ -45,7 +45,7 @@ export function ProblemSection() {
           {problems.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="rounded-xl border border-navy-100 bg-white p-6"
+              className="rounded-xl border border-navy-100 bg-white p-4 sm:p-6"
             >
               <div className="flex size-10 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800">
                 <Icon className="size-5" />
@@ -60,7 +60,7 @@ export function ProblemSection() {
           ))}
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-5xl gap-px overflow-hidden rounded-xl border border-navy-100 bg-navy-100 sm:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-5xl gap-px overflow-hidden rounded-xl border border-navy-100 bg-navy-100 md:grid-cols-3">
           {stats.map((s) => (
             <div key={s.label} className="bg-white p-6 sm:p-8">
               <div className="text-3xl font-semibold tracking-tight text-navy-900 md:text-4xl">

@@ -47,7 +47,7 @@ export function Certification() {
               aria-hidden
               className="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-navy-100/60 via-transparent to-navy-100/60 blur-2xl"
             />
-            <div className="relative overflow-hidden rounded-2xl border border-navy-200 bg-gradient-to-br from-white to-navy-50/60 p-8 shadow-[0_30px_60px_-25px_rgba(15,23,42,0.25)]">
+            <div className="relative overflow-hidden rounded-2xl border border-navy-200 bg-gradient-to-br from-white to-navy-50/60 p-5 shadow-[0_30px_60px_-25px_rgba(15,23,42,0.25)] sm:p-8">
               <div className="absolute right-6 top-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-700">
                 Edition 2026
               </div>

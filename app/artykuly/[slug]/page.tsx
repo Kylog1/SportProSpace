@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article.title} — Sport Pro Space`,
     description: article.excerpt,
+    alternates: {
+      canonical: `https://sportprospace.eu/artykuly/${article.slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
@@ -58,7 +61,7 @@ export default function ArticlePage({ params }: Props) {
   const prev = currentIndex > 0 ? articles[currentIndex - 1] : null;
   const next = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
-  // JSON-LD structured data
+  // JSON-LD: Article
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -72,9 +75,35 @@ export default function ArticlePage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "Sport Pro Space",
-      url: "https://sportprospace.pl",
+      url: "https://sportprospace.eu",
     },
     keywords: article.tags.join(", "),
+  };
+
+  // JSON-LD: BreadcrumbList
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Sport Pro Space",
+        item: "https://sportprospace.eu",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Artykuły",
+        item: "https://sportprospace.eu/artykuly",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `https://sportprospace.eu/artykuly/${article.slug}`,
+      },
+    ],
   };
 
   return (
@@ -82,6 +111,10 @@ export default function ArticlePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Navbar />
       <main>

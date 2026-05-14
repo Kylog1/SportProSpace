@@ -14,7 +14,7 @@ export function Hero() {
       {/* top-right glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-navy-100/50 blur-3xl"
+        className="pointer-events-none absolute -right-40 -top-40 h-[300px] w-[300px] rounded-full bg-navy-100/50 blur-3xl md:h-[500px] md:w-[500px]"
       />
 
       <div className="container relative py-20 md:py-24 lg:py-28">
@@ -28,13 +28,13 @@ export function Hero() {
               Niezależna platforma badań i analizy
             </Badge>
 
-            <h1 className="text-balance text-[38px] font-semibold leading-[1.06] tracking-tightest text-navy-950 sm:text-[46px] lg:text-[52px] xl:text-[58px]">
+            <h1 className="text-balance text-4xl font-semibold leading-[1.06] tracking-tightest text-navy-950 sm:text-5xl lg:text-[52px] xl:text-[58px]">
               Wiesz, dlaczego zawodnicy
               <span className="text-navy-800"> odchodzą </span>
               z Twojej akademii lub klubu?
             </h1>
 
-            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
               Pomagamy klubom sportowym i akademiom zrozumieć i poprawić
               doświadczenie zawodników, rodziców i członków Twojego klubu poprzez niezależne
               badania i analizę danych.
