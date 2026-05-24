@@ -219,12 +219,6 @@ export default function ArticlePage({ params }: Props) {
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-muted-foreground">Czas czytania</dt>
-                          <dd className="font-medium text-navy-950">
-                            {article.readTime} minut
-                          </dd>
-                        </div>
-                        <div>
                           <dt className="text-muted-foreground">Opublikowano</dt>
                           <dd className="font-medium text-navy-950">
                             {formatDate(article.publishedAt)}
