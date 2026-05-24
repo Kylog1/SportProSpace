@@ -1,21 +1,63 @@
 <!--
-  Snippet do osadzania badge'a certyfikatu Sport Pro Space na stronie klienta.
-  Skopiuj kod poniżej i wklej w HTML strony (np. footer / "O klubie" / sekcja partnerów).
+  ══════════════════════════════════════════════════════════════════
+  SPORT SPACE PRO — Snippety do osadzania certyfikatu na stronie
+  ══════════════════════════════════════════════════════════════════
 
-  Wymaga: hostowanie pliku certificate-web-badge.svg pod adresem
-  https://sportprospace.pl/badges/SPS-2026-00412.svg
+  Wymagania: pliki SVG muszą być dostępne pod adresami:
+    https://sportspacepro.eu/badges/{ID}/badge.svg
+    https://sportspacepro.eu/badges/{ID}/badge-horizontal.svg
+    https://sportspacepro.eu/badges/{ID}/seal.svg
+
+  Zmień "SPS-2026-00412" na rzeczywiste ID certyfikatu klubu.
 -->
 
-<!-- BADGE (linkowany, dostępność OK) -->
-<a href="https://sportprospace.pl/verify/SPS-2026-00412"
-   target="_blank"
-   rel="noopener"
-   aria-label="Sport Pro Space NPS Quality Certificate — Edition 2026 — weryfikuj autentyczność"
+
+<!-- ────────────────────────────────────────────────────────────────
+  WARIANT A — Pionowy badge (320×400 px)
+  Zastosowanie: strona główna, sekcja "O nas", sidebar
+  Wyświetlaj w 160–200px szerokości
+──────────────────────────────────────────────────────────────────── -->
+<a href="https://sportspacepro.eu/verify/SPS-2026-00412"
+   target="_blank" rel="noopener"
+   aria-label="Sport Space Pro NPS Quality Certificate — weryfikuj autentyczność"
    style="display:inline-block;text-decoration:none;line-height:0;">
-  <img src="https://sportprospace.pl/badges/SPS-2026-00412.svg"
-       alt="Sport Pro Space NPS Quality Certificate"
-       width="160"
-       height="200"
+  <img src="https://sportspacepro.eu/badges/SPS-2026-00412/badge.svg"
+       alt="Sport Space Pro NPS Quality Certificate 2026"
+       width="160" height="200"
+       loading="lazy"
+       style="border:0;max-width:100%;height:auto;">
+</a>
+
+
+<!-- ────────────────────────────────────────────────────────────────
+  WARIANT B — Poziomy badge (252×72 px)
+  Zastosowanie: footer, pasek partnerów, sekcja "Zaufali nam"
+  Wyświetlaj w 252px lub mniej (responsywny)
+──────────────────────────────────────────────────────────────────── -->
+<a href="https://sportspacepro.eu/verify/SPS-2026-00412"
+   target="_blank" rel="noopener"
+   aria-label="Sport Space Pro NPS Quality Certificate — weryfikuj autentyczność"
+   style="display:inline-block;text-decoration:none;line-height:0;">
+  <img src="https://sportspacepro.eu/badges/SPS-2026-00412/badge-horizontal.svg"
+       alt="Sport Space Pro NPS Quality Certificate 2026"
+       width="252" height="72"
+       loading="lazy"
+       style="border:0;max-width:100%;height:auto;">
+</a>
+
+
+<!-- ────────────────────────────────────────────────────────────────
+  WARIANT C — Okrągła pieczęć (120×120 px)
+  Zastosowanie: nagłówek strony, karta trenera, materiały PDF
+  Wyświetlaj w 80–120px
+──────────────────────────────────────────────────────────────────── -->
+<a href="https://sportspacepro.eu/verify/SPS-2026-00412"
+   target="_blank" rel="noopener"
+   aria-label="Sport Space Pro NPS Quality Certificate — weryfikuj autentyczność"
+   style="display:inline-block;text-decoration:none;line-height:0;">
+  <img src="https://sportspacepro.eu/badges/SPS-2026-00412/seal.svg"
+       alt="Sport Space Pro NPS Quality Certificate 2026"
+       width="100" height="100"
        loading="lazy"
        style="border:0;max-width:100%;height:auto;">
 </a>
