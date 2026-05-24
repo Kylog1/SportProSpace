@@ -36,7 +36,7 @@ export function Hero() {
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
               Pomagamy klubom sportowym i akademiom zrozumieć i poprawić
-              doświadczenie zawodników, rodziców i członków Twojego klubu poprzez niezależne
+              doświadczenie zawodników, rodziców i trenerów poprzez niezależne
               badania i analizę danych.
             </p>
 
