@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center">
           <span className="text-[17px] font-semibold tracking-tight text-navy-950">
-            Sport Pro<span className="text-navy-800"> Space</span>
+            Sport Space<span className="text-navy-800"> Pro</span>
           </span>
         </Link>
 
