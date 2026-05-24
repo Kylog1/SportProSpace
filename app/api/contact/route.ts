@@ -104,7 +104,7 @@ export async function POST(req: Request) {
 
   try {
     const result = await resend.emails.send({
-      from: "Sport Space Pro <noreply@sportspacepro.pl>",
+      from: "Sport Space Pro <noreply@footlog.pl>",
       to: ["hello@sportspacepro.pl"],
       replyTo: email,
       subject: `Nowe zapytanie — ${name} (${organization})`,
