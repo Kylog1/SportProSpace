@@ -61,7 +61,7 @@ export function Certification() {
                     Sport Space Pro
                   </div>
                   <div className="text-[15px] font-semibold tracking-tight text-navy-950">
-                    NPS Quality Certificate
+                    Certyfikat Jakości
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export function Certification() {
               <div className="mt-7 grid grid-cols-3 gap-3 border-t border-navy-100 pt-6">
                 <BadgeStat label="NPS" value="+62" />
                 <BadgeStat label="Retencja" value="87%" />
-                <BadgeStat label="Trust" value="4.5" />
+                <BadgeStat label="Zaufanie" value="4.5" />
               </div>
 
               <div className="mt-7 flex items-end justify-between">
