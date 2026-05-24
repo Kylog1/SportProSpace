@@ -131,7 +131,7 @@ export async function POST(req: Request) {
   // (1) User email — delivers the PDF
   const userEmail = buildUserEmail({ name, organization, answers });
 
-  // (2) Admin notification — to hello@sportprospace.eu
+  // (2) Admin notification — to hello@sportspacepro.pl
   const adminEmail = buildAdminEmail({
     name,
     email,
@@ -142,9 +142,9 @@ export async function POST(req: Request) {
 
   try {
     const userResult = await resend.emails.send({
-      from: "Sport Pro Space <noreply@footlog.pl>",
+      from: "Sport Pro Space <noreply@sportspacepro.pl>",
       to: [email],
-      replyTo: "hello@sportprospace.eu",
+      replyTo: "hello@sportspacepro.pl",
       subject: userEmail.subject,
       html: userEmail.html,
       text: userEmail.text,
@@ -167,8 +167,8 @@ export async function POST(req: Request) {
     // Admin notification — fire & don't block user response on failure
     try {
       await resend.emails.send({
-        from: "Sport Pro Space <noreply@footlog.pl>",
-        to: ["hello@sportprospace.eu"],
+        from: "Sport Pro Space <noreply@sportspacepro.pl>",
+        to: ["hello@sportspacepro.pl"],
         replyTo: email,
         subject: adminEmail.subject,
         html: adminEmail.html,

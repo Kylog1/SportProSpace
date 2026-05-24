@@ -47,10 +47,10 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-navy-700">
               <li>
                 <a
-                  href="mailto:hello@sportprospace.eu"
+                  href="mailto:hello@sportspacepro.pl"
                   className="hover:text-navy-950"
                 >
-                  hello@sportprospace.eu
+                  hello@sportspacepro.pl
                 </a>
               </li>
               <li>
