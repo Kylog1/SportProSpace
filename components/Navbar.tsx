@@ -40,10 +40,10 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild variant="ghost" size="sm">
-            <Link href="#contact">Kontakt</Link>
+            <Link href="/#contact">Kontakt</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="#contact">Zamów badanie</Link>
+            <Link href="/#contact">Zamów badanie</Link>
           </Button>
         </div>
 
@@ -76,12 +76,12 @@ export function Navbar() {
           ))}
           <div className="mt-2 flex flex-col gap-2 px-3">
             <Button asChild variant="outline" size="sm">
-              <Link href="#contact" onClick={() => setOpen(false)}>
+              <Link href="/#contact" onClick={() => setOpen(false)}>
                 Kontakt
               </Link>
             </Button>
             <Button asChild size="sm">
-              <Link href="#contact" onClick={() => setOpen(false)}>
+              <Link href="/#contact" onClick={() => setOpen(false)}>
                 Zamów badanie
               </Link>
             </Button>
