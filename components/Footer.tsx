@@ -8,7 +8,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center">
               <span className="text-[17px] font-semibold tracking-tight text-navy-950">
-                Sport Pro<span className="text-navy-800"> Space</span>
+                Sport Space<span className="text-navy-800"> Pro</span>
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
