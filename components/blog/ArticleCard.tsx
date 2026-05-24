@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { type Article, CATEGORY_LABELS, formatDate } from "@/lib/articles";
 import { cn } from "@/lib/utils";
 
@@ -67,16 +67,9 @@ export function ArticleCard({ article, className }: ArticleCardProps) {
 
         {/* Footer */}
         <div className="mt-5 flex items-center justify-between border-t border-navy-100 pt-4">
-          <div className="flex items-center gap-3 text-[12px] text-muted-foreground">
-            <span className="inline-flex items-center gap-1">
-              <Clock className="size-3.5" />
-              {article.readTime} min
-            </span>
-            <span className="h-3 w-px bg-navy-200" />
-            <time dateTime={article.publishedAt}>
-              {formatDate(article.publishedAt)}
-            </time>
-          </div>
+          <time dateTime={article.publishedAt} className="text-[12px] text-muted-foreground">
+            {formatDate(article.publishedAt)}
+          </time>
           <span className="inline-flex items-center gap-1 text-[12.5px] font-semibold text-navy-800 transition-colors group-hover:text-navy-950">
             Czytaj
             <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
