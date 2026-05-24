@@ -58,7 +58,7 @@ export function Certification() {
                 </div>
                 <div>
                   <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    Sport Pro Space
+                    Sport Space Pro
                   </div>
                   <div className="text-[15px] font-semibold tracking-tight text-navy-950">
                     NPS Quality Certificate

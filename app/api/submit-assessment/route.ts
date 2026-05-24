@@ -142,7 +142,7 @@ export async function POST(req: Request) {
 
   try {
     const userResult = await resend.emails.send({
-      from: "Sport Pro Space <noreply@sportspacepro.pl>",
+      from: "Sport Space Pro <noreply@sportspacepro.pl>",
       to: [email],
       replyTo: "hello@sportspacepro.pl",
       subject: userEmail.subject,
@@ -167,7 +167,7 @@ export async function POST(req: Request) {
     // Admin notification — fire & don't block user response on failure
     try {
       await resend.emails.send({
-        from: "Sport Pro Space <noreply@sportspacepro.pl>",
+        from: "Sport Space Pro <noreply@sportspacepro.pl>",
         to: ["hello@sportspacepro.pl"],
         replyTo: email,
         subject: adminEmail.subject,

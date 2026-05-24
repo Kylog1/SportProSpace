@@ -69,7 +69,7 @@ export default function ArticulyPage() {
               className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-navy-950"
             >
               <ArrowLeft className="size-3.5" />
-              Sport Pro Space
+              Sport Space Pro
             </Link>
 
             <h1 className="mt-5 text-3xl font-semibold tracking-tight text-navy-950 md:text-5xl">

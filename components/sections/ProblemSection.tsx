@@ -73,7 +73,7 @@ export function ProblemSection() {
           ))}
         </div>
         <p className="mx-auto mt-3 max-w-5xl text-[11px] text-muted-foreground">
-          Źródło: Sport Pro Space, opracowanie własne na podstawie badań rynku sportu 2024–2026.
+          Źródło: Sport Space Pro, opracowanie własne na podstawie badań rynku sportu 2024–2026.
         </p>
       </div>
     </section>

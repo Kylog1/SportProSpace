@@ -77,7 +77,7 @@ function drawFooter(doc: PDFKit.PDFDocument, pageNum: number) {
     .fontSize(8)
     .fillColor(COLORS.faint)
     .fillOpacity(1)
-    .text("Sport Pro Space - sportspacepro.pl", ML, H - 30, {
+    .text("Sport Space Pro - sportspacepro.pl", ML, H - 30, {
       width: CW,
       align: "left",
     });
@@ -232,8 +232,8 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
         margin: 0,
         bufferPages: true,
         info: {
-          Title: "Self Assessment - Sport Pro Space",
-          Author: "Sport Pro Space",
+          Title: "Self Assessment - Sport Space Pro",
+          Author: "Sport Space Pro",
           Subject: `Wyniki Self Assessment - ${input.organization}`,
         },
       });

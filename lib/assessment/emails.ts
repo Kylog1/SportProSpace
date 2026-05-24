@@ -44,7 +44,7 @@ export function buildUserEmail(input: UserEmailInput): {
   const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;max-width:580px;margin:0 auto;padding:32px 24px;color:#0f172a;background:#ffffff;">
   <div style="border-bottom:1px solid #e2e8f0;padding-bottom:20px;margin-bottom:24px;">
-    <div style="font-size:13px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;">Sport Pro Space</div>
+    <div style="font-size:13px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;">Sport Space Pro</div>
     <div style="font-size:20px;font-weight:600;color:#1e3a8a;margin-top:6px;">Twój wynik Self Assessment</div>
   </div>
 
@@ -100,7 +100,7 @@ export function buildUserEmail(input: UserEmailInput): {
 
   <p style="font-size:14px;line-height:1.65;margin:16px 0 0;">
     Krzysztof Grzyb<br/>
-    <span style="color:#64748b;">Sport Pro Space</span>
+    <span style="color:#64748b;">Sport Space Pro</span>
   </p>
 
   <div style="border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px;font-size:11px;color:#94a3b8;line-height:1.5;">
@@ -130,7 +130,7 @@ export function buildUserEmail(input: UserEmailInput): {
     `Jeśli masz pytania - po prostu odpowiedz na tego maila.`,
     ``,
     `Krzysztof Grzyb`,
-    `Sport Pro Space`,
+    `Sport Space Pro`,
   ].join("\n");
 
   return { subject, html, text };
