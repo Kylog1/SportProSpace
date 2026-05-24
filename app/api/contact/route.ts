@@ -61,7 +61,7 @@ export async function POST(req: Request) {
 
   const html = `
     <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#0f172a;">
-      <h2 style="font-size:18px;font-weight:600;margin:0 0 16px;">Nowe zapytanie z sportprospace.eu</h2>
+      <h2 style="font-size:18px;font-weight:600;margin:0 0 16px;">Nowe zapytanie z sportspacepro.pl</h2>
       <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;">
         <tbody>
           <tr><td style="padding:6px 12px;color:#64748b;font-size:13px;width:140px;">Imię i nazwisko</td><td style="padding:6px 12px;font-size:14px;">${escapeHtml(name)}</td></tr>
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
   `;
 
   const text = [
-    `Nowe zapytanie z sportprospace.eu`,
+    `Nowe zapytanie z sportspacepro.pl`,
     ``,
     `Imię i nazwisko: ${name}`,
     `Email: ${email}`,
@@ -94,8 +94,8 @@ export async function POST(req: Request) {
 
   try {
     const result = await resend.emails.send({
-      from: "Sport Pro Space <noreply@footlog.pl>",
-      to: ["hello@sportprospace.eu"],
+      from: "Sport Pro Space <noreply@sportspacepro.pl>",
+      to: ["hello@sportspacepro.pl"],
       replyTo: email,
       subject: `Nowe zapytanie — ${name} (${organization})`,
       html,

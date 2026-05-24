@@ -77,7 +77,7 @@ function drawFooter(doc: PDFKit.PDFDocument, pageNum: number) {
     .fontSize(8)
     .fillColor(COLORS.faint)
     .fillOpacity(1)
-    .text("Sport Pro Space - sportprospace.eu", ML, H - 30, {
+    .text("Sport Pro Space - sportspacepro.pl", ML, H - 30, {
       width: CW,
       align: "left",
     });

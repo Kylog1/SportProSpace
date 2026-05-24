@@ -1,5 +1,5 @@
 // Email templates for the Self Assessment lead magnet.
-// Two emails: (a) user — delivery of the PDF, (b) admin — notification at hello@sportprospace.eu
+// Two emails: (a) user — delivery of the PDF, (b) admin — notification at hello@sportspacepro.pl
 
 import {
   MAX_TOTAL,
@@ -104,7 +104,7 @@ export function buildUserEmail(input: UserEmailInput): {
   </p>
 
   <div style="border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px;font-size:11px;color:#94a3b8;line-height:1.5;">
-    Otrzymujesz tę wiadomość, ponieważ wypełniłeś/aś Self Assessment na sportprospace.eu.
+    Otrzymujesz tę wiadomość, ponieważ wypełniłeś/aś Self Assessment na sportspacepro.pl.
   </div>
 </div>
   `.trim();
@@ -137,7 +137,7 @@ export function buildUserEmail(input: UserEmailInput): {
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// Admin notification (to hello@sportprospace.eu)
+// Admin notification (to hello@sportspacepro.pl)
 // ──────────────────────────────────────────────────────────────────────────
 
 export type AdminEmailInput = {
@@ -182,7 +182,7 @@ export function buildAdminEmail(input: AdminEmailInput): {
   const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#0f172a;">
   <h2 style="font-size:18px;font-weight:600;margin:0 0 6px;">Nowy lead - Self Assessment</h2>
-  <p style="margin:0 0 20px;color:#64748b;font-size:13px;">sportprospace.eu/self-assessment</p>
+  <p style="margin:0 0 20px;color:#64748b;font-size:13px;">sportspacepro.pl/self-assessment</p>
 
   <div style="background:#f8fafc;border-left:4px solid #1e3a8a;padding:16px;border-radius:6px;margin-bottom:20px;">
     <div style="font-size:11px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">Wynik</div>
@@ -216,7 +216,7 @@ export function buildAdminEmail(input: AdminEmailInput): {
   `.trim();
 
   const text = [
-    `Nowy lead - Self Assessment (sportprospace.eu)`,
+    `Nowy lead - Self Assessment (sportspacepro.pl)`,
     ``,
     `WYNIK: ${total} / ${MAX_TOTAL} - ${level.name}`,
     `${level.short}`,

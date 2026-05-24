@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Sport Pro Space — Diagnoza i rozwój doświadczenia w sporcie",
   description:
     "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i kibice odchodzą — i co z tym zrobić.",
-  metadataBase: new URL("https://sportprospace.com"),
+  metadataBase: new URL("https://sportspacepro.pl"),
   openGraph: {
     title: "Sport Pro Space",
     description:

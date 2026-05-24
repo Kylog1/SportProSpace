@@ -72,7 +72,7 @@ export default function ArticlePage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "Sport Pro Space",
-      url: "https://sportprospace.pl",
+      url: "https://sportspacepro.pl",
     },
     keywords: article.tags.join(", "),
   };
