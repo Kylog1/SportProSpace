@@ -63,7 +63,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-navy-100 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} Sport Pro Space. Wszystkie prawa zastrzeżone.</span>
+          <span>© {new Date().getFullYear()} Sport Space Pro. Wszystkie prawa zastrzeżone.</span>
           <div className="flex gap-5">
             <Link href="#" className="hover:text-navy-900">
               Polityka prywatności

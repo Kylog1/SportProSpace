@@ -42,7 +42,7 @@ export function About() {
               Łączymy badania rynku ze światem sportu wyczynowego.
             </h2>
             <p className="mt-5 text-[15.5px] leading-relaxed text-muted-foreground">
-              Sport Pro Space powstał na styku dwóch dyscyplin: badań
+              Sport Space Pro powstał na styku dwóch dyscyplin: badań
               doświadczenia klienta i pracy operacyjnej w sporcie.
             </p>
             <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">

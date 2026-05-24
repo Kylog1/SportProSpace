@@ -5,7 +5,7 @@ import { SelfAssessment } from "@/components/SelfAssessment";
 
 export const metadata: Metadata = {
   title:
-    "Self Assessment dla klubów i akademii sportowych — Sport Pro Space",
+    "Self Assessment dla klubów i akademii sportowych — Sport Space Pro",
   description:
     "12 pytań o procesy, nie o opinie. W 5 minut sprawdź, gdzie Twój klub realnie traci zawodników, rodziców i pieniądze. Z kalkulatorem strat z odejść.",
   openGraph: {
