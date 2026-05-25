@@ -26,7 +26,7 @@ const pillars = [
 const stats = [
   { value: "15+", label: "lat doświadczenia w badaniach rynku" },
   { value: "120+", label: "zrealizowanych projektów badawczych" },
-  { value: "40+", label: "organizacji sportowych w portfolio" },
+  { value: "40+", label: "klientów w portfolio" },
 ];
 
 export function About() {
