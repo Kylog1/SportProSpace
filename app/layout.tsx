@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description:
     "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i kibice odchodzą — i co z tym zrobić.",
   metadataBase: new URL("https://sportspacepro.pl"),
+  verification: {
+    google: "NEbz7XGlE1Uz6qw7iAjD_JceHCQjkbRssrfN_5YIMN4",
+  },
   openGraph: {
     title: "Sport Space Pro",
     description:
