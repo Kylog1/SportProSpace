@@ -154,37 +154,6 @@ Retencja wzrosła z 66% do 89%. NPS rodziców wzrósł z +18 do +54. Liczba skar
     coverGradient: "from-emerald-700 to-navy-900",
   },
   {
-    slug: "benchmarking-nps-pilka-nozna-2025",
-    title: "Benchmarking NPS w piłce nożnej — Polska 2025",
-    excerpt:
-      "Raport z badania 120 akademii i klubów piłkarskich w Polsce. Średni NPS, kluczowe czynniki różnicujące i rekomendacje dla zarządów.",
-    content: `
-## Metodologia badania
-
-Badanie przeprowadzono między październikiem 2024 a lutym 2025 roku. Objęto nim 120 akademii i klubów piłkarskich z całej Polski — od akademii przy klubach ekstraklasy po lokalne szkoły futbolu.
-
-## Kluczowe wyniki
-
-Średni NPS rodziców zawodników w Polsce: +21. Średni NPS samych zawodników U-12/U-16: +34. Akademie przy profesjonalnych klubach osiągają NPS wyższy o 18 punktów od niezależnych akademii — nie ze względu na jakość treningu, ale ze względu na prestiż i infrastrukturę komunikacyjną.
-
-## Czynniki różnicujące
-
-Akademie z NPS powyżej +50 wyróżniają się trzema cechami: regularny ustrukturyzowany feedback (87% z nich), transparentny system selekcji i awansu (79%) oraz aktywna komunikacja z rodzicami minimum raz w miesiącu (94%).
-
-## Rekomendacje
-
-Inwestycja w system komunikacji i feedbacku zwraca się szybciej niż inwestycja w infrastrukturę. Akademie, które wdrożyły podstawowe narzędzia komunikacyjne, odnotowały wzrost NPS o 15-30 punktów w ciągu 12 miesięcy.
-    `,
-    category: "raport",
-    tags: ["Raport", "NPS", "Benchmarking", "Piłka nożna"],
-    author: "Zespół Sport Space Pro",
-    authorRole: "Dział Analiz",
-    publishedAt: "2026-02-01",
-    readTime: 15,
-    featured: true,
-    coverGradient: "from-violet-700 to-navy-900",
-  },
-  {
     slug: "kryzys-komunikacji-w-klubach-sportowych",
     title: "Kryzys komunikacji w polskich klubach sportowych",
     excerpt:
