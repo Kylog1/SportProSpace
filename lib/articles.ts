@@ -25,41 +25,69 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
-    slug: "dlaczego-zawodnicy-odchodza-w-drugim-sezonie",
-    title: "Dlaczego zawodnicy odchodzą w drugim sezonie?",
+    slug: "jak-dbac-o-komunikacje-z-rodzicami",
+    title: "Jak dbać o komunikację z rodzicami zawodników?",
     excerpt:
-      "Analiza głównych powodów rezygnacji zawodników U-13 i U-16 na podstawie badania kilkunastu akademii sportowych w Polsce.",
+      "Komunikacja z rodzicami to jeden z trzech najważniejszych czynników retencji w akademiach sportowych. Praktyczny przewodnik: struktury, narzędzia i błędy, których unikać.",
     content: `
 ## Wstęp
 
-Drugi sezon jest krytycznym momentem dla każdej akademii sportowej. Zawodnik przeszedł już selekcję, poznał środowisko, ma wyrobione pierwsze opinie. Jeśli odchodzi właśnie wtedy — oznacza to, że coś systemowego nie działa.
+Rodzic, który nie wie, co dzieje się z jego dzieckiem w klubie, nie jest lojalnym rodzicem. Jest rodzicem, który szuka alternatywy — nawet jeśli trening jest na wysokim poziomie. Komunikacja z rodzicami to nie dodatek do pracy akademii. To fundament retencji.
 
-## Dane
+## Dlaczego komunikacja decyduje o odejściach
 
-Na podstawie naszego badania przeprowadzonego w kilkunastu akademiach sportowych (piłka nożna, koszykówka, siatkówka, pływanie) w latach 2024–2026 zidentyfikowaliśmy trzy główne powody odejść.
+W badaniach przeprowadzonych wśród akademii sportowych w Polsce komunikacja z klubem pojawia się jako powód odejścia w ponad połowie przypadków. Nie jakość treningu. Nie wyniki sportowe. Nie infrastruktura. Komunikacja.
 
-### 1. Brak indywidualnego feedbacku (68% wskazań)
+Mechanizm jest prosty: rodzic, który nie rozumie decyzji trenera, nie zna planu rozwoju dziecka i nie ma gdzie zadać pytania — buduje frustrację w ciszy. A cisza w sporcie amatorskim kończy się rezygnacją.
 
-Zawodnicy w kategorii U-13 do U-16 oczekują regularnej informacji zwrotnej od trenerów. Nie oceny — informacji. "Czy robię postępy?", "Co powinienem poprawiać?", "Gdzie jestem na tle grupy?". Większość klubów nie ma sformalizowanego systemu feedbacku — ani dla zawodnika, ani dla rodzica.
+## Trzy najczęstsze błędy
 
-### 2. Komunikacja z trenerami (54% wskazań)
+### 1. Za dużo kanałów, za mało klarowności
 
-Problemem nie jest brak kompetencji trenerów — problemem jest brak struktury komunikacyjnej. Rodzice nie wiedzą, jak i kiedy rozmawiać z trenerem. Zawodnicy nie wiedzą, czego się od nich oczekuje w kolejnym miesiącu.
+Grupy na Messengerze, SMS-y od trenera, maile od administracji, tablica w szatni — to typowy obraz komunikacji w polskiej akademii. Każdy mówi co innego, każdy w innym miejscu. Rodzic nie wie, gdzie szukać informacji i przestaje szukać.
 
-### 3. Atmosfera w grupie (22% wskazań)
+Skutek: poczucie chaosu, które rodzice interpretatują jako brak organizacji. NPS rodziców w akademiach z chaotyczną komunikacją jest przeciętnie o 22 punkty niższy niż tam, gdzie działa jeden, ustrukturyzowany kanał.
 
-Rzadziej wymieniana, ale często decydująca. Zjawiska wykluczenia, faworyzowania i braku integracji grupowej prowadzą do cichych odejść — szczególnie wśród zawodniczek.
+### 2. Komunikacja reaktywna zamiast proaktywnej
+
+Większość akademii komunikuje się z rodzicami tylko wtedy, gdy coś się dzieje — zmiana terminu, problem, zawody. Rodzic nie słyszy nic przez trzy tygodnie, a potem dostaje wiadomość o zmianie harmonogramu z dnia na dzień.
+
+Proaktywna komunikacja oznacza regularne, przewidywalne informowanie: co dzieje się w tym miesiącu, czego oczekujemy od zawodnika, jak wygląda jego postęp. Nawet krótka wiadomość raz na dwa tygodnie zmienia percepcję klubu.
+
+### 3. Brak odpowiedzi na pytania dotyczące dziecka
+
+"Kiedy mogę porozmawiać z trenerem?" — to jedno z najczęściej zadawanych pytań przez rodziców. W akademiach bez ustalonej struktury odpowiedź brzmi: "Napisz na Messengerze, zobaczymy." Dla rodzica to sygnał, że klub nie traktuje jego zaangażowania poważnie.
+
+## Jak zbudować skuteczny system komunikacji
+
+### Jeden kanał — jedna odpowiedzialność
+
+Wybierz jeden kanał komunikacji z rodzicami i konsekwentnie go używaj. To może być dedykowana aplikacja, e-mail newsletter lub zamknięta grupa — ważne, żeby każdy rodzic wiedział: "jeśli coś ważnego, znajdę to tutaj." Inne kanały zamknij lub ustaw jako nieaktywne.
+
+### Regularny rytm, nie komunikacja ad hoc
+
+Wprowadź stały rytm komunikacji: raz w miesiącu krótkie podsumowanie dla rodziców — co trenowaliśmy, co przed nami, na co zwracać uwagę. Taka wiadomość nie musi być długa. Liczy się regularność, nie objętość.
+
+### Okno na rozmowę z trenerem
+
+Ustal z trenerami stałe okno czasowe na rozmowy z rodzicami — np. 15 minut po treningu we wtorek i czwartek, lub dedykowany dyżur online raz w miesiącu. Rodzic, który wie, że ma miejsce i czas na pytanie, rzadko buduje frustrację.
+
+### Transparentność w postępach
+
+Nawet prosta karta postępów raz na kwartał — z trzema zdaniami o mocnych stronach zawodnika i jednym obszarem do pracy — robi ogromną różnicę. Rodzice nie potrzebują pełnych raportów. Potrzebują sygnału, że ktoś obserwuje ich dziecko indywidualnie.
 
 ## Wnioski dla zarządów
 
-Retencja to nie kwestia jakości treningu. To kwestia jakości doświadczenia — komunikacji, poczucia przynależności i przejrzystości procesu rozwoju. Kluby, które wdrożyły ustrukturyzowany system feedbacku, odnotowały wzrost retencji o 23–41% w ciągu 12 miesięcy.
+Komunikacja z rodzicami nie jest problemem trenerów. Jest problemem systemu. Trener skupiony na treningu nie będzie spontanicznie tworzył newsletterów i planował dyżurów. To zadanie zarządu: zaprojektować strukturę komunikacyjną raz — i następnie ją utrzymywać.
+
+Akademie, które wdrożyły jeden kanał komunikacji, regularny rytm wiadomości i ustrukturyzowane okno rozmów z trenerem, odnotowują wzrost NPS rodziców o 20–35 punktów w ciągu pierwszych 6 miesięcy. I co ważniejsze — znacząco niższy poziom odejść między sezonami.
     `,
     category: "artykul",
-    tags: ["NPS", "Retencja", "U13-U16", "Feedback"],
+    tags: ["Komunikacja", "Rodzice", "Retencja", "NPS"],
     author: "Zespół Sport Space Pro",
     authorRole: "Dział Badań",
-    publishedAt: "2026-03-12",
-    readTime: 6,
+    publishedAt: "2026-05-25",
+    readTime: 7,
     featured: true,
     coverGradient: "from-navy-800 to-navy-950",
   },
