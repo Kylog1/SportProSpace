@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${article.title} — Sport Pro Space`,
     description: article.excerpt,
     alternates: {
-      canonical: `https://sportprospace.eu/artykuly/${article.slug}`,
+      canonical: `https://sportspacepro.pl/artykuly/${article.slug}`,
     },
     openGraph: {
       title: article.title,
@@ -76,7 +76,7 @@ export default function ArticlePage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "Sport Pro Space",
-      url: "https://sportprospace.eu",
+      url: "https://sportspacepro.pl",
     },
     keywords: article.tags.join(", "),
   };
@@ -90,19 +90,19 @@ export default function ArticlePage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Sport Pro Space",
-        item: "https://sportprospace.eu",
+        item: "https://sportspacepro.pl",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Artykuły",
-        item: "https://sportprospace.eu/artykuly",
+        item: "https://sportspacepro.pl/artykuly",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: article.title,
-        item: `https://sportprospace.eu/artykuly/${article.slug}`,
+        item: `https://sportspacepro.pl/artykuly/${article.slug}`,
       },
     ],
   };
