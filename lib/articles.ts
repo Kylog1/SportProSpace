@@ -216,37 +216,6 @@ NPS rodziców wzrósł z -8 do +41. Odejścia między sezonami spadły do 12%. L
     coverGradient: "from-amber-600 to-navy-900",
   },
   {
-    slug: "raport-retencji-zawodnikow-u12-u16",
-    title: "Raport retencji zawodników U-12 do U-16 — Polska 2024–2025",
-    excerpt:
-      "Kompleksowa analiza danych retencji z 89 akademii sportowych. Gdzie tracisz zawodników i w jakim wieku odejście jest najbardziej prawdopodobne.",
-    content: `
-## Zakres raportu
-
-Raport obejmuje dane z 89 akademii sportowych w Polsce (piłka nożna 45%, koszykówka 22%, siatkówka 18%, pływanie 15%) za sezon 2024/2025. Łącznie przeanalizowano dane 12 400 zawodników w kategoriach U-12 do U-16.
-
-## Krytyczny punkt: przejście U-13 na U-14
-
-41% wszystkich odejść w badanej próbie następuje w momencie przejścia z kategorii U-13 do U-14. To moment zwiększonej intensywności treningów, zmiany grupy rówieśniczej i często zmiany trenera. Akademie, które mają ustrukturyzowany program onboardingu na tym etapie, tracą o 34% mniej zawodników.
-
-## Różnice między dyscyplinami
-
-Najwyższą retencję odnotowano w akademiach pływackich (78% średnio), najniższą w piłce nożnej (61% średnio). Różnica wynika głównie ze struktury selekcji — piłka nożna prowadzi bardziej agresywną selekcję negatywną.
-
-## Co nie wpływa na retencję
-
-Infrastruktura, wyniki sportowe w niższych kategoriach wiekowych ani wysokość czesnego nie wykazują istotnej korelacji statystycznej z retencją. Kluczowe są: jakość komunikacji, poczucie przynależności i przejrzystość ścieżki rozwoju.
-    `,
-    category: "raport",
-    tags: ["Raport", "Retencja", "U12-U16", "Akademie"],
-    author: "Zespół Sport Space Pro",
-    authorRole: "Dział Analiz",
-    publishedAt: "2025-12-10",
-    readTime: 18,
-    featured: false,
-    coverGradient: "from-sky-700 to-navy-900",
-  },
-  {
     slug: "data-driven-zarzadzanie-akademia-sportowa",
     title: "Data-driven zarządzanie akademią sportową — od czego zacząć?",
     excerpt:
