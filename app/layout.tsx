@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Sport Pro Space — Diagnoza i rozwój doświadczenia w sporcie",
   description:
     "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i kibice odchodzą — i co z tym zrobić.",
-  metadataBase: new URL("https://sportprospace.eu"),
+  metadataBase: new URL("https://sportspacepro.pl"),
   openGraph: {
     title: "Sport Pro Space",
     description:
@@ -25,8 +25,8 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Sport Pro Space",
-  url: "https://sportprospace.eu",
-  logo: "https://sportprospace.eu/logo.png",
+  url: "https://sportspacepro.pl",
+  logo: "https://sportspacepro.pl/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
     email: "hello@sportprospace.eu",

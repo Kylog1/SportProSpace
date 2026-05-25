@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/articles";
 
-const BASE_URL = "https://sportprospace.eu";
+const BASE_URL = "https://sportspacepro.pl";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
