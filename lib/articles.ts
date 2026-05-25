@@ -28,7 +28,7 @@ export const articles: Article[] = [
     slug: "dlaczego-zawodnicy-odchodza-w-drugim-sezonie",
     title: "Dlaczego zawodnicy odchodzą w drugim sezonie?",
     excerpt:
-      "Analiza głównych powodów rezygnacji zawodników U-13 i U-16 na podstawie badania 150 akademii sportowych w Polsce.",
+      "Analiza głównych powodów rezygnacji zawodników U-13 i U-16 na podstawie badania kilkunastu akademii sportowych w Polsce.",
     content: `
 ## Wstęp
 
@@ -36,7 +36,7 @@ Drugi sezon jest krytycznym momentem dla każdej akademii sportowej. Zawodnik pr
 
 ## Dane
 
-Na podstawie naszego badania przeprowadzonego w 150 akademiach sportowych (piłka nożna, koszykówka, siatkówka, pływanie) w latach 2024–2026 zidentyfikowaliśmy trzy główne powody odejść.
+Na podstawie naszego badania przeprowadzonego w kilkunastu akademiach sportowych (piłka nożna, koszykówka, siatkówka, pływanie) w latach 2024–2026 zidentyfikowaliśmy trzy główne powody odejść.
 
 ### 1. Brak indywidualnego feedbacku (68% wskazań)
 
