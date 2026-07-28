@@ -246,7 +246,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
             </h2>
             <p className="mt-3 text-[16px] leading-relaxed text-muted-foreground">
               Zanim odpowiesz na 12 pytań - odpowiedz na jedno. Ilu zawodników
-              odeszło z Was w zeszłym sezonie i ile to dla Was kosztowało.
+              odeszło od Was w zeszłym sezonie i ile to dla Was kosztowało.
             </p>
           </div>
 
