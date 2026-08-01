@@ -25,6 +25,61 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
+    slug: "ile-kosztuje-odejscie-zawodnika-roi-badania-nps",
+    title: "Ile kosztuje odejście zawodnika? Kalkulacja ROI badania NPS dla zarządu",
+    excerpt:
+      "Twardy rachunek dla zarządu: ile realnie tracisz na każdym zawodniku, który odchodzi z klubu, i od jakiej skali klubu badanie satysfakcji zaczyna się zwracać.",
+    content: `
+## Dlaczego zarządy nie inwestują w badania
+
+Badanie NPS kosztuje. Ma cenę, termin i wymaga czasu zarządu. Odejście zawodnika nie ma faktury — jest rozmyte w miesięcznym raporcie zapisów i wygląda jak pojedynczy, mało istotny wiersz w arkuszu. Dlatego łatwiej odłożyć badanie satysfakcji niż policzyć, ile ten "mało istotny wiersz" realnie kosztuje.
+
+Problem w tym, że odejście zawodnika nigdy nie jest tylko utratą jednej opłaty miesięcznej. To utracony przychód przez cały pozostały okres, w którym zawodnik mógłby trenować, utracona rekomendacja do rodziny i znajomych oraz koszt pozyskania kogoś na jego miejsce.
+
+## Co realnie wchodzi w koszt jednego odejścia
+
+### 1. Utracony przychód (LTV)
+
+Jeśli zawodnik płaci 250 zł miesięcznie i statystycznie zostaje w klubie średnio 3 lata, jego wartość życiowa (LTV) to około 9 000 zł. Odejście po roku zamiast po trzech oznacza utratę dwóch trzecich tej kwoty — około 6 000 zł, które nigdy nie wpłyną na konto klubu.
+
+### 2. Utracone rekomendacje
+
+Zadowolony rodzic przyprowadza statystycznie 0,4–0,7 nowego zawodnika w ciągu trzech lat — przez polecenia w drużynie, szkole czy sąsiedztwie. Rodzic, który odchodzi niezadowolony, nie tylko nie poleca — w części przypadków aktywnie odradza. Ta strona kosztu rzadko trafia do arkuszy kalkulacyjnych, a bywa większa niż sama utrata opłat.
+
+### 3. Koszt pozyskania zastępstwa
+
+Pozyskanie nowego zawodnika (marketing, testy, pierwsze miesiące o niższej marży) kosztuje przeciętnie 300–800 zł w zależności od dyscypliny i lokalizacji. To koszt, którego klub z wysoką retencją po prostu nie ponosi w takiej skali.
+
+## Przykładowa kalkulacja dla akademii ze 300 zawodnikami
+
+Akademia ze stopą odejść 30% rocznie traci 90 zawodników w ciągu roku. Przy średnim LTV rzędu 6 000 zł (uwzględniając przedwczesne odejścia) to 540 000 zł utraconego przychodu w horyzoncie kolejnych lat, plus koszt pozyskania 90 nowych zawodników na zastępstwo — kolejne 45 000–72 000 zł.
+
+Redukcja stopy odejść z 30% do 18% — poziom osiągalny w 6–12 miesięcy przy wdrożeniu wniosków z badania NPS, co potwierdzają nasze wcześniejsze case studies — oznacza zatrzymanie ok. 36 zawodników rocznie. To ok. 216 000 zł uratowanego przychodu i kilkadziesiąt tysięcy złotych niewydanych na pozyskanie zastępstw.
+
+## Kiedy badanie się zwraca
+
+Koszt profesjonalnego badania NPS dla akademii tej wielkości to ułamek procenta powyższej kwoty. Próg opłacalności jest w praktyce bardzo niski: badanie zwraca się już wtedy, gdy pozwoli zatrzymać zaledwie 2–3 zawodników, którzy inaczej by odeszli. Przy stopie odejść powyżej 15–20% rocznie — a to norma w polskich akademiach — ten próg jest przekraczany niemal zawsze.
+
+Mniejsze kluby (poniżej 80–100 zawodników) powinny liczyć ostrożniej — tu koszt badania rozkłada się na mniejszą bazę, więc warto zacząć od prostszej, cyklicznej ankiety zamiast pełnego badania z wywiadami pogłębionymi.
+
+## Jak przedstawić to zarządowi
+
+Najskuteczniejszy sposób na uzyskanie budżetu na badanie to nie mówienie o satysfakcji czy NPS jako abstrakcyjnej metryce, lecz przeliczenie bieżącej stopy odejść klubu na konkretną kwotę w złotówkach — tak jak powyżej. Zarząd, który widzi liczbę sześciocyfrową obok pozycji "badanie NPS: 8 000 zł", podejmuje decyzję w kilka minut.
+
+## Wniosek
+
+Pytanie nie brzmi "czy stać nas na badanie NPS", tylko "ile kosztuje nas jego brak". Dla większości akademii i klubów w Polsce odpowiedź to kwota rzędu setek tysięcy złotych rocznie — ukryta w rotacji zawodników, którą łatwo przeoczyć, jeśli nikt jej nie policzy.
+    `,
+    category: "raport",
+    tags: ["ROI", "Finanse", "Zarząd", "Retencja"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-08-01",
+    readTime: 8,
+    featured: true,
+    coverGradient: "from-rose-700 to-navy-900",
+  },
+  {
     slug: "jak-dbac-o-komunikacje-z-rodzicami",
     title: "Jak dbać o komunikację z rodzicami zawodników?",
     excerpt:
