@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import {
   articles,
   getArticleBySlug,
@@ -165,6 +165,26 @@ export default function ArticlePage({ params }: Props) {
                 >
                   {article.excerpt}
                 </p>
+
+                {/* PDF download CTA */}
+                {article.pdfUrl && (
+                  <div className="mt-6 flex flex-wrap items-center gap-3 rounded-xl border border-navy-200 bg-navy-50/60 p-4">
+                    <div className="flex-1">
+                      <div className="text-[13.5px] font-semibold text-navy-950">
+                        Pełny raport PDF do pobrania za darmo
+                      </div>
+                      <div className="text-[12.5px] text-muted-foreground">
+                        Bez zostawiania danych - link otwiera się w nowej karcie.
+                      </div>
+                    </div>
+                    <Button asChild size="lg">
+                      <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
+                        <Download />
+                        Pobierz raport PDF
+                      </a>
+                    </Button>
+                  </div>
+                )}
 
                 {/* Divider */}
                 <div className="mt-6 border-t border-navy-100 md:mt-8" />

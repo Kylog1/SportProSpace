@@ -14,6 +14,7 @@ export interface Article {
   readTime: number;
   featured: boolean;
   coverGradient: string; // Tailwind gradient classes (placeholder until real images)
+  pdfUrl?: string; // Direct link to a downloadable PDF version (served from /public)
 }
 
 export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
@@ -24,6 +25,54 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 };
 
 export const articles: Article[] = [
+  {
+    slug: "raport-gdzie-akademie-sportowe-traca-zawodnikow",
+    title: "Raport: Gdzie akademie sportowe tracą zawodników",
+    excerpt:
+      "Retencja, komunikacja i ekonomia klubu w liczbach z realnych źródeł - polskich i zagranicznych. Pobierz pełny raport PDF (6 stron).",
+    content: `
+## O raporcie
+
+To nie jest badanie jednego klubu. To zestawienie tego, co o odejściach zawodników, komunikacji z rodzicami i ekonomii retencji mówią dostępne badania z Polski i ze świata, skonfrontowane z tym, co widzimy w praktyce, pracując z klubami i akademiami sportowymi.
+
+Każda liczba w raporcie ma podpisane źródło - od badania SW Research dla Compensy po klasyczne prace Harvard Business Review i Aspen Institute. Pełną listę źródeł znajdziesz na ostatniej stronie PDF-a.
+
+## Co znajdziesz w środku
+
+### Retencja i odejścia
+
+Ile dzieci w Polsce rozważa rezygnację z zajęć i dlaczego (dane SW Research dla Compensy, sierpień 2025). Oraz dlaczego często cytowana liczba "70% dzieci rezygnuje ze sportu do 13. roku życia" nie ma potwierdzonego źródła - i czemu warto o tym pamiętać, zanim padnie na spotkaniu zarządu.
+
+### Komunikacja z rodzicami
+
+Dlaczego grupa na WhatsAppie to najczęstszy, ale nie najskuteczniejszy kanał komunikacji trener-rodzic - i dlaczego rodzice systematycznie oceniają częstotliwość kontaktu z klubem niżej, niż deklarują trenerzy.
+
+### Ekonomia retencji
+
+Klasyczny wynik Reichhelda i Sassera z Harvard Business Review: obniżenie odejść klientów o 5 punktów procentowych podnosi zyski firmy o 25-85%. Ten sam mechanizm działa w klubie sportowym - zawodnik, rodzic, polecenie.
+
+### Trenerzy i organizacja
+
+Dane z National Coach Survey 2022 (Aspen Institute, Project Play): 69% trenerów sportu młodzieżowego zgłasza stres związany z pracą, a 58% rozważało odejście z powodu konfliktów z rodzicami. Rotacja trenera to nie tylko koszt rekrutacji - to utrata całej grupy, która była lojalna wobec osoby, nie wobec klubu.
+
+### Wnioski
+
+4 poziomy dojrzałości organizacyjnej klubu - od Chaos Mode po High Retention Organization - i miejsce, w którym mieści się większość klubów, z którymi rozmawialiśmy.
+
+## Pobierz pełny raport
+
+Raport PDF (6 stron) jest dostępny do pobrania za darmo, bez zostawiania danych.
+    `,
+    category: "raport",
+    tags: ["Raport", "Retencja", "Komunikacja", "Ekonomia klubu"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Badań",
+    publishedAt: "2026-08-06",
+    readTime: 9,
+    featured: true,
+    coverGradient: "from-rose-700 to-navy-900",
+    pdfUrl: "/raporty/gdzie-akademie-sportowe-traca-zawodnikow.pdf",
+  },
   {
     slug: "ile-kosztuje-odejscie-zawodnika-roi-badania-nps",
     title: "Ile kosztuje odejście zawodnika? Kalkulacja ROI badania NPS dla zarządu",
