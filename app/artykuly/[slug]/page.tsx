@@ -221,6 +221,26 @@ export default function ArticlePage({ params }: Props) {
                       if (line.trim() === "") return null;
                       return <p key={i}>{line}</p>;
                     })}
+
+                  {/* PDF download CTA (bottom) */}
+                  {article.pdfUrl && (
+                    <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-navy-200 bg-navy-50/60 p-4">
+                      <div className="flex-1">
+                        <div className="text-[13.5px] font-semibold text-navy-950">
+                          Pełny raport PDF do pobrania za darmo
+                        </div>
+                        <div className="text-[12.5px] text-muted-foreground">
+                          Bez zostawiania danych - link otwiera się w nowej karcie.
+                        </div>
+                      </div>
+                      <Button asChild size="lg">
+                        <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
+                          <Download />
+                          Pobierz raport PDF
+                        </a>
+                      </Button>
+                    </div>
+                  )}
                 </div>
 
                 {/* Sidebar */}
