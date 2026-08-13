@@ -1,4 +1,4 @@
-# Szablony Canva — Sport Pro Space
+# Szablony Canva — Sport Space Pro
 
 Pięć gotowych szablonów (`.svg`) do bezpośredniego importu do Canvy. Każdy używa identycznej palety i typografii z brand manualem.
 

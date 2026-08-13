@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!article) return {};
 
   return {
-    title: `${article.title} — Sport Pro Space`,
+    title: `${article.title} — Sport Space Pro`,
     description: article.excerpt,
     alternates: {
       canonical: `https://sportspacepro.pl/artykuly/${article.slug}`,
@@ -75,7 +75,7 @@ export default function ArticlePage({ params }: Props) {
     },
     publisher: {
       "@type": "Organization",
-      name: "Sport Pro Space",
+      name: "Sport Space Pro",
       url: "https://sportspacepro.pl",
     },
     keywords: article.tags.join(", "),
@@ -89,7 +89,7 @@ export default function ArticlePage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Sport Pro Space",
+        name: "Sport Space Pro",
         item: "https://sportspacepro.pl",
       },
       {
@@ -127,7 +127,7 @@ export default function ArticlePage({ params }: Props) {
 
                 {/* Breadcrumb */}
                 <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[13px] text-muted-foreground">
-                  <Link href="/" className="hover:text-navy-950">Sport Pro Space</Link>
+                  <Link href="/" className="hover:text-navy-950">Sport Space Pro</Link>
                   <span>/</span>
                   <Link href="/artykuly" className="hover:text-navy-950">Artykuły</Link>
                   <span>/</span>

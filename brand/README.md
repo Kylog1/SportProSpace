@@ -1,4 +1,4 @@
-# Sport Pro Space — Brand Assets
+# Sport Space Pro — Brand Assets
 
 Pakiet zawiera: brand manual, logo (warianty), ikony na Instagram i LinkedIn w wymaganych rozmiarach, 5 szablonów Canva oraz projekt certyfikatu (A4 + web badge).
 

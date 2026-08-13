@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Sport Space Pro — Diagnoza i rozwój doświadczenia w sporcie",
   description:
-    "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i kibice odchodzą — i co z tym zrobić.",
+    "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i rodzice odchodzą — i co z tym zrobić.",
   metadataBase: new URL("https://sportspacepro.pl"),
   verification: {
     google: "NEbz7XGlE1Uz6qw7iAjD_JceHCQjkbRssrfN_5YIMN4",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Sport Pro Space",
+  name: "Sport Space Pro",
   url: "https://sportspacepro.pl",
   logo: "https://sportspacepro.pl/logo.png",
   contactPoint: {

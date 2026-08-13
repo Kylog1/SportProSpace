@@ -1,4 +1,4 @@
-# Sport Pro Space — Landing Page
+# Sport Space Pro — Landing Page
 
 Production-ready landing page dla platformy diagnozy i rozwoju doświadczenia w sporcie (akademie, kluby profesjonalne).
 
