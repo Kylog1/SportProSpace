@@ -7,7 +7,6 @@ import {
   Flag,
   Waves,
   Users,
-  MoreHorizontal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -51,12 +50,6 @@ const audiences: {
     icon: Users,
     name: "Kluby Wielosekcyjne",
     note: "Organizacje z wieloma dyscyplinami",
-    href: "/self-assessment",
-  },
-  {
-    icon: MoreHorizontal,
-    name: "Inne Organizacje Sportowe",
-    note: "Twojej dyscypliny nie ma na liście?",
     href: "/self-assessment",
   },
 ];
