@@ -51,10 +51,4 @@ export const SPORTS: SportEntry[] = [
     note: "Organizacje z wieloma dyscyplinami",
     status: "coming-soon",
   },
-  {
-    id: "other",
-    label: "Inne organizacje sportowe",
-    note: "Twojej dyscypliny nie ma na liście?",
-    status: "coming-soon",
-  },
 ];
