@@ -32,7 +32,8 @@ export const SPORTS: SportEntry[] = [
     id: "tennis-padel",
     label: "Tenis i padel",
     note: "Kluby tenisowe i padlowe",
-    status: "coming-soon",
+    status: "available",
+    href: "/self-assessment/tennis-padel",
   },
   {
     id: "golf",

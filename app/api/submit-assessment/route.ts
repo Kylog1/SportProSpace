@@ -11,6 +11,12 @@ import {
   buildFitnessAdminEmail,
   buildFitnessUserEmail,
 } from "@/lib/assessment/fitness-emails";
+import { TENNIS_PADEL_CONFIG } from "@/lib/assessment/tennis-padel";
+import { generateTennisPadelPDF } from "@/lib/assessment/tennis-padel-pdf";
+import {
+  buildTennisPadelAdminEmail,
+  buildTennisPadelUserEmail,
+} from "@/lib/assessment/tennis-padel-emails";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -28,6 +34,9 @@ function answersSchemaFor(ids: string[]) {
 const FootballAnswersSchema = answersSchemaFor(QUESTIONS.map((q) => q.id));
 const FitnessAnswersSchema = answersSchemaFor(
   FITNESS_CONFIG.questions.map((q) => q.id)
+);
+const TennisPadelAnswersSchema = answersSchemaFor(
+  TENNIS_PADEL_CONFIG.questions.map((q) => q.id)
 );
 
 const BaseFields = {
@@ -54,6 +63,14 @@ const FitnessSchema = z.object({
   ...BaseFields,
   sport: z.literal("fitness"),
   answers: FitnessAnswersSchema,
+});
+
+// One shared audit for both disciplines — `sport` records which one the
+// visitor actually picked, so results can be analysed separately later.
+const TennisPadelSchema = z.object({
+  ...BaseFields,
+  sport: z.enum(["tennis", "padel"]),
+  answers: TennisPadelAnswersSchema,
 });
 
 function safeFilename(s: string): string {
@@ -93,17 +110,23 @@ export async function POST(req: Request) {
 
   // Pick the schema by discipline. Anything without an explicit `sport`
   // is Football, exactly as before.
-  const isFitness =
-    typeof json === "object" &&
-    json !== null &&
-    (json as { sport?: unknown }).sport === "fitness";
+  const sportField =
+    typeof json === "object" && json !== null
+      ? (json as { sport?: unknown }).sport
+      : undefined;
+  const isFitness = sportField === "fitness";
+  const isTennisPadel = sportField === "tennis" || sportField === "padel";
 
   const questionIds = isFitness
     ? FITNESS_CONFIG.questions.map((q) => q.id)
+    : isTennisPadel
+    ? TENNIS_PADEL_CONFIG.questions.map((q) => q.id)
     : QUESTIONS.map((q) => q.id);
 
   const parsed = isFitness
     ? FitnessSchema.safeParse(json)
+    : isTennisPadel
+    ? TennisPadelSchema.safeParse(json)
     : FootballSchema.safeParse(json);
 
   if (!parsed.success) {
@@ -140,6 +163,7 @@ export async function POST(req: Request) {
   }
 
   const { name, email, organization, phone, answers, website } = parsed.data;
+  const sport = "sport" in parsed.data ? parsed.data.sport : undefined;
 
   // Honeypot caught a bot — silently accept, don't send anything
   if (website && website.length > 0) {
@@ -147,18 +171,24 @@ export async function POST(req: Request) {
   }
 
   // Score, report and emails are per-discipline. Football keeps its raw
-  // 12-60 scale; Fitness reports a normalised 0-100 score.
+  // 12-60 scale; Fitness and Tennis & Padel report a normalised 0-100 score.
   const scoreValue = isFitness
     ? overallScore(FITNESS_CONFIG, answers)
+    : isTennisPadel
+    ? overallScore(TENNIS_PADEL_CONFIG, answers)
     : totalScore(answers);
   const levelId = isFitness
     ? getMaturityLevel(FITNESS_CONFIG, scoreValue).id
+    : isTennisPadel
+    ? getMaturityLevel(TENNIS_PADEL_CONFIG, scoreValue).id
     : getLevel(scoreValue).id;
 
   let pdfBuffer: Buffer;
   try {
     pdfBuffer = isFitness
       ? await generateFitnessPDF({ name, email, organization, answers })
+      : isTennisPadel
+      ? await generateTennisPadelPDF({ name, email, organization, answers })
       : await generateAssessmentPDF({ name, email, organization, answers });
   } catch (err) {
     console.error("[submit-assessment] PDF generation failed:", err);
@@ -169,13 +199,19 @@ export async function POST(req: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const pdfPrefix = isFitness ? "Self-Audit_Fitness" : "Self-Audit";
+  const pdfPrefix = isFitness
+    ? "Self-Audit_Fitness"
+    : isTennisPadel
+    ? "Self-Audit_TennisPadel"
+    : "Self-Audit";
   const pdfFilename = `${pdfPrefix}_${safeFilename(organization)}.pdf`;
   const pdfBase64 = pdfBuffer.toString("base64");
 
   // (1) User email — delivers the PDF
   const userEmail = isFitness
     ? buildFitnessUserEmail({ name, organization, answers })
+    : isTennisPadel
+    ? buildTennisPadelUserEmail({ name, organization, answers })
     : buildUserEmail({ name, organization, answers });
 
   // (2) Admin notification — to hello@sportspacepro.pl
@@ -188,6 +224,11 @@ export async function POST(req: Request) {
   };
   const adminEmail = isFitness
     ? buildFitnessAdminEmail(adminPayload)
+    : isTennisPadel
+    ? buildTennisPadelAdminEmail({
+        ...adminPayload,
+        discipline: sport as "tennis" | "padel",
+      })
     : buildAdminEmail(adminPayload);
 
   try {
@@ -237,7 +278,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      sport: isFitness ? "fitness" : "football",
+      sport: isFitness ? "fitness" : isTennisPadel ? sport : "football",
       total: scoreValue,
       level: levelId,
     });

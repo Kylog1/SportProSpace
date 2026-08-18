@@ -9,7 +9,7 @@ import { track } from "@vercel/analytics";
 const SPORT_EVENT_NAMES: Record<string, string[]> = {
   football: ["football_selected"],
   fitness: ["fitness_selected"],
-  "tennis-padel": ["tennis_selected", "padel_selected"],
+  "tennis-padel": ["tennis_selected", "padel_selected", "tennis_padel_selected"],
   golf: ["golf_selected"],
   swimming: ["swimming_selected"],
 };
@@ -27,6 +27,11 @@ export function trackSportSelected(sport: string) {
 const SPORT_PREFIX: Record<string, string> = {
   football: "football",
   fitness: "fitness",
+  // Tennis & Padel is one shared audit; both the combined hub card and the
+  // per-discipline pick inside the audit itself roll up to the same prefix.
+  "tennis-padel": "tennis_padel",
+  tennis: "tennis_padel",
+  padel: "tennis_padel",
 };
 
 function sportPrefix(sport: string): string | null {

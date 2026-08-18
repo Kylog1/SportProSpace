@@ -26,7 +26,7 @@ const audiences: {
     icon: Target,
     name: "Tenis i Padel",
     note: "Kluby tenisowe i padlowe",
-    href: "/self-assessment",
+    href: "/self-assessment/tennis-padel",
   },
   {
     icon: Flag,
