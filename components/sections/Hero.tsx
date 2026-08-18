@@ -1,30 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ArrowRight,
-  ShieldCheck,
-  CircleDot,
-  Dumbbell,
-  Target,
-  Flag,
-  Waves,
-  Users,
-} from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackMeetingBooked } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
-
-const DISCIPLINES = [
-  { icon: Dumbbell, label: "Fitness" },
-  { icon: Target, label: "Tenis i padel" },
-  { icon: Flag, label: "Golf" },
-  { icon: Waves, label: "Pływanie" },
-  { icon: CircleDot, label: "Piłka nożna" },
-  { icon: Users, label: "Kluby wielosekcyjne" },
-];
 
 export function Hero() {
   return (
@@ -140,26 +122,6 @@ export function Hero() {
                   </Panel>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* discipline strip — signals breadth beyond a single sport */}
-        <div className="mt-14 border-t border-navy-100 pt-8 md:mt-16 md:pt-10">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-            <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-navy-700">
-              Pracujemy z
-            </span>
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
-              {DISCIPLINES.map(({ icon: Icon, label }) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-2 text-[13.5px] font-medium text-navy-800"
-                >
-                  <Icon className="size-4 text-navy-700" />
-                  {label}
-                </span>
-              ))}
             </div>
           </div>
         </div>
