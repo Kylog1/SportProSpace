@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { trackLeadSubmitted } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -37,6 +38,7 @@ export function ContactForm() {
 
       setStatus("success");
       formEl.reset();
+      trackLeadSubmitted("contact-form");
     } catch {
       setStatus("error");
       setErrorMsg("Brak połączenia. Sprawdź internet i spróbuj ponownie.");

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,17 +10,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sport Space Pro — Diagnoza i rozwój doświadczenia w sporcie",
+  title: "Sport Space Pro — Growth & Experience Intelligence dla sportu",
   description:
-    "Niezależne badania i analiza danych dla akademii sportowych i klubów profesjonalnych. Zrozum, dlaczego zawodnicy i rodzice odchodzą — i co z tym zrobić.",
+    "Pomagamy klubom i organizacjom sportowym — fitness, tenis i padel, golf, pływanie, piłka nożna — zrozumieć doświadczenie klientów i wykorzystać potencjał wzrostu. Self-Audit, badania i analiza danych.",
   metadataBase: new URL("https://sportspacepro.pl"),
   verification: {
     google: "NEbz7XGlE1Uz6qw7iAjD_JceHCQjkbRssrfN_5YIMN4",
   },
   openGraph: {
-    title: "Sport Space Pro",
+    title: "Sport Space Pro — Growth & Experience Intelligence dla sportu",
     description:
-      "Diagnoza i rozwój doświadczenia w sporcie. Badania zawodników, rodziców, członków Twojego klubu.",
+      "Lepsze doświadczenia. Większe zaangażowanie. Realny wzrost. Badania i Self-Audit dla klubów i organizacji sportowych różnych dyscyplin.",
     type: "website",
   },
 };
@@ -32,7 +33,7 @@ const organizationJsonLd = {
   logo: "https://sportspacepro.pl/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hello@sportprospace.eu",
+    email: "hello@sportspacepro.pl",
     contactType: "customer support",
     availableLanguage: "Polish",
   },
@@ -52,6 +53,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );

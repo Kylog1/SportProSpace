@@ -3,36 +3,36 @@ import { ArrowRight } from "lucide-react";
 const steps = [
   {
     n: "01",
-    title: "Analiza organizacji",
-    desc: "Sesja warsztatowa z zarządem klubu, mapowanie procesów i punktów styku z odbiorcami.",
+    title: "Zbieramy dane",
+    desc: "Badamy doświadczenia klientów, członków, zawodników, rodziców i trenerów.",
   },
   {
     n: "02",
-    title: "Badanie doświadczenia",
-    desc: "Anonimowe ankiety zawodników, rodziców, członków Twojego klubu oraz wywiady pogłębione z kluczowymi segmentami.",
+    title: "Znajdujemy problemy",
+    desc: "Analizujemy doświadczenie, zachowania i procesy w Waszej organizacji.",
   },
   {
     n: "03",
-    title: "Analiza danych",
-    desc: "Analiza ilościowa i jakościowa zebranego materiału — segmentacja, korelacje, główne sygnały.",
+    title: "Wskazujemy możliwości",
+    desc: "Pokazujemy, gdzie możecie zwiększyć zaangażowanie, retencję, upsell, cross-sell i przychody.",
   },
   {
     n: "04",
-    title: "Raport + rekomendacje",
-    desc: "Raport zarządczy, mapa priorytetów i konkretny plan działań na najbliższe 12 miesięcy.",
+    title: "Pomagamy wdrożyć zmiany",
+    desc: "Przekładamy wyniki na konkretne działania i mierzymy efekty.",
   },
 ];
 
-export function HowItWorks() {
+export function JakDzialamy() {
   return (
-    <section id="how-it-works" className="border-b border-navy-100 bg-navy-50/40">
+    <section id="jak-dzialamy" className="border-b border-navy-100 bg-navy-50/40">
       <div className="container py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
-            Proces
+            Jak działamy
           </span>
           <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
-            Jak pracujemy — cztery etapy, jeden wynik.
+            Cztery etapy, jeden wynik.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
             Od pierwszej rozmowy do wdrożenia — przejrzysty, mierzalny proces

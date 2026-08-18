@@ -9,7 +9,7 @@ const pillars = [
   {
     icon: Trophy,
     title: "Świat sportu od środka",
-    desc: "Praca z akademiami młodzieżowymi, klubami ligowymi i federacjami — rozumiemy specyfikę środowiska i jego stakeholderów.",
+    desc: "Praca z klubami, akademiami i organizacjami sportowymi różnych dyscyplin — rozumiemy specyfikę środowiska i jego interesariuszy.",
   },
   {
     icon: FileSearch,
@@ -39,7 +39,7 @@ export function About() {
               O nas
             </span>
             <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
-              Łączymy badania rynku ze światem sportu wyczynowego.
+              Łączymy badania rynku ze światem klubów i organizacji sportowych.
             </h2>
             <p className="mt-5 text-[15.5px] leading-relaxed text-muted-foreground">
               Sport Space Pro powstał na styku dwóch dyscyplin: badań

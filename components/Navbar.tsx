@@ -5,13 +5,16 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { trackMeetingBooked } from "@/lib/analytics";
+
+const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 
 const navItems = [
   { href: "/#about", label: "O nas" },
-  { href: "/#how-we-help", label: "Usługi" },
+  { href: "/#jak-dzialamy", label: "Jak działamy" },
   { href: "/self-assessment", label: "Self Assessment" },
   { href: "/artykuly", label: "Artykuły" },
-  { href: "/#certification", label: "Certyfikat" },
+  { href: "/#contact", label: "Kontakt" },
 ];
 
 export function Navbar() {
@@ -40,10 +43,17 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild variant="ghost" size="sm">
-            <Link href="/#contact">Kontakt</Link>
+            <Link
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackMeetingBooked("navbar")}
+            >
+              Umów rozmowę
+            </Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/#contact">Zamów badanie</Link>
+            <Link href="/self-assessment">Zrób darmowy Self-Audit</Link>
           </Button>
         </div>
 
@@ -76,13 +86,21 @@ export function Navbar() {
           ))}
           <div className="mt-2 flex flex-col gap-2 px-3">
             <Button asChild variant="outline" size="sm">
-              <Link href="/#contact" onClick={() => setOpen(false)}>
-                Kontakt
+              <Link
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackMeetingBooked("navbar-mobile");
+                  setOpen(false);
+                }}
+              >
+                Umów rozmowę
               </Link>
             </Button>
             <Button asChild size="sm">
-              <Link href="/#contact" onClick={() => setOpen(false)}>
-                Zamów badanie
+              <Link href="/self-assessment" onClick={() => setOpen(false)}>
+                Zrób darmowy Self-Audit
               </Link>
             </Button>
           </div>

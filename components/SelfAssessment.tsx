@@ -21,6 +21,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
+  trackSelfAuditStarted,
+  trackAuditCompleted,
+  trackAuditResultViewed,
+  trackLeadSubmitted,
+} from "@/lib/analytics";
+import {
   QUESTIONS,
   SCALE,
   SECTIONS as DATA_SECTIONS,
@@ -104,6 +110,9 @@ export function SelfAssessment() {
   function onFormSuccess(email: string) {
     setSubmittedEmail(email);
     setStep("results");
+    trackAuditCompleted("football", level.id);
+    trackLeadSubmitted("self-assessment:football");
+    trackAuditResultViewed("football", level.id);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -111,7 +120,14 @@ export function SelfAssessment() {
 
   return (
     <>
-      {step === "intro" && <IntroBlock onStart={() => setStep("quiz")} />}
+      {step === "intro" && (
+        <IntroBlock
+          onStart={() => {
+            trackSelfAuditStarted("football");
+            setStep("quiz");
+          }}
+        />
+      )}
 
       {step === "quiz" && (
         <QuizBlock

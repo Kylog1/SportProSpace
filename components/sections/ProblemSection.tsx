@@ -4,7 +4,7 @@ const problems = [
   {
     icon: MessageSquareOff,
     title: "Odejścia bez feedbacku",
-    desc: "Zawodnicy i rodzice rezygnują bez wyjaśnienia. Klub traci wiedzę, której potrzebuje, by reagować.",
+    desc: "Klienci, członkowie i zawodnicy rezygnują bez wyjaśnienia. Klub traci wiedzę, której potrzebuje, by reagować.",
   },
   {
     icon: Database,
@@ -36,7 +36,7 @@ export function ProblemSection() {
             Większość klubów nie wie, dlaczego ludzie odchodzą.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
-            Doświadczenie zawodnika, rodzica i trenera decyduje o retencji,
+            Doświadczenie klienta, członka i zawodnika decyduje o retencji,
             reputacji i przychodach. W praktyce nikt go systematycznie nie mierzy.
           </p>
         </div>

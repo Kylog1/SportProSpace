@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { SelfAssessment } from "@/components/SelfAssessment";
+import { SelfAssessmentHub } from "@/components/SelfAssessmentHub";
 
 export const metadata: Metadata = {
-  title:
-    "Self Assessment dla klubów i akademii sportowych — Sport Space Pro",
+  title: "Self-Audit dla klubów i organizacji sportowych — Sport Space Pro",
   description:
-    "12 pytań o procesy, nie o opinie. W 5 minut sprawdź, gdzie Twój klub realnie traci zawodników, rodziców i pieniądze. Z kalkulatorem strat z odejść.",
+    "Sprawdź potencjał swojego klubu. Self-Audit dopasowany do dyscypliny — piłka nożna, fitness, tenis i padel, golf, pływanie i inne organizacje sportowe.",
+  alternates: {
+    canonical: "https://sportspacepro.pl/self-assessment",
+  },
   openGraph: {
-    title: "Self Assessment dla klubów i akademii sportowych",
+    title: "Self-Audit dla klubów i organizacji sportowych",
     description:
-      "Sprawdź, ilu zawodników stracicie w tym sezonie — zanim odejdą. 12 pytań, 4 poziomy dojrzałości organizacji, kalkulator strat.",
+      "Wybierz swoją dyscyplinę i sprawdź w kilka minut, gdzie Twoja organizacja jest mocna, a gdzie traci potencjał.",
     type: "website",
   },
 };
 
-export default function SelfAssessmentPage() {
+export default function SelfAssessmentHubPage() {
   return (
     <>
       <Navbar />
       <main>
-        <SelfAssessment />
+        <SelfAssessmentHub />
       </main>
       <Footer />
     </>

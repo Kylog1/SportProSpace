@@ -12,8 +12,9 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Niezależna platforma diagnozy doświadczenia w sporcie. Badania,
-              analiza danych i certyfikacja jakości dla akademii i klubów.
+              Growth &amp; Experience Intelligence dla klubów i organizacji
+              sportowych. Badania, analiza danych i Self-Audit dopasowane do
+              Twojej dyscypliny.
             </p>
           </div>
 
@@ -23,18 +24,18 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-sm text-navy-700">
               <li>
-                <Link href="#how-we-help" className="hover:text-navy-950">
-                  Usługi
+                <Link href="/#jak-dzialamy" className="hover:text-navy-950">
+                  Jak działamy
                 </Link>
               </li>
               <li>
-                <Link href="#certification" className="hover:text-navy-950">
-                  Certyfikat
+                <Link href="/#dla-kogo" className="hover:text-navy-950">
+                  Dla kogo
                 </Link>
               </li>
               <li>
-                <Link href="#sports" className="hover:text-navy-950">
-                  Dyscypliny
+                <Link href="/self-assessment" className="hover:text-navy-950">
+                  Self-Audit
                 </Link>
               </li>
             </ul>

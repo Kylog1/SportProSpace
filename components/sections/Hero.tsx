@@ -1,7 +1,30 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  ShieldCheck,
+  CircleDot,
+  Dumbbell,
+  Target,
+  Flag,
+  Waves,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { trackMeetingBooked } from "@/lib/analytics";
+
+const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
+
+const DISCIPLINES = [
+  { icon: Dumbbell, label: "Fitness" },
+  { icon: Target, label: "Tenis i padel" },
+  { icon: Flag, label: "Golf" },
+  { icon: Waves, label: "Pływanie" },
+  { icon: CircleDot, label: "Piłka nożna" },
+  { icon: Users, label: "Kluby wielosekcyjne" },
+];
 
 export function Hero() {
   return (
@@ -29,26 +52,33 @@ export function Hero() {
             </Badge>
 
             <h1 className="text-balance text-4xl font-semibold leading-[1.06] tracking-tightest text-navy-950 sm:text-5xl lg:text-[52px] xl:text-[58px]">
-              Wiesz, dlaczego zawodnicy
-              <span className="text-navy-800"> odchodzą </span>
-              z Twojej akademii lub klubu?
+              Lepsze doświadczenia.
+              <span className="text-navy-800"> Większe zaangażowanie.</span>{" "}
+              Realny wzrost.
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-              Pomagamy klubom sportowym i akademiom zrozumieć i poprawić
-              doświadczenie zawodników, rodziców i trenerów poprzez niezależne
-              badania i analizę danych.
+              Pomagamy klubom i organizacjom sportowym zrozumieć doświadczenia
+              członków, zawodników i klientów — i znaleźć obszary, które
+              ograniczają wzrost.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link href="#contact">
-                  Zamów badanie
+                <Link href="/self-assessment">
+                  Zrób darmowy Self-Audit
                   <ArrowRight />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="#how-we-help">Zobacz jak działamy</Link>
+                <Link
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackMeetingBooked("hero")}
+                >
+                  Umów rozmowę
+                </Link>
               </Button>
             </div>
 
@@ -80,7 +110,7 @@ export function Hero() {
                     <div className="size-2 rounded-full bg-navy-200" />
                   </div>
                   <span className="text-[11px] font-medium text-muted-foreground">
-                    NPS Report — Q2 2026
+                    Experience Report — Q2 2026
                   </span>
                   <span className="text-[11px] text-muted-foreground">
                     412 respondentów
@@ -90,8 +120,8 @@ export function Hero() {
                 {/* stats row */}
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   <Stat label="Net Promoter Score" value="+62" delta="+9 vs Q1" />
-                  <Stat label="Retencja zawodników" value="87%" delta="+4.2 pp" />
-                  <Stat label="Zaufanie rodziców" value="4.5/5" delta="+0.3" />
+                  <Stat label="Retencja członków" value="87%" delta="+4.2 pp" />
+                  <Stat label="Satysfakcja klientów" value="4.5/5" delta="+0.3" />
                 </div>
 
                 {/* charts row */}
@@ -99,19 +129,38 @@ export function Hero() {
                   <Panel title="Powody odejść">
                     <Bar label="Brak feedbacku" value={68} />
                     <Bar label="Komunikacja z trenerami" value={54} />
-                    <Bar label="Organizacja treningów" value={37} />
-                    <Bar label="Atmosfera w grupie" value={22} />
+                    <Bar label="Organizacja zajęć" value={37} />
+                    <Bar label="Atmosfera" value={22} />
                   </Panel>
                   <Panel title="NPS wg segmentu">
-                    <Bar label="Zawodnicy U-12" value={82} accent />
-                    <Bar label="Zawodnicy U-16" value={71} accent />
+                    <Bar label="Członkowie" value={82} accent />
+                    <Bar label="Nowi klienci" value={71} accent />
                     <Bar label="Rodzice" value={66} accent />
                     <Bar label="Trenerzy" value={59} accent />
                   </Panel>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+        {/* discipline strip — signals breadth beyond a single sport */}
+        <div className="mt-14 border-t border-navy-100 pt-8 md:mt-16 md:pt-10">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+            <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+              Pracujemy z
+            </span>
+            <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+              {DISCIPLINES.map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-2 text-[13.5px] font-medium text-navy-800"
+                >
+                  <Icon className="size-4 text-navy-700" />
+                  {label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
