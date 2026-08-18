@@ -21,20 +21,42 @@ export function trackSportSelected(sport: string) {
   }
 }
 
+// Each funnel step fires a generic event (comparable across disciplines) plus a
+// discipline-prefixed one (easy to filter in the Vercel dashboard). The generic
+// names predate the multi-sport rollout and must not be removed.
+const SPORT_PREFIX: Record<string, string> = {
+  football: "football",
+  fitness: "fitness",
+};
+
+function sportPrefix(sport: string): string | null {
+  return SPORT_PREFIX[sport] ?? null;
+}
+
 export function trackSelfAuditStarted(sport: string) {
   track("self_audit_started", { sport });
+  const p = sportPrefix(sport);
+  if (p) track(`${p}_audit_started`);
 }
 
 export function trackAuditCompleted(sport: string, level: string) {
   track("audit_completed", { sport, level });
+  const p = sportPrefix(sport);
+  if (p) track(`${p}_audit_completed`, { level });
 }
 
 export function trackAuditResultViewed(sport: string, level: string) {
   track("audit_result_viewed", { sport, level });
+  const p = sportPrefix(sport);
+  if (p) track(`${p}_result_viewed`, { level });
 }
 
 export function trackLeadSubmitted(source: string) {
   track("lead_submitted", { source });
+  // source looks like "self-assessment:fitness" or "notify-sport:golf"
+  const sport = source.includes(":") ? source.split(":")[1] : "";
+  const p = sportPrefix(sport);
+  if (p) track(`${p}_lead_submitted`);
 }
 
 export function trackMeetingBooked(source: string) {

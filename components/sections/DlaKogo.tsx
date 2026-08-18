@@ -21,7 +21,7 @@ const audiences: {
     icon: Dumbbell,
     name: "Fitness i Wellness",
     note: "Siłownie, studia fitness, kluby wellness",
-    href: "/self-assessment",
+    href: "/self-assessment/fitness",
   },
   {
     icon: Target,

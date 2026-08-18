@@ -4,19 +4,33 @@ import { z } from "zod";
 import { QUESTIONS, getLevel, totalScore } from "@/lib/assessment/data";
 import { generateAssessmentPDF } from "@/lib/assessment/pdf";
 import { buildAdminEmail, buildUserEmail } from "@/lib/assessment/emails";
+import { FITNESS_CONFIG } from "@/lib/assessment/fitness";
+import { overallScore, getMaturityLevel } from "@/lib/assessment/types";
+import { generateFitnessPDF } from "@/lib/assessment/fitness-pdf";
+import {
+  buildFitnessAdminEmail,
+  buildFitnessUserEmail,
+} from "@/lib/assessment/fitness-emails";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
 
 // Build a Zod schema where every question id is a required 1-5 integer.
-const answersShape: Record<string, z.ZodNumber> = {};
-for (const q of QUESTIONS) {
-  answersShape[q.id] = z.number().int().min(1).max(5);
+function answersSchemaFor(ids: string[]) {
+  const shape: Record<string, z.ZodNumber> = {};
+  for (const id of ids) {
+    shape[id] = z.number().int().min(1).max(5);
+  }
+  return z.object(shape);
 }
-const AnswersSchema = z.object(answersShape);
 
-const SubmitSchema = z.object({
+const FootballAnswersSchema = answersSchemaFor(QUESTIONS.map((q) => q.id));
+const FitnessAnswersSchema = answersSchemaFor(
+  FITNESS_CONFIG.questions.map((q) => q.id)
+);
+
+const BaseFields = {
   name: z.string().trim().min(2, "Podaj imię i nazwisko").max(120),
   email: z.string().trim().email("Niepoprawny adres email").max(200),
   organization: z.string().trim().min(2, "Podaj nazwę klubu / organizacji").max(200),
@@ -24,9 +38,22 @@ const SubmitSchema = z.object({
   consent: z.boolean().refine((v) => v === true, {
     message: "Wymagana zgoda na otrzymanie raportu",
   }),
-  answers: AnswersSchema,
   // honeypot — bots fill this; real users leave it empty
   website: z.string().max(0).optional(),
+};
+
+// `sport` is optional and defaults to football, so any client that predates
+// the multi-discipline rollout keeps working unchanged.
+const FootballSchema = z.object({
+  ...BaseFields,
+  sport: z.literal("football").optional(),
+  answers: FootballAnswersSchema,
+});
+
+const FitnessSchema = z.object({
+  ...BaseFields,
+  sport: z.literal("fitness"),
+  answers: FitnessAnswersSchema,
 });
 
 function safeFilename(s: string): string {
@@ -64,7 +91,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Niepoprawny format danych" }, { status: 400 });
   }
 
-  const parsed = SubmitSchema.safeParse(json);
+  // Pick the schema by discipline. Anything without an explicit `sport`
+  // is Football, exactly as before.
+  const isFitness =
+    typeof json === "object" &&
+    json !== null &&
+    (json as { sport?: unknown }).sport === "fitness";
+
+  const questionIds = isFitness
+    ? FITNESS_CONFIG.questions.map((q) => q.id)
+    : QUESTIONS.map((q) => q.id);
+
+  const parsed = isFitness
+    ? FitnessSchema.safeParse(json)
+    : FootballSchema.safeParse(json);
+
   if (!parsed.success) {
     console.error(
       "[submit-assessment] validation failed:",
@@ -80,7 +121,7 @@ export async function POST(req: Request) {
         issue.path[0] === "answers" &&
         typeof issue.path[1] === "string"
       ) {
-        const idx = QUESTIONS.findIndex((q) => q.id === issue.path[1]);
+        const idx = questionIds.indexOf(issue.path[1]);
         if (idx !== -1) missingAnswerNums.push(idx + 1);
       }
     }
@@ -105,17 +146,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   }
 
-  const total = totalScore(answers);
-  const level = getLevel(total);
+  // Score, report and emails are per-discipline. Football keeps its raw
+  // 12-60 scale; Fitness reports a normalised 0-100 score.
+  const scoreValue = isFitness
+    ? overallScore(FITNESS_CONFIG, answers)
+    : totalScore(answers);
+  const levelId = isFitness
+    ? getMaturityLevel(FITNESS_CONFIG, scoreValue).id
+    : getLevel(scoreValue).id;
 
   let pdfBuffer: Buffer;
   try {
-    pdfBuffer = await generateAssessmentPDF({
-      name,
-      email,
-      organization,
-      answers,
-    });
+    pdfBuffer = isFitness
+      ? await generateFitnessPDF({ name, email, organization, answers })
+      : await generateAssessmentPDF({ name, email, organization, answers });
   } catch (err) {
     console.error("[submit-assessment] PDF generation failed:", err);
     return NextResponse.json(
@@ -125,20 +169,26 @@ export async function POST(req: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const pdfFilename = `Self-Audit_${safeFilename(organization)}.pdf`;
+  const pdfPrefix = isFitness ? "Self-Audit_Fitness" : "Self-Audit";
+  const pdfFilename = `${pdfPrefix}_${safeFilename(organization)}.pdf`;
   const pdfBase64 = pdfBuffer.toString("base64");
 
   // (1) User email — delivers the PDF
-  const userEmail = buildUserEmail({ name, organization, answers });
+  const userEmail = isFitness
+    ? buildFitnessUserEmail({ name, organization, answers })
+    : buildUserEmail({ name, organization, answers });
 
   // (2) Admin notification — to hello@sportspacepro.pl
-  const adminEmail = buildAdminEmail({
+  const adminPayload = {
     name,
     email,
     organization,
     phone: phone || undefined,
     answers,
-  });
+  };
+  const adminEmail = isFitness
+    ? buildFitnessAdminEmail(adminPayload)
+    : buildAdminEmail(adminPayload);
 
   try {
     const userResult = await resend.emails.send({
@@ -187,8 +237,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      total,
-      level: level.id,
+      sport: isFitness ? "fitness" : "football",
+      total: scoreValue,
+      level: levelId,
     });
   } catch (err) {
     console.error("[submit-assessment] Unexpected error:", err);
