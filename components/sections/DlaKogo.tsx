@@ -71,7 +71,7 @@ export function DlaKogo() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 md:grid-cols-3">
           {audiences.map(({ icon: Icon, name, note, href }) => (
             <Link
               key={name}
