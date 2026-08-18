@@ -49,5 +49,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...articleEntries,
+    {
+      url: `${BASE_URL}/polityka-prywatnosci`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/regulamin`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 }
