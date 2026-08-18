@@ -125,7 +125,7 @@ export async function POST(req: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const pdfFilename = `SelfAssessment_${safeFilename(organization)}.pdf`;
+  const pdfFilename = `Self-Audit_${safeFilename(organization)}.pdf`;
   const pdfBase64 = pdfBuffer.toString("base64");
 
   // (1) User email — delivers the PDF

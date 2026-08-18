@@ -210,7 +210,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
           <div className="mx-auto max-w-3xl">
             <Badge variant="soft" className="mb-5 gap-1.5 px-3 py-1">
               <ShieldCheck className="size-3.5" />
-              Self Assessment dla klubów i akademii
+              Self-Audit dla klubów i akademii
             </Badge>
 
             <h1 className="text-balance text-[36px] font-semibold leading-[1.05] tracking-tightest text-navy-950 sm:text-[44px] lg:text-[52px]">
@@ -227,7 +227,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Button size="lg" onClick={onStart}>
-                Rozpocznij assessment
+                Rozpocznij Self-Audit
                 <ArrowRight />
               </Button>
               <Button asChild size="lg" variant="outline">
@@ -275,10 +275,10 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
               Teraz pytanie nie brzmi: <em>czy macie problem</em>. Pytanie
               brzmi: <strong>gdzie dokładnie wycieka i kto za to odpowiada.</strong>
               <br />
-              Na to odpowie Self Assessment.
+              Na to odpowie Self-Audit.
             </p>
             <Button size="lg" onClick={onStart} className="mt-6">
-              Przejdź do assessmentu
+              Przejdź do Self-Auditu
               <ArrowRight />
             </Button>
           </div>
@@ -293,12 +293,12 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
               Dwie perspektywy. Obie potrzebne.
             </span>
             <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950">
-              Self Assessment to <em className="not-italic text-navy-800">Wy o sobie.</em>
+              Self-Audit to <em className="not-italic text-navy-800">Wy o sobie.</em>
               <br />
               Badanie satysfakcji to <em className="not-italic text-navy-800">oni o Was.</em>
             </h2>
             <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
-              Self Assessment, który właśnie wypełnisz, pokazuje obraz klubu
+              Self-Audit, który właśnie wypełnisz, pokazuje obraz klubu
               z perspektywy zarządu i sztabu. To Wasze hipotezy o ryzykach.
               Badanie satysfakcji weryfikuje te hipotezy u rodziców, zawodników
               i trenerów - czyli u tych, dla których prowadzicie klub.
@@ -332,7 +332,7 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl border border-navy-100 bg-navy-50/40 p-6">
                 <div className="text-[11px] font-semibold uppercase tracking-wider text-navy-700">
-                  Self Assessment (ten kwestionariusz)
+                  Self-Audit (ten kwestionariusz)
                 </div>
                 <ul className="mt-3 space-y-2 text-[14px] leading-relaxed text-navy-900">
                   <li>· 12 pytań, 2 minuty</li>
@@ -349,13 +349,13 @@ function IntroBlock({ onStart }: { onStart: () => void }) {
                   <li>· Niezależne ankiety rodziców, zawodników, trenerów</li>
                   <li>· Pełna metodologia + raport + rekomendacje</li>
                   <li>· Mówi, co naprawdę myślą i czują Wasi odbiorcy</li>
-                  <li>· To, czego Self Assessment nie potrafi zobaczyć</li>
+                  <li>· To, czego Self-Audit nie potrafi zobaczyć</li>
                 </ul>
               </div>
             </div>
 
             <p className="mt-8 text-center text-[15px] leading-relaxed text-navy-900">
-              Najpierw Self Assessment - żeby wiedzieć, <strong>czego szukać</strong>.<br />
+              Najpierw Self-Audit - żeby wiedzieć, <strong>czego szukać</strong>.<br />
               Potem badanie - żeby wiedzieć, <strong>jak to wygląda naprawdę</strong>.
             </p>
           </div>
@@ -386,11 +386,11 @@ function ComparePair({
         </span>
       </div>
       <div className="grid divide-y divide-navy-100 md:grid-cols-2 md:divide-x md:divide-y-0">
-        {/* LEFT - Self Assessment */}
+        {/* LEFT - Self-Audit */}
         <div className="p-5 sm:p-6">
           <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-navy-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-navy-800">
             <span className="size-1.5 rounded-full bg-navy-800" />
-            Self Assessment · pyta zarząd
+            Self-Audit · pyta zarząd
           </div>
           <p className="text-[14.5px] font-medium leading-snug text-navy-950">
             {leftQ}
@@ -588,7 +588,7 @@ function TeaserBlock({
           <div className="mb-6 flex items-center justify-between">
             <Badge variant="soft" className="gap-1.5 px-3 py-1">
               <CheckCircle2 className="size-3.5" />
-              Assessment ukończony
+              Self-Audit ukończony
             </Badge>
             <Button variant="ghost" size="sm" onClick={onBack}>
               <ArrowLeft />
@@ -1249,7 +1249,7 @@ function ResultsBlock({
             <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed text-navy-200">
               Badanie satysfakcji to ustrukturyzowane, niezależne ankiety
               wśród Waszych odbiorców + analiza wyników na tle benchmarków.
-              Tam, gdzie Self Assessment kończy listę pytań, badanie zaczyna
+              Tam, gdzie Self-Audit kończy listę pytań, badanie zaczyna
               dostarczać konkretne odpowiedzi.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -1269,7 +1269,7 @@ function ResultsBlock({
               </Button>
             </div>
             <p className="mt-6 text-[13px] text-navy-300">
-              Raport PDF z wyniku Self Assessment masz już w skrzynce - na rozmowie
+              Raport PDF z wyniku Self-Auditu masz już w skrzynce - na rozmowie
               omówimy go i zaproponujemy zakres badania dopasowanego do wyniku.
             </p>
           </div>
@@ -1475,7 +1475,7 @@ function LeakyBucketCalculator({
       {embedded && (
         <p className="mt-5 text-[14px] leading-relaxed text-navy-800">
           To liczba, której zwykle nikt w zarządzie nie wypowiada na głos.
-          Self Assessment pokazuje, <strong>gdzie dokładnie</strong> ta woda wycieka.
+          Self-Audit pokazuje, <strong>gdzie dokładnie</strong> ta woda wycieka.
         </p>
       )}
     </div>

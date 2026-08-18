@@ -1,4 +1,4 @@
-// Email templates for the Self Assessment lead magnet.
+// Email templates for the Self-Audit lead magnet.
 // Two emails: (a) user — delivery of the PDF, (b) admin — notification at hello@sportspacepro.pl
 
 import {
@@ -39,13 +39,13 @@ export function buildUserEmail(input: UserEmailInput): {
   const level = getLevel(total);
   const firstName = input.name.split(" ")[0] || input.name;
 
-  const subject = `Twój wynik Self Assessment - ${level.name}`;
+  const subject = `Twój wynik Self-Auditu - ${level.name}`;
 
   const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;max-width:580px;margin:0 auto;padding:32px 24px;color:#0f172a;background:#ffffff;">
   <div style="border-bottom:1px solid #e2e8f0;padding-bottom:20px;margin-bottom:24px;">
     <div style="font-size:13px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;">Sport Space Pro</div>
-    <div style="font-size:20px;font-weight:600;color:#1e3a8a;margin-top:6px;">Twój wynik Self Assessment</div>
+    <div style="font-size:20px;font-weight:600;color:#1e3a8a;margin-top:6px;">Twój wynik Self-Auditu</div>
   </div>
 
   <p style="font-size:15px;line-height:1.65;margin:0 0 16px;">
@@ -53,7 +53,7 @@ export function buildUserEmail(input: UserEmailInput): {
   </p>
 
   <p style="font-size:15px;line-height:1.65;margin:0 0 20px;">
-    Dziękuję za wypełnienie Self Assessment dla <strong>${escapeHtml(input.organization)}</strong>.
+    Dziękuję za wypełnienie Self-Auditu dla <strong>${escapeHtml(input.organization)}</strong>.
     Pełny raport (3 strony PDF) znajdziesz w załączniku tej wiadomości.
   </p>
 
@@ -77,7 +77,7 @@ export function buildUserEmail(input: UserEmailInput): {
     <li>Wynik w 4 sekcjach + Wasza pozycja na skali dojrzałości</li>
     <li>Ryzyka i typowe problemy dla Waszego poziomu</li>
     <li>3 najsłabsze pytania - gdzie zacząć w pierwszej kolejności</li>
-    <li>Co dalej: jak Self Assessment łączy się z badaniem satysfakcji</li>
+    <li>Co dalej: jak Self-Audit łączy się z badaniem satysfakcji</li>
   </ul>
 
   <div style="background:#1e3a8a;border-radius:8px;padding:24px;margin:28px 0;">
@@ -86,7 +86,7 @@ export function buildUserEmail(input: UserEmailInput): {
     </div>
     <div style="font-size:14px;line-height:1.6;color:#cbd5e1;margin-bottom:16px;">
       30 minut. Pokażę, jak skalibrować pełne badanie satysfakcji pod Waszą organizację
-      i co wyjdzie z porównania z Self Assessment.
+      i co wyjdzie z porównania z Self-Auditem.
     </div>
     <a href="https://calendly.com/grzyb-krzysiek/new-meeting"
        style="display:inline-block;background:#ffffff;color:#1e3a8a;font-weight:600;font-size:14px;padding:11px 22px;border-radius:6px;text-decoration:none;">
@@ -104,7 +104,7 @@ export function buildUserEmail(input: UserEmailInput): {
   </p>
 
   <div style="border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px;font-size:11px;color:#94a3b8;line-height:1.5;">
-    Otrzymujesz tę wiadomość, ponieważ wypełniłeś/aś Self Assessment na sportspacepro.pl.
+    Otrzymujesz tę wiadomość, ponieważ wypełniłeś/aś Self-Audit na sportspacepro.pl.
   </div>
 </div>
   `.trim();
@@ -112,7 +112,7 @@ export function buildUserEmail(input: UserEmailInput): {
   const text = [
     `Cześć ${firstName},`,
     ``,
-    `Dziękuję za wypełnienie Self Assessment dla ${input.organization}.`,
+    `Dziękuję za wypełnienie Self-Auditu dla ${input.organization}.`,
     `Pełny raport (3 strony PDF) znajdziesz w załączniku tej wiadomości.`,
     ``,
     `WYNIK: ${total} / ${MAX_TOTAL}`,
@@ -122,7 +122,7 @@ export function buildUserEmail(input: UserEmailInput): {
     `- Wynik w 4 sekcjach + Wasza pozycja na skali dojrzałości`,
     `- Ryzyka i typowe problemy dla Waszego poziomu`,
     `- 3 najsłabsze pytania - gdzie zacząć w pierwszej kolejności`,
-    `- Co dalej: jak Self Assessment łączy się z badaniem satysfakcji`,
+    `- Co dalej: jak Self-Audit łączy się z badaniem satysfakcji`,
     ``,
     `Chcesz porozmawiać o wynikach?`,
     `30 minut: https://calendly.com/grzyb-krzysiek/new-meeting`,
@@ -157,7 +157,7 @@ export function buildAdminEmail(input: AdminEmailInput): {
   const level = getLevel(total);
   const weakest = topRisks(input.answers, 3);
 
-  const subject = `Nowy lead (Self Assessment) - ${input.organization} - ${level.name} (${total}/${MAX_TOTAL})`;
+  const subject = `Nowy lead (Self-Audit) - ${input.organization} - ${level.name} (${total}/${MAX_TOTAL})`;
 
   const sectionRows = SECTIONS.map((s) => {
     const r = sectionScore(input.answers, s.id);
@@ -181,7 +181,7 @@ export function buildAdminEmail(input: AdminEmailInput): {
 
   const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#0f172a;">
-  <h2 style="font-size:18px;font-weight:600;margin:0 0 6px;">Nowy lead - Self Assessment</h2>
+  <h2 style="font-size:18px;font-weight:600;margin:0 0 6px;">Nowy lead - Self-Audit</h2>
   <p style="margin:0 0 20px;color:#64748b;font-size:13px;">sportspacepro.pl/self-assessment</p>
 
   <div style="background:#f8fafc;border-left:4px solid #1e3a8a;padding:16px;border-radius:6px;margin-bottom:20px;">
@@ -216,7 +216,7 @@ export function buildAdminEmail(input: AdminEmailInput): {
   `.trim();
 
   const text = [
-    `Nowy lead - Self Assessment (sportspacepro.pl)`,
+    `Nowy lead - Self-Audit (sportspacepro.pl)`,
     ``,
     `WYNIK: ${total} / ${MAX_TOTAL} - ${level.name}`,
     `${level.short}`,

@@ -12,7 +12,7 @@ const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 const navItems = [
   { href: "/#about", label: "O nas" },
   { href: "/#jak-dzialamy", label: "Jak działamy" },
-  { href: "/self-assessment", label: "Self Assessment" },
+  { href: "/self-assessment", label: "Self-Audit" },
   { href: "/artykuly", label: "Artykuły" },
   { href: "/#contact", label: "Kontakt" },
 ];

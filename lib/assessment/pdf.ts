@@ -1,4 +1,4 @@
-// Server-side PDF generator for Self Assessment results.
+// Server-side PDF generator for Self-Audit results.
 // Imports the shared domain data and renders a 3-page PDF with PDFKit.
 
 import path from "path";
@@ -232,9 +232,9 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
         margin: 0,
         bufferPages: true,
         info: {
-          Title: "Self Assessment - Sport Space Pro",
+          Title: "Self-Audit - Sport Space Pro",
           Author: "Sport Space Pro",
-          Subject: `Wyniki Self Assessment - ${input.organization}`,
+          Subject: `Wyniki Self-Auditu - ${input.organization}`,
         },
       });
 
@@ -258,7 +258,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
 
       drawHeader(
         doc,
-        "Self Assessment",
+        "Self-Audit",
         `${input.organization} - ${formatDateTodayPL()}`
       );
 
@@ -463,7 +463,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
       doc.font(FONT_REG).fontSize(10).fillColor(COLORS.white).fillOpacity(0.85)
         .text(
           "Pokażę, jak skalibrować badanie satysfakcji pod Waszą organizację " +
-          "i co realnie wyjdzie z porównania z Self Assessment.",
+          "i co realnie wyjdzie z porównania z Self-Auditem.",
           ML + 24, y + 42, { width: CW - 48 }
         );
 
