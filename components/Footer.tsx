@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -70,13 +71,42 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-navy-100 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
           <span>© {new Date().getFullYear()} Sport Space Pro. Wszystkie prawa zastrzeżone.</span>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             <Link href="/polityka-prywatnosci" className="hover:text-navy-900">
               Polityka prywatności
             </Link>
             <Link href="/regulamin" className="hover:text-navy-900">
               Regulamin
             </Link>
+            <div className="flex items-center gap-3 border-l border-navy-100 pl-5">
+              <a
+                href="https://www.linkedin.com/company/sport-space-pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-navy-700 hover:text-navy-950"
+              >
+                <Linkedin className="size-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/sport_space_pro/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-navy-700 hover:text-navy-950"
+              >
+                <Instagram className="size-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61593570542780"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="text-navy-700 hover:text-navy-950"
+              >
+                <Facebook className="size-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
