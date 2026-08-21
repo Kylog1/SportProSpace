@@ -41,7 +41,7 @@ export function CoBadamy() {
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
             Nie patrzymy na pojedynczy moment. Analizujemy całą ścieżkę
-            klienta — od pierwszego kontaktu po polecenie.
+            klienta, od pierwszego kontaktu po polecenie.
           </p>
         </div>
 

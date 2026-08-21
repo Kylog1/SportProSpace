@@ -1,6 +1,6 @@
 // Email templates for the Tennis & Padel Self-Audit lead magnet.
 // Mirrors lib/assessment/fitness-emails.ts. The only addition is `discipline`
-// (tennis | padel) — one shared audit, but the admin email records which of
+// (tennis | padel), one shared audit, but the admin email records which of
 // the two the visitor actually picked, so results can be split out later.
 
 import { TENNIS_PADEL_CONFIG } from "./tennis-padel";

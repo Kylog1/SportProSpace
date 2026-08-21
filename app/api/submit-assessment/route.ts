@@ -47,7 +47,7 @@ const BaseFields = {
   consent: z.boolean().refine((v) => v === true, {
     message: "Wymagana zgoda na otrzymanie raportu",
   }),
-  // honeypot — bots fill this; real users leave it empty
+  // honeypot, bots fill this; real users leave it empty
   website: z.string().max(0).optional(),
 };
 
@@ -65,7 +65,7 @@ const FitnessSchema = z.object({
   answers: FitnessAnswersSchema,
 });
 
-// One shared audit for both disciplines — `sport` records which one the
+// One shared audit for both disciplines, `sport` records which one the
 // visitor actually picked, so results can be analysed separately later.
 const TennisPadelSchema = z.object({
   ...BaseFields,
@@ -165,7 +165,7 @@ export async function POST(req: Request) {
   const { name, email, organization, phone, answers, website } = parsed.data;
   const sport = "sport" in parsed.data ? parsed.data.sport : undefined;
 
-  // Honeypot caught a bot — silently accept, don't send anything
+  // Honeypot caught a bot, silently accept, don't send anything
   if (website && website.length > 0) {
     return NextResponse.json({ success: true });
   }
@@ -207,14 +207,14 @@ export async function POST(req: Request) {
   const pdfFilename = `${pdfPrefix}_${safeFilename(organization)}.pdf`;
   const pdfBase64 = pdfBuffer.toString("base64");
 
-  // (1) User email — delivers the PDF
+  // (1) User email, delivers the PDF
   const userEmail = isFitness
     ? buildFitnessUserEmail({ name, organization, answers })
     : isTennisPadel
     ? buildTennisPadelUserEmail({ name, organization, answers })
     : buildUserEmail({ name, organization, answers });
 
-  // (2) Admin notification — to hello@sportspacepro.pl
+  // (2) Admin notification, to hello@sportspacepro.pl
   const adminPayload = {
     name,
     email,
@@ -255,7 +255,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Admin notification — fire & don't block user response on failure
+    // Admin notification, fire & don't block user response on failure
     try {
       await resend.emails.send({
         from: "Sport Space Pro <noreply@footlog.pl>",

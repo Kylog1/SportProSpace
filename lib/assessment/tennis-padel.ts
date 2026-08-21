@@ -162,7 +162,7 @@ const questions: QuestionDef<TennisPadelCategoryId>[] = [
   },
 ];
 
-// Identical model to lib/assessment/fitness.ts — same ids, ranges and descriptions.
+// Identical model to lib/assessment/fitness.ts, same ids, ranges and descriptions.
 const levels: MaturityLevel[] = [
   {
     id: "reaktywny",

@@ -123,7 +123,7 @@ export default function ArticulyPage() {
               ))}
             </div>
 
-            {/* Results count — aria-live announces changes to screen readers */}
+            {/* Results count, aria-live announces changes to screen readers */}
             <p
               aria-live="polite"
               aria-atomic="true"

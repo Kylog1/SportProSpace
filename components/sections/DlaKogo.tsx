@@ -66,7 +66,7 @@ export function DlaKogo() {
             Pracujemy z organizacjami w wielu dyscyplinach.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
-            Metodologia jest uniwersalna — adaptujemy ją do specyfiki danej
+            Metodologia jest uniwersalna. Adaptujemy ją do specyfiki danej
             dyscypliny, struktury klubu i segmentu odbiorców.
           </p>
         </div>

@@ -81,7 +81,7 @@ Raport PDF (6 stron) jest dostępny do pobrania za darmo, bez zostawiania danych
     content: `
 ## Dlaczego zarządy nie inwestują w badania
 
-Badanie NPS kosztuje. Ma cenę, termin i wymaga czasu zarządu. Odejście zawodnika nie ma faktury — jest rozmyte w miesięcznym raporcie zapisów i wygląda jak pojedynczy, mało istotny wiersz w arkuszu. Dlatego łatwiej odłożyć badanie satysfakcji niż policzyć, ile ten "mało istotny wiersz" realnie kosztuje.
+Badanie NPS kosztuje. Ma cenę, termin i wymaga czasu zarządu. Odejście zawodnika nie ma faktury. Jest rozmyte w miesięcznym raporcie zapisów i wygląda jak pojedynczy, mało istotny wiersz w arkuszu. Dlatego łatwiej odłożyć badanie satysfakcji niż policzyć, ile ten "mało istotny wiersz" realnie kosztuje.
 
 Problem w tym, że odejście zawodnika nigdy nie jest tylko utratą jednej opłaty miesięcznej. To utracony przychód przez cały pozostały okres, w którym zawodnik mógłby trenować, utracona rekomendacja do rodziny i znajomych oraz koszt pozyskania kogoś na jego miejsce.
 
@@ -89,11 +89,11 @@ Problem w tym, że odejście zawodnika nigdy nie jest tylko utratą jednej opła
 
 ### 1. Utracony przychód (LTV)
 
-Jeśli zawodnik płaci 250 zł miesięcznie i statystycznie zostaje w klubie średnio 3 lata, jego wartość życiowa (LTV) to około 9 000 zł. Odejście po roku zamiast po trzech oznacza utratę dwóch trzecich tej kwoty — około 6 000 zł, które nigdy nie wpłyną na konto klubu.
+Jeśli zawodnik płaci 250 zł miesięcznie i statystycznie zostaje w klubie średnio 3 lata, jego wartość życiowa (LTV) to około 9 000 zł. Odejście po roku zamiast po trzech oznacza utratę dwóch trzecich tej kwoty, około 6 000 zł, które nigdy nie wpłyną na konto klubu.
 
 ### 2. Utracone rekomendacje
 
-Zadowolony rodzic przyprowadza statystycznie 0,4–0,7 nowego zawodnika w ciągu trzech lat — przez polecenia w drużynie, szkole czy sąsiedztwie. Rodzic, który odchodzi niezadowolony, nie tylko nie poleca — w części przypadków aktywnie odradza. Ta strona kosztu rzadko trafia do arkuszy kalkulacyjnych, a bywa większa niż sama utrata opłat.
+Zadowolony rodzic przyprowadza statystycznie 0,4–0,7 nowego zawodnika w ciągu trzech lat, przez polecenia w drużynie, szkole czy sąsiedztwie. Rodzic, który odchodzi niezadowolony, nie tylko nie poleca, a w części przypadków aktywnie odradza. Ta strona kosztu rzadko trafia do arkuszy kalkulacyjnych, a bywa większa niż sama utrata opłat.
 
 ### 3. Koszt pozyskania zastępstwa
 
@@ -101,23 +101,23 @@ Pozyskanie nowego zawodnika (marketing, testy, pierwsze miesiące o niższej mar
 
 ## Przykładowa kalkulacja dla akademii ze 300 zawodnikami
 
-Akademia ze stopą odejść 30% rocznie traci 90 zawodników w ciągu roku. Przy średnim LTV rzędu 6 000 zł (uwzględniając przedwczesne odejścia) to 540 000 zł utraconego przychodu w horyzoncie kolejnych lat, plus koszt pozyskania 90 nowych zawodników na zastępstwo — kolejne 45 000–72 000 zł.
+Akademia ze stopą odejść 30% rocznie traci 90 zawodników w ciągu roku. Przy średnim LTV rzędu 6 000 zł (uwzględniając przedwczesne odejścia) to 540 000 zł utraconego przychodu w horyzoncie kolejnych lat, plus koszt pozyskania 90 nowych zawodników na zastępstwo, kolejne 45 000–72 000 zł.
 
-Redukcja stopy odejść z 30% do 18% — poziom osiągalny w 6–12 miesięcy przy wdrożeniu wniosków z badania NPS, co potwierdzają nasze wcześniejsze case studies — oznacza zatrzymanie ok. 36 zawodników rocznie. To ok. 216 000 zł uratowanego przychodu i kilkadziesiąt tysięcy złotych niewydanych na pozyskanie zastępstw.
+Redukcja stopy odejść z 30% do 18% (poziom osiągalny w 6–12 miesięcy przy wdrożeniu wniosków z badania NPS, co potwierdzają nasze wcześniejsze case studies) oznacza zatrzymanie ok. 36 zawodników rocznie. To ok. 216 000 zł uratowanego przychodu i kilkadziesiąt tysięcy złotych niewydanych na pozyskanie zastępstw.
 
 ## Kiedy badanie się zwraca
 
-Koszt profesjonalnego badania NPS dla akademii tej wielkości to ułamek procenta powyższej kwoty. Próg opłacalności jest w praktyce bardzo niski: badanie zwraca się już wtedy, gdy pozwoli zatrzymać zaledwie 2–3 zawodników, którzy inaczej by odeszli. Przy stopie odejść powyżej 15–20% rocznie — a to norma w polskich akademiach — ten próg jest przekraczany niemal zawsze.
+Koszt profesjonalnego badania NPS dla akademii tej wielkości to ułamek procenta powyższej kwoty. Próg opłacalności jest w praktyce bardzo niski: badanie zwraca się już wtedy, gdy pozwoli zatrzymać zaledwie 2–3 zawodników, którzy inaczej by odeszli. Przy stopie odejść powyżej 15–20% rocznie (a to norma w polskich akademiach) ten próg jest przekraczany niemal zawsze.
 
-Mniejsze kluby (poniżej 80–100 zawodników) powinny liczyć ostrożniej — tu koszt badania rozkłada się na mniejszą bazę, więc warto zacząć od prostszej, cyklicznej ankiety zamiast pełnego badania z wywiadami pogłębionymi.
+Mniejsze kluby (poniżej 80–100 zawodników) powinny liczyć ostrożniej. Tu koszt badania rozkłada się na mniejszą bazę, więc warto zacząć od prostszej, cyklicznej ankiety zamiast pełnego badania z wywiadami pogłębionymi.
 
 ## Jak przedstawić to zarządowi
 
-Najskuteczniejszy sposób na uzyskanie budżetu na badanie to nie mówienie o satysfakcji czy NPS jako abstrakcyjnej metryce, lecz przeliczenie bieżącej stopy odejść klubu na konkretną kwotę w złotówkach — tak jak powyżej. Zarząd, który widzi liczbę sześciocyfrową obok pozycji "badanie NPS: 8 000 zł", podejmuje decyzję w kilka minut.
+Najskuteczniejszy sposób na uzyskanie budżetu na badanie to nie mówienie o satysfakcji czy NPS jako abstrakcyjnej metryce, lecz przeliczenie bieżącej stopy odejść klubu na konkretną kwotę w złotówkach, tak jak powyżej. Zarząd, który widzi liczbę sześciocyfrową obok pozycji "badanie NPS: 8 000 zł", podejmuje decyzję w kilka minut.
 
 ## Wniosek
 
-Pytanie nie brzmi "czy stać nas na badanie NPS", tylko "ile kosztuje nas jego brak". Dla większości akademii i klubów w Polsce odpowiedź to kwota rzędu setek tysięcy złotych rocznie — ukryta w rotacji zawodników, którą łatwo przeoczyć, jeśli nikt jej nie policzy.
+Pytanie nie brzmi "czy stać nas na badanie NPS", tylko "ile kosztuje nas jego brak". Dla większości akademii i klubów w Polsce odpowiedź to kwota rzędu setek tysięcy złotych rocznie, ukryta w rotacji zawodników, którą łatwo przeoczyć, jeśli nikt jej nie policzy.
     `,
     category: "raport",
     tags: ["ROI", "Finanse", "Zarząd", "Retencja"],
@@ -136,55 +136,55 @@ Pytanie nie brzmi "czy stać nas na badanie NPS", tylko "ile kosztuje nas jego b
     content: `
 ## Wstęp
 
-Rodzic, który nie wie, co dzieje się z jego dzieckiem w klubie, nie jest lojalnym rodzicem. Jest rodzicem, który szuka alternatywy — nawet jeśli trening jest na wysokim poziomie. Komunikacja z rodzicami to nie dodatek do pracy akademii. To fundament retencji.
+Rodzic, który nie wie, co dzieje się z jego dzieckiem w klubie, nie jest lojalnym rodzicem. Jest rodzicem, który szuka alternatywy, nawet jeśli trening jest na wysokim poziomie. Komunikacja z rodzicami to nie dodatek do pracy akademii. To fundament retencji.
 
 ## Dlaczego komunikacja decyduje o odejściach
 
 W badaniach przeprowadzonych wśród akademii sportowych w Polsce komunikacja z klubem pojawia się jako powód odejścia w ponad połowie przypadków. Nie jakość treningu. Nie wyniki sportowe. Nie infrastruktura. Komunikacja.
 
-Mechanizm jest prosty: rodzic, który nie rozumie decyzji trenera, nie zna planu rozwoju dziecka i nie ma gdzie zadać pytania — buduje frustrację w ciszy. A cisza w sporcie amatorskim kończy się rezygnacją.
+Mechanizm jest prosty: rodzic, który nie rozumie decyzji trenera, nie zna planu rozwoju dziecka i nie ma gdzie zadać pytania, buduje frustrację w ciszy. A cisza w sporcie amatorskim kończy się rezygnacją.
 
 ## Trzy najczęstsze błędy
 
 ### 1. Za dużo kanałów, za mało klarowności
 
-Grupy na Messengerze, SMS-y od trenera, maile od administracji, tablica w szatni — to typowy obraz komunikacji w polskiej akademii. Każdy mówi co innego, każdy w innym miejscu. Rodzic nie wie, gdzie szukać informacji i przestaje szukać.
+Grupy na Messengerze, SMS-y od trenera, maile od administracji, tablica w szatni to typowy obraz komunikacji w polskiej akademii. Każdy mówi co innego, każdy w innym miejscu. Rodzic nie wie, gdzie szukać informacji i przestaje szukać.
 
 Skutek: poczucie chaosu, które rodzice interpretatują jako brak organizacji. NPS rodziców w akademiach z chaotyczną komunikacją jest przeciętnie o 22 punkty niższy niż tam, gdzie działa jeden, ustrukturyzowany kanał.
 
 ### 2. Komunikacja reaktywna zamiast proaktywnej
 
-Większość akademii komunikuje się z rodzicami tylko wtedy, gdy coś się dzieje — zmiana terminu, problem, zawody. Rodzic nie słyszy nic przez trzy tygodnie, a potem dostaje wiadomość o zmianie harmonogramu z dnia na dzień.
+Większość akademii komunikuje się z rodzicami tylko wtedy, gdy coś się dzieje: zmiana terminu, problem, zawody. Rodzic nie słyszy nic przez trzy tygodnie, a potem dostaje wiadomość o zmianie harmonogramu z dnia na dzień.
 
 Proaktywna komunikacja oznacza regularne, przewidywalne informowanie: co dzieje się w tym miesiącu, czego oczekujemy od zawodnika, jak wygląda jego postęp. Nawet krótka wiadomość raz na dwa tygodnie zmienia percepcję klubu.
 
 ### 3. Brak odpowiedzi na pytania dotyczące dziecka
 
-"Kiedy mogę porozmawiać z trenerem?" — to jedno z najczęściej zadawanych pytań przez rodziców. W akademiach bez ustalonej struktury odpowiedź brzmi: "Napisz na Messengerze, zobaczymy." Dla rodzica to sygnał, że klub nie traktuje jego zaangażowania poważnie.
+"Kiedy mogę porozmawiać z trenerem?" to jedno z najczęściej zadawanych pytań przez rodziców. W akademiach bez ustalonej struktury odpowiedź brzmi: "Napisz na Messengerze, zobaczymy." Dla rodzica to sygnał, że klub nie traktuje jego zaangażowania poważnie.
 
 ## Jak zbudować skuteczny system komunikacji
 
-### Jeden kanał — jedna odpowiedzialność
+### Jeden kanał, jedna odpowiedzialność
 
-Wybierz jeden kanał komunikacji z rodzicami i konsekwentnie go używaj. To może być dedykowana aplikacja, e-mail newsletter lub zamknięta grupa — ważne, żeby każdy rodzic wiedział: "jeśli coś ważnego, znajdę to tutaj." Inne kanały zamknij lub ustaw jako nieaktywne.
+Wybierz jeden kanał komunikacji z rodzicami i konsekwentnie go używaj. To może być dedykowana aplikacja, e-mail newsletter lub zamknięta grupa. Ważne, żeby każdy rodzic wiedział: "jeśli coś ważnego, znajdę to tutaj." Inne kanały zamknij lub ustaw jako nieaktywne.
 
 ### Regularny rytm, nie komunikacja ad hoc
 
-Wprowadź stały rytm komunikacji: raz w miesiącu krótkie podsumowanie dla rodziców — co trenowaliśmy, co przed nami, na co zwracać uwagę. Taka wiadomość nie musi być długa. Liczy się regularność, nie objętość.
+Wprowadź stały rytm komunikacji: raz w miesiącu krótkie podsumowanie dla rodziców: co trenowaliśmy, co przed nami, na co zwracać uwagę. Taka wiadomość nie musi być długa. Liczy się regularność, nie objętość.
 
 ### Okno na rozmowę z trenerem
 
-Ustal z trenerami stałe okno czasowe na rozmowy z rodzicami — np. 15 minut po treningu we wtorek i czwartek, lub dedykowany dyżur online raz w miesiącu. Rodzic, który wie, że ma miejsce i czas na pytanie, rzadko buduje frustrację.
+Ustal z trenerami stałe okno czasowe na rozmowy z rodzicami, np. 15 minut po treningu we wtorek i czwartek, lub dedykowany dyżur online raz w miesiącu. Rodzic, który wie, że ma miejsce i czas na pytanie, rzadko buduje frustrację.
 
 ### Transparentność w postępach
 
-Nawet prosta karta postępów raz na kwartał — z trzema zdaniami o mocnych stronach zawodnika i jednym obszarem do pracy — robi ogromną różnicę. Rodzice nie potrzebują pełnych raportów. Potrzebują sygnału, że ktoś obserwuje ich dziecko indywidualnie.
+Nawet prosta karta postępów raz na kwartał (z trzema zdaniami o mocnych stronach zawodnika i jednym obszarem do pracy) robi ogromną różnicę. Rodzice nie potrzebują pełnych raportów. Potrzebują sygnału, że ktoś obserwuje ich dziecko indywidualnie.
 
 ## Wnioski dla zarządów
 
-Komunikacja z rodzicami nie jest problemem trenerów. Jest problemem systemu. Trener skupiony na treningu nie będzie spontanicznie tworzył newsletterów i planował dyżurów. To zadanie zarządu: zaprojektować strukturę komunikacyjną raz — i następnie ją utrzymywać.
+Komunikacja z rodzicami nie jest problemem trenerów. Jest problemem systemu. Trener skupiony na treningu nie będzie spontanicznie tworzył newsletterów i planował dyżurów. To zadanie zarządu: zaprojektować strukturę komunikacyjną raz i następnie ją utrzymywać.
 
-Akademie, które wdrożyły jeden kanał komunikacji, regularny rytm wiadomości i ustrukturyzowane okno rozmów z trenerem, odnotowują wzrost NPS rodziców o 20–35 punktów w ciągu pierwszych 6 miesięcy. I co ważniejsze — znacząco niższy poziom odejść między sezonami.
+Akademie, które wdrożyły jeden kanał komunikacji, regularny rytm wiadomości i ustrukturyzowane okno rozmów z trenerem, odnotowują wzrost NPS rodziców o 20–35 punktów w ciągu pierwszych 6 miesięcy. I co ważniejsze, znacząco niższy poziom odejść między sezonami.
     `,
     category: "artykul",
     tags: ["Komunikacja", "Rodzice", "Retencja", "NPS"],
@@ -234,11 +234,11 @@ Poza pytaniem NPS (skala 0-10, "Jak bardzo polecasz?") warto dodać trzy pytania
     content: `
 ## Kontekst
 
-Akademia FC (nazwa zanonimizowana) to jedna z największych akademii piłkarskich w Polsce — ponad 400 zawodników w kategoriach U-8 do U-18. W sezonie 2024/2025 zanotowała 34% odejść między sezonami. Zarząd nie wiedział dlaczego.
+Akademia FC (nazwa zanonimizowana) to jedna z największych akademii piłkarskich w Polsce, ponad 400 zawodników w kategoriach U-8 do U-18. W sezonie 2024/2025 zanotowała 34% odejść między sezonami. Zarząd nie wiedział dlaczego.
 
 ## Diagnoza
 
-Po przeprowadzeniu audytu i badania NPS wśród zawodników i rodziców zidentyfikowaliśmy trzy systemowe problemy. Brak struktury feedbacku — trenerzy nie mieli ujednoliconego systemu informacji zwrotnej. Chaos komunikacyjny — 6 różnych kanałów komunikacji z rodzicami (SMS, email, Messenger, aplikacja, tablica, ustnie). Niewidoczność postępów — rodzice i zawodnicy nie mieli wglądu w indywidualny plan rozwoju.
+Po przeprowadzeniu audytu i badania NPS wśród zawodników i rodziców zidentyfikowaliśmy trzy systemowe problemy. Brak struktury feedbacku: trenerzy nie mieli ujednoliconego systemu informacji zwrotnej. Chaos komunikacyjny: 6 różnych kanałów komunikacji z rodzicami (SMS, email, Messenger, aplikacja, tablica, ustnie). Niewidoczność postępów: rodzice i zawodnicy nie mieli wglądu w indywidualny plan rozwoju.
 
 ## Wdrożenie
 
@@ -265,7 +265,7 @@ Retencja wzrosła z 66% do 89%. NPS rodziców wzrósł z +18 do +54. Liczba skar
     content: `
 ## Problem ciszy
 
-Większość klubów nie ma problemu z niezadowolonymi rodzicami — ma problem z ciszą. Niezadowoleni rodzice nie skarżą się. Odchodzą. Albo co gorsza — mówią innym.
+Większość klubów nie ma problemu z niezadowolonymi rodzicami, ma problem z ciszą. Niezadowoleni rodzice nie skarżą się. Odchodzą. Albo, co gorsza, mówią innym.
 
 ## Dlaczego rodzice milczą?
 
@@ -308,7 +308,7 @@ Klub wdrożył miesięczny newsletter dla rodziców z aktualizacjami, stabilny h
 
 ## Efekty po 8 miesiącach
 
-NPS rodziców wzrósł z -8 do +41. Odejścia między sezonami spadły do 12%. Liczba nowych zapisów wzrosła o 28% — głównie z rekomendacji.
+NPS rodziców wzrósł z -8 do +41. Odejścia między sezonami spadły do 12%. Liczba nowych zapisów wzrosła o 28%, głównie z rekomendacji.
     `,
     category: "case-study",
     tags: ["Case Study", "Koszykówka", "NPS", "Rodzice"],
@@ -321,7 +321,7 @@ NPS rodziców wzrósł z -8 do +41. Odejścia między sezonami spadły do 12%. L
   },
   {
     slug: "data-driven-zarzadzanie-akademia-sportowa",
-    title: "Data-driven zarządzanie akademią sportową — od czego zacząć?",
+    title: "Data-driven zarządzanie akademią sportową - od czego zacząć?",
     excerpt:
       "Praktyczny przewodnik dla zarządów akademii, które chcą podejmować decyzje na podstawie danych, nie intuicji.",
     content: `
@@ -339,7 +339,7 @@ Zaczynasz od prostego formularza Google przy każdym odejściu zawodnika. To jed
 
 ## Pułapki
 
-Zbyt dużo danych paraliżuje. Zacznij od jednego wskaźnika, który najbardziej boli — zazwyczaj jest to retencja. Mierz, analizuj, wdrażaj, mierz ponownie.
+Zbyt dużo danych paraliżuje. Zacznij od jednego wskaźnika, który najbardziej boli, zazwyczaj jest to retencja. Mierz, analizuj, wdrażaj, mierz ponownie.
     `,
     category: "artykul",
     tags: ["Zarządzanie", "Data", "Akademie", "Strategia"],
@@ -358,11 +358,11 @@ Zbyt dużo danych paraliżuje. Zacznij od jednego wskaźnika, który najbardziej
     content: `
 ## Kontekst
 
-Akademia Aqua (nazwa zanonimizowana) funkcjonuje od 12 lat. Nigdy wcześniej nie prowadziła badań satysfakcji — zarząd uważał, że zna dobrze swoją społeczność. Badanie pokazało luki, których nikt się nie spodziewał.
+Akademia Aqua (nazwa zanonimizowana) funkcjonuje od 12 lat. Nigdy wcześniej nie prowadziła badań satysfakcji. Zarząd uważał, że zna dobrze swoją społeczność. Badanie pokazało luki, których nikt się nie spodziewał.
 
 ## Niespodzianki z badania
 
-Zawodnicy wysoko oceniali jakość treningu (4.3/5), ale nisko — poczucie przynależności do klubu (2.8/5). Rodzice byli zadowoleni z postępów dzieci, ale sfrustrowani organizacją zawodów i brakiem informacji o wyjazdach. NPS ogólny: +22 (zadowalający), ale NPS "czy polecisz innym rodzicom" tylko +8.
+Zawodnicy wysoko oceniali jakość treningu (4.3/5), ale nisko - poczucie przynależności do klubu (2.8/5). Rodzice byli zadowoleni z postępów dzieci, ale sfrustrowani organizacją zawodów i brakiem informacji o wyjazdach. NPS ogólny: +22 (zadowalający), ale NPS "czy polecisz innym rodzicom" tylko +8.
 
 ## Plan wdrożenia
 
@@ -383,17 +383,17 @@ NPS ogólny wzrósł do +41, NPS rekomendacji do +29. Liczba nowych zapisów prz
   },
   {
     slug: "jak-wykorzystac-nps-do-strategii-klubu-webinar",
-    title: "Jak wykorzystać NPS do strategii klubu — nagranie webinaru",
+    title: "Jak wykorzystać NPS do strategii klubu - nagranie webinaru",
     excerpt:
       "90-minutowy webinar z ekspertami Sport Space Pro. Metodologia, case studies i sesja Q&A. Dostępne nagranie i materiały.",
     content: `
 ## O webinarze
 
-Webinar "NPS w sporcie — od danych do strategii" odbył się 15 stycznia 2026 roku. Wzięło w nim udział 340 uczestników — menadżerowie akademii, dyrektorzy sportowi i właściciele prywatnych szkółek sportowych.
+Webinar "NPS w sporcie - od danych do strategii" odbył się 15 stycznia 2026 roku. Wzięło w nim udział 340 uczestników: menadżerowie akademii, dyrektorzy sportowi i właściciele prywatnych szkółek sportowych.
 
 ## Program
 
-Pierwsza część (30 minut) obejmowała wprowadzenie do metodologii NPS w kontekście sportu — czym różni się od klasycznego NPS biznesowego i jak interpretować wyniki. Druga część (40 minut) to trzy case studies: akademia piłkarska, klub koszykówki i akademia pływania. Trzecia część (20 minut) to sesja Q&A.
+Pierwsza część (30 minut) obejmowała wprowadzenie do metodologii NPS w kontekście sportu: czym różni się od klasycznego NPS biznesowego i jak interpretować wyniki. Druga część (40 minut) to trzy case studies: akademia piłkarska, klub koszykówki i akademia pływania. Trzecia część (20 minut) to sesja Q&A.
 
 ## Kluczowe wnioski z Q&A
 

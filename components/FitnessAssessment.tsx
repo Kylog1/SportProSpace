@@ -351,7 +351,7 @@ function TeaserBlock({
                     Pełne wyniki 6 obszarów w raporcie
                   </div>
                   <div className="mt-1 text-[12px] leading-relaxed text-muted-foreground">
-                    Podaj adres email — wyślemy raport PDF z wynikiem, Top 3
+                    Podaj adres email, wyślemy raport PDF z wynikiem, Top 3
                     szansami i największym obszarem do poprawy.
                   </div>
                 </div>
@@ -365,7 +365,7 @@ function TeaserBlock({
               <ArrowRight />
             </Button>
             <p className="text-[13px] text-muted-foreground">
-              Raport wyślemy na Twój email — podaj adres w następnym kroku.
+              Raport wyślemy na Twój email. Podaj adres w następnym kroku.
             </p>
           </div>
         </div>

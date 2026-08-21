@@ -9,12 +9,12 @@ const pillars = [
   {
     icon: Trophy,
     title: "Świat sportu od środka",
-    desc: "Praca z klubami, akademiami i organizacjami sportowymi różnych dyscyplin — rozumiemy specyfikę środowiska i jego interesariuszy.",
+    desc: "Praca z klubami, akademiami i organizacjami sportowymi różnych dyscyplin. Rozumiemy specyfikę środowiska i jego interesariuszy.",
   },
   {
     icon: FileSearch,
     title: "Metodologia naukowa",
-    desc: "Łączymy badania ilościowe i jakościowe — ankiety segmentowe, IDI, analiza statystyczna, walidacja wewnętrzna.",
+    desc: "Łączymy badania ilościowe i jakościowe: ankiety segmentowe, IDI, analiza statystyczna, walidacja wewnętrzna.",
   },
   {
     icon: Users,
@@ -46,7 +46,7 @@ export function About() {
               doświadczenia klienta i pracy operacyjnej w sporcie.
             </p>
             <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
-              Wiemy, jak projektować badania, których wyniki są używane —
+              Wiemy, jak projektować badania, których wyniki są używane,
               a nie odkładane na półkę. Nasze raporty trafiają do zarządów
               i menadżerów, a rekomendacje przekładają się na decyzje
               operacyjne i strategiczne.

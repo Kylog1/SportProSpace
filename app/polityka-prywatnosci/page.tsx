@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Polityka prywatności — Sport Space Pro",
+  title: "Polityka prywatności - Sport Space Pro",
   description:
     "Zasady przetwarzania danych osobowych i wykorzystywania plików cookies w serwisie sportspacepro.pl.",
   alternates: {
@@ -76,30 +76,30 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul>
                 <li>
-                  <strong>Formularz kontaktowy</strong> — imię i nazwisko,
+                  <strong>Formularz kontaktowy</strong>: imię i nazwisko,
                   adres e-mail, nazwa klubu / organizacji, numer telefonu
                   (opcjonalnie) oraz treść wiadomości. Dane te służą do
                   odpowiedzi na przesłane zapytanie.
                 </li>
                 <li>
-                  <strong>Self-Audit</strong> — imię i nazwisko, adres
+                  <strong>Self-Audit</strong>: imię i nazwisko, adres
                   e-mail, nazwa klubu / organizacji, numer telefonu
                   (opcjonalnie) oraz odpowiedzi udzielone w kwestionariuszu.
                   Dane te służą do wygenerowania i przesłania raportu PDF na
-                  wskazany adres e-mail oraz — wyłącznie po wyrażeniu
-                  odrębnej zgody — do kontaktu w sprawie badania satysfakcji
+                  wskazany adres e-mail oraz (wyłącznie po wyrażeniu
+                  odrębnej zgody) do kontaktu w sprawie badania satysfakcji
                   i doświadczeń klientów.
                 </li>
                 <li>
-                  <strong>Zapis na powiadomienie o nowej dyscyplinie</strong>{" "}
-                  — adres e-mail oraz wskazana dyscyplina sportu, w celu
+                  <strong>Zapis na powiadomienie o nowej dyscyplinie</strong>:
+                  adres e-mail oraz wskazana dyscyplina sportu, w celu
                   poinformowania o dostępności Self-Audit dla danej
                   dyscypliny.
                 </li>
               </ul>
               <p>
                 W ramach ochrony Serwisu przed nadużyciami (np. botami)
-                automatycznie zapisywany jest adres IP Użytkownika — jest on
+                automatycznie zapisywany jest adres IP Użytkownika. Jest on
                 wykorzystywany jedynie do technicznego ograniczenia liczby
                 zgłoszeń z jednego źródła w krótkim czasie i nie jest łączony
                 z pozostałymi danymi ani wykorzystywany do profilowania.
@@ -109,17 +109,17 @@ export default function PrivacyPolicyPage() {
               <p>Dane osobowe przetwarzane są na podstawie:</p>
               <ul>
                 <li>
-                  art. 6 ust. 1 lit. b) RODO — w celu podjęcia działań przed
+                  art. 6 ust. 1 lit. b) RODO: w celu podjęcia działań przed
                   zawarciem umowy lub udzielenia odpowiedzi na zapytanie, na
                   żądanie osoby, której dane dotyczą;
                 </li>
                 <li>
-                  art. 6 ust. 1 lit. a) RODO — w celu przesłania raportu
+                  art. 6 ust. 1 lit. a) RODO: w celu przesłania raportu
                   Self-Audit oraz ewentualnego kontaktu w sprawie badania, na
                   podstawie zgody wyrażonej w formularzu;
                 </li>
                 <li>
-                  art. 6 ust. 1 lit. f) RODO — w celu zapewnienia
+                  art. 6 ust. 1 lit. f) RODO: w celu zapewnienia
                   bezpieczeństwa Serwisu i przeciwdziałania nadużyciom
                   (prawnie uzasadniony interes Administratora).
                 </li>
@@ -129,8 +129,8 @@ export default function PrivacyPolicyPage() {
               <p>
                 Dane przekazane w formularzu kontaktowym oraz w ramach
                 Self-Audit przechowywane są przez czas niezbędny do
-                obsłużenia zapytania oraz — jeśli doszło do dalszej
-                współpracy — przez czas jej trwania, a następnie przez okres
+                obsłużenia zapytania oraz (jeśli doszło do dalszej
+                współpracy) przez czas jej trwania, a następnie przez okres
                 wymagany przepisami prawa (np. podatkowymi) lub do momentu
                 wycofania zgody. Adresy IP zapisywane w celach
                 antyspamowych są usuwane automatycznie po maksymalnie 30
@@ -145,12 +145,12 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul>
                 <li>
-                  dostawcy usługi wysyłki wiadomości e-mail (Resend) —
+                  dostawcy usługi wysyłki wiadomości e-mail (Resend),
                   wykorzystywanej do przesyłania odpowiedzi na zapytania
                   oraz raportów Self-Audit;
                 </li>
                 <li>
-                  dostawcy usługi hostingu i infrastruktury (Vercel) — na
+                  dostawcy usługi hostingu i infrastruktury (Vercel), na
                   którym działa Serwis.
                 </li>
               </ul>
@@ -200,7 +200,7 @@ export default function PrivacyPolicyPage() {
                 stronami. Statystyki odwiedzin zbierane są za pomocą
                 narzędzia Vercel Analytics, które działa bez plików cookies
                 i nie przypisuje danych do konkretnej, zidentyfikowanej
-                osoby — zbierane informacje mają charakter zagregowany
+                osoby. Zbierane informacje mają charakter zagregowany
                 (np. liczba odwiedzin, kliknięcia w wybrane elementy
                 Serwisu).
               </p>

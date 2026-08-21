@@ -11,7 +11,7 @@ const ContactSchema = z.object({
   organization: z.string().trim().min(2, "Podaj nazwę klubu / organizacji").max(200),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
   message: z.string().trim().min(10, "Wiadomość musi mieć co najmniej 10 znaków").max(4000),
-  // honeypot — bots fill this; real users leave it empty
+  // honeypot, bots fill this; real users leave it empty
   website: z.string().max(0).optional().or(z.literal("")),
 });
 
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 
   const { name, email, organization, phone, message, website } = parsed.data;
 
-  // Honeypot caught a bot — silently accept, don't send anything
+  // Honeypot caught a bot, silently accept, don't send anything
   if (website && website.length > 0) {
     return NextResponse.json({ success: true });
   }
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
         <div style="color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Wiadomość</div>
         <div style="white-space:pre-wrap;font-size:14.5px;line-height:1.6;">${escapeHtml(message)}</div>
       </div>
-      <p style="margin-top:20px;color:#94a3b8;font-size:12px;">Kliknij „Odpowiedz" — wiadomość trafi bezpośrednio do nadawcy.</p>
+      <p style="margin-top:20px;color:#94a3b8;font-size:12px;">Kliknij „Odpowiedz". Wiadomość trafi bezpośrednio do nadawcy.</p>
     </div>
   `;
 
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
       from: "Sport Space Pro <noreply@footlog.pl>",
       to: ["hello@sportspacepro.pl"],
       replyTo: email,
-      subject: `Nowe zapytanie — ${name} (${organization})`,
+      subject: `Nowe zapytanie - ${name} (${organization})`,
       html,
       text,
     });

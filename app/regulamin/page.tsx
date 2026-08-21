@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Regulamin — Sport Space Pro",
+  title: "Regulamin - Sport Space Pro",
   description:
     "Regulamin korzystania z serwisu sportspacepro.pl, w tym z formularza kontaktowego i narzędzia Self-Audit.",
   alternates: {
@@ -75,15 +75,15 @@ export default function TermsPage() {
               <h2>2. Definicje</h2>
               <ul>
                 <li>
-                  <strong>Serwis</strong> — strona internetowa
+                  <strong>Serwis</strong> to strona internetowa
                   sportspacepro.pl wraz z jej podstronami.
                 </li>
                 <li>
-                  <strong>Użytkownik</strong> — każda osoba korzystająca z
+                  <strong>Użytkownik</strong> to każda osoba korzystająca z
                   Serwisu.
                 </li>
                 <li>
-                  <strong>Self-Audit</strong> — dostępny w Serwisie
+                  <strong>Self-Audit</strong> to dostępny w Serwisie
                   kwestionariusz służący do orientacyjnej oceny wybranych
                   obszarów działania klubu lub organizacji sportowej, na
                   podstawie którego generowany jest raport w formacie PDF.
@@ -156,7 +156,7 @@ export default function TermsPage() {
               <p>
                 Wysłanie formularza Self-Audit wymaga zaznaczenia zgody na
                 otrzymanie raportu PDF oraz kontakt w sprawie badania
-                satysfakcji — zgodnie z opisem przy formularzu. Zgoda ta
+                satysfakcji, zgodnie z opisem przy formularzu. Zgoda ta
                 może być wycofana w każdym momencie poprzez kontakt na
                 adres{" "}
                 <a href="mailto:hello@sportspacepro.pl">
@@ -167,9 +167,9 @@ export default function TermsPage() {
 
               <h2>6. Własność intelektualna</h2>
               <p>
-                Wszelkie treści dostępne w Serwisie — w tym teksty,
+                Wszelkie treści dostępne w Serwisie (w tym teksty,
                 grafiki, układ strony, kwestionariusze Self-Audit oraz
-                struktura generowanych raportów PDF — stanowią własność
+                struktura generowanych raportów PDF) stanowią własność
                 Usługodawcy lub podmiotów, z którymi Usługodawca zawarł
                 odpowiednie umowy, i są chronione przepisami prawa
                 autorskiego. Kopiowanie, rozpowszechnianie lub wykorzystanie

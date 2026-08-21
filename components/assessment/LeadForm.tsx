@@ -174,7 +174,7 @@ export function LeadForm({
               />
             </div>
 
-            {/* Honeypot — hidden from users */}
+            {/* Honeypot - hidden from users */}
             <input
               type="text"
               tabIndex={-1}

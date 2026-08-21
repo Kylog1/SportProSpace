@@ -1,5 +1,5 @@
 // Registry of disciplines shown on the /self-assessment hub. Pure display/routing
-// metadata — no question data lives here. Icons are attached in the UI layer (see
+// metadata, no question data lives here. Icons are attached in the UI layer (see
 // the SECTION_ICONS pattern in components/SelfAssessment.tsx), not in this file.
 
 export type SportStatus = "available" | "coming-soon";
@@ -9,7 +9,7 @@ export type SportEntry = {
   label: string;
   note: string;
   status: SportStatus;
-  /** Only set for status "available" — where the real audit lives. */
+  /** Only set for status "available", where the real audit lives. */
   href?: string;
 };
 

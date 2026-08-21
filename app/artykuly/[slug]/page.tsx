@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!article) return {};
 
   return {
-    title: `${article.title} — Sport Space Pro`,
+    title: `${article.title} - Sport Space Pro`,
     description: article.excerpt,
     alternates: {
       canonical: `https://sportspacepro.pl/artykuly/${article.slug}`,
@@ -279,7 +279,7 @@ export default function ArticlePage({ params }: Props) {
                         Chcesz zbadać NPS w swoim klubie?
                       </p>
                       <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/70">
-                        Bezpłatna konsultacja — wrócimy do Ciebie w 8 godzin.
+                        Bezpłatna konsultacja. Wrócimy do Ciebie w 8 godzin.
                       </p>
                       <Link
                         href="/#contact"

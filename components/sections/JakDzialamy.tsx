@@ -35,7 +35,7 @@ export function JakDzialamy() {
             Cztery etapy, jeden wynik.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
-            Od pierwszej rozmowy do wdrożenia — przejrzysty, mierzalny proces
+            Od pierwszej rozmowy do wdrożenia: przejrzysty, mierzalny proces
             zaprojektowany dla organizacji sportowych.
           </p>
         </div>

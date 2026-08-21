@@ -1,5 +1,5 @@
 // Layout constants and drawing primitives shared by every Self-Audit PDF.
-// Moved verbatim out of lib/assessment/pdf.ts — the Football report must render
+// Moved verbatim out of lib/assessment/pdf.ts, the Football report must render
 // byte-identical, which is asserted by the baseline PDF hash check.
 
 import path from "path";

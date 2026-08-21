@@ -79,7 +79,7 @@ export function generateTennisPadelPDF(
       const tierColor = LEVEL_COLOR[level.id] ?? COLORS.navy;
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 1 — Wynik
+      // PAGE 1 - Wynik
       // ════════════════════════════════════════════════════════════════
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
 
@@ -169,7 +169,7 @@ export function generateTennisPadelPDF(
       drawFooter(doc, 1, TOTAL_PAGES);
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 2 — Szanse
+      // PAGE 2 - Szanse
       // ════════════════════════════════════════════════════════════════
       doc.addPage();
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
@@ -177,7 +177,7 @@ export function generateTennisPadelPDF(
 
       y = 125;
 
-      // Biggest opportunity — dark panel
+      // Biggest opportunity - dark panel
       const panelH = 130;
       doc.rect(ML, y, CW, panelH).fillColor(COLORS.navyDeep).fillOpacity(1).fill();
       doc.font(FONT_BOLD).fontSize(8).fillColor("#8aa6cd").fillOpacity(1)

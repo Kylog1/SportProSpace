@@ -4,9 +4,9 @@ import { Footer } from "@/components/Footer";
 import { SelfAssessmentHub } from "@/components/SelfAssessmentHub";
 
 export const metadata: Metadata = {
-  title: "Self-Audit dla klubów i organizacji sportowych — Sport Space Pro",
+  title: "Self-Audit dla klubów i organizacji sportowych - Sport Space Pro",
   description:
-    "Sprawdź potencjał swojego klubu. Self-Audit dopasowany do dyscypliny — piłka nożna, fitness, tenis i padel, golf, pływanie i inne organizacje sportowe.",
+    "Sprawdź potencjał swojego klubu. Self-Audit dopasowany do dyscypliny: piłka nożna, fitness, tenis i padel, golf, pływanie i inne organizacje sportowe.",
   alternates: {
     canonical: "https://sportspacepro.pl/self-assessment",
   },

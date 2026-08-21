@@ -252,7 +252,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
       const ptsToHigh = Math.max(0, 49 - total);
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 1 — Wynik
+      // PAGE 1 - Wynik
       // ════════════════════════════════════════════════════════════════
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
 
@@ -334,7 +334,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
       drawFooter(doc, 1);
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 2 — Diagnoza
+      // PAGE 2 - Diagnoza
       // ════════════════════════════════════════════════════════════════
       doc.addPage();
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
@@ -382,7 +382,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
       drawFooter(doc, 2);
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 3 — Co dalej + Calendly
+      // PAGE 3 - Co dalej + Calendly
       // ════════════════════════════════════════════════════════════════
       doc.addPage();
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
@@ -426,7 +426,7 @@ export function generateAssessmentPDF(input: GeneratePdfInput): Promise<Buffer> 
 
       y += 8;
 
-      // Insights — dark card
+      // Insights - dark card
       const insights = INSIGHTS[level.id];
       // Calculate insights card height
       doc.font(FONT_REG).fontSize(10);

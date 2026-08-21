@@ -172,7 +172,7 @@ function ComingSoonCard({
       {status === "success" ? (
         <div className="mt-5 flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-[13px] text-emerald-900">
           <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
-          Dziękujemy — odezwiemy się, gdy audyt będzie gotowy.
+          Dziękujemy. Odezwiemy się, gdy audyt będzie gotowy.
         </div>
       ) : open ? (
         <form onSubmit={submit} className="mt-5 flex flex-col gap-2.5">

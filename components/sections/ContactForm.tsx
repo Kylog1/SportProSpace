@@ -79,7 +79,7 @@ export function ContactForm() {
       noValidate
       className="flex flex-col gap-3.5 rounded-xl border border-white/15 bg-white/[0.04] p-5 backdrop-blur-sm md:p-6"
     >
-      {/* honeypot — hidden from users, bots fill it */}
+      {/* honeypot - hidden from users, bots fill it */}
       <input
         type="text"
         name="website"
@@ -168,7 +168,7 @@ export function ContactForm() {
           minLength={10}
           maxLength={4000}
           rows={4}
-          placeholder="Krótko opisz cel kontaktu — ile osób w klubie, jakie pytania badawcze, oczekiwany termin."
+          placeholder="Krótko opisz cel kontaktu: ile osób w klubie, jakie pytania badawcze, oczekiwany termin."
           className={`${inputCls} resize-none`}
         />
       </div>

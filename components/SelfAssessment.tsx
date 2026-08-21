@@ -44,7 +44,7 @@ import {
 } from "@/lib/assessment/data";
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Local UI extras — icons per section (kept here, not in data.ts which is pure)
+// Local UI extras, icons per section (kept here, not in data.ts which is pure)
 // ──────────────────────────────────────────────────────────────────────────────
 
 const SECTION_ICONS: Record<SectionId, React.ComponentType<{ className?: string }>> = {
@@ -435,7 +435,7 @@ function ComparePair({
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// TEASER (score + blurred sections — shown after quiz, before form)
+// TEASER (score + blurred sections, shown after quiz, before form)
 // ──────────────────────────────────────────────────────────────────────────────
 
 const SEG_STYLES = [
@@ -618,7 +618,7 @@ function TeaserBlock({
                     Pełne wyniki sekcji w raporcie
                   </div>
                   <div className="mt-1 text-[12px] leading-relaxed text-muted-foreground">
-                    Podaj adres email — wyślemy raport PDF z diagnozą,
+                    Podaj adres email, wyślemy raport PDF z diagnozą,
                     Top 3 obszarami i następnymi krokami.
                   </div>
                 </div>
@@ -633,7 +633,7 @@ function TeaserBlock({
               <ArrowRight />
             </Button>
             <p className="text-[13px] text-muted-foreground">
-              Raport wyślemy na Twój email — podaj adres w następnym kroku.
+              Raport wyślemy na Twój email. Podaj adres w następnym kroku.
             </p>
           </div>
         </div>

@@ -25,7 +25,7 @@ export function Hero() {
         {/* 2-column layout: text left, dashboard right */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-          {/* LEFT — copy */}
+          {/* LEFT - copy */}
           <div className="flex flex-col items-start">
             <h1 className="text-balance text-4xl font-semibold leading-[1.06] tracking-tightest text-navy-950 sm:text-5xl lg:text-[52px] xl:text-[58px]">
               Lepsze doświadczenia.
@@ -35,7 +35,7 @@ export function Hero() {
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
               Pomagamy klubom i organizacjom sportowym zrozumieć doświadczenia
-              członków, zawodników i klientów — i znaleźć obszary, które
+              członków, zawodników i klientów, i znaleźć obszary, które
               ograniczają wzrost.
             </p>
 
@@ -74,7 +74,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — dashboard mockup */}
+          {/* RIGHT - dashboard mockup */}
           <div className="relative w-full">
             <div className="rounded-2xl border border-navy-100 bg-white p-2 shadow-[0_24px_64px_-20px_rgba(15,23,42,0.18)]">
               <div className="rounded-xl border border-navy-100 bg-gradient-to-b from-white to-navy-50/40 p-5 sm:p-6">
@@ -86,7 +86,7 @@ export function Hero() {
                     <div className="size-2 rounded-full bg-navy-200" />
                   </div>
                   <span className="text-[11px] font-medium text-muted-foreground">
-                    Experience Report — Q2 2026
+                    Experience Report - Q2 2026
                   </span>
                   <span className="text-[11px] text-muted-foreground">
                     412 respondentów

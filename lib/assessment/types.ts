@@ -2,7 +2,7 @@
 //
 // NOTE ON FOOTBALL: the Football audit predates this abstraction and scores on a
 // raw 12-60 scale with its own level model. It deliberately does NOT implement
-// this interface — see lib/assessment/data.ts, which stays the single source of
+// this interface, see lib/assessment/data.ts, which stays the single source of
 // truth for Football and is intentionally untouched. New disciplines are built
 // on the config below.
 
@@ -118,7 +118,7 @@ export function categoryScores<TId extends string>(
  * Overall score, derived from the raw total.
  *
  * This is mathematically identical to the unweighted mean of the category
- * scores — every category holds the same number of questions, so
+ * scores: every category holds the same number of questions, so
  *   mean(((Ci - 3) / 12) * 100) === ((T - 18) / 72) * 100
  * Deriving it from the total avoids compounding per-category rounding.
  */

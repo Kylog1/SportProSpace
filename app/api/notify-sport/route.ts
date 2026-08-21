@@ -11,12 +11,12 @@ const sportIds = SPORTS.map((s) => s.id) as [string, ...string[]];
 const NotifySchema = z.object({
   email: z.string().trim().email("Niepoprawny adres email").max(200),
   sport: z.enum(sportIds),
-  // honeypot — bots fill this; real users leave it empty
+  // honeypot, bots fill this; real users leave it empty
   website: z.string().max(0).optional().or(z.literal("")),
 });
 
 export async function POST(req: Request) {
-  // 5 submissions per IP per 15 minutes — same budget as the contact form
+  // 5 submissions per IP per 15 minutes, same budget as the contact form
   const rl = rateLimit(getClientIp(req), 5, 15 * 60 * 1000);
   if (!rl.ok) {
     return NextResponse.json(
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
 
   const { email, sport, website } = parsed.data;
 
-  // Honeypot caught a bot — silently accept, don't send anything
+  // Honeypot caught a bot, silently accept, don't send anything
   if (website && website.length > 0) {
     return NextResponse.json({ success: true });
   }
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
       from: "Sport Space Pro <noreply@footlog.pl>",
       to: ["hello@sportspacepro.pl"],
       replyTo: email,
-      subject: `Zainteresowanie Self-Audit — ${sportLabel}`,
+      subject: `Zainteresowanie Self-Audit - ${sportLabel}`,
       html: `<p>Nowe zgłoszenie zainteresowania Self-Audit dla dyscypliny <strong>${sportLabel}</strong>.</p><p>Email: <a href="mailto:${email}">${email}</a></p>`,
       text: `Nowe zgłoszenie zainteresowania Self-Audit dla dyscypliny ${sportLabel}.\nEmail: ${email}`,
     });

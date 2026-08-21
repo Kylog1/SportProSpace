@@ -5,7 +5,7 @@ import { SelfAssessment } from "@/components/SelfAssessment";
 
 export const metadata: Metadata = {
   title:
-    "Self-Audit dla klubów i akademii sportowych — Sport Space Pro",
+    "Self-Audit dla klubów i akademii sportowych - Sport Space Pro",
   description:
     "12 pytań o procesy, nie o opinie. W 5 minut sprawdź, gdzie Twój klub realnie traci zawodników, rodziców i pieniądze. Z kalkulatorem strat z odejść.",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Self-Audit dla klubów i akademii sportowych",
     description:
-      "Sprawdź, ilu zawodników stracicie w tym sezonie — zanim odejdą. 12 pytań, 4 poziomy dojrzałości organizacji, kalkulator strat.",
+      "Sprawdź, ilu zawodników stracicie w tym sezonie, zanim odejdą. 12 pytań, 4 poziomy dojrzałości organizacji, kalkulator strat.",
     type: "website",
   },
 };

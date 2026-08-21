@@ -1,5 +1,5 @@
 // Email templates for the Self-Audit lead magnet.
-// Two emails: (a) user — delivery of the PDF, (b) admin — notification at hello@sportspacepro.pl
+// Two emails: (a) to the user, delivery of the PDF; (b) to admin, notification at hello@sportspacepro.pl
 
 import {
   MAX_TOTAL,

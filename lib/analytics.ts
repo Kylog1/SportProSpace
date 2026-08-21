@@ -2,7 +2,7 @@
 
 // Thin wrapper around @vercel/analytics custom events. homepage_view and other
 // plain page views are automatic (Vercel Analytics tracks route changes on its
-// own) — everything here is an explicit funnel moment from the brief.
+// own), everything here is an explicit funnel moment from the brief.
 
 import { track } from "@vercel/analytics";
 
