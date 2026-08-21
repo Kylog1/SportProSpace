@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { trackMeetingBooked } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
@@ -28,11 +27,6 @@ export function Hero() {
 
           {/* LEFT — copy */}
           <div className="flex flex-col items-start">
-            <Badge variant="soft" className="mb-6 gap-1.5 px-3 py-1">
-              <ShieldCheck className="size-3.5" />
-              Niezależna platforma badań i analizy
-            </Badge>
-
             <h1 className="text-balance text-4xl font-semibold leading-[1.06] tracking-tightest text-navy-950 sm:text-5xl lg:text-[52px] xl:text-[58px]">
               Lepsze doświadczenia.
               <span className="text-navy-800"> Większe zaangażowanie.</span>{" "}
