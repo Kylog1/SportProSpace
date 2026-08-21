@@ -14,6 +14,7 @@ const navItems = [
   { href: "/#jak-dzialamy", label: "Jak działamy" },
   { href: "/self-assessment", label: "Self-Audit" },
   { href: "/artykuly", label: "Artykuły" },
+  { href: "/partnerzy", label: "Partnerzy" },
   { href: "/#contact", label: "Kontakt" },
 ];
 
@@ -29,7 +30,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -41,7 +42,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="ghost" size="sm">
             <Link
               href={CALENDLY_URL}
@@ -61,7 +62,7 @@ export function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-10 items-center justify-center rounded-md text-navy-900 hover:bg-navy-50 md:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-md text-navy-900 hover:bg-navy-50 lg:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -69,7 +70,7 @@ export function Navbar() {
 
       <div
         className={cn(
-          "border-t border-navy-100 bg-white md:hidden",
+          "border-t border-navy-100 bg-white lg:hidden",
           open ? "block" : "hidden"
         )}
       >

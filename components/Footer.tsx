@@ -38,6 +38,11 @@ export function Footer() {
                   Self-Audit
                 </Link>
               </li>
+              <li>
+                <Link href="/partnerzy" className="hover:text-navy-950">
+                  Partnerzy
+                </Link>
+              </li>
             </ul>
           </div>
 
