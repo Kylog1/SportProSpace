@@ -25,11 +25,12 @@ export function Articles() {
               Wiedza
             </span>
             <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
-              Artykuły, case study i raporty.
+              Dowody, nie opinie.
             </h2>
             <p className="mt-3 text-[15.5px] leading-relaxed text-muted-foreground">
-              Publikujemy wyniki badań, analizy przypadków i praktyczne
-              przewodniki dla zarządów akademii i klubów sportowych.
+              Nie zgadujemy, dlaczego zawodnicy odchodzą, tylko to sprawdzamy.
+              Wyniki badań, analizy przypadków i praktyczne wnioski dla
+              zarządów klubów i akademii sportowych.
             </p>
           </div>
 
@@ -61,7 +62,7 @@ export function Articles() {
         <div className="mt-10 flex justify-center">
           <Button asChild variant="outline" size="lg">
             <Link href="/artykuly">
-              Wszystkie artykuły i raporty
+              Zobacz wszystkie artykuły i raporty
               <ArrowRight />
             </Link>
           </Button>

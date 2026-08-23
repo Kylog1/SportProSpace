@@ -76,7 +76,8 @@ export default function ArticulyPage() {
               Artykuły, case study i raporty.
             </h1>
             <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
-              Wyniki badań, analizy przypadków i praktyczne przewodniki dla
+              Nie zgadujemy, dlaczego zawodnicy odchodzą, tylko to sprawdzamy.
+              Wyniki badań, analizy przypadków i praktyczne wnioski dla
               zarządów akademii sportowych i klubów profesjonalnych.
             </p>
 

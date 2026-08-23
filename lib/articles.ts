@@ -150,7 +150,7 @@ Mechanizm jest prosty: rodzic, który nie rozumie decyzji trenera, nie zna planu
 
 Grupy na Messengerze, SMS-y od trenera, maile od administracji, tablica w szatni to typowy obraz komunikacji w polskiej akademii. Każdy mówi co innego, każdy w innym miejscu. Rodzic nie wie, gdzie szukać informacji i przestaje szukać.
 
-Skutek: poczucie chaosu, które rodzice interpretatują jako brak organizacji. NPS rodziców w akademiach z chaotyczną komunikacją jest przeciętnie o 22 punkty niższy niż tam, gdzie działa jeden, ustrukturyzowany kanał.
+Skutek: poczucie chaosu, które rodzice interpretują jako brak organizacji. NPS rodziców w akademiach z chaotyczną komunikacją jest przeciętnie o 22 punkty niższy niż tam, gdzie działa jeden, ustrukturyzowany kanał.
 
 ### 2. Komunikacja reaktywna zamiast proaktywnej
 
