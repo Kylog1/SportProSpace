@@ -23,11 +23,6 @@ const pillars = [
   },
 ];
 
-const stats = [
-  { value: "15+", label: "lat doświadczenia w badaniach rynku" },
-  { value: "120+", label: "zrealizowanych projektów badawczych" },
-  { value: "40+", label: "klientów w portfolio" },
-];
 
 export function About() {
   return (
@@ -52,18 +47,6 @@ export function About() {
               operacyjne i strategiczne.
             </p>
 
-            <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-navy-100 bg-navy-100">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-white p-4 sm:p-5">
-                  <div className="text-2xl font-semibold tracking-tight text-navy-900 md:text-3xl">
-                    {s.value}
-                  </div>
-                  <div className="mt-1 text-[12px] leading-snug text-muted-foreground">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="md:col-span-1 lg:col-span-7">
