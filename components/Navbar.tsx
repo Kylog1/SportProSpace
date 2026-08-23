@@ -10,6 +10,7 @@ import { trackMeetingBooked } from "@/lib/analytics";
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 
 const navItems = [
+  { href: "/#doradztwo", label: "Doradztwo" },
   { href: "/#about", label: "O nas" },
   { href: "/#jak-dzialamy", label: "Jak działamy" },
   { href: "/self-assessment", label: "Self-Audit" },

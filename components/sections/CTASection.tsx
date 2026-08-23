@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/sections/ContactForm";
+import { BookingLink } from "@/components/sections/BookingLink";
 
 export function CTASection() {
   return (
@@ -32,6 +33,10 @@ export function CTASection() {
                 Pierwsza rozmowa jest niezobowiązująca. Wracamy do Ciebie z
                 rekomendacją zakresu badania w 8 godzin.
               </p>
+
+              <div className="mt-7">
+                <BookingLink />
+              </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1 text-[12.5px] text-navy-100/70">
                 <span>Odpowiadamy w 8h</span>
