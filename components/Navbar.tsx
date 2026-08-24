@@ -5,9 +5,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { trackMeetingBooked } from "@/lib/analytics";
-
-const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 
 const navItems = [
   { href: "/#doradztwo", label: "Doradztwo" },
@@ -44,16 +41,6 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackMeetingBooked("navbar")}
-            >
-              Umów rozmowę
-            </Link>
-          </Button>
           <Button asChild size="sm">
             <Link href="/self-assessment">Zrób darmowy Self-Audit</Link>
           </Button>
@@ -87,19 +74,6 @@ export function Navbar() {
             </Link>
           ))}
           <div className="mt-2 flex flex-col gap-2 px-3">
-            <Button asChild variant="outline" size="sm">
-              <Link
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  trackMeetingBooked("navbar-mobile");
-                  setOpen(false);
-                }}
-              >
-                Umów rozmowę
-              </Link>
-            </Button>
             <Button asChild size="sm">
               <Link href="/self-assessment" onClick={() => setOpen(false)}>
                 Zrób darmowy Self-Audit
