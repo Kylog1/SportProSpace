@@ -57,9 +57,9 @@ Tu akurat pojawia się liczba, którą rzadko widać w tej lidze: Pogoń Grodzis
 
 Poza tym przypadkiem, dla 1. Ligi nie ma jednak systematycznie publikowanych widełek cenowych ani szacunków ekwiwalentu reklamowego dla całej ligi. To rynek, na którym ceny ustala się w rozmowie, nie w cenniku. W praktyce oznacza to większe pole do negocjacji dla marki, która wie, czego chce, i ma jasno określony budżet.
 
-Dla wielu firm to wcale nie jest gorsza opcja. Mniejszy klub 1. Ligi często daje bliższy kontakt z lokalną społecznością i elastyczniejsze warunki ekspozycji. Można zbudować relację od zera, zamiast być jednym z dziesięciu loga na koszulce klubu ekstraklasowego.
+Dla wielu firm to wcale nie jest gorsza opcja. Mniejszy klub 1. Ligi często daje bliższy kontakt z lokalną społecznością i elastyczniejsze warunki ekspozycji. Można zbudować relację od zera, zamiast być jednym z dziesięciu logotypów na koszulce klubu z Ekstraklasy.
 
-## Co z tego wynika dla marki, która się zastanawia
+## Co z tego wynika dla marki, która rozważa sponsoring.
 
 Przy masowym zasięgu i rozpoznawalności ogólnopolskiej dane jasno wskazują na Ekstraklasę: frekwencja, zasięg telewizyjny i skala medialna są tam nieporównywalnie większe. Przy ograniczonym budżecie albo celu zbudowania relacji z konkretnym regionem czy społecznością, 1. Liga daje więcej przestrzeni za mniejsze pieniądze i mniej sztywne warunki.
 
