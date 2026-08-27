@@ -26,6 +26,55 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
+    slug: "sponsoring-pilkarski-ekstraklasa-1-liga-ekwiwalent",
+    title: "Sponsoring piłkarski w Polsce: co realnie kupuje marka, wchodząc w Ekstraklasę albo 1. Ligę",
+    excerpt:
+      "Ile kosztuje sponsoring klubu piłkarskiego w Polsce i co za to dostajesz? Zestawiamy dane z Ekstraklasy i 1. Ligi: frekwencję, wartość praw telewizyjnych i to, dlaczego \"ekwiwalent reklamowy\" trzeba czytać z dystansem.",
+    content: `
+## Dlaczego marki w ogóle w to wchodzą
+
+Rynek sponsoringu sportowego w Polsce wart był w 2024 roku 1,457 mld zł. Rośnie z roku na rok, w 2026 branża szacuje go już na około 1,54 mld zł. Piłka nożna od lat zgarnia z tego tortu największy kawałek, obok siatkówki i koszykówki. To już nie jest nisza marketingowa. To osobna linia budżetowa, o którą pytają zarządy.
+
+Z obserwacji Sport Space Pro wynika, że firmy wchodzące w sponsoring sportowy najczęściej mówią o trzech celach: budowaniu wizerunku marki, zwiększeniu rozpoznawalności i działaniach CSR. Rzadziej pojawia się w prezentacjach coś, co realnie działa najlepiej: dostęp do lóż VIP i wydarzeń klubowych, czyli zwykłe budowanie relacji biznesowych przy okazji meczu. Twardych, polskich badań, które policzyłyby zwrot z tego akurat elementu, po prostu nie ma. Ale każdy, kto był kiedyś w loży sponsorskiej na Łazienkowskiej albo w Poznaniu, wie, że to działa.
+
+Jest jeszcze coś, o czym mówi się mniej chętnie. Sponsoring piłkarski w Polsce to w dużej mierze gra dla branż już osadzonych w sporcie: energetyka, paliwa, FMCG, coraz częściej bukmacherzy. Dla marki spoza tego kręgu wejście w sponsoring bywa równie dużym wyzwaniem wizerunkowym, co szansą.
+
+## Ekstraklasa: liczby, które robią wrażenie, i te, których nie ma
+
+Sezon 2025/26 był dla Ekstraklasy rekordowy pod względem frekwencji. Średnio 13 577 kibiców na meczu, ponad 4,15 mln widzów łącznie w 306 spotkaniach, wzrost o 7,2% rok do roku. Lech Poznań jako pierwszy klub w historii ligi przekroczył średnią 31 tys. widzów na mecz. Górnik Zabrze i Legia Warszawa oscylują wokół 23-24 tys.
+
+Prawa telewizyjne na lata 2023/24-2026/27 wyceniono łącznie na ok. 1,3 mld zł. Canal+ płaci rocznie około 200 mln zł za wyłączność, TVP dokłada około 50 mln zł za jeden mecz kolejki. To realny zasięg medialny, na którym opiera się cała reszta wyceny sponsoringu.
+
+A teraz część, w której trzeba być uczciwym. Konkretne kwoty za sponsoring koszulki czy bandy reklamowej pojedynczego klubu Ekstraklasy (Legii, Lechu, Rakowa, Jagiellonii) nie są publicznie ujawniane. Nikt nie publikuje cennika. To, co czasem przebija się do mediów, to tzw. ekwiwalent reklamowy: szacowana przez agencje monitorujące wartość medialna ekspozycji sponsora. Nie kwota z umowy, tylko model tego, ile kosztowałoby wykupienie porównywalnej powierzchni reklamowej. Dla PKO BP jako sponsora tytularnego ligi te szacunki mocno się różnią w zależności od roku i metodologii: w jednym sezonie mowa była o ok. 321 mln zł, w innym o 94 mln zł. Rozstrzał rzędu kilkuset procent między latami to sygnał, żeby traktować te liczby jako punkt odniesienia, nie twardy fakt do wpisania w prezentację zarządu.
+
+Eksperci Sport Space Pro zwracają uwagę, że komercyjny zasięg polskich klubów bywa skromniejszy, niż sugerują nagłówki. Sprzedaż koszulek klubowych rzadko przekracza tysiąc sztuk sezonowo, nawet w większych klubach. Dla porównania: roczna umowa Manchesteru United na logo na koszulce to około 64 mln funtów. Ekstraklasa gra w zupełnie innej lidze cenowej i to trzeba mieć z tyłu głowy przy planowaniu budżetu.
+
+## 1. Liga: mniejszy zasięg, ale też konkretne liczby
+
+W sezonie 2025/26 średnia frekwencja w 1. Lidze (Betclic 1. Liga) wyniosła 5 338 widzów na mecz, czyli około 2,5 razy mniej niż w Ekstraklasie. Przekłada się to wprost na wycenę sponsoringu: mniejszy zasięg stadionowy, mniejsza ekspozycja telewizyjna, niższa cena wejścia.
+
+Tu akurat pojawia się liczba, którą rzadko widać w tej lidze: Pogoń Grodzisk Mazowiecki w swojej ofercie sponsorskiej podała ekwiwalent reklamowy na poziomie 30,5 mln zł za poprzedni sezon. To dane jednego klubu, nie całej ligi, i pochodzą z materiału przygotowanego przez sam klub na potrzeby pozyskiwania sponsorów, więc metodologia liczenia może się różnić od tej stosowanej w Ekstraklasie. Ale pokazują, że nawet drużyna spoza najwyższej klasy rozgrywkowej potrafi wygenerować ekspozycję medialną wartą realnych kilkudziesięciu milionów złotych, jeśli dobrze pracuje nad obecnością w mediach i mediach społecznościowych.
+
+Poza tym przypadkiem, dla 1. Ligi nie ma jednak systematycznie publikowanych widełek cenowych ani szacunków ekwiwalentu reklamowego dla całej ligi. To rynek, na którym ceny ustala się w rozmowie, nie w cenniku. W praktyce oznacza to większe pole do negocjacji dla marki, która wie, czego chce, i ma jasno określony budżet.
+
+Dla wielu firm to wcale nie jest gorsza opcja. Mniejszy klub 1. Ligi często daje bliższy kontakt z lokalną społecznością i elastyczniejsze warunki ekspozycji. Można zbudować relację od zera, zamiast być jednym z dziesięciu loga na koszulce klubu ekstraklasowego.
+
+## Co z tego wynika dla marki, która się zastanawia
+
+Przy masowym zasięgu i rozpoznawalności ogólnopolskiej dane jasno wskazują na Ekstraklasę: frekwencja, zasięg telewizyjny i skala medialna są tam nieporównywalnie większe. Przy ograniczonym budżecie albo celu zbudowania relacji z konkretnym regionem czy społecznością, 1. Liga daje więcej przestrzeni za mniejsze pieniądze i mniej sztywne warunki.
+
+W obu przypadkach jedno pozostaje bez zmian: publikowane "ekwiwalenty reklamowe" to szacunki agencji monitorujących rynek albo klubów, nie ceny z umów. Zanim podpiszesz cokolwiek, zapytaj, jak dokładnie policzono wartość, którą Ci pokazano. I porównaj ją z realnym zasięgiem klubu, nie tylko z liczbą w prezentacji sprzedażowej.
+    `,
+    category: "artykul",
+    tags: ["Sponsoring", "Marketing", "Ekstraklasa", "1 Liga"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-08-27",
+    readTime: 8,
+    featured: true,
+    coverGradient: "from-navy-800 to-rose-800",
+  },
+  {
     slug: "raport-gdzie-akademie-sportowe-traca-zawodnikow",
     title: "Raport: Gdzie akademie sportowe tracą zawodników",
     excerpt:
