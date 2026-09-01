@@ -25,15 +25,10 @@ export function ArticleCard({ article, className }: ArticleCardProps) {
       )}
     >
       {/* Cover */}
-      <div
-        className={cn(
-          "relative flex h-44 w-full items-end bg-gradient-to-br p-5 sm:h-48",
-          article.coverGradient
-        )}
-      >
+      <div className="flex h-10 w-full items-center bg-navy-50 px-5">
         <span
           className={cn(
-            "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur-sm",
+            "inline-flex items-center rounded-full border bg-white px-2.5 py-0.5 text-[11px] font-semibold",
             CATEGORY_COLORS[article.category]
           )}
         >
