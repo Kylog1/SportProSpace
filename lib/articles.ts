@@ -47,7 +47,7 @@ AT&T poszło jeszcze dalej. Podpisało pięcioletnią umowę jako partner łącz
 
 Drugi wątek: zawodnik przestał być tylko zawodnikiem. Jest sportowcem, twórcą treści, twarzą mody i osobną marką jednocześnie.
 
-Aryna Sabalenka współpracuje równolegle z Nike, Gucci, Beats, Emirates i Material Good. Ten ostatni przypadek jest szczególnie wymowny. Na US Open wystąpiła w biżuterii wartej ponad 127 karatów kamieni szlachetnych, jako pierwsza ambasadorka marki. Sama biżuteria nie sprzedaje się dzięki temu, że ktoś zobaczy ją na korcie. Sprzedaje się dzięki całemu łańcuchowi skojarzeń: Sabalenka, Nowy Jork, moda, media społecznościowe, media sportowe, media lifestyle'owe, konsument, który chce mieć choć fragment tego świata.
+Aryna Sabalenka współpracuje równolegle z Nike, Gucci, Beats, Emirates i Material Good. Ten ostatni przypadek jest szczególnie wymowny. Na US Open wystąpiła w komplecie biżuterii z ponad 127 karatami kolorowych kamieni szlachetnych, wartym około 330 tysięcy dolarów, jako pierwsza ambasadorka marki. Sama biżuteria nie sprzedaje się dzięki temu, że ktoś zobaczy ją na korcie. Sprzedaje się dzięki całemu łańcuchowi skojarzeń: Sabalenka, Nowy Jork, moda, media społecznościowe, media sportowe, media lifestyle'owe, konsument, który chce mieć choć fragment tego świata.
 
 Naomi Osaka pokazała to jeszcze wyraźniej. Jej wejście na kort w stroju inspirowanym Allenem Iversonem samo stało się wydarzeniem medialnym. Organizatorzy zrobili z tego osobny materiał na oficjalnej stronie turnieju, a Vogue pisał o tym jako o połączeniu sportu, mody i osobistej historii zawodniczki. Zanim ktokolwiek napisał o wyniku meczu, pisano o stroju.
 
