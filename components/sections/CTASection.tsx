@@ -27,11 +27,11 @@ export function CTASection() {
                 Zacznij teraz
               </span>
               <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight md:text-[40px] md:leading-[1.1]">
-                Zacznij mierzyć doświadczenie w Twoim klubie.
+                Rozwijaj swój klub w oparciu o dane.
               </h2>
               <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-navy-100/80">
                 Pierwsza rozmowa jest niezobowiązująca. Wracamy do Ciebie z
-                rekomendacją zakresu badania w 8 godzin.
+                rekomendacją zakresu działań w 8 godzin.
               </p>
 
               <div className="mt-7">

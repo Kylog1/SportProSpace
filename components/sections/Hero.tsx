@@ -34,9 +34,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-              Pomagamy klubom i organizacjom sportowym zrozumieć doświadczenia
-              członków, zawodników i klientów, i znaleźć obszary, które
-              ograniczają wzrost.
+              Pomagamy klubom i organizacjom sportowym zrozumieć, co naprawdę
+              wpływa na doświadczenia ich klientów i wskazujemy jak przełożyć
+              tę wiedzę na rezultaty biznesowe.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
