@@ -26,6 +26,53 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
+    slug: "us-open-sponsoring-doswiadczen-nie-logo",
+    title: "US Open pokazuje, gdzie kończy się sponsoring, a zaczyna produkt marketingowy",
+    excerpt:
+      "Na US Open coraz trudniej powiedzieć, gdzie kończy się tenis, a zaczyna kampania marketingowa. Sprawdziliśmy, jak marki i zawodnicy zmienili turniej w platformę doświadczeń i co z tego wynika dla sponsoringu sportowego w mniejszej skali.",
+    content: `
+## Turniej, który sprzedaje więcej niż mecze
+
+Tydzień przed startem US Open w Nowym Jorku dzieje się więcej niż na samych kortach. Zawodnicy, tacy jak Matteo Berrettini, pojawiają się na eventach marek, kolacjach, sesjach zdjęciowych do kampanii, grają w pickleball czy ping-ponga przy okazji promocji sponsorów. Organizatorzy sami to napędzają. Oficjalny program turnieju to już nie tylko drabinka meczów, tylko lista aktywacji marek: Peloton z pokazami fitnessu, La Roche-Posay i Lavazza z próbkami produktów, Ralph Lauren z instalacją z dwóch tysięcy piłek tenisowych, Heineken 0.0, Grey Goose z kultowym już koktajlem Honey Deuce. Do tego muzyka na żywo i didżeje między meczami.
+
+## Od logo do przeżycia
+
+Najważniejsza zmiana nie leży jednak w liczbie sponsorów. Leży w tym, czego marki od turnieju dziś oczekują. Klasyczny sponsoring to logo w widocznym miejscu i nazwisko zawodnika pod spodem. To, co dzieje się teraz, jest inne.
+
+Weźmy Ourę, Coco Gauff i Taylora Fritza. Oura jest oficjalnym partnerem turnieju w kategorii urządzeń monitorujących zdrowie, a Gauff i Fritz są jej ambasadorami. To jednak nie kończy się na billboardzie. Na miejscu kibice mogą przymierzyć i dopasować urządzenie, dostać spersonalizowany raport zdrowotny, wziąć udział w losowaniu nagród. Kibic nie ogląda reklamy. Testuje produkt, dostaje coś w zamian, zostawia swoje dane. Sponsoring przestaje być zakupem powierzchni reklamowej. Staje się produktem, który trzeba samemu zaprojektować.
+
+AT&T poszło jeszcze dalej. Podpisało pięcioletnią umowę jako partner łączności turnieju, a jego technologia jest fizyczną częścią infrastruktury US Open, nie tylko logotypem na banerze.
+
+## Zawodnik jako osobna marka
+
+Drugi wątek: zawodnik przestał być tylko zawodnikiem. Jest sportowcem, twórcą treści, twarzą mody i osobną marką jednocześnie.
+
+Aryna Sabalenka współpracuje równolegle z Nike, Gucci, Beats, Emirates i Material Good. Ten ostatni przypadek jest szczególnie wymowny. Na US Open wystąpiła w biżuterii wartej ponad 127 karatów kamieni szlachetnych, jako pierwsza ambasadorka marki. Sama biżuteria nie sprzedaje się dzięki temu, że ktoś zobaczy ją na korcie. Sprzedaje się dzięki całemu łańcuchowi skojarzeń: Sabalenka, Nowy Jork, moda, media społecznościowe, media sportowe, media lifestyle'owe, konsument, który chce mieć choć fragment tego świata.
+
+Naomi Osaka pokazała to jeszcze wyraźniej. Jej wejście na kort w stroju inspirowanym Allenem Iversonem samo stało się wydarzeniem medialnym. Organizatorzy zrobili z tego osobny materiał na oficjalnej stronie turnieju, a Vogue pisał o tym jako o połączeniu sportu, mody i osobistej historii zawodniczki. Zanim ktokolwiek napisał o wyniku meczu, pisano o stroju.
+
+## Kibic też jest produktem
+
+Jest jeszcze jeden poziom tej historii, o którym mówi się mniej, a który wydaje się najważniejszy z perspektywy praktycznej. US Open nie sprzedaje wyłącznie dostępu do zawodników. Sprzedaje dostęp do samego doświadczenia bycia kibicem.
+
+American Express jest partnerem turnieju od 33 lat i wciąż rozwija swoją aktywację: strefy dla posiadaczy kart, spersonalizowane gadżety, dodatkowe udogodnienia na miejscu. Vital Proteins, oficjalny partner kolagenowy i sponsor prezentujący turnieju gry mieszanej, zamiast baneru stawia na próbki produktów, niespodzianki dla kibiców i obecność przy nowym formacie rozgrywek. To sponsoring zaprojektowany jako produkt, nie jako wykupiona powierzchnia reklamowa.
+
+## Co z tego wynika w mniejszej skali
+
+US Open działa budżetami i zasięgiem, których żaden polski turniej czy klub nie ma i długo mieć nie będzie. Ale mechanizm, który za tym stoi, przenosi się na mniejszą skalę bez trudu.
+
+Marka wchodząca w sponsoring sportowy, czy to duży klub piłkarski, czy lokalna akademia, coraz rzadziej kupuje samą ekspozycję logo. Kupuje kontakt z konkretną grupą ludzi w konkretnym momencie ich uwagi. Pytanie przed podpisaniem umowy nie brzmi już „gdzie powiesimy baner". Brzmi „jakie doświadczenie możemy zaprojektować wokół tego wydarzenia, żeby ktoś zapamiętał markę, a nie tylko ją zobaczył". US Open po prostu robi to na skalę, którą trudno przeoczyć.
+    `,
+    category: "artykul",
+    tags: ["Sponsoring", "Marketing", "Tenis", "US Open"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-09-01",
+    readTime: 7,
+    featured: true,
+    coverGradient: "from-navy-900 to-orange-700",
+  },
+  {
     slug: "sponsoring-pilkarski-ekstraklasa-1-liga-ekwiwalent",
     title: "Sponsoring piłkarski w Polsce: co realnie kupuje marka, wchodząc w Ekstraklasę albo 1. Ligę",
     excerpt:
