@@ -273,22 +273,6 @@ export default function ArticlePage({ params }: Props) {
                       </dl>
                     </div>
 
-                    {/* CTA sidebar */}
-                    <div className="rounded-xl border border-navy-200 bg-navy-900 p-5 text-white">
-                      <p className="text-[13px] font-semibold">
-                        Chcesz zbadać NPS w swoim klubie?
-                      </p>
-                      <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/70">
-                        Bezpłatna konsultacja. Wrócimy do Ciebie w 8 godzin.
-                      </p>
-                      <Link
-                        href="/#contact"
-                        className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-[13px] font-semibold text-navy-950 transition-colors hover:bg-navy-50"
-                      >
-                        Zamów badanie
-                      </Link>
-                    </div>
-
                     {/* Tags */}
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
