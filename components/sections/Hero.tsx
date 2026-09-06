@@ -57,21 +57,6 @@ export function Hero() {
                 </Link>
               </Button>
             </div>
-
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-navy-800" />
-                100% anonimowe ankiety
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-navy-800" />
-                Niezależna metodologia
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-navy-800" />
-                Raport + rekomendacje
-              </span>
-            </div>
           </div>
 
           {/* RIGHT - dashboard mockup */}
