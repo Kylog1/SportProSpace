@@ -7,7 +7,12 @@
 // means editing this file.
 
 import { scoreAudience, clamp } from "./audience";
-import { resolveAnchors, BENCHMARK_VERSION, LEVEL_TIERS } from "./benchmarks";
+import {
+  resolveAnchors,
+  effectiveTier,
+  BENCHMARK_VERSION,
+  LEVEL_TIERS,
+} from "./benchmarks";
 import { getRecommendation } from "./recommendations";
 import {
   MODEL_VERSION,
@@ -151,7 +156,10 @@ export function scoreSubmission<C extends string>(
   config: PersonaConfig<C>,
   input: ScoreInput
 ): CommercialScoreResult<C> {
-  const anchors = resolveAnchors({ persona: config.id, tier: input.tier });
+  // Promoted where the declared numbers contradict the declared scale; never
+  // lowered, so the benchmark can only get harder than what was claimed.
+  const tier = effectiveTier(config.id, input.tier, input.audience);
+  const anchors = resolveAnchors({ persona: config.id, tier });
   const audience = scoreAudience(
     config.channels,
     input.audience,
@@ -198,6 +206,7 @@ export function scoreSubmission<C extends string>(
     improvements: buildImprovements(config, categories, input.answers),
     headline: buildHeadline(config, strongest, weakest),
     audience,
+    tier,
     modelVersion: MODEL_VERSION,
     benchmarkVersion: BENCHMARK_VERSION,
   };

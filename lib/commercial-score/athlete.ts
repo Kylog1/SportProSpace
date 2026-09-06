@@ -109,7 +109,7 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
   {
     id: "sp3",
     category: "sport",
-    text: "Czy reprezentujesz kraj lub reprezentowałeś go w ostatnich 24 miesiącach?",
+    text: "Czy w ostatnich 24 miesiącach masz za sobą występy w kadrze narodowej?",
     options: opts(
       "Nie",
       "Kadra młodzieżowa w przeszłości",
@@ -151,7 +151,7 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
     text: "Jaką część Twoich treści stanowi video?",
     options: opts(
       "Nie publikuję video",
-      "Sporadycznie",
+      "Niewielką część",
       "Około jednej trzeciej",
       "Mniej więcej połowę",
       "Zdecydowaną większość"
@@ -186,9 +186,9 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
   {
     id: "bf2",
     category: "brandfit",
-    text: "Czy potrafisz wskazać konkretne kategorie marek, do których pasujesz?",
+    text: "Ile kategorii marek potrafisz wskazać jako pasujące do Ciebie?",
     options: opts(
-      "Nie zastanawiałem się nad tym",
+      "Nie mam tego przemyślanego",
       "Ogólnie: coś związanego ze sportem",
       "Jedną lub dwie kategorie",
       "Trzy i więcej, z uzasadnieniem",
@@ -201,7 +201,7 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
     text: "Czy zdarzyło Ci się odmówić współpracy niepasującej do Twojego wizerunku?",
     hint: "Sprawdza, czy wizerunek jest realnym kryterium, czy deklaracją.",
     options: opts(
-      "Nie miałem jeszcze żadnych propozycji",
+      "Nie mam jeszcze żadnych propozycji",
       "Nie odmawiam, biorę co przyjdzie",
       "Raz się zdarzyło",
       "Kilka razy",
@@ -213,7 +213,7 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
   {
     id: "cr1",
     category: "readiness",
-    text: "Ile płatnych współprac z markami zrealizowałeś w ostatnich 12 miesiącach?",
+    text: "Ile płatnych współprac z markami masz za sobą w ostatnich 12 miesiącach?",
     options: opts(
       "Żadnej",
       "Jedną",
@@ -239,7 +239,7 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
     category: "readiness",
     text: "Czy znasz demografię swoich odbiorców - wiek, płeć, lokalizację?",
     options: opts(
-      "Nie sprawdzałem",
+      "Nie sprawdzam tego",
       "Z grubsza",
       "Znam główne dane",
       "Znam i używam ich w rozmowach",

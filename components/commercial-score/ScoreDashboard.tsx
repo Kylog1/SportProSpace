@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ScoreGauge } from "@/components/assessment/ScoreGauge";
 import {
+  LEVEL_TIERS,
   SCORE_LEVELS,
   type CommercialScoreResult,
   type PersonaConfig,
@@ -50,6 +51,8 @@ export function ScoreDashboard({
 }) {
   const cta = CTA_COPY[config.id];
   const totalGain = result.improvements.reduce((a, i) => a + i.gain, 0);
+  const tierLabel =
+    LEVEL_TIERS.find((t) => t.id === result.tier)?.label ?? null;
 
   return (
     <>
@@ -122,6 +125,16 @@ export function ScoreDashboard({
                   Waga kategorii w wyniku końcowym w nawiasie
                 </span>
               </div>
+              {tierLabel && (
+                <p className="mt-2 text-[12.5px] leading-relaxed text-muted-foreground">
+                  Zasięg porównaliśmy do skali:{" "}
+                  <strong className="font-medium text-navy-900">
+                    {tierLabel.toLowerCase()}
+                  </strong>
+                  . Ten sam zasięg wypada inaczej przy innej skali - jeśli to
+                  nie jest Wasz poziom, wypełnijcie ponownie.
+                </p>
+              )}
               <div className="mt-5 space-y-4">
                 {result.categories.map((c) => (
                   <CategoryBar

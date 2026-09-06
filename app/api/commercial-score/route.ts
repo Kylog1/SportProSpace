@@ -98,10 +98,17 @@ export async function POST(req: Request) {
 
   const parsed = SubmitSchema.safeParse(json);
   if (!parsed.success) {
-    const first = parsed.error.issues[0];
-    console.error("[commercial-score] walidacja:", JSON.stringify(parsed.error.issues.slice(0, 3)));
+    console.error(
+      "[commercial-score] walidacja:",
+      JSON.stringify(parsed.error.issues.slice(0, 3))
+    );
+    // Zod's own fallback is the English "Invalid input", which would surface in
+    // a Polish interface. Only messages written here are shown to the visitor.
+    const written = parsed.error.issues.find(
+      (i) => i.message && i.message !== "Invalid input"
+    );
     return NextResponse.json(
-      { error: first?.message ?? "Niepoprawne dane formularza" },
+      { error: written?.message ?? "Niepoprawne dane formularza" },
       { status: 400 }
     );
   }
@@ -133,7 +140,6 @@ export async function POST(req: Request) {
   // comes from an answer, and trusting a client-sent tier would reopen the gap
   // where understating your scale loosens the audience benchmark for free.
   const tier = resolveTier(config, answers, context.tier ?? null);
-  const scoredContext = { discipline: context.discipline, tier };
   const result = scoreSubmission(config, {
     answers,
     audience: audience as Record<string, AudienceValue>,
@@ -146,7 +152,7 @@ export async function POST(req: Request) {
     submissionId = await persist(
       buildRecord({
         persona,
-        context: scoredContext,
+        context: { discipline: context.discipline, tier: result.tier },
         lead: {
           name: lead.name,
           email: lead.email,
@@ -179,7 +185,10 @@ export async function POST(req: Request) {
 
   const resend = new Resend(apiKey);
   const userEmail = buildUserEmail(config, result, lead.name);
-  const adminEmail = buildAdminEmail(config, result, lead, scoredContext, {
+  const adminEmail = buildAdminEmail(config, result, lead, {
+    discipline: context.discipline,
+    tier: result.tier,
+  }, {
     answers,
     audience,
   });

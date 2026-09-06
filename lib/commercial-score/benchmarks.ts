@@ -127,6 +127,59 @@ const TABLES: Record<PersonaId, Record<LevelTier, AnchorTable>> = {
 /** Tier used when the visitor has not declared one. */
 const DEFAULT_TIER: LevelTier = "ogolnopolski";
 
+const TIER_ORDER: LevelTier[] = [
+  "lokalny",
+  "regionalny",
+  "ogolnopolski",
+  "miedzynarodowy",
+];
+
+/**
+ * The one declared number that betrays an understated scale.
+ *
+ * The athlete tier is derived from an answer, so it needs no cross-check. The
+ * organization declares its tier directly and nothing contradicts it, which
+ * made understating it worth eleven points for free. Attendance is the number
+ * to check it against: it is the hardest to inflate without noticing and the
+ * one most tightly bound to actual scale - a club drawing 14 000 people is not
+ * local under any reading.
+ *
+ * Followers deliberately are not used here. A local club with one viral video
+ * is still a local club, and promoting it would punish the exact profile the
+ * benchmark exists to treat fairly.
+ */
+const SCALE_SIGNAL: Partial<Record<PersonaId, string>> = {
+  organization: "attendance",
+};
+
+/**
+ * Raises a declared tier that the numbers contradict. Only ever promotes, so a
+ * visitor can never loosen their own benchmark - and a profile whose signal is
+ * missing or marked inapplicable keeps whatever it declared.
+ */
+export function effectiveTier(
+  persona: PersonaId,
+  declared: LevelTier | null | undefined,
+  audience: Record<string, number | "n/a" | null>
+): LevelTier | null {
+  const signal = SCALE_SIGNAL[persona];
+  if (!signal) return declared ?? null;
+
+  const value = audience[signal];
+  if (typeof value !== "number" || value <= 0) return declared ?? null;
+
+  const table = TABLES[persona];
+  const lowestFitting = TIER_ORDER.findIndex((t) => {
+    const anchor = table[t][signal];
+    return anchor ? value <= anchor[1] : false;
+  });
+  const impliedIdx =
+    lowestFitting === -1 ? TIER_ORDER.length - 1 : lowestFitting;
+  const declaredIdx = declared ? TIER_ORDER.indexOf(declared) : -1;
+
+  return TIER_ORDER[Math.max(impliedIdx, declaredIdx)];
+}
+
 /**
  * Resolve the anchor table for a profile. Today the only dimension is the
  * declared level; discipline, league and region slot in here later without

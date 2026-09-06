@@ -158,7 +158,7 @@ export function buildAdminEmail(
     ["Email", lead.email],
     ["Telefon", lead.phone || "-"],
     ["Dyscyplina", context.discipline],
-    ["Skala", context.tier ?? "-"],
+    ["Skala (użyta do scoringu)", context.tier ?? "-"],
     ["Szuka partnerów", intent],
     ["Zgoda marketingowa", lead.consentMarketing ? "tak" : "nie"],
     ["Wynik", `${result.total}/100 (${result.level.name})`],

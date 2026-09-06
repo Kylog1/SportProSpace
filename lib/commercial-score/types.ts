@@ -262,6 +262,8 @@ export type CommercialScoreResult<C extends string = string> = {
   /** Single deterministic sentence built from strongest + weakest. */
   headline: string;
   audience: AudienceResult;
+  /** The tier actually scored against, after any promotion. */
+  tier: LevelTier | null;
   modelVersion: string;
   benchmarkVersion: string;
 };
@@ -275,4 +277,4 @@ export type CommercialScoreResult<C extends string = string> = {
  * every submission so historical results stay interpretable after a
  * recalibration, and so old raw answers can be re-scored and compared.
  */
-export const MODEL_VERSION = "1.1.0";
+export const MODEL_VERSION = "1.2.0";

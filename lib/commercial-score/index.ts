@@ -32,7 +32,12 @@ export {
   resolveTier,
 } from "./scoring";
 export { scoreAudience, logNormalise } from "./audience";
-export { resolveAnchors, BENCHMARK_VERSION, LEVEL_TIERS } from "./benchmarks";
+export {
+  resolveAnchors,
+  effectiveTier,
+  BENCHMARK_VERSION,
+  LEVEL_TIERS,
+} from "./benchmarks";
 export { getRecommendation, missingRecommendations } from "./recommendations";
 export {
   MODEL_VERSION,

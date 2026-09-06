@@ -158,10 +158,10 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
   {
     id: "as2",
     category: "assets",
-    text: "Ile z Waszych aktywów wykracza poza samą ekspozycję logo?",
+    text: "Co poza samą ekspozycją logo macie w ofercie dla partnera?",
     hint: "Ekspozycja to koszulki, banery, ścianka, materiały - wszędzie tam, gdzie partner jest tylko widoczny.",
     options: opts(
-      "Sprzedajemy wyłącznie ekspozycję logo",
+      "Nic, sprzedajemy samą ekspozycję",
       "Dokładamy do tego digital",
       "Dokładamy digital i content",
       "Dokładamy eventy i akademię",
@@ -224,7 +224,7 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
   {
     id: "sa2",
     category: "sales",
-    text: "Z iloma potencjalnymi partnerami rozmawialiście w ostatnich 3 miesiącach?",
+    text: "Ile rozmów z potencjalnymi partnerami odbyliście w ostatnich 3 miesiącach?",
     hint: "Liczy się rozmowa o współpracy, nawet jeśli skończyła się odmową.",
     options: opts(
       "Żadnej",
@@ -266,7 +266,7 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
     text: "Czy sponsor otrzymuje od Was zaplanowane aktywacje, a nie tylko ekspozycję logo?",
     hint: "Jeśli nie macie jeszcze partnerów, zaznaczcie pierwszą odpowiedź.",
     options: opts(
-      "Nie mamy jeszcze partnerów albo tylko ekspozycja",
+      "Nie mamy partnerów albo dostają samą ekspozycję",
       "Pojedyncze akcje, gdy ktoś o nie poprosi",
       "Plan aktywacji dla największych partnerów",
       "Plan aktywacji dla każdego partnera",
