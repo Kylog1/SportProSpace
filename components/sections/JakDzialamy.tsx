@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react";
 
-// Process and scope in one section. These used to be two - "Jak działamy" and
-// "Co badamy" - which cost a full section header and set of padding for one
-// continuous thought, and left the site sounding like a research shop: the old
-// first step was "Badamy doświadczenia…", so every engagement appeared to start
-// with a study. The commercial track had no place on the homepage at all.
+// The process, and only the process. "Co badamy" used to sit below this as a
+// second section; it is gone rather than merged.
+//
+// What survives from that merge is the positioning fix, which was the point of
+// it: the first step used to read "Badamy doświadczenia…", so every engagement
+// appeared to begin with a study and the site read as a research shop. It is
+// now "Diagnozujemy", and the intro names both tracks explicitly.
 
 const steps = [
   {
@@ -26,31 +28,6 @@ const steps = [
     n: "04",
     title: "Wdrażamy i mierzymy",
     desc: "Przekładamy wyniki na konkretne działania i mierzymy efekty.",
-  },
-];
-
-// Two tracks, not one. The experience column is the old five-stage funnel; the
-// commercial column mirrors the categories Commercial Score actually measures,
-// so neither is a claim invented for this page.
-const tracks: { label: string; items: { name: string; desc: string }[] }[] = [
-  {
-    label: "Doświadczenie i retencja",
-    items: [
-      { name: "Attract", desc: "Czy klub przyciąga właściwych klientów" },
-      { name: "Activate", desc: "Czy nowi szybko zaczynają korzystać" },
-      { name: "Retain", desc: "Czy relacja sprawia, że zostają" },
-      { name: "Expand", desc: "Czy wykorzystujecie upsell i cross-sell" },
-      { name: "Refer", desc: "Czy zadowoleni przyciągają kolejnych" },
-    ],
-  },
-  {
-    label: "Potencjał komercyjny",
-    items: [
-      { name: "Aktywa", desc: "Co realnie macie do sprzedania markom" },
-      { name: "Oferta", desc: "Czy potraficie uzasadnić wartość współpracy" },
-      { name: "Sprzedaż", desc: "Kto i jak prowadzi rozmowy z firmami" },
-      { name: "Aktywacje", desc: "Co sponsor dostaje i co mu raportujecie" },
-    ],
   },
 ];
 
@@ -101,31 +78,6 @@ export function JakDzialamy() {
               </li>
             ))}
           </ol>
-        </div>
-
-        <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
-          {tracks.map((track) => (
-            <div
-              key={track.label}
-              className="rounded-xl border border-navy-100 bg-white p-6"
-            >
-              <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-navy-700">
-                {track.label}
-              </h3>
-              <ul className="mt-4 space-y-2.5">
-                {track.items.map((item) => (
-                  <li key={item.name} className="flex flex-wrap items-baseline gap-x-2">
-                    <span className="text-[14px] font-semibold tracking-tight text-navy-950">
-                      {item.name}
-                    </span>
-                    <span className="text-[13.5px] leading-relaxed text-muted-foreground">
-                      {item.desc}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
       </div>
     </section>

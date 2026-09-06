@@ -94,7 +94,11 @@ export function ScoreChooser() {
                     </div>
                   </div>
 
-                  <span className="mt-5 inline-flex items-center gap-2 text-[14.5px] font-semibold text-navy-800">
+                  {/* Styled to match the primary Button, but rendered as a
+                      span: the whole card is already the link, and nesting an
+                      anchor or button inside one is invalid and breaks keyboard
+                      navigation. Hover is driven by the card's group. */}
+                  <span className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-navy-800 px-5 text-sm font-medium text-white shadow-sm transition-colors group-hover:bg-navy-900">
                     {card.cta}
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
