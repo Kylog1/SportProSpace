@@ -7,6 +7,25 @@ import { trackMeetingBooked } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 
+// Punkty pola odpowiedzi. Jeden z nich (wyroznik: true) dostaje pierscienie -
+// to wzorzec, ktory badanie wylapuje z szumu.
+const points = [
+  { x: 96, y: 228, o: 0.3 },
+  { x: 146, y: 272, o: 0.22 },
+  { x: 128, y: 176, o: 0.26 },
+  { x: 196, y: 212, o: 0.34 },
+  { x: 212, y: 126, o: 0.28 },
+  { x: 252, y: 252, o: 0.2 },
+  { x: 286, y: 164, o: 0.38, wyroznik: true },
+  { x: 264, y: 88, o: 0.24 },
+  { x: 330, y: 232, o: 0.22 },
+  { x: 352, y: 132, o: 0.3 },
+  { x: 386, y: 196, o: 0.18 },
+  { x: 176, y: 76, o: 0.2 },
+  { x: 318, y: 52, o: 0.16 },
+  { x: 82, y: 122, o: 0.18 },
+];
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-navy-100 bg-white">
@@ -22,7 +41,7 @@ export function Hero() {
       />
 
       <div className="container relative py-20 md:py-24 lg:py-28">
-        {/* 2-column layout: text left, dashboard right */}
+        {/* 2-column layout: text left, abstract field right */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
           {/* LEFT - copy */}
@@ -59,92 +78,51 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT - dashboard mockup */}
+          {/* RIGHT - pole odpowiedzi.
+              Poprzednio stal tu makiet dashboardu z wymyslonymi wynikami
+              (NPS +62, 412 respondentow). Pokazywal produkt, ktorego nie ma
+              w ofercie, i podawal NPS jako procent - blad skali na stronie
+              firmy badawczej. Zostal abstrakcyjny akcent: zero liczb do
+              obrony, ta sama siatka co ciemna karta Self-Audit nizej. */}
           <div className="relative w-full">
-            <div className="rounded-2xl border border-navy-100 bg-white p-2 shadow-[0_24px_64px_-20px_rgba(15,23,42,0.18)]">
-              <div className="rounded-xl border border-navy-100 bg-gradient-to-b from-white to-navy-50/40 p-5 sm:p-6">
-                {/* top bar */}
-                <div className="flex items-center justify-between border-b border-navy-100 pb-3">
-                  <div className="flex items-center gap-1.5">
-                    <div className="size-2 rounded-full bg-navy-200" />
-                    <div className="size-2 rounded-full bg-navy-200" />
-                    <div className="size-2 rounded-full bg-navy-200" />
-                  </div>
-                  <span className="text-[11px] font-medium text-muted-foreground">
-                    Experience Report - Q2 2026
-                  </span>
-                  <span className="text-[11px] text-muted-foreground">
-                    412 respondentów
-                  </span>
-                </div>
+            <div className="overflow-hidden rounded-2xl shadow-[0_24px_64px_-28px_rgba(11,23,54,0.45)]">
+              <svg
+                aria-hidden
+                viewBox="0 0 440 340"
+                className="block w-full"
+              >
+                <rect width="440" height="340" fill="#172554" />
 
-                {/* stats row */}
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                  <Stat label="Net Promoter Score" value="+62" delta="+9 vs Q1" />
-                  <Stat label="Retencja członków" value="87%" delta="+4.2 pp" />
-                  <Stat label="Satysfakcja klientów" value="4.5/5" delta="+0.3" />
-                </div>
+                {/* siatka */}
+                <g stroke="#ffffff" strokeOpacity="0.08" strokeWidth="1">
+                  <path d="M70 0V340M120 0V340M170 0V340M220 0V340M270 0V340M320 0V340M370 0V340" />
+                  <path d="M0 70H440M0 120H440M0 170H440M0 220H440M0 270H440" />
+                </g>
 
-                {/* charts row */}
-                <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                  <Panel title="Powody odejść">
-                    <Bar label="Brak feedbacku" value={68} />
-                    <Bar label="Komunikacja z trenerami" value={54} />
-                    <Bar label="Organizacja zajęć" value={37} />
-                    <Bar label="Atmosfera" value={22} />
-                  </Panel>
-                  <Panel title="NPS wg segmentu">
-                    <Bar label="Członkowie" value={82} accent />
-                    <Bar label="Nowi klienci" value={71} accent />
-                    <Bar label="Rodzice" value={66} accent />
-                    <Bar label="Trenerzy" value={59} accent />
-                  </Panel>
-                </div>
-              </div>
+                {/* luki pomiaru */}
+                <g fill="none" stroke="#ffffff" strokeWidth="1">
+                  <circle cx="40" cy="300" r="110" strokeOpacity="0.16" />
+                  <circle cx="40" cy="300" r="180" strokeOpacity="0.13" />
+                  <circle cx="40" cy="300" r="250" strokeOpacity="0.1" />
+                  <circle cx="40" cy="300" r="320" strokeOpacity="0.07" />
+                </g>
+
+                {/* odpowiedzi */}
+                <g fill="#ffffff">
+                  {points.map((p) => (
+                    <circle key={`${p.x}-${p.y}`} cx={p.x} cy={p.y} r="3" opacity={p.o} />
+                  ))}
+                </g>
+
+                {/* wyroznik */}
+                <circle cx="286" cy="164" r="15" fill="none" stroke="#ffffff" strokeOpacity="0.45" strokeWidth="1" />
+                <circle cx="286" cy="164" r="28" fill="none" stroke="#ffffff" strokeOpacity="0.18" strokeWidth="1" />
+                <circle cx="286" cy="164" r="5" fill="#ffffff" />
+              </svg>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Stat({ label, value, delta }: { label: string; value: string; delta: string }) {
-  return (
-    <div className="rounded-lg border border-navy-100 bg-white p-3">
-      <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground leading-tight">
-        {label}
-      </div>
-      <div className="mt-1.5 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1.5">
-        <span className="text-xl font-semibold tracking-tight text-navy-950">{value}</span>
-        <span className="text-[10px] font-medium text-navy-700">{delta}</span>
-      </div>
-    </div>
-  );
-}
-
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg border border-navy-100 bg-white p-4">
-      <div className="mb-3 text-[12px] font-semibold tracking-tight text-navy-950">{title}</div>
-      <div className="space-y-2.5">{children}</div>
-    </div>
-  );
-}
-
-function Bar({ label, value, accent = false }: { label: string; value: number; accent?: boolean }) {
-  return (
-    <div>
-      <div className="mb-1 flex items-center justify-between text-[11px]">
-        <span className="text-navy-800">{label}</span>
-        <span className="text-muted-foreground">{value}%</span>
-      </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-navy-50">
-        <div
-          className={accent ? "h-full rounded-full bg-navy-800" : "h-full rounded-full bg-navy-300"}
-          style={{ width: `${value}%` }}
-        />
-      </div>
-    </div>
   );
 }
