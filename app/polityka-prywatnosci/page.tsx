@@ -91,6 +91,17 @@ export default function PrivacyPolicyPage() {
                   i doświadczeń klientów.
                 </li>
                 <li>
+                  <strong>Commercial Score</strong>: imię i nazwisko, adres
+                  e-mail, nazwa zawodnika lub organizacji, numer telefonu
+                  (opcjonalnie), dyscyplina i skala działania, odpowiedzi
+                  udzielone w kwestionariuszu, podane liczby dotyczące
+                  zasięgu i publiczności oraz informacja o poszukiwaniu
+                  partnerów komercyjnych. Dane te służą do wyliczenia i
+                  przesłania wyniku na wskazany adres e-mail oraz (wyłącznie
+                  po wyrażeniu odrębnej zgody) do przesyłania materiałów
+                  dotyczących sponsoringu i współpracy z markami.
+                </li>
+                <li>
                   <strong>Zapis na powiadomienie o nowej dyscyplinie</strong>:
                   adres e-mail oraz wskazana dyscyplina sportu, w celu
                   poinformowania o dostępności Self-Audit dla danej
@@ -115,8 +126,10 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   art. 6 ust. 1 lit. a) RODO: w celu przesłania raportu
-                  Self-Audit oraz ewentualnego kontaktu w sprawie badania, na
-                  podstawie zgody wyrażonej w formularzu;
+                  Self-Audit lub wyniku Commercial Score, a także w celu
+                  przesyłania materiałów marketingowych oraz ewentualnego
+                  kontaktu w sprawie badania, na podstawie odrębnych zgód
+                  wyrażonych w formularzu;
                 </li>
                 <li>
                   art. 6 ust. 1 lit. f) RODO: w celu zapewnienia
@@ -128,7 +141,7 @@ export default function PrivacyPolicyPage() {
               <h2>4. Okres przechowywania danych</h2>
               <p>
                 Dane przekazane w formularzu kontaktowym oraz w ramach
-                Self-Audit przechowywane są przez czas niezbędny do
+                Self-Audit i Commercial Score przechowywane są przez czas niezbędny do
                 obsłużenia zapytania oraz (jeśli doszło do dalszej
                 współpracy) przez czas jej trwania, a następnie przez okres
                 wymagany przepisami prawa (np. podatkowymi) lub do momentu
@@ -147,7 +160,7 @@ export default function PrivacyPolicyPage() {
                 <li>
                   dostawcy usługi wysyłki wiadomości e-mail (Resend),
                   wykorzystywanej do przesyłania odpowiedzi na zapytania
-                  oraz raportów Self-Audit;
+                  oraz raportów Self-Audit i wyników Commercial Score;
                 </li>
                 <li>
                   dostawcy usługi hostingu i infrastruktury (Vercel), na

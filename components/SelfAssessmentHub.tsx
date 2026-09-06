@@ -66,6 +66,30 @@ export function SelfAssessmentHub() {
             <SportCard key={sport.id} sport={sport} />
           ))}
         </div>
+
+        {/* Different question, same visitor: Self-Audit is about keeping the
+            members you have, Commercial Score about what you are worth to a
+            brand. People arriving here often want the second one. */}
+        <div className="mx-auto mt-12 max-w-5xl">
+          <Link
+            href="/commercial-score"
+            className="group flex flex-wrap items-center justify-between gap-4 rounded-xl border border-navy-100 bg-navy-50/50 px-5 py-4 transition-colors hover:border-navy-300 hover:bg-navy-50 sm:px-6"
+          >
+            <div className="min-w-0">
+              <div className="text-[15px] font-medium text-navy-950">
+                Sprawdzasz też potencjał sponsorski?
+              </div>
+              <p className="mt-0.5 text-[13.5px] leading-relaxed text-muted-foreground">
+                Commercial Score pokazuje, jak Wasz sportowy potencjał wygląda
+                z perspektywy marki, która rozważa współpracę.
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-1.5 text-[13.5px] font-semibold text-navy-800">
+              Policz Commercial Score
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </Link>
+        </div>
       </div>
     </section>
   );
