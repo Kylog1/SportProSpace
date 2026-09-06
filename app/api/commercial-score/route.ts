@@ -57,7 +57,6 @@ const SubmitSchema = z.object({
     consent: z.boolean().refine((v) => v === true, {
       message: "Wymagana zgoda na otrzymanie wyniku",
     }),
-    consentMarketing: z.boolean(),
     /**
      * Honeypot. Accepts any string on purpose: rejecting a filled one in the
      * schema would answer the bot with a 400 telling it which field it got
@@ -164,7 +163,6 @@ export async function POST(req: Request) {
           phone: lead.phone || "",
           buyingIntent: lead.buyingIntent,
           consent: lead.consent,
-          consentMarketing: lead.consentMarketing,
         },
         answers,
         audience: audience as Record<string, AudienceValue>,

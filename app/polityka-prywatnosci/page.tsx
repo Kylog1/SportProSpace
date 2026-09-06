@@ -97,9 +97,7 @@ export default function PrivacyPolicyPage() {
                   udzielone w kwestionariuszu, podane liczby dotyczące
                   zasięgu i publiczności oraz informacja o poszukiwaniu
                   partnerów komercyjnych. Dane te służą do wyliczenia i
-                  przesłania wyniku na wskazany adres e-mail oraz (wyłącznie
-                  po wyrażeniu odrębnej zgody) do przesyłania materiałów
-                  dotyczących sponsoringu i współpracy z markami.
+                  przesłania wyniku na wskazany adres e-mail.
                 </li>
                 <li>
                   <strong>Zapis na powiadomienie o nowej dyscyplinie</strong>:
@@ -126,10 +124,9 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   art. 6 ust. 1 lit. a) RODO: w celu przesłania raportu
-                  Self-Audit lub wyniku Commercial Score, a także w celu
-                  przesyłania materiałów marketingowych oraz ewentualnego
-                  kontaktu w sprawie badania, na podstawie odrębnych zgód
-                  wyrażonych w formularzu;
+                  Self-Audit lub wyniku Commercial Score oraz ewentualnego
+                  kontaktu w sprawie badania, na podstawie zgody wyrażonej
+                  w formularzu;
                 </li>
                 <li>
                   art. 6 ust. 1 lit. f) RODO: w celu zapewnienia

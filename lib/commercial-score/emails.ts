@@ -135,7 +135,6 @@ export function buildAdminEmail(
     entityName: string;
     phone?: string;
     buyingIntent: string;
-    consentMarketing: boolean;
   },
   context: { discipline: string; tier: string | null },
   /**
@@ -160,7 +159,6 @@ export function buildAdminEmail(
     ["Dyscyplina", context.discipline],
     ["Skala (użyta do scoringu)", context.tier ?? "-"],
     ["Szuka partnerów", intent],
-    ["Zgoda marketingowa", lead.consentMarketing ? "tak" : "nie"],
     ["Wynik", `${result.total}/100 (${result.level.name})`],
     ...result.categories.map(
       (c) => [c.label, `${c.score}/100`] as [string, string]

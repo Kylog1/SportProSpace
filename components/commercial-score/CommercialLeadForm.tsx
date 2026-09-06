@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 import type { PersonaId } from "@/lib/commercial-score";
 
 // Lead gate. Separate from components/assessment/LeadForm because the payload,
-// the endpoint and the fields differ: an entity name instead of a club name, a
-// buying-intent question used only for qualification, and a second, optional
-// marketing consent kept apart from the consent required to send the result.
+// the endpoint and the fields differ: a buying-intent question used only for
+// qualification, and an entity name asked of organizations only - an athlete is
+// the entity, so asking twice was friction with nothing behind it.
 
 export const BUYING_INTENTS = [
   { id: "active", label: "Tak, aktywnie szukamy" },
@@ -28,7 +28,6 @@ export type LeadPayload = {
   phone: string;
   buyingIntent: BuyingIntent;
   consent: boolean;
-  consentMarketing: boolean;
   website: string;
 };
 
@@ -57,13 +56,15 @@ export function CommercialLeadForm({
   const [phone, setPhone] = useState("");
   const [buyingIntent, setBuyingIntent] = useState<BuyingIntent | null>(null);
   const [consent, setConsent] = useState(false);
-  const [consentMarketing, setConsentMarketing] = useState(false);
   const [website, setWebsite] = useState(""); // honeypot
 
+  // The athlete is the entity, so asking for a name twice was pure friction.
+  // entityName stays in the payload - filled from the person's name - so the
+  // record shape and the admin email are identical for both personas.
   const ready =
     name.trim().length > 1 &&
     email.includes("@") &&
-    entityName.trim().length > 1 &&
+    (isAthlete || entityName.trim().length > 1) &&
     buyingIntent !== null &&
     consent;
 
@@ -73,11 +74,10 @@ export function CommercialLeadForm({
     onSubmit({
       name,
       email,
-      entityName,
+      entityName: isAthlete ? name : entityName,
       phone,
       buyingIntent,
       consent,
-      consentMarketing,
       website,
     });
   }
@@ -141,14 +141,16 @@ export function CommercialLeadForm({
                 required
                 placeholder={isAthlete ? "jan@example.com" : "jan@klub.pl"}
               />
-              <Field
-                label={isAthlete ? "Imię i nazwisko zawodnika" : "Nazwa organizacji"}
-                value={entityName}
-                onChange={setEntityName}
-                autoComplete={isAthlete ? "off" : "organization"}
-                required
-                placeholder={isAthlete ? "Jan Kowalski" : "KS Sport Warszawa"}
-              />
+              {!isAthlete && (
+                <Field
+                  label="Nazwa organizacji"
+                  value={entityName}
+                  onChange={setEntityName}
+                  autoComplete="organization"
+                  required
+                  placeholder="KS Sport Warszawa"
+                />
+              )}
               <Field
                 label="Telefon (opcjonalnie)"
                 type="tel"
@@ -199,14 +201,10 @@ export function CommercialLeadForm({
               aria-hidden
             />
 
-            <div className="grid gap-3 border-t border-navy-100 pt-5">
+            <div className="border-t border-navy-100 pt-5">
               <Consent checked={consent} onChange={setConsent} required>
                 Zgadzam się na otrzymanie wyniku Commercial Score na podany adres
                 email.
-              </Consent>
-              <Consent checked={consentMarketing} onChange={setConsentMarketing}>
-                Chcę otrzymywać od Sport Space Pro materiały o sponsoringu i
-                współpracy z markami. Możesz wypisać się w każdej chwili.
               </Consent>
             </div>
 

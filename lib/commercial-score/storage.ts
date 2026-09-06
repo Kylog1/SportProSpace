@@ -33,7 +33,6 @@ export type SubmissionRecord = {
     phone: string;
     buyingIntent: string;
     consent: boolean;
-    consentMarketing: boolean;
   };
   answers: Record<string, number>;
   audienceInputs: Record<string, AudienceValue>;
