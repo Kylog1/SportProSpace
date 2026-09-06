@@ -40,6 +40,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/commercial-score" className="hover:text-navy-950">
+                  Commercial Score
+                </Link>
+              </li>
+              <li>
                 <Link href="/partnerzy" className="hover:text-navy-950">
                   Partnerzy
                 </Link>
