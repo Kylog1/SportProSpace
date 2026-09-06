@@ -3,6 +3,7 @@
 import { ArrowLeft, ArrowRight, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Combobox } from "@/components/ui/combobox";
 import { cn } from "@/lib/utils";
 import { LEVEL_TIERS, type LevelTier, type PersonaId } from "@/lib/commercial-score";
 
@@ -85,20 +86,15 @@ export function ContextBlock({
             >
               Dyscyplina
             </label>
-            <input
+            <Combobox
               id="cs-discipline"
-              list="cs-disciplines"
+              className="mt-2"
               value={value.discipline}
-              onChange={(e) => onChange({ ...value, discipline: e.target.value })}
+              onChange={(discipline) => onChange({ ...value, discipline })}
+              options={DISCIPLINES}
               placeholder={isAthlete ? "np. Siatkówka" : "np. Piłka nożna"}
-              autoComplete="off"
-              className="mt-2 block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-[16px] text-navy-950 outline-none transition-colors placeholder:text-navy-300 focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20"
+              emptyHint="Nie ma na liście - wpisz swoją dyscyplinę."
             />
-            <datalist id="cs-disciplines">
-              {DISCIPLINES.map((d) => (
-                <option key={d} value={d} />
-              ))}
-            </datalist>
 
             {askTier && (
             <div className="mt-7">
