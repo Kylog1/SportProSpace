@@ -67,9 +67,10 @@ const SubmitSchema = z.object({
 });
 
 const PatchSchema = z.object({
-  // Firestore auto-ids, so unguessable. Addressing the record by id rather than
-  // by email keeps this endpoint from being usable to probe whether a given
-  // address is in the database.
+  // Addressed by opaque id rather than by email so this endpoint can never be
+  // used to probe whether a given address is in the system. With no store wired
+  // up the id is always null and the client skips the call entirely; the seam
+  // stays so turning storage back on needs no change here.
   submissionId: z.string().trim().min(6).max(64),
   ctaClicked: z.enum(["audit", "contact"]),
 });
@@ -141,9 +142,10 @@ export async function POST(req: Request) {
           name: lead.name,
           email: lead.email,
           entityName: lead.entityName,
-          // Empty string, never undefined: Firestore rejects undefined values,
-          // and an optional phone is the common case - so this silently broke
-          // every write from a visitor who skipped the field.
+          // Empty string, never undefined. Firestore rejects undefined values,
+          // and phone is optional, so this silently dropped every submission
+          // from a visitor who skipped it - kept correct for whenever a store
+          // is wired back up.
           phone: lead.phone || "",
           buyingIntent: lead.buyingIntent,
           consent: lead.consent,
@@ -168,7 +170,10 @@ export async function POST(req: Request) {
 
   const resend = new Resend(apiKey);
   const userEmail = buildUserEmail(config, result, lead.name);
-  const adminEmail = buildAdminEmail(config, result, lead, context);
+  const adminEmail = buildAdminEmail(config, result, lead, context, {
+    answers,
+    audience,
+  });
 
   let emailed = true;
   try {

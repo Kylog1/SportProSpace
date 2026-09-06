@@ -137,7 +137,16 @@ export function buildAdminEmail(
     buyingIntent: string;
     consentMarketing: boolean;
   },
-  context: { discipline: string; tier: string | null }
+  context: { discipline: string; tier: string | null },
+  /**
+   * Raw inputs, included because this email is the record.
+   *
+   * There is no database, so anything missing here is gone. Category scores are
+   * lossy - they cannot be turned back into answers - which is why the answers
+   * ship verbatim, both as a readable table and as one line of JSON that pastes
+   * straight into an assistant when several submissions need aggregating.
+   */
+  raw?: { answers: Record<string, number>; audience: Record<string, unknown> }
 ): { subject: string; html: string; text: string } {
   const intent = BUYING_INTENT_LABELS[lead.buyingIntent] ?? lead.buyingIntent;
   const hot = lead.buyingIntent === "active" || lead.buyingIntent === "3months";
@@ -164,6 +173,36 @@ export function buildAdminEmail(
     ],
   ];
 
+  // Question-by-question, with the option the visitor actually chose. Without
+  // this the answers exist nowhere after the request ends.
+  const answerRows = raw
+    ? config.questions
+        .map((q) => {
+          const v = raw.answers[q.id];
+          const chosen = q.options.find((o) => o.value === v);
+          return `<tr>
+            <td style="padding:6px 8px 6px 0;border-bottom:1px solid ${RULE};font:400 12px/1.45 Arial,sans-serif;color:${MUTED};vertical-align:top">${esc(q.text)}</td>
+            <td style="padding:6px 0;border-bottom:1px solid ${RULE};font:600 12px/1.45 Arial,sans-serif;color:#0f172a;white-space:nowrap;vertical-align:top">${v ?? "-"}/5 &middot; ${esc(chosen?.label ?? "-")}</td>
+          </tr>`;
+        })
+        .join("")
+    : "";
+
+  const jsonBlock = raw
+    ? JSON.stringify({
+        persona: config.id,
+        context,
+        lead: { entityName: lead.entityName, email: lead.email, buyingIntent: lead.buyingIntent },
+        answers: raw.answers,
+        audience: raw.audience,
+        total: result.total,
+        level: result.level.id,
+        categories: Object.fromEntries(result.categories.map((c) => [c.id, c.score])),
+        modelVersion: result.modelVersion,
+        benchmarkVersion: result.benchmarkVersion,
+      })
+    : "";
+
   const html = `<!doctype html><html lang="pl"><body style="margin:0;background:#f8fafc;padding:24px">
 <table role="presentation" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#fff;border:1px solid ${RULE};border-radius:12px">
   <tr><td style="padding:28px 28px 12px">
@@ -189,6 +228,19 @@ export function buildAdminEmail(
       <strong style="color:#0f172a">Największa szansa:</strong> ${esc(result.headline)}
     </div>
   </td></tr>
+
+  ${
+    raw
+      ? `<tr><td style="padding:0 28px 20px">
+    <div style="font:600 11px/1 Arial,sans-serif;color:${MUTED};letter-spacing:.1em;text-transform:uppercase;padding-bottom:8px">Odpowiedzi</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse">${answerRows}</table>
+  </td></tr>
+  <tr><td style="padding:0 28px 28px">
+    <div style="font:600 11px/1 Arial,sans-serif;color:${MUTED};letter-spacing:.1em;text-transform:uppercase;padding-bottom:6px">Rekord do zestawień</div>
+    <div style="font:400 11px/1.5 monospace;color:#334155;background:#f8fafc;border:1px solid ${RULE};border-radius:8px;padding:12px;word-break:break-all">${esc(jsonBlock)}</div>
+  </td></tr>`
+      : ""
+  }
 </table></body></html>`;
 
   const text = [
@@ -196,6 +248,20 @@ export function buildAdminEmail(
     ...rows.map(([k, v]) => `${k}: ${v}`),
     "",
     `Największa szansa: ${result.headline}`,
+    ...(raw
+      ? [
+          "",
+          "Odpowiedzi:",
+          ...config.questions.map((q) => {
+            const v = raw.answers[q.id];
+            const chosen = q.options.find((o) => o.value === v);
+            return `- [${v ?? "-"}/5] ${q.text} -> ${chosen?.label ?? "-"}`;
+          }),
+          "",
+          "Rekord do zestawien (JSON):",
+          jsonBlock,
+        ]
+      : []),
   ].join("\n");
 
   return {
