@@ -76,7 +76,7 @@ export function CommercialScorePromo() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-[12.5px] text-muted-foreground">
-            <span>15 pytań, ok. 4 minuty</span>
+            <span>Kilkanaście pytań, ok. 4 minuty</span>
             <span className="hidden h-3 w-px bg-navy-200 sm:block" />
             <span>Bezpłatnie</span>
             <span className="hidden h-3 w-px bg-navy-200 sm:block" />

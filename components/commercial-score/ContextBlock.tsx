@@ -36,19 +36,23 @@ export type ContextValue = {
 
 export function ContextBlock({
   persona,
+  askTier,
   value,
   onChange,
   onNext,
   onPrev,
 }: {
   persona: PersonaId;
+  /** False when the config derives the tier from an answer instead. */
+  askTier: boolean;
   value: ContextValue;
   onChange: (v: ContextValue) => void;
   onNext: () => void;
   onPrev: () => void;
 }) {
   const isAthlete = persona === "athlete";
-  const ready = value.discipline.trim().length > 1 && value.tier !== null;
+  const ready =
+    value.discipline.trim().length > 1 && (!askTier || value.tier !== null);
 
   return (
     <section className="border-b border-navy-100 bg-navy-50/40">
@@ -66,11 +70,11 @@ export function ContextBlock({
           </div>
 
           <h2 className="text-balance text-[28px] font-semibold leading-[1.1] tracking-tightest text-navy-950 sm:text-[34px]">
-            {isAthlete ? "Zacznijmy od podstaw" : "Zacznijmy od kontekstu"}
+            {isAthlete ? "Zacznijmy od dyscypliny" : "Zacznijmy od kontekstu"}
           </h2>
           <p className="mt-3 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground">
-            {isAthlete
-              ? "Te dwie informacje decydują, do kogo Cię porównujemy. Bez nich wynik byłby liczony wobec zawodników z zupełnie innej ligi."
+            {!askTier
+              ? "Zaczynamy od dyscypliny. Poziom, do którego Cię porównamy, wynika z Twoich odpowiedzi - nie musisz go deklarować osobno."
               : "Te dwie informacje decydują, do kogo Was porównujemy. 5 000 obserwujących to bardzo dobry wynik dla klubu lokalnego i słaby dla ogólnopolskiego - dlatego pytamy o skalę, zanim policzymy zasięg."}
           </p>
 
@@ -96,6 +100,7 @@ export function ContextBlock({
               ))}
             </datalist>
 
+            {askTier && (
             <div className="mt-7">
               <div className="text-[14.5px] font-medium text-navy-950">
                 {isAthlete
@@ -128,6 +133,7 @@ export function ContextBlock({
                 })}
               </div>
             </div>
+            )}
           </div>
 
           <div className="mt-6 flex items-center justify-end">

@@ -186,6 +186,15 @@ export type PersonaConfig<C extends string = string> = {
   questions: QuestionDef<C>[];
   /** The single category with kind "audience". */
   audienceCategory: C;
+  /**
+   * Derives the benchmark tier from an answer instead of asking for it.
+   *
+   * Asking separately let the two declarations disagree, and the disagreement
+   * paid: understating the scale loosened the audience anchors by more points
+   * than honestly claiming a high level earned back. Deriving it means
+   * understating costs points in the category the answer belongs to.
+   */
+  tierFrom?: { questionId: string; map: Record<number, LevelTier> };
   channels: AudienceChannelDef[];
   quality?: QualityMultiplierDef;
 };
@@ -266,4 +275,4 @@ export type CommercialScoreResult<C extends string = string> = {
  * every submission so historical results stay interpretable after a
  * recalibration, and so old raw answers can be re-scored and compared.
  */
-export const MODEL_VERSION = "1.0.0";
+export const MODEL_VERSION = "1.1.0";

@@ -113,12 +113,12 @@ export function ScoreChooser() {
             </h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-3">
               <Explainer
-                title="Nie liczymy samych followersów"
-                body="Zasięg normalizujemy logarytmicznie, więc każde dziesięciokrotne zwiększenie liczby obserwujących dokłada tyle samo punktów. Żaden pojedynczy kanał nie jest w stanie zdominować wyniku."
+                title="O wyniku decyduje głównie proces"
+                body="Zasięg to jedna z kategorii i odpowiada za 25% wyniku organizacji oraz 32% zawodnika. Resztę stanowią aktywa, oferta, sprzedaż i mierzenie efektów. Dwa kluby o identycznym zasięgu potrafią różnić się przychodem sponsorskim dziesięciokrotnie i decyduje o tym proces, nie followersi."
               />
               <Explainer
-                title="Porównujemy do właściwej skali"
-                body="5 000 obserwujących to dobry wynik dla klubu lokalnego i słaby dla ogólnopolskiego. Dlatego najpierw pytamy o skalę działania, a dopiero potem liczymy zasięg."
+                title="Zasięg porównujemy do właściwej skali"
+                body="5 000 obserwujących to dobry wynik dla klubu lokalnego i słaby dla ogólnopolskiego, więc każdy profil zestawiamy z jego własnym punktem odniesienia. Liczby przeliczamy logarytmicznie, dzięki czemu żaden pojedynczy kanał nie zdominuje wyniku."
               />
               <Explainer
                 title="To diagnoza, nie wycena"

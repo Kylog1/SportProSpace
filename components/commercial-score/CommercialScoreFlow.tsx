@@ -22,6 +22,7 @@ import {
 import { ScoreDashboard } from "./ScoreDashboard";
 import {
   ATHLETE_VIEWS_FIELD,
+  resolveTier,
   scoreSubmission,
   type AudienceValue,
   type CommercialScoreResult,
@@ -88,7 +89,12 @@ export function CommercialScoreFlow({
   // Scored on the client for instant feedback; the server recomputes from the
   // same raw inputs on submit and that result is what gets stored and shown.
   const localResult = useMemo(
-    () => scoreSubmission(config, { answers, audience, tier: context.tier }),
+    () =>
+      scoreSubmission(config, {
+        answers,
+        audience,
+        tier: resolveTier(config, answers, context.tier),
+      }),
     [config, answers, audience, context.tier]
   );
 
@@ -192,6 +198,7 @@ export function CommercialScoreFlow({
       {step === "context" && (
         <ContextBlock
           persona={config.id}
+          askTier={!config.tierFrom}
           value={context}
           onChange={setContext}
           onNext={() => go("quiz")}
@@ -325,8 +332,8 @@ function Intro({
 
           <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
             {isAthlete
-              ? "15 pytań o to, co realnie masz, plus Twoje zasięgi. W kilka minut zobaczysz, jak wygląda Twoja gotowość do współpracy z markami i który obszar najbardziej Cię hamuje."
-              : "15 pytań o Wasze aktywa, ofertę i proces sprzedaży, plus zasięgi i frekwencja. W kilka minut zobaczycie, gdzie leży niewykorzystany potencjał sponsorski."}
+              ? `${config.questions.length} pytań o to, co realnie masz, plus Twoje zasięgi. W kilka minut zobaczysz, jak wygląda Twoja gotowość do współpracy z markami i który obszar najbardziej Cię hamuje.`
+              : `${config.questions.length} pytań o Wasze aktywa, ofertę i proces sprzedaży, plus zasięgi i frekwencja. W kilka minut zobaczycie, gdzie leży niewykorzystany potencjał sponsorski.`}
           </p>
 
           <div className="mt-7">
@@ -339,7 +346,7 @@ function Intro({
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
             <span className="inline-flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-navy-800" />
-              15 pytań, ok. 4 minuty
+              {config.questions.length} pytań, ok. 4 minuty
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-navy-800" />

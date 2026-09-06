@@ -25,7 +25,12 @@ export function personaById(id: string): PersonaConfig<string> | null {
 
 export { ATHLETE_CONFIG, ATHLETE_VIEWS_FIELD } from "./athlete";
 export { ORGANIZATION_CONFIG } from "./organization";
-export { scoreSubmission, assertConfigValid, normalise } from "./scoring";
+export {
+  scoreSubmission,
+  assertConfigValid,
+  normalise,
+  resolveTier,
+} from "./scoring";
 export { scoreAudience, logNormalise } from "./audience";
 export { resolveAnchors, BENCHMARK_VERSION, LEVEL_TIERS } from "./benchmarks";
 export { getRecommendation, missingRecommendations } from "./recommendations";

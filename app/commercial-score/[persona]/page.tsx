@@ -19,7 +19,7 @@ const META: Record<string, { title: string; description: string; og: string }> =
     title:
       "Athlete Commercial Score - potencjał komercyjny sportowca | Sport Space Pro",
     description:
-      "Bezpłatny test dla sportowców. 15 pytań i Twoje zasięgi pokażą, jak wygląda Twoja gotowość do współpracy z markami i co ogranicza Twój potencjał komercyjny.",
+      "Bezpłatny test dla sportowców. Kilkanaście pytań i Twoje zasięgi pokażą, jak wygląda Twoja gotowość do współpracy z markami i co ogranicza Twój potencjał komercyjny.",
     og: "Sprawdź swój potencjał komercyjny jako sportowiec. Wynik 0-100, rozbicie na 5 obszarów i trzy rzeczy do poprawy.",
   },
   organizacja: {

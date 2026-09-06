@@ -158,9 +158,10 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
   {
     id: "as2",
     category: "assets",
-    text: "Ile z Waszych aktywów wykracza poza logo na koszulce i banery przy boisku?",
+    text: "Ile z Waszych aktywów wykracza poza samą ekspozycję logo?",
+    hint: "Ekspozycja to koszulki, banery, ścianka, materiały - wszędzie tam, gdzie partner jest tylko widoczny.",
     options: opts(
-      "Sprzedajemy tylko logo i banery",
+      "Sprzedajemy wyłącznie ekspozycję logo",
       "Dokładamy do tego digital",
       "Dokładamy digital i content",
       "Dokładamy eventy i akademię",
@@ -223,8 +224,8 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
   {
     id: "sa2",
     category: "sales",
-    text: "Ile aktywnych rozmów z potencjalnymi partnerami prowadzicie w tej chwili?",
-    hint: "Aktywna rozmowa to taka, która ma następny ustalony krok.",
+    text: "Z iloma potencjalnymi partnerami rozmawialiście w ostatnich 3 miesiącach?",
+    hint: "Liczy się rozmowa o współpracy, nawet jeśli skończyła się odmową.",
     options: opts(
       "Żadnej",
       "Jedną lub dwie",
@@ -263,8 +264,9 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
     id: "ac1",
     category: "activation",
     text: "Czy sponsor otrzymuje od Was zaplanowane aktywacje, a nie tylko ekspozycję logo?",
+    hint: "Jeśli nie macie jeszcze partnerów, zaznaczcie pierwszą odpowiedź.",
     options: opts(
-      "Tylko ekspozycja",
+      "Nie mamy jeszcze partnerów albo tylko ekspozycja",
       "Pojedyncze akcje, gdy ktoś o nie poprosi",
       "Plan aktywacji dla największych partnerów",
       "Plan aktywacji dla każdego partnera",
@@ -276,7 +278,7 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
     category: "activation",
     text: "Czy raportujecie partnerom efekty współpracy?",
     options: opts(
-      "Nie raportujemy",
+      "Nie mamy jeszcze partnerów albo nie raportujemy",
       "Tylko na wyraźną prośbę",
       "Raz w roku, podsumowanie sezonu",
       "Cyklicznie w trakcie współpracy",
@@ -289,7 +291,7 @@ const questions: PersonaConfig<OrganizationCategoryId>["questions"] = [
     text: "Jaka część partnerów przedłużyła współpracę na kolejny okres?",
     hint: "Najtwardszy wskaźnik jakości sponsoringu - i najczęściej niepoliczony.",
     options: opts(
-      "Nie wiemy, nie liczymy tego",
+      "Nie mamy jeszcze partnerów albo tego nie liczymy",
       "Mniej niż połowa",
       "Około połowy",
       "Większość",

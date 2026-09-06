@@ -15,7 +15,7 @@
 import type { AnchorTable, LevelTier, PersonaId } from "./types";
 
 /** Bumped whenever any anchor below changes. Stored on every submission. */
-export const BENCHMARK_VERSION = "1.0.0";
+export const BENCHMARK_VERSION = "1.1.0";
 
 export const LEVEL_TIERS: { id: LevelTier; label: string; hint: string }[] = [
   {
@@ -87,18 +87,23 @@ const ORGANIZATION: Record<LevelTier, AnchorTable> = {
 // Athlete
 // ──────────────────────────────────────────────────────────────────────────
 
+// The spread between athlete tiers is deliberately narrower than the
+// organization one. The tier is derived from the declared competition level, so
+// a wide spread would pay for understating it: loosening the audience anchors
+// gained more than the sport score lost. Compressed like this, understating the
+// level costs a point rather than earning four.
 const ATHLETE: Record<LevelTier, AnchorTable> = {
   lokalny: {
-    instagram: [200, 30_000],
-    tiktok: [100, 50_000],
-    youtube: [50, 10_000],
-    facebook: [100, 20_000],
+    instagram: [300, 150_000],
+    tiktok: [200, 200_000],
+    youtube: [80, 50_000],
+    facebook: [200, 80_000],
   },
   regionalny: {
-    instagram: [300, 100_000],
-    tiktok: [200, 150_000],
-    youtube: [80, 30_000],
-    facebook: [200, 60_000],
+    instagram: [400, 300_000],
+    tiktok: [250, 400_000],
+    youtube: [90, 90_000],
+    facebook: [250, 130_000],
   },
   ogolnopolski: {
     instagram: [500, 500_000],

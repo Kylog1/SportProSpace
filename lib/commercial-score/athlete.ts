@@ -258,18 +258,6 @@ const questions: PersonaConfig<AthleteCategoryId>["questions"] = [
       "Mam cennik i potrafię go obronić argumentami"
     ),
   },
-  {
-    id: "cr5",
-    category: "readiness",
-    text: "Czy jesteś gotowy powierzyć rozmowy z markami zewnętrznemu przedstawicielowi?",
-    options: opts(
-      "Nie",
-      "Wolę prowadzić je sam",
-      "Rozważam to",
-      "Tak, szukam takiej osoby",
-      "Tak, mam już rozmowy w toku"
-    ),
-  },
 ];
 
 const channels: PersonaConfig<AthleteCategoryId>["channels"] = [
@@ -309,6 +297,22 @@ export const ATHLETE_CONFIG: PersonaConfig<AthleteCategoryId> = {
   categories,
   questions,
   audienceCategory: "audience",
+  /**
+   * The competition level already asked in sp1 is the same fact the benchmark
+   * needs, so asking again only created a way for the two answers to disagree.
+   * Both national tiers map to the same anchors - a top-flight domestic player
+   * and a nationally competing one face the same Polish audience benchmarks.
+   */
+  tierFrom: {
+    questionId: "sp1",
+    map: {
+      1: "lokalny",
+      2: "regionalny",
+      3: "ogolnopolski",
+      4: "ogolnopolski",
+      5: "miedzynarodowy",
+    },
+  },
   channels,
   /**
    * Average views on the last ten Reels/TikToks, divided by the followers the

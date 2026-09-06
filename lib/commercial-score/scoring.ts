@@ -130,6 +130,23 @@ function buildHeadline<C extends string>(
   return `${strong.strength}, ale ${weak.limits}.`;
 }
 
+/**
+ * The benchmark tier actually used for scoring.
+ *
+ * Shared by the client and the API on purpose: the server must derive it the
+ * same way rather than trusting a tier sent in the payload, or the gaming vector
+ * this closes would simply move to the request body.
+ */
+export function resolveTier<C extends string>(
+  config: PersonaConfig<C>,
+  answers: Record<string, number>,
+  declared?: LevelTier | null
+): LevelTier | null {
+  if (!config.tierFrom) return declared ?? null;
+  const answer = answers[config.tierFrom.questionId];
+  return config.tierFrom.map[answer] ?? null;
+}
+
 export function scoreSubmission<C extends string>(
   config: PersonaConfig<C>,
   input: ScoreInput

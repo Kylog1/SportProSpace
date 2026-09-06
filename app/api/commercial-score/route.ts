@@ -7,7 +7,7 @@ import {
   assertConfigValid,
   ATHLETE_CONFIG,
   ORGANIZATION_CONFIG,
-  LEVEL_TIERS,
+  resolveTier,
   type AudienceValue,
 } from "@/lib/commercial-score";
 import { BUYING_INTENT_IDS } from "@/lib/commercial-score/intents";
@@ -39,7 +39,12 @@ const SubmitSchema = z.object({
   persona: z.enum(["athlete", "organization"]),
   context: z.object({
     discipline: z.string().trim().min(2).max(80),
-    tier: z.enum(["lokalny", "regionalny", "ogolnopolski", "miedzynarodowy"]),
+    // Nullable: personas that derive the tier from an answer never send one,
+    // and the value is recomputed server-side regardless.
+    tier: z
+      .enum(["lokalny", "regionalny", "ogolnopolski", "miedzynarodowy"])
+      .nullable()
+      .optional(),
   }),
   answers: z.record(z.string(), z.number().int().min(1).max(5)),
   audience: z.record(z.string(), AudienceValueSchema),
@@ -124,11 +129,15 @@ export async function POST(req: Request) {
     );
   }
 
-  const allowedTier = LEVEL_TIERS.some((t) => t.id === context.tier);
+  // Derived here rather than taken from the payload: for the athlete the tier
+  // comes from an answer, and trusting a client-sent tier would reopen the gap
+  // where understating your scale loosens the audience benchmark for free.
+  const tier = resolveTier(config, answers, context.tier ?? null);
+  const scoredContext = { discipline: context.discipline, tier };
   const result = scoreSubmission(config, {
     answers,
     audience: audience as Record<string, AudienceValue>,
-    tier: allowedTier ? context.tier : null,
+    tier,
   });
 
   // Storage must never cost the visitor their result or the team the lead.
@@ -137,7 +146,7 @@ export async function POST(req: Request) {
     submissionId = await persist(
       buildRecord({
         persona,
-        context,
+        context: scoredContext,
         lead: {
           name: lead.name,
           email: lead.email,
@@ -170,7 +179,7 @@ export async function POST(req: Request) {
 
   const resend = new Resend(apiKey);
   const userEmail = buildUserEmail(config, result, lead.name);
-  const adminEmail = buildAdminEmail(config, result, lead, context, {
+  const adminEmail = buildAdminEmail(config, result, lead, scoredContext, {
     answers,
     audience,
   });

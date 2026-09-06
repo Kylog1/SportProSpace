@@ -56,7 +56,6 @@ const RECOMMENDATIONS: Record<string, string> = {
   cr2: "Przygotuj media kit: kim jesteś, kto Cię ogląda, co potrafisz zrobić, ile to kosztuje. Jedna strona wystarczy, a jej brak zatrzymuje większość rozmów na starcie.",
   cr3: "Sprawdź w statystykach wiek, płeć i lokalizację swoich odbiorców. Marka kupuje dostęp do konkretnej grupy, więc to pierwsze pytanie, które padnie.",
   cr4: "Ustal stawki za konkretne formaty, zanim ktoś o nie zapyta. Wycenianie na gorąco kończy się albo zaniżeniem, albo utratą rozmowy.",
-  cr5: "Rozważ powierzenie rozmów handlowych komuś, kto robi to zawodowo. Negocjowanie własnych stawek jest niewygodne i zwykle kosztuje więcej, niż wynosi prowizja.",
 };
 
 /** Shown if a question id ever slips through without a written line. */
