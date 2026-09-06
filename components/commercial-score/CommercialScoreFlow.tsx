@@ -332,7 +332,7 @@ function Intro({
 
           <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
             {isAthlete
-              ? `${config.questions.length} pytań o to, co realnie masz, plus Twoje zasięgi. W kilka minut zobaczysz, jak wygląda Twoja gotowość do współpracy z markami i który obszar najbardziej Cię hamuje.`
+              ? "Jak wygląda Twoja gotowość do współpracy z markami i który obszar najbardziej Cię hamuje."
               : `${config.questions.length} pytań o Wasze aktywa, ofertę i proces sprzedaży, plus zasięgi i frekwencja. W kilka minut zobaczycie, gdzie leży niewykorzystany potencjał sponsorski.`}
           </p>
 
