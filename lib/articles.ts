@@ -26,6 +26,75 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
+    slug: "sponsoring-sportowy-partner-biznesowy-nie-sponsor",
+    title: "Sponsoring sportowy w Polsce: szukaj partnera biznesowego, nie sponsora",
+    excerpt:
+      "Rynek sponsoringu sportowego w Polsce idzie w stronę 1,54 mld zł, a mimo to większość klubów i akademii dostaje odmowę za odmową. Sprawdzamy, dlaczego oferta z logo na koszulce przestała działać i co realnie kupują dziś firmy.",
+    content: `
+## Rynek rośnie, klub i tak słyszy „nie"
+
+Rynek sponsoringu sportowego w Polsce zamknął 2025 rok wynikiem 1 464,5 mln zł. To piąty rok wzrostu z rzędu, a od 2020 roku rynek urósł o 42,9%. Sponsoring Insight, firma badawczo-doradcza, która co roku prezentuje te dane na konferencji Sport for Brands, szacuje, że w 2026 roku wartość rynku przekroczy 1,54 mld zł.
+
+Piłka nożna wzięła w 2025 roku 45,2% tego tortu, czyli znacznie więcej niż 34,4% rok wcześniej. Siatkówka ma 18,5%, koszykówka 7,9%, piłka ręczna 5,7%. Pieniądze płyną i to coraz szybciej.
+
+Problem w tym, że klub z regionalnej ligi albo akademia sportowa rzadko widzi z tego choćby promil. Wysyła ofertę zbudowaną wokół jednego pytania: kto może nam dać pieniądze. To pytanie od razu stawia klub w roli proszącego, a firmę w roli dawcy. Odpowiedź na taką ofertę bywa prosta: milczenie albo grzeczne „nie, dziękujemy, w tym roku nie planujemy sponsoringu".
+
+## Właściwe pytanie brzmi inaczej
+
+Firma nie szuka sposobu, żeby oddać komuś pieniądze. Szuka rozwiązania konkretnego problemu biznesowego: potrzebuje pracowników, chce dotrzeć do klientów w danym mieście, musi zbudować relacje z lokalnymi decydentami albo po prostu odróżnić się od dziesięciu innych firm w branży, które robią dokładnie to samo.
+
+Klub, który to rozumie, zadaje sobie inne pytanie niż „kto da nam pieniądze". Pyta: jaką wartość możemy stworzyć dla tej konkretnej firmy. To niewielka zmiana w słowach, ale zupełnie inna rozmowa po drugiej stronie stołu.
+
+### 1. Szukaj partnera, nie sponsora
+
+Firma "z budżetem" to za mało. Liczy się firma, której klub potrafi pomóc osiągnąć coś, co ma dla niej znaczenie w tym roku, nie ogólne "budowanie wizerunku", tylko konkretny cel z arkusza kalkulacyjnego działu marketingu albo HR.
+
+### 2. Poznaj biznes, zanim napiszesz ofertę
+
+Rozkład sponsoringu według branż w Polsce w 2025 roku jest wymowny. Sektor energetyczno-paliwowy odpowiada za 24,6% wydatków, zakłady bukmacherskie i gry losowe za 9,3%, FMCG za 8%, budownictwo za 6,8%, producenci odzieży i sprzętu sportowego za 6%. To nie przypadek. Energetyka i paliwa od lat mierzą się z brakiem wykwalifikowanych pracowników technicznych w mniejszych miastach, więc sponsoring lokalnego klubu to dla nich prosty kanał employer brandingu. Bukmacherzy mają coraz mniej miejsc, gdzie mogą legalnie się reklamować, więc sport został jednym z niewielu kanałów, które im zostały. Deweloper, który buduje osiedle w promieniu pięciu kilometrów od klubowego stadionu, nie kupuje ekspozycji ogólnopolskiej. Kupuje kontakt z rodzinami, które za dwa lata mogą szukać mieszkania w tej okolicy.
+
+Zanim padnie propozycja pakietu, warto po prostu zapytać osobę odpowiedzialną za marketing czy HR w danej firmie, z jakim problemem się teraz mierzy. Rozmowa, która zaczyna się od pytania, a nie od cennika, prowadzi gdzie indziej.
+
+### 3. Nie sprzedawaj pakietu, sprzedawaj rozwiązanie
+
+Ten sam klub potrzebuje innej oferty dla firmy IT, innej dla dewelopera, innej dla dilera samochodowego z lokalnego rynku. Firmie z branży IT bardziej zależy na employer brandingu i kontaktach B2B niż na banerze widocznym z trybun, więc lepiej sprawdzi się dostęp do sieci kontaktów klubu i obecność podczas eventów dla pracowników niż logo na koszulce. Deweloperowi zależy na lokalnym rozpoznaniu i konkretnych leadach, więc warto pomyśleć o wspólnych wydarzeniach dla mieszkańców osiedla, nie o zasięgu w mediach ogólnopolskich. Dilerowi samochodowemu bardziej opłaca się strefa hospitality na meczach i bezpośredni kontakt z klientami niż billboard, którego nikt nie zapamięta. Firmie lokalnej, piekarni, salonowi fryzjerskiemu, sklepowi sportowemu, zależy przede wszystkim na rozpoznawalności w społeczności, którą klub już ma.
+
+Ten sam mechanizm widać w dużych klubach piłkarskich w Polsce. Frekwencja w Ekstraklasie w sezonie 2025/26 wzrosła do średnio 13 577 kibiców na mecz, ale to, co realnie sprzedaje się sponsorom z sektora finansowego czy motoryzacyjnego, to nie sam widok trybun, tylko dostęp do lóż VIP i wydarzeń klubowych, czyli zwykłe budowanie relacji biznesowych przy okazji meczu. Twardych danych, które policzyłyby zwrot z tego elementu osobno, w Polsce wciąż brakuje, ale każdy, kto był w takiej loży, wie, że właśnie tam podpisuje się kolejne kontrakty, nie na trybunach ogólnodostępnych.
+
+### 4. Myśl długoterminowo
+
+Dobry sponsoring nie kończy się na podpisaniu umowy. Zaczyna się od aktywacji, czyli tego, co firma i klub robią wspólnie w trakcie sezonu, potem przechodzi w wynik, czyli konkretne dane po sezonie: ile osób odwiedziło stronę firmy, ile leadów wygenerowała strefa hospitality, jak zmienił się ruch w sklepie sponsora w dni meczowe. Dopiero na końcu jest rozmowa o kolejnym sezonie, i ta rozmowa jest dużo łatwiejsza, gdy klub ma w ręku liczby, nie tylko wdzięczność.
+
+Klub 1. Ligi z Mazowsza, który w swojej ofercie sponsorskiej podał ekwiwalent reklamowy na poziomie 30,5 mln zł za sezon, pokazał coś ważnego: nawet drużyna spoza Ekstraklasy potrafi wygenerować konkretną, policzalną wartość medialną, jeśli systematycznie pracuje nad obecnością w mediach i potrafi to udokumentować. To właśnie ten dokument, nie sama sympatia do klubu, przekonuje dział marketingu do przedłużenia umowy na kolejny rok.
+
+## Case: lokalny klub, który przestał sprzedawać logo
+
+Klub piłkarski z 1. Ligi (nazwa zanonimizowana na potrzeby tego artykułu) przez trzy sezony miał tego samego sponsora tytularnego, regionalną sieć warsztatów samochodowych, która płaciła za logo na koszulce i banerze. Umowa nie została przedłużona na czwarty sezon. Powód: właściciel sieci nie potrafił powiedzieć zarządowi, co realnie dała mu ta współpraca poza samą obecnością logo.
+
+Przy poszukiwaniu nowego partnera klub zmienił podejście. Zamiast wysyłać identyczną ofertę do dwudziestu firm, dział marketingu klubu spotkał się z trzema lokalnymi deweloperami budującymi w promieniu kilku kilometrów od stadionu i zapytał wprost, jakiego kontaktu z mieszkańcami im brakuje. Jeden z deweloperów szukał sposobu na dotarcie do rodzin z dziećmi w wieku szkolnym, dokładnie do grupy, która stanowi rdzeń kibiców i rodziców zawodników młodzieżowej akademii klubu.
+
+Umowa, którą podpisano, nie była klasycznym sponsoringiem koszulki. Deweloper sfinansował rodzinną strefę na stadionie i cykl bezpłatnych zajęć sportowych dla dzieci z osiedla w budowie, w zamian za bazę kontaktów rodziców zbieraną za ich zgodą przy zapisach. Po sezonie klub przekazał deweloperowi dane: liczbę rodzin uczestniczących w strefie, liczbę zapisanych kontaktów, liczbę dzieci, które przeszły do stałych zajęć w akademii. Umowę przedłużono na dwa kolejne sezony, tym razem z wyższą kwotą, bo po drugiej stronie ktoś w końcu miał liczby do pokazania własnemu zarządowi.
+
+## Co to oznacza dla mniejszego klubu
+
+Nie trzeba być Ekstraklasą, żeby stosować tę logikę. Trzeba znać własnych kibiców i rodziców zawodników lepiej niż jakakolwiek firma z zewnątrz, wiedzieć, jakie firmy działają w promieniu kilku kilometrów od klubu i czego im realnie brakuje, oraz umieć po sezonie pokazać liczby, nie tylko podziękowania.
+
+Rynek sponsoringu sportowego w Polsce rośnie piąty rok z rzędu i realnie nie zwalnia. Pytanie, które klub zadaje sobie przed napisaniem pierwszej oferty, decyduje w dużej mierze o tym, czy ten wzrost dotrze także do niego, czy zostanie na koncie klubów, które już dawno przestały sprzedawać logo.
+
+## Jak w tym pomaga Sport Space Pro
+
+Sport Space Pro doradza klubom i akademiom sportowym w budowie ofert sponsorskich opartych na realnych danych o kibicach, rodzicach zawodników i lokalnym rynku, nie na szablonie „pakiet złoty, srebrny, brązowy". Jeśli Twój klub potrzebuje pomocy w zidentyfikowaniu, jaką wartość może zaoferować konkretnym firmom w Twojej okolicy, i w przygotowaniu materiałów, które przekonają dział marketingu, a nie tylko właściciela klubu, pierwsza rozmowa jest bezpłatna.
+    `,
+    category: "artykul",
+    tags: ["Sponsoring", "Marketing", "Pozyskiwanie sponsorów"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-09-06",
+    readTime: 8,
+    featured: true,
+    coverGradient: "from-navy-900 to-amber-600",
+  },
+  {
     slug: "us-open-sponsoring-doswiadczen-nie-logo",
     title: "US Open pokazuje, gdzie kończy się sponsoring, a zaczyna produkt marketingowy",
     excerpt:
@@ -476,37 +545,6 @@ NPS ogólny wzrósł do +41, NPS rekomendacji do +29. Liczba nowych zapisów prz
     readTime: 11,
     featured: false,
     coverGradient: "from-cyan-700 to-navy-900",
-  },
-  {
-    slug: "jak-wykorzystac-nps-do-strategii-klubu-webinar",
-    title: "Jak wykorzystać NPS do strategii klubu - nagranie webinaru",
-    excerpt:
-      "90-minutowy webinar z ekspertami Sport Space Pro. Metodologia, case studies i sesja Q&A. Dostępne nagranie i materiały.",
-    content: `
-## O webinarze
-
-Webinar "NPS w sporcie - od danych do strategii" odbył się 15 stycznia 2026 roku. Wzięło w nim udział 340 uczestników: menadżerowie akademii, dyrektorzy sportowi i właściciele prywatnych szkółek sportowych.
-
-## Program
-
-Pierwsza część (30 minut) obejmowała wprowadzenie do metodologii NPS w kontekście sportu: czym różni się od klasycznego NPS biznesowego i jak interpretować wyniki. Druga część (40 minut) to trzy case studies: akademia piłkarska, klub koszykówki i akademia pływania. Trzecia część (20 minut) to sesja Q&A.
-
-## Kluczowe wnioski z Q&A
-
-Najczęściej zadawane pytanie: "Jak przekonać rodziców do wypełnienia ankiety?" Odpowiedź: anonimowość + komunikacja, że wyniki realnie zmieniają działanie klubu. Współczynnik odpowiedzi w naszych badaniach wynosi 62-78% przy pierwszym badaniu.
-
-## Materiały
-
-Do pobrania: prezentacja PDF, szablon ankiety NPS dla akademii sportowej i lista 10 pytań do badania satysfakcji rodziców.
-    `,
-    category: "webinar",
-    tags: ["Webinar", "NPS", "Strategia", "Materiały"],
-    author: "Zespół Sport Space Pro",
-    authorRole: "Dział Edukacji",
-    publishedAt: "2026-01-15",
-    readTime: 4,
-    featured: false,
-    coverGradient: "from-purple-700 to-navy-900",
   },
 ];
 
