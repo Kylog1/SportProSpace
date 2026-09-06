@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+// The /next entry point (not /react) groups page views by route pattern, so
+// article pages report as /artykuly/[slug] instead of one row per slug.
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
