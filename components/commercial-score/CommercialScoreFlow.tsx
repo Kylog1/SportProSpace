@@ -52,6 +52,7 @@ export function CommercialScoreFlow({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
   const [serverResult, setServerResult] =
     useState<CommercialScoreResult<string> | null>(null);
 
@@ -126,6 +127,7 @@ export function CommercialScoreFlow({
     setCurrentQ(0);
     setServerResult(null);
     setSubmittedEmail(null);
+    setSubmissionId(null);
     setError(null);
     startedAt.current = null;
     go("intro");
@@ -158,6 +160,7 @@ export function CommercialScoreFlow({
         return;
       }
       if (data.result) setServerResult(data.result);
+      if (data.submissionId) setSubmissionId(data.submissionId);
       setSubmittedEmail(lead.email);
       setSubmitting(false);
       go("results");
@@ -169,12 +172,13 @@ export function CommercialScoreFlow({
 
   function onCtaClick(kind: "audit" | "contact") {
     // Fire-and-forget: closes the funnel on the stored record. A failure here
-    // must never interfere with the visitor actually reaching the CTA.
-    if (!submittedEmail) return;
+    // must never interfere with the visitor actually reaching the CTA, and a
+    // missing id simply means storage was unavailable at submit time.
+    if (!submissionId) return;
     void fetch("/api/commercial-score", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: submittedEmail, ctaClicked: kind }),
+      body: JSON.stringify({ submissionId, ctaClicked: kind }),
       keepalive: true,
     }).catch(() => {});
   }

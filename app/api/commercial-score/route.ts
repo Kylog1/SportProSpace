@@ -67,7 +67,10 @@ const SubmitSchema = z.object({
 });
 
 const PatchSchema = z.object({
-  email: z.string().trim().email().max(200),
+  // Firestore auto-ids, so unguessable. Addressing the record by id rather than
+  // by email keeps this endpoint from being usable to probe whether a given
+  // address is in the database.
+  submissionId: z.string().trim().min(6).max(64),
   ctaClicked: z.enum(["audit", "contact"]),
 });
 
@@ -128,8 +131,9 @@ export async function POST(req: Request) {
   });
 
   // Storage must never cost the visitor their result or the team the lead.
+  let submissionId: string | null = null;
   try {
-    await persist(
+    submissionId = await persist(
       buildRecord({
         persona,
         context,
@@ -137,7 +141,10 @@ export async function POST(req: Request) {
           name: lead.name,
           email: lead.email,
           entityName: lead.entityName,
-          phone: lead.phone || undefined,
+          // Empty string, never undefined: Firestore rejects undefined values,
+          // and an optional phone is the common case - so this silently broke
+          // every write from a visitor who skipped the field.
+          phone: lead.phone || "",
           buyingIntent: lead.buyingIntent,
           consent: lead.consent,
           consentMarketing: lead.consentMarketing,
@@ -156,7 +163,7 @@ export async function POST(req: Request) {
   if (!apiKey) {
     // The visitor has already done the work; show the result rather than fail.
     console.error("[commercial-score] brak RESEND_API_KEY - wynik bez maila");
-    return NextResponse.json({ success: true, emailed: false, result });
+    return NextResponse.json({ success: true, emailed: false, result, submissionId });
   }
 
   const resend = new Resend(apiKey);
@@ -195,7 +202,7 @@ export async function POST(req: Request) {
     console.error("[commercial-score] powiadomienie admina nieudane:", err);
   }
 
-  return NextResponse.json({ success: true, emailed, result });
+  return NextResponse.json({ success: true, emailed, result, submissionId });
 }
 
 /** Closes the funnel on the stored record when the visitor clicks a CTA. */
@@ -214,7 +221,7 @@ export async function PATCH(req: Request) {
   if (!parsed.success) return NextResponse.json({ success: true });
 
   try {
-    await markCtaClicked(parsed.data.email, parsed.data.ctaClicked);
+    await markCtaClicked(parsed.data.submissionId, parsed.data.ctaClicked);
   } catch (err) {
     console.error("[commercial-score] PATCH CTA:", err);
   }
