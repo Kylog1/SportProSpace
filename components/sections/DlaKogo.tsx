@@ -17,10 +17,10 @@ const audiences: {
   href: string;
 }[] = [
   {
-    icon: Dumbbell,
-    name: "Fitness i Wellness",
-    note: "Siłownie, studia fitness, kluby wellness",
-    href: "/self-assessment/fitness",
+    icon: CircleDot,
+    name: "Akademie i Kluby Piłkarskie",
+    note: "Akademie młodzieżowe i kluby pro",
+    href: "/self-assessment/football",
   },
   {
     icon: Target,
@@ -41,10 +41,10 @@ const audiences: {
     href: "/self-assessment",
   },
   {
-    icon: CircleDot,
-    name: "Akademie i Kluby Piłkarskie",
-    note: "Akademie młodzieżowe i kluby pro",
-    href: "/self-assessment/football",
+    icon: Dumbbell,
+    name: "Fitness i Wellness",
+    note: "Siłownie, studia fitness, kluby wellness",
+    href: "/self-assessment/fitness",
   },
   {
     icon: Users,
