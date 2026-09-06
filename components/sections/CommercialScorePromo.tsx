@@ -42,7 +42,7 @@ export function CommercialScorePromo() {
               Self-Audit pokazuje, gdzie tracicie klientów. Commercial Score
               odpowiada na inne pytanie: jak dobrze Wasz sportowy potencjał jest
               przygotowany do współpracy z markami. Wynik 0-100, rozbicie na
-              obszary i trzy rzeczy, które warto poprawić najpierw.
+              obszary i trzy rzeczy, które warto poprawić.
             </p>
           </div>
 

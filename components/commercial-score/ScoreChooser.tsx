@@ -54,7 +54,7 @@ export function ScoreChooser() {
             <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
               Sprawdź, jak dobrze Twój sportowy potencjał jest przygotowany do
               współpracy z markami. Wynik 0-100, rozbicie na obszary i trzy
-              rzeczy, które warto poprawić najpierw.
+              rzeczy, które warto poprawić.
             </p>
           </div>
 
