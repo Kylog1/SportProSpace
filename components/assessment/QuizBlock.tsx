@@ -21,6 +21,13 @@ export type QuizQuestion = {
   group: string;
   text: string;
   hint?: string;
+  /**
+   * Per-question answer options. When omitted the shared `scale` prop is used,
+   * so every existing discipline renders exactly as before. Commercial Score
+   * sets this because a generic agreement scale invites self-flattery, while
+   * options naming what actually exists do not.
+   */
+  options?: QuizScaleOption[];
 };
 
 export type QuizScaleOption = {
@@ -103,7 +110,7 @@ export function QuizBlock({
             )}
 
             <div className="mt-7 grid gap-2.5">
-              {scale.map((opt) => {
+              {(q.options ?? scale).map((opt) => {
                 const active = value === opt.value;
                 return (
                   <button

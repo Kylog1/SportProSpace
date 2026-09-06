@@ -33,6 +33,7 @@ export {
   MODEL_VERSION,
   SCORE_LEVELS,
   getScoreLevel,
+  type AudienceChannelDef,
   type AudienceValue,
   type CategoryResult,
   type CommercialScoreResult,
