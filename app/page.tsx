@@ -7,7 +7,6 @@ import { JakDzialamy } from "@/components/sections/JakDzialamy";
 import { CoBadamy } from "@/components/sections/CoBadamy";
 import { SelfAuditPromo } from "@/components/sections/SelfAuditPromo";
 import { CommercialScorePromo } from "@/components/sections/CommercialScorePromo";
-import { Articles } from "@/components/sections/Articles";
 import { About } from "@/components/sections/About";
 import { Doradztwo } from "@/components/sections/Doradztwo";
 import { CTASection } from "@/components/sections/CTASection";
@@ -38,9 +37,6 @@ export default function Page() {
         </ErrorBoundary>
         <ErrorBoundary>
           <CommercialScorePromo />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <Articles />
         </ErrorBoundary>
         <ErrorBoundary>
           <About />
