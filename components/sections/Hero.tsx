@@ -7,23 +7,21 @@ import { trackMeetingBooked } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 
-// Punkty pola odpowiedzi. Jeden z nich (wyroznik: true) dostaje pierscienie -
-// to wzorzec, ktory badanie wylapuje z szumu.
-const points = [
-  { x: 96, y: 228, o: 0.3 },
-  { x: 146, y: 272, o: 0.22 },
-  { x: 128, y: 176, o: 0.26 },
-  { x: 196, y: 212, o: 0.34 },
-  { x: 212, y: 126, o: 0.28 },
-  { x: 252, y: 252, o: 0.2 },
-  { x: 286, y: 164, o: 0.38, wyroznik: true },
-  { x: 264, y: 88, o: 0.24 },
-  { x: 330, y: 232, o: 0.22 },
-  { x: 352, y: 132, o: 0.3 },
-  { x: 386, y: 196, o: 0.18 },
-  { x: 176, y: 76, o: 0.2 },
-  { x: 318, y: 52, o: 0.16 },
-  { x: 82, y: 122, o: 0.18 },
+// Chmura powodow odejscia. Kolejnosc jest ustawiona recznie, zeby dominanta
+// ("brak feedbacku") wypadla na srodku bloku. Wielkosc i nasycenie niosa te
+// sama informacje - jedna rampa navy, zero czerwieni i zieleni.
+const powodyOdejsc = [
+  { slowo: "dojazd", klasa: "text-[11px] text-navy-200" },
+  { slowo: "grafik zajęć", klasa: "text-[14px] text-navy-400" },
+  { slowo: "cena karnetu", klasa: "text-[12px] text-navy-300" },
+  { slowo: "brak feedbacku", klasa: "text-[24px] font-semibold tracking-tight text-navy-950" },
+  { slowo: "atmosfera", klasa: "text-[13px] text-navy-400" },
+  { slowo: "komunikacja", klasa: "text-[18px] font-medium text-navy-800" },
+  { slowo: "rotacja trenerów", klasa: "text-[11px] text-navy-200" },
+  { slowo: "organizacja zajęć", klasa: "text-[15px] text-navy-700" },
+  { slowo: "kontuzje", klasa: "text-[12px] text-navy-300" },
+  { slowo: "brak postępów", klasa: "text-[13px] text-navy-400" },
+  { slowo: "zmiana klubu", klasa: "text-[11px] text-navy-200" },
 ];
 
 export function Hero() {
@@ -41,7 +39,7 @@ export function Hero() {
       />
 
       <div className="container relative py-20 md:py-24 lg:py-28">
-        {/* 2-column layout: text left, abstract field right */}
+        {/* 2-column layout: text left, wskazniki right */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
           {/* LEFT - copy */}
@@ -78,47 +76,94 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT - pole odpowiedzi.
-              Poprzednio stal tu makiet dashboardu z wymyslonymi wynikami
-              (NPS +62, 412 respondentow). Pokazywal produkt, ktorego nie ma
-              w ofercie, i podawal NPS jako procent - blad skali na stronie
-              firmy badawczej. Zostal abstrakcyjny akcent: zero liczb do
-              obrony, ta sama siatka co ciemna karta Self-Audit nizej. */}
+          {/* RIGHT - trzy wskazniki i chmura powodow.
+              NPS stoi na wlasnej skali (-100..+100) zamiast na pasku
+              procentowym, dwa kafelki zamiast trzech nie scisnie sie na
+              telefonie, a powody odejsc czyta sie jednym spojrzeniem
+              zamiast osmiu paskow. Liczby sa przykladowe i tak podpisane. */}
           <div className="relative w-full">
-            <div className="overflow-hidden rounded-2xl shadow-[0_24px_64px_-28px_rgba(11,23,54,0.45)]">
-              <svg
-                aria-hidden
-                viewBox="0 0 440 340"
-                className="block w-full"
-              >
-                <rect width="440" height="340" fill="#172554" />
+            <div className="rounded-2xl border border-navy-100 bg-white p-2 shadow-[0_24px_64px_-20px_rgba(15,23,42,0.18)]">
+              <div className="flex flex-col gap-2 rounded-xl border border-navy-100 bg-gradient-to-b from-white to-navy-50/40 p-4">
 
-                {/* siatka */}
-                <g stroke="#ffffff" strokeOpacity="0.08" strokeWidth="1">
-                  <path d="M70 0V340M120 0V340M170 0V340M220 0V340M270 0V340M320 0V340M370 0V340" />
-                  <path d="M0 70H440M0 120H440M0 170H440M0 220H440M0 270H440" />
-                </g>
+                {/* NPS */}
+                <div className="rounded-lg border border-navy-100 bg-white px-3 pb-2 pt-3">
+                  <svg
+                    viewBox="0 0 220 132"
+                    role="img"
+                    aria-label="Wskaźnik NPS plus 62 na skali od minus 100 do plus 100"
+                    className="mx-auto block w-full max-w-[188px]"
+                  >
+                    <path
+                      d="M32 108A78 78 0 0 1 188 108"
+                      fill="none"
+                      stroke="#dbe5f1"
+                      strokeWidth="14"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M32 108A78 78 0 0 1 188 108"
+                      fill="none"
+                      stroke="#1e3a8a"
+                      strokeWidth="14"
+                      strokeLinecap="round"
+                      strokeDasharray="198 260"
+                    />
+                    <circle cx="182.5" cy="64.1" r="7" fill="#0b1736" stroke="#ffffff" strokeWidth="3" />
+                    <text x="26" y="126" fontSize="9" fill="#8aa6cd">−100</text>
+                    <text x="176" y="126" fontSize="9" fill="#8aa6cd">+100</text>
+                    <text
+                      x="110"
+                      y="100"
+                      textAnchor="middle"
+                      fontSize="36"
+                      fontWeight="600"
+                      letterSpacing="-1.6"
+                      fill="#0b1736"
+                    >
+                      +62
+                    </text>
+                    <text x="110" y="122" textAnchor="middle" fontSize="10" letterSpacing="1.4" fill="#64748b">
+                      NPS
+                    </text>
+                  </svg>
+                </div>
 
-                {/* luki pomiaru */}
-                <g fill="none" stroke="#ffffff" strokeWidth="1">
-                  <circle cx="40" cy="300" r="110" strokeOpacity="0.16" />
-                  <circle cx="40" cy="300" r="180" strokeOpacity="0.13" />
-                  <circle cx="40" cy="300" r="250" strokeOpacity="0.1" />
-                  <circle cx="40" cy="300" r="320" strokeOpacity="0.07" />
-                </g>
+                {/* Retencja i Commercial Score */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="rounded-lg border border-navy-100 bg-white p-3.5">
+                    <div className="text-[26px] font-semibold tracking-tightest tabular-nums text-navy-950">
+                      87%
+                    </div>
+                    <div className="mt-0.5 text-[10.5px] text-muted-foreground">
+                      Retencja członków
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-navy-100 bg-white p-3.5">
+                    <div className="text-[26px] font-semibold tracking-tightest tabular-nums text-navy-950">
+                      72<span className="text-[14px] font-medium text-navy-300">/100</span>
+                    </div>
+                    <div className="mt-0.5 text-[10.5px] text-muted-foreground">
+                      Commercial Score
+                    </div>
+                  </div>
+                </div>
 
-                {/* odpowiedzi */}
-                <g fill="#ffffff">
-                  {points.map((p) => (
-                    <circle key={`${p.x}-${p.y}`} cx={p.x} cy={p.y} r="3" opacity={p.o} />
-                  ))}
-                </g>
+                {/* Powody odejsc */}
+                <div className="rounded-lg border border-navy-100 bg-white p-3.5">
+                  <div className="text-[10.5px] text-muted-foreground">Powody odejść</div>
+                  <div className="mt-3 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1.5 pb-1 leading-tight">
+                    {powodyOdejsc.map((p) => (
+                      <span key={p.slowo} className={p.klasa}>
+                        {p.slowo}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-                {/* wyroznik */}
-                <circle cx="286" cy="164" r="15" fill="none" stroke="#ffffff" strokeOpacity="0.45" strokeWidth="1" />
-                <circle cx="286" cy="164" r="28" fill="none" stroke="#ffffff" strokeOpacity="0.18" strokeWidth="1" />
-                <circle cx="286" cy="164" r="5" fill="#ffffff" />
-              </svg>
+                <div className="pr-0.5 text-right text-[10px] text-navy-300">
+                  Dane przykładowe
+                </div>
+              </div>
             </div>
           </div>
         </div>
