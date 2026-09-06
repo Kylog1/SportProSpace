@@ -7,7 +7,7 @@
 // means editing this file.
 
 import { scoreAudience, clamp } from "./audience";
-import { resolveAnchors, BENCHMARK_VERSION } from "./benchmarks";
+import { resolveAnchors, BENCHMARK_VERSION, LEVEL_TIERS } from "./benchmarks";
 import { getRecommendation } from "./recommendations";
 import {
   MODEL_VERSION,
@@ -218,11 +218,48 @@ export function assertConfigValid<C extends string>(
     );
   }
 
+  const qualitative = new Set(
+    config.categories.filter((c) => c.kind === "qualitative").map((c) => c.id)
+  );
+
   for (const q of config.questions) {
     if (q.options.length !== 5) {
       throw new Error(
         `[commercial-score:${config.id}] pytanie ${q.id} ma ${q.options.length} opcji, oczekiwano 5`
       );
+    }
+
+    const values = q.options
+      .map((o) => o.value)
+      .sort()
+      .join(",");
+    if (values !== "1,2,3,4,5") {
+      throw new Error(
+        `[commercial-score:${config.id}] pytanie ${q.id} ma punktacje ${values}, oczekiwano 1,2,3,4,5`
+      );
+    }
+
+    // The quiz UI builds its group list from the qualitative categories only
+    // and looks each question's category up in it without a fallback, so a
+    // question filed under the audience category renders a blank screen rather
+    // than an error anyone would notice.
+    if (!qualitative.has(q.category)) {
+      throw new Error(
+        `[commercial-score:${config.id}] pytanie ${q.id} nalezy do kategorii "${q.category}", ktora nie jest typu "qualitative"`
+      );
+    }
+  }
+
+  // A channel with no anchor scores zero instead of failing, which looks like a
+  // visitor with no audience rather than like a broken benchmark table.
+  for (const tier of LEVEL_TIERS) {
+    const anchors = resolveAnchors({ persona: config.id, tier: tier.id });
+    for (const channel of config.channels) {
+      if (!anchors[channel.id]) {
+        throw new Error(
+          `[commercial-score:${config.id}] brak kotwicy dla kanalu "${channel.id}" na poziomie "${tier.id}"`
+        );
+      }
     }
   }
 }
