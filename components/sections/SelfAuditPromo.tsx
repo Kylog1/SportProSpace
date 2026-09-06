@@ -2,9 +2,26 @@ import Link from "next/link";
 import { ArrowRight, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Carries the "Dla kogo" list that used to be its own section above. That
+// section was a second copy of the /self-assessment hub - same six disciplines,
+// same links - so it cost a full screen of scrolling to duplicate a page that
+// already exists. Here the disciplines do the one job they were really doing:
+// telling a visitor the audit is built for their sport before they click.
+//
+// The id is kept because the footer links to /#dla-kogo.
+
+const disciplines = [
+  { label: "Piłka nożna", href: "/self-assessment/football" },
+  { label: "Fitness i wellness", href: "/self-assessment/fitness" },
+  { label: "Tenis i padel", href: "/self-assessment/tennis-padel" },
+  { label: "Golf", href: "/self-assessment" },
+  { label: "Pływanie", href: "/self-assessment" },
+  { label: "Kluby wielosekcyjne", href: "/self-assessment" },
+];
+
 export function SelfAuditPromo() {
   return (
-    <section className="border-b border-navy-100 bg-white">
+    <section id="dla-kogo" className="border-b border-navy-100 bg-white">
       <div className="container py-20 md:py-28">
         <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-navy-200 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-950 px-8 py-14 text-white md:px-16 md:py-16">
           <div
@@ -33,6 +50,23 @@ export function SelfAuditPromo() {
               W kilka minut sprawdzisz, gdzie Twój klub jest mocny, gdzie
               traci potencjał i od czego warto zacząć.
             </p>
+
+            <div className="mt-8">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy-200/70">
+                Dla kogo
+              </div>
+              <div className="mt-3 flex flex-wrap justify-center gap-2">
+                {disciplines.map((d) => (
+                  <Link
+                    key={d.label}
+                    href={d.href}
+                    className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-[13px] font-medium text-navy-100 transition-colors hover:border-white/50 hover:bg-white/10 hover:text-white"
+                  >
+                    {d.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-1.5 text-[12.5px] text-navy-100/70">
               <span>Dopasowane do dyscypliny</span>

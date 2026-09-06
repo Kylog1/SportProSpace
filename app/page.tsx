@@ -1,10 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { DlaKogo } from "@/components/sections/DlaKogo";
-import { ProblemSection } from "@/components/sections/ProblemSection";
 import { JakDzialamy } from "@/components/sections/JakDzialamy";
-import { CoBadamy } from "@/components/sections/CoBadamy";
 import { SelfAuditPromo } from "@/components/sections/SelfAuditPromo";
 import { CommercialScorePromo } from "@/components/sections/CommercialScorePromo";
 import { About } from "@/components/sections/About";
@@ -21,16 +18,7 @@ export default function Page() {
           <Hero />
         </ErrorBoundary>
         <ErrorBoundary>
-          <DlaKogo />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <ProblemSection />
-        </ErrorBoundary>
-        <ErrorBoundary>
           <JakDzialamy />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <CoBadamy />
         </ErrorBoundary>
         <ErrorBoundary>
           <SelfAuditPromo />

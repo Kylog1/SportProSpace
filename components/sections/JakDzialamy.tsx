@@ -1,10 +1,16 @@
 import { ArrowRight } from "lucide-react";
 
+// Process and scope in one section. These used to be two - "Jak działamy" and
+// "Co badamy" - which cost a full section header and set of padding for one
+// continuous thought, and left the site sounding like a research shop: the old
+// first step was "Badamy doświadczenia…", so every engagement appeared to start
+// with a study. The commercial track had no place on the homepage at all.
+
 const steps = [
   {
     n: "01",
-    title: "Zbieramy dane",
-    desc: "Badamy doświadczenia klientów, członków, zawodników, rodziców i trenerów.",
+    title: "Diagnozujemy",
+    desc: "Badanie doświadczenia, audyt aktywów komercyjnych albo jedno i drugie.",
   },
   {
     n: "02",
@@ -18,8 +24,33 @@ const steps = [
   },
   {
     n: "04",
-    title: "Pomagamy wdrożyć zmiany",
+    title: "Wdrażamy i mierzymy",
     desc: "Przekładamy wyniki na konkretne działania i mierzymy efekty.",
+  },
+];
+
+// Two tracks, not one. The experience column is the old five-stage funnel; the
+// commercial column mirrors the categories Commercial Score actually measures,
+// so neither is a claim invented for this page.
+const tracks: { label: string; items: { name: string; desc: string }[] }[] = [
+  {
+    label: "Doświadczenie i retencja",
+    items: [
+      { name: "Attract", desc: "Czy klub przyciąga właściwych klientów" },
+      { name: "Activate", desc: "Czy nowi szybko zaczynają korzystać" },
+      { name: "Retain", desc: "Czy relacja sprawia, że zostają" },
+      { name: "Expand", desc: "Czy wykorzystujecie upsell i cross-sell" },
+      { name: "Refer", desc: "Czy zadowoleni przyciągają kolejnych" },
+    ],
+  },
+  {
+    label: "Potencjał komercyjny",
+    items: [
+      { name: "Aktywa", desc: "Co realnie macie do sprzedania markom" },
+      { name: "Oferta", desc: "Czy potraficie uzasadnić wartość współpracy" },
+      { name: "Sprzedaż", desc: "Kto i jak prowadzi rozmowy z firmami" },
+      { name: "Aktywacje", desc: "Co sponsor dostaje i co mu raportujecie" },
+    ],
   },
 ];
 
@@ -32,16 +63,16 @@ export function JakDzialamy() {
             Jak działamy
           </span>
           <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
-            Cztery etapy, jeden wynik.
+            Od diagnozy do wdrożenia.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
-            Od pierwszej rozmowy do wdrożenia: przejrzysty, mierzalny proces
-            zaprojektowany dla organizacji sportowych.
+            Pracujemy na dwóch frontach: doświadczenie i retencja klientów oraz
+            potencjał komercyjny organizacji. Wejściem może być badanie, audyt
+            komercyjny albo bezpłatny wynik z naszych narzędzi.
           </p>
         </div>
 
         <div className="relative mx-auto mt-14 max-w-6xl">
-          {/* desktop connector line */}
           <div
             aria-hidden
             className="absolute left-0 right-0 top-[44px] hidden h-px bg-gradient-to-r from-transparent via-navy-200 to-transparent md:block"
@@ -72,6 +103,30 @@ export function JakDzialamy() {
           </ol>
         </div>
 
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
+          {tracks.map((track) => (
+            <div
+              key={track.label}
+              className="rounded-xl border border-navy-100 bg-white p-6"
+            >
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+                {track.label}
+              </h3>
+              <ul className="mt-4 space-y-2.5">
+                {track.items.map((item) => (
+                  <li key={item.name} className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="text-[14px] font-semibold tracking-tight text-navy-950">
+                      {item.name}
+                    </span>
+                    <span className="text-[13.5px] leading-relaxed text-muted-foreground">
+                      {item.desc}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
