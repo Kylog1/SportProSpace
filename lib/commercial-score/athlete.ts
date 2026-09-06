@@ -279,14 +279,12 @@ const channels: PersonaConfig<AthleteCategoryId>["channels"] = [
     hint: "Liczba obserwujących.",
     weight: 0.4,
     placeholder: "np. 8 500",
-    naLabel: "Nie mam konta",
   },
   {
     id: "tiktok",
     label: "TikTok",
     weight: 0.27,
     placeholder: "np. 3 200",
-    naLabel: "Nie mam konta",
   },
   {
     id: "youtube",
@@ -294,14 +292,12 @@ const channels: PersonaConfig<AthleteCategoryId>["channels"] = [
     hint: "Liczba subskrybentów.",
     weight: 0.22,
     placeholder: "np. 900",
-    naLabel: "Nie mam kanału",
   },
   {
     id: "facebook",
     label: "Facebook",
     weight: 0.11,
     placeholder: "np. 2 000",
-    naLabel: "Nie mam konta",
   },
 ];
 

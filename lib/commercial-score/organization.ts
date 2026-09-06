@@ -313,7 +313,6 @@ const channels: PersonaConfig<OrganizationCategoryId>["channels"] = [
     hint: "Liczba aktywnych kontaktów, do których możecie legalnie wysłać wiadomość.",
     weight: 0.25,
     placeholder: "np. 2 400",
-    naLabel: "Nie mamy takiej bazy",
   },
   {
     id: "instagram",
@@ -321,21 +320,18 @@ const channels: PersonaConfig<OrganizationCategoryId>["channels"] = [
     hint: "Liczba obserwujących profil organizacji.",
     weight: 0.17,
     placeholder: "np. 12 000",
-    naLabel: "Nie mamy konta",
   },
   {
     id: "facebook",
     label: "Facebook",
     weight: 0.1,
     placeholder: "np. 20 000",
-    naLabel: "Nie mamy konta",
   },
   {
     id: "tiktok",
     label: "TikTok",
     weight: 0.08,
     placeholder: "np. 2 000",
-    naLabel: "Nie mamy konta",
   },
   {
     id: "youtube",
@@ -343,7 +339,6 @@ const channels: PersonaConfig<OrganizationCategoryId>["channels"] = [
     hint: "Liczba subskrybentów.",
     weight: 0.08,
     placeholder: "np. 1 500",
-    naLabel: "Nie mamy kanału",
   },
 ];
 
