@@ -59,8 +59,10 @@ export default function TermsPage() {
               <p>
                 Niniejszy Regulamin określa zasady korzystania z serwisu
                 internetowego dostępnego pod adresem sportspacepro.pl
-                (dalej: „Serwis"), prowadzonego pod marką Sport Space Pro
-                przez podmiot dostępny pod adresem e-mail{" "}
+                (dalej: „Serwis"), prowadzonego pod marką Sport Space Pro w
+                ramach działalności gospodarczej Klientuj.pl, z miejscem
+                wykonywania działalności: ul. Sarmacka 20A/103, 02-972
+                Warszawa, NIP: 7962713089, dostępnej pod adresem e-mail{" "}
                 <a href="mailto:hello@sportspacepro.pl">
                   hello@sportspacepro.pl
                 </a>{" "}
