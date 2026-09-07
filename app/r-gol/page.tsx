@@ -24,7 +24,7 @@ import { ProposalNav } from "@/components/r-gol/ProposalNav";
 export const metadata: Metadata = {
   title: "R-GOL × Sport Space Pro - propozycja współpracy",
   description:
-    "Materiał przygotowany dla R-GOL.com | Unisport: dane o zawodnikach i klubach jako brakujący element ekosystemu.",
+    "Materiał przygotowany dla R-GOL.com | Unisport: metoda oceny potencjału komercyjnego zawodników i klubów w Polsce.",
   robots: { index: false, follow: false, nocache: true },
 };
 
@@ -57,14 +57,14 @@ function Hero() {
           <h1 className="text-balance text-[36px] font-semibold leading-[1.05] tracking-tightest text-navy-950 sm:text-[44px] lg:text-[52px]">
             Wy macie zasięg i markę.{" "}
             <span className="text-navy-800">
-              My dane o tym, na kogo warto postawić.
+              My metodę, żeby wiedzieć, na kogo postawić.
             </span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
             Sport Space Pro punktuje potencjał komercyjny zawodników i
             organizacji sportowych w Polsce - w skali 0-100, na powtarzalnym
-            modelu. Ten materiał pokazuje, jak te dane mogą zasilić decyzje
+            modelu. Ten materiał pokazuje, jak takie wyniki mogą zasilić decyzje
             R-GOL o kontraktach z zawodnikami, klubami i akademiami.
           </p>
 
