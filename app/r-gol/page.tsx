@@ -348,7 +348,7 @@ function Dane() {
           </p>
           <p className="mt-4 max-w-3xl text-[14.5px] leading-relaxed text-muted-foreground">
             Mówię otwarcie, na jakim etapie jest ta siatka: progi to dziś
-            oszacowania ekspercke, ustawione tak, żeby model sensownie
+            oszacowania eksperckie, ustawione tak, żeby model sensownie
             różnicował znane typy profili - nie średnie z reprezentatywnej
             próby rynku. Dlatego każdy wynik zapisywany jest razem z wersją
             benchmarków i surowymi liczbami, żeby całą historię dało się
