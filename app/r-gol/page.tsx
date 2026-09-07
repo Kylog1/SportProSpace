@@ -143,8 +143,10 @@ function PunktWyjscia() {
             - i dlaczego akurat ci, a nie inni.
           </p>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-            Ja mam odwrotnie: nie mam zasięgu, mam model i dane. Stąd ta
-            rozmowa.
+            Ja mam odwrotnie: nie mam zasięgu, mam metodę. Commercial Score
+            rozkłada wartość komercyjną zawodnika na pięć składowych i przelicza
+            je na jedną liczbę, porównywalną między poziomami rozgrywek i
+            dyscyplinami. Stąd ta rozmowa.
           </p>
         </div>
       </div>
@@ -195,6 +197,27 @@ const TRACKS: {
     cta: "Zobacz model dla organizacji",
   },
 ];
+
+// Illustrative profiles, not anonymised real submissions. Labelled as such on
+// the page on purpose: the sample behind the model is still small, and a claim
+// of "real cases" is the one thing in this deck that could be checked and found
+// wanting in the room. Reach figures are deliberately round so no combination
+// of discipline, level and follower count points at one person.
+const PROFILES: { label: string; reach: string; score: string; why: string }[] =
+  [
+    {
+      label: "Piłkarz, Ekstraklasa",
+      reach: "ok. 40 tys. obserwujących łącznie",
+      score: "58",
+      why: "Zasięg w górnym przedziale dla swojego poziomu, ale Commercial Readiness poniżej 30/100: brak media kitu, nieznana demografia odbiorców, brak ustalonych stawek. Dla marki oznacza to kilka tygodni porządkowania, zanim w ogóle zacznie się rozmowa o kampanii.",
+    },
+    {
+      label: "Piłkarz, 1. liga",
+      reach: "ok. 10 tys. obserwujących łącznie",
+      score: "61",
+      why: "Cztery razy mniejszy zasięg, wyższy wynik. Regularne materiały wideo, czytelny wizerunek, ustalone stawki i doświadczenie we współpracy z markami. Kampanię da się z nim uruchomić od razu.",
+    },
+  ];
 
 function Dane() {
   return (
@@ -261,7 +284,81 @@ function Dane() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-2xl bg-navy-900 p-8 md:p-10">
+        <div className="mt-6 rounded-2xl border border-navy-100 bg-navy-50/60 p-7 md:p-9">
+          <div className="max-w-3xl">
+            <h3 className="text-[18px] font-semibold tracking-tight text-navy-950">
+              Dlaczego to nie jest ranking zasięgu
+            </h3>
+            <p className="mt-2.5 text-[14.5px] leading-relaxed text-muted-foreground">
+              Zasięg waży w modelu 32 procent, nie 100. Dwa profile
+              ilustrujące, jak wynik potrafi odwrócić intuicyjną kolejność -
+              przykłady pokazują działanie modelu, nie konkretne osoby.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {PROFILES.map((profile) => (
+              <div
+                key={profile.label}
+                className="rounded-xl border border-navy-100 bg-white p-6"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[14.5px] font-semibold tracking-tight text-navy-950">
+                      {profile.label}
+                    </p>
+                    <p className="mt-1 text-[13px] text-muted-foreground">
+                      {profile.reach}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="text-[30px] font-semibold leading-none tabular-nums tracking-tight text-navy-900">
+                      {profile.score}
+                    </p>
+                    <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-navy-300">
+                      Score
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-5 border-t border-navy-100 pt-5 text-[13.5px] leading-relaxed text-navy-800">
+                  {profile.why}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 max-w-3xl border-l-2 border-navy-800 pl-4 text-[14.5px] leading-relaxed text-navy-900">
+            Zawodnik z czterokrotnie mniejszym zasięgiem wypada wyżej, bo umie z
+            marką pracować. To jest różnica między listą nazwisk a
+            uszeregowaniem - i to jest ta rzecz, której nie widać z poziomu
+            liczby obserwujących.
+          </p>
+        </div>
+
+        <div className="mt-4 rounded-2xl border border-navy-100 bg-white p-7 md:p-9">
+          <h3 className="text-[18px] font-semibold tracking-tight text-navy-950">
+            Skąd biorą się progi
+          </h3>
+          <p className="mt-2.5 max-w-3xl text-[14.5px] leading-relaxed text-muted-foreground">
+            Pięć tysięcy obserwujących to dobry wynik dla klubu z trzeciej ligi
+            i słaby dla ekstraklasowego, dlatego każdy wynik liczony jest
+            względem własnej siatki odniesienia - osobnej dla dyscypliny i
+            poziomu rozgrywek. Zasięg wchodzi po krzywej logarytmicznej, więc
+            jedno wirusowe wideo nie wywraca całej oceny.
+          </p>
+          <p className="mt-4 max-w-3xl text-[14.5px] leading-relaxed text-muted-foreground">
+            Mówię otwarcie, na jakim etapie jest ta siatka: progi to dziś
+            oszacowania ekspercke, ustawione tak, żeby model sensownie
+            różnicował znane typy profili - nie średnie z reprezentatywnej
+            próby rynku. Dlatego każdy wynik zapisywany jest razem z wersją
+            benchmarków i surowymi liczbami, żeby całą historię dało się
+            przeliczyć ponownie, gdy próba urośnie. Model, który udaje
+            precyzję, której nie ma, jest wart mniej niż taki, który mówi, gdzie
+            leży jego granica.
+          </p>
+        </div>
+
+        <div className="mt-4 rounded-2xl bg-navy-900 p-8 md:p-10">
           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-300">
             Co to daje R-GOL
           </p>
@@ -277,6 +374,20 @@ function Dane() {
             oceną dopasowania do R-GOL. Efekt: uszeregowana lista zawodników i
             klubów z uzasadnieniem, którą da się obronić przed zarządem.
           </p>
+
+          <div className="mt-8 border-t border-navy-800 pt-8">
+            <p className="max-w-3xl text-[16px] leading-relaxed text-white">
+              Najprostszy sposób, żeby to sprawdzić: dajcie mi listę dwudziestu
+              zawodników albo klubów, z którymi już współpracujecie lub których
+              rozważacie. Przepuszczę ją przez model i oddam ranking z
+              uzasadnieniem dla każdej pozycji.
+            </p>
+            <p className="mt-3 max-w-3xl text-[14.5px] leading-relaxed text-navy-200">
+              Zobaczycie metodę na własnym portfelu, a nie na moich przykładach
+              - i od razu będzie wiadomo, czy wynik mówi Wam coś, czego jeszcze
+              nie wiecie.
+            </p>
+          </div>
         </div>
       </div>
     </section>

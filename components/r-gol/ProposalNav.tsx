@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const SECTIONS = [
   { href: "#punkt-wyjscia", label: "Punkt wyjścia" },
-  { href: "#dane", label: "Dane" },
+  { href: "#dane", label: "Metoda" },
   { href: "#obszary", label: "Obszary" },
   { href: "#koncepty", label: "Koncepty" },
   { href: "#pilotaz", label: "Pilotaż" },
