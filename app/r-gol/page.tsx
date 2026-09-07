@@ -110,7 +110,7 @@ function PunktWyjscia() {
             W Polsce decyzje o tym, kogo ubrać, zapadają bez danych.
           </h2>
           <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
-            To obserwacja z pracy z klubami i akademiami, nie zarzut wobec
+            To obserwacja z naszej pracy z klubami i akademiami, nie zarzut wobec
             kogokolwiek - tak wygląda cały ten rynek. Trzy rzeczy, które wracają
             w każdej rozmowie:
           </p>
@@ -284,13 +284,13 @@ function Dane() {
 
           <div className="mt-8 border-t border-navy-800 pt-8">
             <p className="max-w-3xl text-[16px] leading-relaxed text-white">
-              Najprostszy sposób, żeby to sprawdzić: dajcie mi listę dwudziestu
+              Najprostszy sposób, żeby to sprawdzić: dajcie nam listę dwudziestu
               zawodników albo klubów, z którymi już współpracujecie lub których
-              rozważacie. Przepuszczę ją przez model i oddam ranking z
+              rozważacie. Przepuścimy ją przez model i oddamy ranking z
               uzasadnieniem dla każdej pozycji.
             </p>
             <p className="mt-3 max-w-3xl text-[14.5px] leading-relaxed text-navy-200">
-              Zobaczycie metodę na własnym portfelu, a nie na moich przykładach
+              Zobaczycie metodę na własnym portfelu, a nie na naszych przykładach
               - i od razu będzie wiadomo, czy wynik mówi Wam coś, czego jeszcze
               nie wiecie.
             </p>
@@ -320,13 +320,13 @@ const AREAS: { icon: LucideIcon; no: string; title: string; body: string }[] = [
     icon: Radio,
     no: "03",
     title: "Aktywacje i formaty",
-    body: "Projekty, w których R-GOL jest uczestnikiem środowiska, a nie logo na banerze: wydarzenia, programy zawodnicze, formaty łączące sprzęt z rozwojem gracza. Wy macie dystrybucję, ja mam dostęp i koncepcje.",
+    body: "Projekty, w których R-GOL jest uczestnikiem środowiska, a nie logo na banerze: wydarzenia, programy zawodnicze, formaty łączące sprzęt z rozwojem gracza. Wy macie dystrybucję, my mamy dostęp i koncepcje.",
   },
   {
     icon: Handshake,
     no: "04",
     title: "B2B i partnerstwa",
-    body: "Projekty R-GOL poza samym środowiskiem klubowym - z firmami z branży IT i technologii sportowej, z którymi pracuję. Obszar do zbadania po tym, jak zadziałają pierwsze trzy.",
+    body: "Projekty R-GOL poza samym środowiskiem klubowym - z firmami z branży IT i technologii sportowej, z którymi pracujemy. Obszar do zbadania po tym, jak zadziałają pierwsze trzy.",
   },
 ];
 
@@ -339,7 +339,7 @@ function Obszary() {
           <h2 className={H2}>Cztery miejsca, w których to się przekłada na R-GOL.</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
             Kolejność nie jest przypadkowa - to również kolejność, w jakiej
-            proponuję je testować.
+            proponujemy je testować.
           </p>
         </div>
 
@@ -458,7 +458,7 @@ function Koncepty() {
           <h2 className={H2}>Dwa konkrety, żeby nie rozmawiać w abstrakcji.</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
             Oba są prototypami do wspólnego doprecyzowania, nie gotowymi
-            produktami. Zakładam, że po spotkaniu któryś z nich będzie wyglądał
+            produktami. Zakładamy, że po spotkaniu któryś z nich będzie wyglądał
             inaczej - albo wypadnie na rzecz Waszego pomysłu.
           </p>
         </div>
@@ -561,8 +561,8 @@ function Pilotaz() {
           <span className={EYEBROW}>Pilotaż</span>
           <h2 className={H2}>90 dni, wąski zakres, twarde zamknięcie.</h2>
           <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
-            Nie proponuję rocznego kontraktu na współpracę strategiczną.
-            Proponuję jeden ograniczony projekt, po którym będzie wiadomo, czy
+            Nie proponujemy rocznego kontraktu na współpracę strategiczną.
+            Proponujemy jeden ograniczony projekt, po którym będzie wiadomo, czy
             to ma sens - i który da się zamknąć bez konsekwencji, jeśli nie ma.
           </p>
         </div>
@@ -668,7 +668,7 @@ const CREDENTIALS: {
   {
     icon: Users,
     title: "Dostęp do klubów i akademii",
-    body: "Relacje z akademiami warszawskimi, klubami 1. i 2. ligi oraz organizacjami, z którymi prowadzę rozmowy o komercjalizacji i retencji.",
+    body: "Relacje z akademiami warszawskimi, klubami 1. i 2. ligi oraz organizacjami, z którymi prowadzimy rozmowy o komercjalizacji i retencji.",
   },
   {
     icon: LineChart,
