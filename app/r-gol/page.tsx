@@ -653,7 +653,11 @@ function Pilotaz() {
 
 /* ----------------------------------------------------------------- 7. Kto */
 
-const CREDENTIALS: { icon: LucideIcon; title: string; body: string }[] = [
+const CREDENTIALS: {
+  icon: LucideIcon;
+  title: string;
+  body: React.ReactNode;
+}[] = [
   {
     icon: Database,
     title: "Commercial Score",
@@ -672,7 +676,20 @@ const CREDENTIALS: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: Radio,
     title: "Technologia",
-    body: "FootLog.pl oraz współpraca z firmami z branży IT i technologii sportowej, które mogą wejść w projekty razem z R-GOL.",
+    body: (
+      <>
+        <a
+          href="https://footlog.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-navy-800 underline-offset-4 hover:underline"
+        >
+          FootLog.pl
+        </a>{" "}
+        (aplikacja dla akademii piłkarskich) oraz współpraca z firmami z branży
+        IT i technologii sportowej, które mogą wejść w projekty razem z R-GOL.
+      </>
+    ),
   },
 ];
 
