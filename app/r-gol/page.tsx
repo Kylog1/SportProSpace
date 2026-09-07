@@ -143,10 +143,12 @@ function PunktWyjscia() {
             - i dlaczego akurat ci, a nie inni.
           </p>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-            Ja mam odwrotnie: nie mam zasięgu, mam metodę. Commercial Score
-            rozkłada wartość komercyjną zawodnika na pięć składowych i przelicza
-            je na jedną liczbę, porównywalną między poziomami rozgrywek i
-            dyscyplinami. Stąd ta rozmowa.
+            My mamy odwrotnie: nie mamy zasięgu, mamy metodę i relacje.
+            Commercial Score rozkłada wartość komercyjną zawodnika na pięć
+            składowych i przelicza je na jedną liczbę, porównywalną między
+            poziomami rozgrywek i dyscyplinami. Relacje otwierają drzwi w
+            klubach i akademiach, w których ta metoda ma zostać użyta. Stąd ta
+            rozmowa.
           </p>
         </div>
       </div>
