@@ -4,7 +4,6 @@ import {
   Mail,
   MessageSquare,
   Share2,
-  Trophy,
   Users,
   Baby,
   BarChart3,
@@ -51,10 +50,8 @@ function Hero() {
           </Badge>
 
           <h1 className="text-balance text-[36px] font-semibold leading-[1.05] tracking-tightest text-navy-950 sm:text-[44px] lg:text-[52px]">
-            Nie tylko pokażmy logo.{" "}
-            <span className="text-navy-800">
-              Sprawdźmy, czy społeczność Pogoni może sprzedawać podróże.
-            </span>
+            Sprawdźmy, jak skutecznie możemy połączyć markę HelloWorld ze
+            społecznością Pogoni.
           </h1>
 
           <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
@@ -85,12 +82,6 @@ function Hero() {
             >
               Zobacz zakres pilotażu
               <ArrowRight className="size-4" />
-            </a>
-            <a
-              href="#zamkniecie"
-              className="inline-flex h-11 items-center gap-2 rounded-md border border-navy-200 px-5 text-[14px] font-medium text-navy-900 transition-colors hover:bg-navy-50"
-            >
-              Porozmawiajmy o pilotażu
             </a>
           </div>
         </div>
@@ -208,7 +199,7 @@ const DEDICATED: {
     tag: "Newsletter",
     title: "Dedykowany newsletter",
     body: "1 dedykowana komunikacja mailingowa do grupy odbiorców, do której Klub może dotrzeć poprzez komunikację mailową, zgodnie z obowiązującymi zgodami i zasadami Klubu. W treści rekomendacja HelloWorld przez Klub oraz przejście do oferty.",
-    note: "W komunikacji pokazujemy możliwość dotarcia do około 4 600 osób przez komunikację mailową Klubu.",
+    note: "4600 osób w bazie, do której może wyjść newsletter.",
   },
   {
     icon: MessageSquare,
@@ -221,12 +212,6 @@ const DEDICATED: {
     tag: "Social media",
     title: "Publikacje w social media",
     body: "1-2 publikacje w kanałach social media Pogoni.",
-  },
-  {
-    icon: Trophy,
-    tag: "Aktywacja",
-    title: "Konkurs z voucherem HelloWorld",
-    body: "Wspólny konkurs z voucherem HelloWorld, zwiększający zaangażowanie i zainteresowanie marką.",
   },
   {
     icon: Users,
@@ -455,10 +440,6 @@ function Pomiar() {
             ))}
           </ul>
         </div>
-
-        <p className="mt-6 max-w-3xl border-l-2 border-navy-800 pl-4 text-[14.5px] leading-relaxed text-navy-900">
-          Finalna sprzedaż nie jest warunkiem uznania pilotażu za wartościowy.
-        </p>
       </div>
     </section>
   );
@@ -479,7 +460,6 @@ const PACKAGE_ITEMS = [
   "Możliwość aktywacji podczas dnia meczowego",
   "Możliwość komunikacji do rodziców Akademii",
   "Możliwość wspólnego przygotowania mechanizmu trackingu",
-  "Podsumowanie pilotażu",
 ];
 
 function Inwestycja() {
@@ -649,14 +629,6 @@ function Zamkniecie() {
               </p>
             </div>
           </div>
-
-          <a
-            href="mailto:krzysztof.grzyb@sportspacepro.pl?subject=HelloWorld%20%C3%97%20Pogo%C5%84%20Grodzisk%20-%20pilota%C5%BC"
-            className="mt-8 inline-flex h-12 items-center gap-2 rounded-md bg-white px-7 text-[15px] font-medium text-navy-950 transition-colors hover:bg-navy-100"
-          >
-            Porozmawiajmy o pilotażu
-            <ArrowRight className="size-4" />
-          </a>
         </div>
       </div>
     </section>

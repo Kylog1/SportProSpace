@@ -34,13 +34,6 @@ export function ProposalNav() {
             </a>
           ))}
         </nav>
-
-        <a
-          href="#zamkniecie"
-          className="inline-flex h-9 items-center rounded-md bg-navy-800 px-4 text-[13px] font-medium text-white transition-colors hover:bg-navy-900"
-        >
-          Porozmawiajmy
-        </a>
       </div>
     </header>
   );
