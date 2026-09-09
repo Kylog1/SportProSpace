@@ -300,6 +300,12 @@ const AUDIENCE: { icon: LucideIcon; no: string; title: string; body: string }[] 
   },
 ];
 
+const SOCIAL: { label: string; followers: string; reach: string }[] = [
+  { label: "Facebook", followers: "20 000", reach: "2 600 000" },
+  { label: "X", followers: "3 049", reach: "2 600 000" },
+  { label: "Instagram", followers: "7 500", reach: "750 000" },
+];
+
 function Zasieg() {
   return (
     <section id="zasieg" className={`bg-navy-50/40 ${SECTION}`}>
@@ -334,6 +340,27 @@ function Zasieg() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-6 rounded-xl border border-navy-100 bg-white p-7">
+          <h3 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+            Social media Pogoni
+          </h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            {SOCIAL.map((row) => (
+              <div key={row.label} className="rounded-lg bg-navy-50/60 p-4">
+                <p className="text-[13px] font-semibold text-navy-950">
+                  {row.label}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                  {row.followers} obserwujących
+                </p>
+                <p className="text-[13px] leading-relaxed text-muted-foreground">
+                  {row.reach} miesięczny zasięg postów
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-6 max-w-3xl rounded-xl border border-navy-100 bg-white p-7">
@@ -585,7 +612,73 @@ function CoDalej() {
   );
 }
 
-/* -------------------------------------------------------- 9. Zamknięcie */
+/* --------------------------------------------------- 9. Ulga dla sportu */
+
+function UlgaSportu() {
+  return (
+    <section id="ulga-dla-sportu" className={`bg-navy-50/40 ${SECTION}`}>
+      <div className="container py-20 md:py-28">
+        <div className="max-w-2xl">
+          <span className={EYEBROW}>Ulga dla sportu</span>
+          <h2 className={H2}>
+            Ta współpraca może się częściowo sfinansować sama.
+          </h2>
+          <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
+            Od 1 stycznia 2022 roku obowiązuje ulga sponsoringowa, potocznie
+            nazywana ulgą dla sportu - zachęta podatkowa dla przedsiębiorców
+            przekazujących środki na działalność sportową.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl border border-navy-100 bg-white p-7">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+              Na czym polega ulga
+            </h3>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+              Przedsiębiorca może odliczyć od podstawy opodatkowania 50%
+              wydatków poniesionych między innymi na działalność sportową,
+              zaliczonych wcześniej do kosztów uzyskania przychodów na
+              zasadach ogólnych. Odliczenie nie może przekroczyć kwoty dochodu
+              uzyskanego w danym roku podatkowym. W praktyce ulga pozwala
+              rozliczyć w podatku dochodowym 150% poniesionych kosztów - 100%
+              jako koszt uzyskania przychodów i 50% jako odliczenie w ramach
+              ulgi.
+            </p>
+          </div>
+          <div className="rounded-xl border border-navy-100 bg-white p-7">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+              Ulga w praktyce
+            </h3>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+              Przedsiębiorca współpracujący z klubem sportowym niedziałającym
+              w celu osiągnięcia zysku, przeznaczając na jego działalność 20
+              tys. zł i opłacając podatek liniowy w stawce 19%, zyskuje 3 800
+              zł z tytułu zaliczenia wydatku do kosztów uzyskania przychodów
+              oraz dodatkowo 1 900 zł z tytułu odliczenia 50% poniesionego
+              kosztu od podstawy opodatkowania. Łącznie w podatku dochodowym
+              zyskuje 5 700 zł.
+            </p>
+          </div>
+        </div>
+
+        <p className="mt-6 text-[13.5px] leading-relaxed text-muted-foreground">
+          Więcej informacji:{" "}
+          <a
+            href="https://www.gov.pl/sport"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-navy-800 underline-offset-4 hover:underline"
+          >
+            www.gov.pl/sport
+          </a>
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------- 10. Zamknięcie */
 
 function Zamkniecie() {
   return (
@@ -648,6 +741,7 @@ export default function HelloWorldProposalPage() {
         <Pomiar />
         <Inwestycja />
         <CoDalej />
+        <UlgaSportu />
         <Zamkniecie />
       </main>
       <Footer />

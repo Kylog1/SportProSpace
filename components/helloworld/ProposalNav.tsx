@@ -8,6 +8,7 @@ const SECTIONS = [
   { href: "#pomiar", label: "Pomiar" },
   { href: "#inwestycja", label: "Inwestycja" },
   { href: "#co-dalej", label: "Co dalej" },
+  { href: "#ulga-dla-sportu", label: "Ulga dla sportu" },
 ];
 
 export function ProposalNav() {
