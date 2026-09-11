@@ -18,6 +18,33 @@ interface Props {
   params: { slug: string };
 }
 
+// Minimal inline markdown: turns `[label](https://url)` into a real link.
+// Content is otherwise plain text, so this only fires on lines that opt in.
+const LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/;
+
+function renderParagraph(line: string, key: number) {
+  const match = line.match(LINK_RE);
+  if (!match) return <p key={key}>{line}</p>;
+
+  const [full, label, url] = match;
+  const idx = line.indexOf(full);
+  const before = line.slice(0, idx);
+  const after = line.slice(idx + full.length);
+
+  return (
+    <p key={key}>
+      {before}
+      <a
+        href={url}
+        className="font-semibold text-navy-800 underline underline-offset-2 hover:text-navy-950"
+      >
+        {label}
+      </a>
+      {after}
+    </p>
+  );
+}
+
 // Generate all static paths
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -219,7 +246,7 @@ export default function ArticlePage({ params }: Props) {
                       if (line.startsWith("- "))
                         return <li key={i}>{line.replace("- ", "")}</li>;
                       if (line.trim() === "") return null;
-                      return <p key={i}>{line}</p>;
+                      return renderParagraph(line, i);
                     })}
 
                   {/* PDF download CTA (bottom) */}

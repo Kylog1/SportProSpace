@@ -26,6 +26,55 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 
 export const articles: Article[] = [
   {
+    slug: "padel-tenis-rynek-2026-self-audit-klubow",
+    title: "Padel w Polsce rośnie szybciej niż kluby nadążają poznać swoich klientów",
+    excerpt:
+      "Liczba kortów padlowych w Polsce wzrosła z około 30 w 2021 roku do blisko 400 w 2026. Konkurencja o klienta rośnie razem z rynkiem, a mimo to większość klubów tenisowych i padlowych wciąż lepiej zna swoje obłożenie kortów niż powody, dla których klienci zostają albo odchodzą.",
+    content: `
+## Rynek rośnie szybciej niż większość klubów nadąża go zrozumieć
+
+Jeszcze pięć lat temu padel w Polsce był ciekawostką, o której czytało się w artykułach z Hiszpanii. W 2021 roku w całym kraju działało około 30 kortów. Do końca 2024 roku ta liczba urosła do około 150. W 2025 roku przekroczyła 350, a według danych zebranych przez Instytut Padla i opublikowanych w marcu 2026 roku, obecnie w Polsce działa już blisko 400 kortów. Prognozy rynkowe przywoływane przez Instytut Padla mówią o podwojeniu tej liczby w ciągu najbliższych 1-2 lat.
+
+To wciąż niewiele w porównaniu z Hiszpanią czy Włochami, gdzie liczba kortów przekracza 10 tysięcy. Ale tempo wzrostu w Polsce oznacza jedno: klub, który jeszcze trzy lata temu nie miał żadnej konkurencji w promieniu kilkunastu kilometrów, dziś często ma ją dwie ulice dalej. Ponad 80% kortów w Polsce powstało w miastach powyżej 100 tysięcy mieszkańców, więc właśnie tam presja rośnie najszybciej.
+
+Tenis ma inną dynamikę. Rynek jest ustabilizowany od dekad, ale konkurencja o czas i uwagę klienta działa dokładnie tak samo. Gracz, który kiedyś miał do wyboru jeden klub w mieście, dziś wybiera między klubem tenisowym, halą padlową i coraz częściej obiektem, który oferuje oba sporty pod jednym dachem.
+
+## Właściciel widzi liczby, nie powód, dla którego klient odchodzi
+
+Zarząd klubu zwykle dobrze zna swoje liczby operacyjne: obłożenie kortów, liczbę rezerwacji w danym miesiącu, przychód, frekwencję na zajęciach grupowych. To dane, które codziennie widać w systemie rezerwacji.
+
+Trudniej odpowiedzieć na pytanie, które decyduje o przyszłości klubu: dlaczego klient zostaje, a dlaczego znika. Nowy klient rezerwuje kort, gra kilka razy. Nie zapisuje się na trening, nie wraca na kolejny termin. Po kilku tygodniach przestaje się pojawiać. Powodów może być kilka: znalazł inne miejsce, nie trafił na partnera na swoim poziomie, pierwszy kontakt z recepcją był chłodny, albo po prostu nikt w klubie nie zrobił nic, żeby zachęcić go do powrotu. Bez uporządkowanego sposobu zbierania tej informacji klub dowiaduje się o problemie dopiero wtedy, gdy klient już zniknął z systemu rezerwacji.
+
+## Klub to ścieżka klienta, nie tylko kort
+
+Dla klienta doświadczenie zaczyna się długo przed pierwszym uderzeniem piłki: od strony internetowej klubu, przez proces rezerwacji, pierwszy kontakt z recepcją, aż po atmosferę na korcie i łatwość znalezienia partnera do gry na odpowiednim poziomie. Każdy z tych momentów może zdecydować, czy klient wróci.
+
+Sensowne pytania dotyczą tego, co dzieje się z klientem w pierwszych tygodniach po zapisaniu się, czy ktoś reaguje, gdy przestaje rezerwować korty, czy klub wie, z jakich dodatkowych usług korzystają najbardziej zaangażowani gracze, i czy feedback od klientów w ogóle przekłada się na konkretne decyzje zarządu. Sama liczba osób grających dziś w klubie mówi zaskakująco mało o tym, co wydarzy się za pół roku.
+
+## Self-Audit dla klubów tenisowych i padlowych
+
+Sport Space Pro przygotował krótką samoocenę, która sprawdza właśnie to: nie opinię właściciela o własnym klubie, tylko konkretne procesy i działania. Sprawdza je w sześciu obszarach: od pierwszego kontaktu z potencjalnym klientem, przez pierwsze 30-90 dni i bieżącą aktywność, po utrzymanie, rozwój wartości klienta i sposób pracy z feedbackiem.
+
+To 18 pytań i około 5 minut. Na końcu klub dostaje Tennis & Padel Growth Score, wynik od 0 do 100, oraz jeden z pięciu poziomów dojrzałości: od reaktywnego, gdzie działania zależą głównie od pojedynczych osób i bieżących problemów, po dojrzały, gdzie decyzje są systematycznie oparte na danych. Pełny raport PDF z wynikami w każdym z sześciu obszarów i Top 3 obszarami do poprawy trafia na maila.
+
+To nie audyt prowadzony przez zewnętrzną firmę. To narzędzie, które pozwala zarządowi klubu zatrzymać się na kilka minut i sprawdzić, czy odpowiedzi na te pytania rzeczywiście zna, czy tylko w nie wierzy.
+
+## Sprawdź swój klub
+
+Rynek padla w Polsce rośnie w tempie, które jeszcze niedawno wydawało się nierealne. Tenis ma stabilniejszą bazę, ale też coraz ostrzejszą konkurencję o czas klientów. W obu przypadkach klub, który dziś nie wie, dlaczego klienci zostają, może się o tym przekonać dopiero wtedy, gdy zacznie tracić ich na rzecz nowego obiektu otwartego dwie ulice dalej.
+
+[Sprawdź Self-Audit dla klubu tenisowego lub padlowego →](https://sportspacepro.pl/self-assessment/tennis-padel)
+    `,
+    category: "artykul",
+    tags: ["Padel", "Tenis", "Self-Audit", "Rynek sportowy"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-09-11",
+    readTime: 6,
+    featured: true,
+    coverGradient: "from-navy-900 to-lime-600",
+  },
+  {
     slug: "sponsoring-sportowy-partner-biznesowy-nie-sponsor",
     title: "Sponsoring sportowy w Polsce: szukaj partnera biznesowego, nie sponsora",
     excerpt:
