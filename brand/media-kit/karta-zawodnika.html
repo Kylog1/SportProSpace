@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Karta zawodnika — Sport Space Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  KARTA ZAWODNIKA — media kit Sport Space Pro · dwie strony A4
+  ════════════════════════════════════════════════════════════════════════════
+
+  JAK UŻYWAĆ
+  1. Skopiuj plik pod nazwiskiem:  karta-warchol.html
+  2. Podmień dane w obiekcie DANE poniżej. Nic więcej nie trzeba ruszać.
+  3. Ctrl+P → Zapisz jako PDF → A4, marginesy: brak, grafika tła: włączona.
+
+  CO WCHODZI, A CO NIE
+  Do karty wchodzą tylko fakty, które marka kupuje: zasięg, odbiorcy, dorobek
+  sportowy, wizerunek, historia współprac, formaty i stawki.
+
+  NIE WCHODZI nic z diagnostyki Commercial Score:
+    - wynik ogólny i rozbicie na kategorie
+    - deklaracja "szuka partnerów w ciągu 3 miesięcy"
+    - słabe strony: nieregularność publikacji, brak ustalonych stawek
+  To są dane sprzedażowe dla Sport Space Pro i materiał zwrotny dla zawodnika.
+  Marka, która zobaczy "gotowość komercyjna 25/100", nie przeczyta reszty.
+
+  KANAŁY Z ZEREM
+  Nigdy nie pokazuj kanału z zerem obserwujących. Brak TikToka jest neutralny,
+  "TikTok: 0" czyta się jako zaniedbanie. Usuń wiersz z tablicy kanaly.
+
+  PLACEHOLDERY
+  Wartości w nawiasach kwadratowych [tak] trzeba uzupełnić. Liczby zasięgu
+  muszą pochodzić ze zrzutów ekranu ze statystyk — marka o nie poprosi.
+  ════════════════════════════════════════════════════════════════════════════
+-->
+
+<style>
+  :root{
+    --navy-50:#f0f4fa;
+    --navy-100:#dbe5f1;
+    --navy-200:#b8cae3;
+    --navy-300:#8aa6cd;
+    --navy-400:#5e80b3;
+    --navy-700:#293f66;
+    --navy-800:#1e3a8a;
+    --navy-950:#0b1736;
+    --muted:#64748b;
+    --body:#334155;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  @page{ size:A4; margin:0 }
+
+  html{background:#e8ebf2}
+  body{
+    font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;
+    color:var(--navy-950);
+    -webkit-font-smoothing:antialiased;
+    print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+  }
+
+  .hint{
+    max-width:210mm;margin:0 auto;padding:14px 4mm;
+    font-size:12.5px;line-height:1.55;color:#41506b;
+  }
+  .hint b{color:var(--navy-950)}
+  .hint code{font-family:ui-monospace,monospace;background:#fff;border:1px solid var(--navy-100);border-radius:4px;padding:1px 5px}
+
+  .page{
+    width:210mm;min-height:297mm;
+    margin:0 auto 24px;background:#fff;
+    padding:11mm 12mm 9mm;
+    display:flex;flex-direction:column;gap:4.2mm;
+    box-shadow:0 10px 40px -12px rgba(11,23,54,.35);
+  }
+
+  @media print{
+    html{background:#fff}
+    .hint{display:none}
+    .page{margin:0;box-shadow:none;width:auto;min-height:0;page-break-after:always}
+    .page:last-of-type{page-break-after:auto}
+  }
+
+  .label{
+    font-size:6.4pt;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--navy-300);
+  }
+  .num{font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+  /* ── nagłówek strony 1 ── */
+  header{
+    background:var(--navy-950);color:#fff;border-radius:2.2mm;
+    padding:6mm 7mm;display:flex;justify-content:space-between;align-items:flex-end;gap:6mm;
+  }
+  header .who h1{font-size:23pt;font-weight:600;letter-spacing:-.035em;line-height:1.02}
+  header .who .meta{
+    margin-top:2.2mm;font-size:8.6pt;color:var(--navy-200);font-weight:400;
+    display:flex;flex-wrap:wrap;gap:1.5mm 3.5mm;
+  }
+  header .who .meta span::after{content:"·";margin-left:3.5mm;color:#3c5a99}
+  header .who .meta span:last-child::after{content:""}
+  header .mark{text-align:right;flex-shrink:0}
+  header .mark .n{font-size:8.2pt;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+  header .mark .n em{font-style:normal;color:var(--navy-300)}
+  header .mark .r{margin-top:1mm;font-size:6.2pt;letter-spacing:.12em;text-transform:uppercase;color:#5b79b8}
+
+  /* ── nagłówek strony 2 ── */
+  .header2{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:3mm;border-bottom:1.6pt solid var(--navy-950);
+  }
+  .header2 .n{font-size:12pt;font-weight:600;letter-spacing:-.025em}
+  .header2 .s{font-size:6.6pt;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-300)}
+
+  /* ── tożsamość + zasięg ── */
+  .band{display:grid;grid-template-columns:52mm 1fr;gap:4.2mm;align-items:stretch}
+  .photo{
+    border:1px solid var(--navy-100);border-radius:2.2mm;background:var(--navy-50);
+    overflow:hidden;position:relative;min-height:46mm;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo .ph{text-align:center;padding:4mm}
+  .photo .ph .ini{font-size:20pt;font-weight:600;color:var(--navy-200);letter-spacing:-.03em}
+  .photo .ph .t{margin-top:1.5mm;font-size:6.2pt;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-300)}
+
+  .reach{display:flex;flex-direction:column;gap:2.6mm}
+  .kanaly{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:2.2mm}
+  .kanal{border:1px solid var(--navy-100);border-radius:1.8mm;padding:3mm 3.2mm}
+  .kanal .p{font-size:6.4pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-800)}
+  .kanal .v{margin-top:1.4mm;font-size:15pt;font-weight:600;letter-spacing:-.035em;line-height:1}
+  .kanal .h{margin-top:1mm;font-size:6.6pt;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .kanal .note{margin-top:.8mm;font-size:6pt;color:var(--navy-400);line-height:1.3}
+
+  .stats{
+    border:1px solid var(--navy-100);border-radius:1.8mm;overflow:hidden;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--navy-100);flex:1;
+  }
+  .stats > div{background:#fff;padding:3mm 3.2mm;display:flex;flex-direction:column;justify-content:center}
+  .stats .v{font-size:13pt;font-weight:600;letter-spacing:-.035em;line-height:1}
+  .stats .l{margin-top:1.4mm;font-size:6.3pt;line-height:1.25;color:var(--muted)}
+
+  /* ── sekcje ── */
+  .section-title{display:flex;align-items:baseline;gap:2.5mm;margin-bottom:2.6mm}
+  .section-title h2{font-size:10.5pt;font-weight:600;letter-spacing:-.02em}
+  .section-title .note{font-size:6.8pt;color:var(--muted)}
+  .box{border:1px solid var(--navy-100);border-radius:1.8mm;padding:3.4mm 3.6mm}
+
+  /* ── sport + wizerunek ── */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:4.2mm}
+  .facts{display:flex;flex-direction:column;gap:2mm;margin-top:2.4mm}
+  .fact{display:grid;grid-template-columns:26mm 1fr;gap:2.5mm;font-size:7.6pt;line-height:1.4}
+  .fact .k{color:var(--navy-300);font-weight:500}
+  .fact .v{color:var(--navy-950);font-weight:500}
+
+  .tags{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:2.4mm}
+  .tag{
+    font-size:7.2pt;font-weight:600;letter-spacing:-.005em;
+    padding:1.3mm 2.6mm;border-radius:99px;
+    background:var(--navy-800);color:#fff;
+  }
+  .tag.soft{background:var(--navy-50);color:var(--navy-800);border:1px solid var(--navy-100)}
+  .prose{margin-top:2.4mm;font-size:7.6pt;line-height:1.5;color:var(--body)}
+
+  /* ── odbiorcy ── */
+  .aud{display:grid;grid-template-columns:38mm 1fr 44mm;gap:4.2mm}
+  .split{margin-top:2.6mm}
+  .split .bar{height:4.4mm;border-radius:99px;overflow:hidden;display:flex;background:var(--navy-100)}
+  .split .bar i{display:block;height:100%}
+  .split .bar .m{background:var(--navy-800)}
+  .split .bar .k{background:var(--navy-300)}
+  .split .leg{margin-top:2.2mm;display:flex;justify-content:space-between;font-size:7pt;color:var(--muted)}
+  .split .leg b{color:var(--navy-950);font-weight:600}
+
+  .rows{margin-top:2.4mm;display:flex;flex-direction:column;gap:1.8mm}
+  .row{display:grid;grid-template-columns:17mm 1fr 9mm;gap:2.4mm;align-items:center;font-size:7.4pt}
+  .row .k{color:var(--navy-700);font-weight:500}
+  .row .t{height:2.6mm;background:var(--navy-50);border-radius:99px;overflow:hidden}
+  .row .t i{display:block;height:100%;background:var(--navy-800);border-radius:99px}
+  .row .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+
+  /* ── tabele ── */
+  table{width:100%;border-collapse:collapse;font-size:7.6pt}
+  th{
+    text-align:left;font-size:6.3pt;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--navy-300);padding:0 3mm 1.8mm;border-bottom:1px solid var(--navy-100);
+  }
+  td{padding:2.3mm 3mm;border-bottom:1px solid var(--navy-50);vertical-align:top;line-height:1.35}
+  tr:last-child td{border-bottom:0}
+  td.r{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+  td .sub{display:block;font-size:6.6pt;color:var(--muted);margin-top:.6mm;font-weight:400}
+  .tbox{border:1px solid var(--navy-100);border-radius:1.8mm;padding:3.4mm .6mm 1.6mm}
+  .fmt td:first-child{width:36%}
+
+  /* ── realizacja ── */
+  .commit{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2mm;margin-top:2.6mm}
+  .commit > div{border:1px solid var(--navy-100);border-radius:1.8mm;padding:3mm 3.2mm}
+  .commit .v{font-size:10.5pt;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+  .commit .l{margin-top:1.4mm;font-size:6.4pt;line-height:1.3;color:var(--muted)}
+
+  /* ── stopka ── */
+  .foot{
+    margin-top:auto;padding-top:3.4mm;border-top:1px solid var(--navy-100);
+    display:flex;justify-content:space-between;align-items:flex-end;gap:5mm;
+  }
+  .foot .excl{font-size:6.8pt;color:var(--muted);line-height:1.45;max-width:105mm}
+  .foot .excl b{color:var(--navy-950);font-weight:600}
+  .foot .contact{text-align:right;flex-shrink:0}
+  .foot .contact .t{font-size:6.3pt;letter-spacing:.11em;text-transform:uppercase;color:var(--navy-300)}
+  .foot .contact .v{margin-top:1.2mm;font-size:8.4pt;font-weight:600;letter-spacing:-.015em}
+  .foot .contact .w{margin-top:.6mm;font-size:7pt;color:var(--muted)}
+  .pageno{font-size:6.2pt;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-300)}
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <b>Szablon karty zawodnika — dwie strony A4.</b> Podmień dane w obiekcie <code>DANE</code> na końcu pliku,
+  potem <code>Ctrl+P</code> → Zapisz jako PDF → A4, marginesy <b>brak</b>, grafika tła <b>włączona</b>.
+  Uzupełnij wszystko w <code>[nawiasach]</code>. Ten pasek nie drukuje się.
+</div>
+
+<div class="page" id="p1"></div>
+<div class="page" id="p2"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════
+   DANE — jedyne miejsce do edycji
+   ══════════════════════════════════════════════════════════════════════════ */
+const DANE = {
+
+  /* ── kim jest ─────────────────────────────────────────────────────────── */
+  imie:    "[Imię Nazwisko]",
+  pozycja: "[pozycja na boisku]",
+  rocznik: "[rocznik]",
+  klub:    "[nazwa klubu]",
+  /* Poziom podaj uczciwie. Marka sprawdzi w minutę, a przyłapanie na
+     zawyżeniu kończy rozmowę i kosztuje więcej, niż daje. Jeśli zawodnik jest
+     w kadrze klubu, ale gra w rezerwach — napisz jedno i drugie.            */
+  poziom:  "[np. Najwyższa liga krajowa — kadra klubu, występy w zespole rezerw]",
+  miasto:  "[miasto]",
+
+  /* Ścieżka do zdjęcia obok tego pliku, np. "nazwisko.jpg". Puste = placeholder. */
+  zdjecie: "",
+
+  /* ── kanały ───────────────────────────────────────────────────────────── */
+  /* Usuń kanał, którego nie ma. Nie pokazuj zer.
+     "note" to jedno zdanie o tym, co ten kanał daje marce — używaj tam,
+     gdzie liczba sama nie mówi wszystkiego (np. Facebook = starsi odbiorcy
+     z realną siłą nabywczą, inna grupa niż Instagram).                     */
+  kanaly: [
+    { platforma:"Instagram", handle:"@[nazwa_konta]", obserwujacy:"[liczba]", note:"[np. kanał główny, odbiorcy 18–34]" },
+    { platforma:"Facebook",  handle:"[nazwa profilu]", obserwujacy:"[liczba]", note:"[np. starsza grupa, zasięg lokalny]" },
+  ],
+  /* Suma liczona automatycznie — pokazuje się nad statystykami. */
+
+  /* ── statystyki z ostatnich 30 dni, prosto ze statystyk Instagrama ───── */
+  zasieg: {
+    kontaOsiagniete: "[liczba]",
+    sredniaRolka:    "[liczba]",
+    sredniaRelacja:  "[liczba]",
+    zaangazowanie:   "[x,x%]",
+  },
+
+  /* ── dorobek sportowy ─────────────────────────────────────────────────── */
+  /* To była najmocniejsza część zgłoszenia i nie może zginąć w nagłówku.
+     Osiągnięcie nazwij konkretnie: nie "medal w kraju", tylko co i kiedy.  */
+  sport: [
+    ["Poziom",          "[np. Najwyższa liga krajowa]"],
+    ["Osiągnięcie",     "[konkretnie, z rokiem: np. wicemistrzostwo Polski 2024]"],
+    ["Sezony w klubie", "[liczba]"],
+    ["Wychowanek",      "[nazwa akademii]"],
+  ],
+
+  /* ── wizerunek ────────────────────────────────────────────────────────── */
+  /* Trzy wartości, które konsekwentnie pokazuje w treściach. To jest pole,
+     które dyrektor marketingu czyta pierwsze, żeby sprawdzić dopasowanie.
+     Ustal je z zawodnikiem — on wie, co publikuje, ale nie umie tego nazwać.
+     Konkretnie i po ludzku: "praca u podstaw", nie "profesjonalizm".        */
+  wartosci: ["[wartość 1]", "[wartość 2]", "[wartość 3]"],
+
+  wizerunekOpis:
+    "[Dwa–trzy zdania: kim jest dla swoich odbiorców, nie jak gra. " +
+    "O czym opowiada, dlaczego ludzie za tym idą, co z tego wynika dla marki.]",
+
+  /* ── kategorie marek ──────────────────────────────────────────────────── */
+  /* Zawodnik zwykle potrafi powiedzieć tylko "coś ze sportem". Nazwanie
+     kategorii to Twoja robota jako przedstawiciela — i to jest ta część,
+     za którą marka uznaje kartę za przygotowaną przez profesjonalistę.     */
+  kategorie: [
+    "Żywienie i suplementacja",
+    "Fizjoterapia i medycyna sportowa",
+    "Sprzęt i odzież piłkarska",
+    "Kluby fitness i padel",
+    "Akademie piłkarskie — ambasador",
+    "Motoryzacja — marki lokalne",
+  ],
+
+  /* ── dowody: 3 najlepsze publikacje z ostatnich 90 dni ────────────────── */
+  dowody: [
+    { format:"[Rolka]", temat:"[temat publikacji]", opis:"[kontekst]", wyswietlenia:"[liczba]", interakcje:"[liczba]" },
+    { format:"[Rolka]", temat:"[temat publikacji]", opis:"[kontekst]", wyswietlenia:"[liczba]", interakcje:"[liczba]" },
+    { format:"[Post]",  temat:"[temat publikacji]", opis:"[kontekst]", wyswietlenia:"[liczba]", interakcje:"[liczba]" },
+  ],
+
+  /* ── historia współprac ───────────────────────────────────────────────── */
+  /* Najbardziej niedoceniany fakt w całym zgłoszeniu: jedna płatna
+     współpraca w ostatnich 12 miesiącach. Dla marki to znaczy "ten zawodnik
+     już raz dowiózł". Zdejmuje największe ryzyko, jakim jest zniknięcie po
+     podpisaniu umowy. Jeśli nazwy marki nie można podać — podaj kategorię. */
+  wspolprace: [
+    { marka:"[marka albo kategoria]", rok:"2025", format:"[zakres]", efekt:"[co z tego wyszło, jeśli wiadomo]" },
+  ],
+
+  /* ── zobowiązania realizacyjne ────────────────────────────────────────── */
+  /* Tu zamieniasz słabość na zobowiązanie. Zawodnik publikuje nieregularnie
+     i to się nie ukryje — ale karta nie opisuje przeszłości, tylko to, do
+     czego się zobowiązuje w umowie. Podaj liczby, które dowiezie.          */
+  realizacja: [
+    ["7 dni",        "Czas realizacji materiału wideo od briefu"],
+    ["24 h",         "Czas odpowiedzi na zapytanie marki"],
+    ["2–4",          "Publikacje miesięcznie w ramach współpracy stałej"],
+  ],
+  produkcja: "[Kto produkuje materiał: samodzielnie, ze wsparciem, czy po stronie marki. " +
+             "Jedno–dwa zdania — marka chce wiedzieć, czy dostanie gotowy materiał, czy ma go zrobić sama.]",
+
+  /* ── odbiorcy ─────────────────────────────────────────────────────────── */
+  odbiorcy: {
+    mezczyzni: "[xx]",
+    kobiety:   "[xx]",
+    wiek: [
+      ["25–34", 0],
+      ["18–24", 0],
+      ["35–44", 0],
+      ["13–17", 0],
+      ["45+",   0],
+    ],
+    miasta: [
+      ["[miasto]", 0],
+      ["[miasto]", 0],
+      ["[miasto]", 0],
+      ["[miasto]", 0],
+      ["[miasto]", 0],
+    ],
+    polska: "[xx]",
+  },
+
+  /* ── formaty i stawki ─────────────────────────────────────────────────── */
+  /* pokazacStawki: false ukrywa kolumnę — przy pierwszym kontakcie z dużą
+     marką albo dopóki stawki nie są ustalone z zawodnikiem.                */
+  pokazacStawki: true,
+  formaty: [
+    { nazwa:"Rolka dedykowana",       opis:"Scenariusz, realizacja i publikacja na Instagramie i Facebooku", stawka:"1 500 – 2 500 zł" },
+    { nazwa:"Post na feedzie",        opis:"Zdjęcie lub karuzela z produktem, treść uzgodniona z marką",      stawka:"900 – 1 500 zł" },
+    { nazwa:"Pakiet relacji",         opis:"3–5 slajdów z linkiem, w ciągu 24 h od uzgodnionego terminu",     stawka:"400 – 800 zł" },
+    { nazwa:"Obecność na wydarzeniu", opis:"Do 3 h, z materiałem publikowanym tego samego dnia",              stawka:"1 800 – 3 000 zł" },
+    { nazwa:"Ambasador sezonowy",     opis:"6–12 miesięcy, stały harmonogram, prawo do wykorzystania wizerunku", stawka:"od 12 000 zł" },
+  ],
+
+};
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Poniżej nic nie zmieniaj
+   ══════════════════════════════════════════════════════════════════════════ */
+const d   = DANE;
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const n   = v => typeof v === "number" ? v.toLocaleString("pl-PL") : esc(v);
+const ini = s => s.trim().split(/\s+/).map(w => w[0] || "").join("").slice(0,2).toUpperCase();
+
+const photo = d.zdjecie
+  ? `<img src="${esc(d.zdjecie)}" alt="${esc(d.imie)}">`
+  : `<div class="ph"><div class="ini">${esc(ini(d.imie))}</div><div class="t">Miejsce na zdjęcie</div></div>`;
+
+const kanaly = d.kanaly.map(k => `
+  <div class="kanal">
+    <div class="p">${esc(k.platforma)}</div>
+    <div class="v num">${n(k.obserwujacy)}</div>
+    <div class="h">${esc(k.handle)}</div>
+    ${k.note ? `<div class="note">${esc(k.note)}</div>` : ""}
+  </div>`).join("");
+
+const suma = d.kanaly.reduce((s,k) => s + (typeof k.obserwujacy === "number" ? k.obserwujacy : 0), 0);
+
+const z = d.zasieg;
+const stats = [
+  [n(z.kontaOsiagniete), "Konta osiągnięte<br>ostatnie 30 dni"],
+  [n(z.sredniaRolka),    "Średnie wyświetlenia<br>rolki"],
+  [n(z.sredniaRelacja),  "Średnie wyświetlenia<br>relacji"],
+  [n(z.zaangazowanie),   "Zaangażowanie<br>(śr. z 12 publikacji)"],
+].map(([v,l]) => `<div><div class="v num">${v}</div><div class="l">${l}</div></div>`).join("");
+
+const o = d.odbiorcy;
+const mx = arr => Math.max(1, ...arr.map(x => Number(x[1]) || 0));
+const bars = arr => { const m = mx(arr); return arr.map(([k,v]) => `
+  <div class="row">
+    <div class="k">${esc(k)}</div>
+    <div class="t"><i style="width:${Math.round((Number(v)||0) / m * 100)}%"></i></div>
+    <div class="v">${Number(v)||0}%</div>
+  </div>`).join(""); };
+
+const pctM = Number(o.mezczyzni) || 50;
+const pctK = Number(o.kobiety)   || (100 - pctM);
+
+document.getElementById("p1").innerHTML = `
+  <header>
+    <div class="who">
+      <h1>${esc(d.imie)}</h1>
+      <div class="meta">
+        <span>${esc(d.pozycja)}</span>
+        <span>rocznik ${esc(d.rocznik)}</span>
+        <span>${esc(d.klub)}</span>
+        <span>${esc(d.miasto)}</span>
+      </div>
+    </div>
+    <div class="mark">
+      <div class="n">Sport <em>Space</em> Pro</div>
+      <div class="r">Karta zawodnika</div>
+    </div>
+  </header>
+
+  <div class="band">
+    <div class="photo">${photo}</div>
+    <div class="reach">
+      <div class="kanaly">${kanaly}</div>
+      <div class="stats">${stats}</div>
+    </div>
+  </div>
+
+  <div class="duo">
+    <div class="box">
+      <div class="label">Sport</div>
+      <div class="facts">
+        ${d.sport.map(([k,v]) => `<div class="fact"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div>`).join("")}
+      </div>
+    </div>
+    <div class="box">
+      <div class="label">Wizerunek</div>
+      <div class="tags">${d.wartosci.map(w => `<span class="tag">${esc(w)}</span>`).join("")}</div>
+      <div class="prose">${esc(d.wizerunekOpis)}</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Odbiorcy</h2>
+      <span class="note">Dane ze statystyk Instagrama, ostatnie 30 dni · ${esc(o.polska)}% odbiorców z Polski · ${n(suma)} obserwujących łącznie</span>
+    </div>
+    <div class="aud">
+      <div class="box">
+        <div class="label">Płeć</div>
+        <div class="split">
+          <div class="bar"><i class="m" style="width:${pctM}%"></i><i class="k" style="width:${pctK}%"></i></div>
+          <div class="leg">
+            <span><b>${esc(o.mezczyzni)}%</b> mężczyźni</span>
+            <span><b>${esc(o.kobiety)}%</b> kobiety</span>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="label">Wiek</div>
+        <div class="rows">${bars(o.wiek)}</div>
+      </div>
+      <div class="box">
+        <div class="label">Miasta</div>
+        <div class="rows">${bars(o.miasta)}</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Kategorie dopasowane do wizerunku</h2>
+      <span class="note">Rekomendacja Sport Space Pro</span>
+    </div>
+    <div class="box">
+      <div class="tags" style="margin-top:0">
+        ${d.kategorie.map(k => `<span class="tag soft">${esc(k)}</span>`).join("")}
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="excl"><b>Wyłączny kontakt handlowy.</b> Wszystkie ustalenia dotyczące współpracy prowadzi Sport Space Pro.</div>
+    <div class="contact">
+      <div class="t">Kontakt w sprawie współpracy</div>
+      <div class="v">hello@sportspacepro.pl</div>
+      <div class="w">sportspacepro.pl</div>
+    </div>
+  </div>
+`;
+
+document.getElementById("p2").innerHTML = `
+  <div class="header2">
+    <div class="n">${esc(d.imie)}</div>
+    <div class="s">Dowody, formaty i warunki · strona 2/2</div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Dowody</h2>
+      <span class="note">Najlepsze publikacje z ostatnich 90 dni</span>
+    </div>
+    <div class="tbox">
+      <table>
+        <thead><tr><th>Format</th><th>Publikacja</th><th style="text-align:right">Zasięg</th><th style="text-align:right">Reakcje</th></tr></thead>
+        <tbody>${d.dowody.map(p => `
+          <tr>
+            <td style="width:15%"><b>${esc(p.format)}</b></td>
+            <td>${esc(p.temat)}<span class="sub">${esc(p.opis)}</span></td>
+            <td class="r" style="width:19%">${n(p.wyswietlenia)}<span class="sub">wyświetleń</span></td>
+            <td class="r" style="width:17%">${n(p.interakcje)}<span class="sub">interakcji</span></td>
+          </tr>`).join("")}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Dotychczasowe współprace</h2>
+      <span class="note">Zrealizowane kampanie komercyjne</span>
+    </div>
+    <div class="tbox">
+      <table>
+        <thead><tr><th>Marka</th><th>Rok</th><th>Zakres</th><th>Efekt</th></tr></thead>
+        <tbody>${d.wspolprace.map(w => `
+          <tr>
+            <td style="width:24%"><b>${esc(w.marka)}</b></td>
+            <td style="width:10%">${esc(w.rok)}</td>
+            <td>${esc(w.format)}</td>
+            <td style="color:#475569">${esc(w.efekt)}</td>
+          </tr>`).join("")}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Formaty współpracy</h2>
+      <span class="note">${d.pokazacStawki ? "Stawki netto, punkt wyjścia do ustaleń" : "Wycena po ustaleniu zakresu"}</span>
+    </div>
+    <div class="tbox">
+      <table class="fmt">
+        <thead><tr><th>Format</th><th>Zakres</th>${d.pokazacStawki ? `<th style="text-align:right">Stawka</th>` : ""}</tr></thead>
+        <tbody>${d.formaty.map(f => `
+          <tr>
+            <td><b>${esc(f.nazwa)}</b></td>
+            <td style="color:#475569">${esc(f.opis)}</td>
+            ${d.pokazacStawki ? `<td class="r" style="width:26mm">${esc(f.stawka)}</td>` : ""}
+          </tr>`).join("")}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">
+      <h2>Realizacja</h2>
+      <span class="note">Zobowiązania po stronie zawodnika</span>
+    </div>
+    <div class="commit">
+      ${d.realizacja.map(([v,l]) => `<div><div class="v">${esc(v)}</div><div class="l">${l}</div></div>`).join("")}
+    </div>
+    <div class="box" style="margin-top:2.2mm">
+      <div class="prose" style="margin-top:0">${esc(d.produkcja)}</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="excl">Dane o zasięgu i odbiorcach pochodzą ze statystyk Instagrama zawodnika, zakres 30 dni. Zrzuty ekranu dostępne na życzenie.</div>
+    <div class="contact">
+      <div class="t">Kontakt w sprawie współpracy</div>
+      <div class="v">hello@sportspacepro.pl</div>
+      <div class="w">sportspacepro.pl</div>
+    </div>
+  </div>
+`;
+</script>
+</body>
+</html>
