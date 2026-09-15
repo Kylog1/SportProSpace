@@ -2,29 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScoreChooser } from "@/components/commercial-score/ScoreChooser";
-import { FaqSection, type FaqItem } from "@/components/Faq";
-
-const FAQ_ITEMS: FaqItem[] = [
-  {
-    question: "Ile trwa Commercial Score?",
-    answer:
-      "Kilka minut. To kilkanaście pytań, niezależnie od tego, czy liczysz wynik jako zawodnik, czy jako organizacja.",
-  },
-  {
-    question: "Czy Commercial Score jest płatny?",
-    answer: "Nie. To bezpłatne narzędzie Sport Space Pro.",
-  },
-  {
-    question: "Co dostanę na końcu?",
-    answer:
-      "Wynik 0-100 i rozbicie na wszystkie badane kategorie. Zawodnik zobaczy zasięg, wartość sportową, content i gotowość do współpracy z markami. Organizacja: aktywa, ofertę, sprzedaż i mierzenie efektów. Wynik zobaczysz po podaniu adresu email.",
-  },
-  {
-    question: "Czym różni się wynik dla zawodnika od wyniku dla organizacji?",
-    answer:
-      "Zawodnik dostaje Athlete Score, oceniający jego indywidualny potencjał komercyjny. Organizacja - klub, akademia, federacja albo organizator wydarzeń - dostaje Sponsorship Score, oceniający potencjał sponsorski całej organizacji.",
-  },
-];
 
 export const metadata: Metadata = {
   title: "Commercial Score - sprawdź swój potencjał komercyjny | Sport Space Pro",
@@ -73,7 +50,6 @@ export default function CommercialScorePage() {
       <Navbar />
       <main>
         <ScoreChooser />
-        <FaqSection items={FAQ_ITEMS} />
       </main>
       <Footer />
     </>
