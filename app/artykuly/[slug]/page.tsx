@@ -99,6 +99,7 @@ export default function ArticlePage({ params }: Props) {
     author: {
       "@type": "Organization",
       name: article.author,
+      url: "https://sportspacepro.pl",
     },
     publisher: {
       "@type": "Organization",

@@ -39,7 +39,11 @@ const organizationJsonLd = {
     contactType: "customer support",
     availableLanguage: "Polish",
   },
-  sameAs: [],
+  sameAs: [
+    "https://www.linkedin.com/company/sport-space-pro",
+    "https://www.instagram.com/sport_space_pro/",
+    "https://www.facebook.com/profile.php?id=61593570542780",
+  ],
 };
 
 export default function RootLayout({
