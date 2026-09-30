@@ -40,9 +40,9 @@ To nie jest wyłącznie wina klubów. Klub, który nie wie, po co marka wchodzi 
 
 ## Brief odwraca kolejność rozmowy
 
-W reklamie mało kto zamawia kampanię bez briefu dla agencji. W sponsoringu to wciąż rzadkość, choć mechanizm jest ten sam: zanim partner zaproponuje rozwiązanie, musi poznać problem. Brief sponsoringowy marki to kilkustronicowy dokument, który firma wypełnia u siebie i wysyła do kilku wybranych kandydatów: klubów, akademii, organizatorów wydarzeń lub zawodników.
+W reklamie mało kto zamawia kampanię bez briefu dla agencji. W sponsoringu to wciąż rzadkość, choć mechanizm jest ten sam: zanim partner zaproponuje rozwiązanie, musi poznać problem. Brief sponsoringowy marki to kilkustronicowy dokument, który firma wypełnia u siebie i wysyła do kilku potencjalnych partnerów: klubów, akademii, organizatorów wydarzeń lub zawodników.
 
-Daje trzy rzeczy. Po pierwsze, zmusza zespół po stronie marki do uzgodnienia celu, zanim zacznie się rozmowa z kimkolwiek z zewnątrz. Po drugie, każdy kandydat odpowiada na te same pytania, więc propozycje da się uczciwie porównać. Po trzecie, po sezonie jest do czego wrócić: cele i wskaźniki zapisane w briefie stają się punktem odniesienia w rozmowie o przedłużeniu umowy.
+Daje trzy rzeczy. Po pierwsze, zmusza zespół po stronie marki do uzgodnienia celu, zanim zacznie się rozmowa z kimkolwiek z zewnątrz. Po drugie, każdy potencjalny partner odpowiada na te same pytania, więc propozycje da się uczciwie porównać. Po trzecie, po sezonie jest do czego wrócić: cele i wskaźniki zapisane w briefie stają się punktem odniesienia w rozmowie o przedłużeniu umowy.
 
 ## Co powinien zawierać brief sponsoringowy marki
 
@@ -62,7 +62,7 @@ Kto jest odbiorcą tej konkretnej współpracy, do kogo nie docieracie innymi ka
 
 ### 4. Jakiego partnera szukacie
 
-Typ partnera, skala działania, dyscypliny, które bierzecie pod uwagę i które wykluczacie, wspólne wartości i czerwone flagi. Ta sekcja oszczędza najwięcej czasu: kandydat, który nie spełnia kryteriów, nie musi przygotowywać propozycji, a Wy nie musicie jej czytać.
+Typ partnera, skala działania, dyscypliny, które bierzecie pod uwagę i które wykluczacie, wspólne wartości i czerwone flagi. Ta sekcja oszczędza najwięcej czasu: klub lub zawodnik, który nie spełnia kryteriów, nie musi przygotowywać propozycji, a Wy nie musicie jej czytać.
 
 ### 5. Co wnosicie do współpracy
 
@@ -82,13 +82,13 @@ Terminy kolejnych etapów, osoby decyzyjne, obawy zarządu, na które propozycja
 
 ### Załącznik: karta oceny propozycji
 
-Sześć obszarów oceny z wagami, które ustalacie przed otwarciem pierwszej propozycji. Każdego kandydata oceniacie w skali od 1 do 5, a cenę porównujecie dopiero na końcu. Dzięki temu nie wybieracie najtańszej oferty tylko dlatego, że wszystkie wyglądały podobnie.
+Sześć obszarów oceny z wagami, które ustalacie przed otwarciem pierwszej propozycji. Każdego potencjalnego partnera oceniacie w skali od 1 do 5, a cenę porównujecie dopiero na końcu. Dzięki temu nie wybieracie najtańszej oferty tylko dlatego, że wszystkie wyglądały podobnie.
 
-## Jak porównać kandydatów, zanim przyślą propozycje
+## Jak porównać potencjalnych partnerów, zanim przyślą propozycje
 
 Najtrudniej ocenić to, czego nie widać w ofercie: czy klub lub zawodnik ma ludzi, którzy dowiozą aktywację, czy potrafi mierzyć efekty i czy zna swoją publiczność na tyle, żeby pokazać dane o właściwej grupie.
 
-Dlatego we wzorze briefu prosimy kandydatów o wynik Commercial Score. To bezpłatne narzędzie Sport Space Pro, w którym klub, organizacja lub zawodnik ocenia swoją gotowość do współpracy z markami w sześciu obszarach: publiczność, aktywa komercyjne, pozycjonowanie i oferta, sprzedaż, aktywacja i pomiar oraz relacje B2B. Wynik od 0 do 100 nie zastąpi rozmowy, ale pokazuje, z kim warto rozmawiać najpierw i o co dopytać.
+Dlatego we wzorze briefu prosimy potencjalnych partnerów o wynik Commercial Score. To bezpłatne narzędzie Sport Space Pro, w którym klub, organizacja lub zawodnik ocenia swoją gotowość do współpracy z markami w sześciu obszarach: publiczność, aktywa komercyjne, pozycjonowanie i oferta, sprzedaż, aktywacja i pomiar oraz relacje B2B. Wynik od 0 do 100 nie zastąpi rozmowy, ale pokazuje, z kim warto rozmawiać najpierw i o co dopytać.
 
 [Zobacz, jak działa Commercial Score →](/commercial-score)
 

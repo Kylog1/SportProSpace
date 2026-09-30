@@ -25,7 +25,7 @@ export function buildBriefUserEmail(name: string): {
 
   const steps = [
     "Wypełnijcie go wspólnie: marketing, sprzedaż i osoba, która podpisze umowę.",
-    "Wyślijcie tę samą wersję do kilku kandydatów, żeby propozycje dało się porównać.",
+    "Wyślijcie tę samą wersję do kilku potencjalnych partnerów, żeby propozycje dało się porównać.",
     "Oceńcie propozycje Kartą oceny z ostatniej strony, zanim spojrzycie na cenę.",
   ];
 
@@ -57,7 +57,7 @@ export function buildBriefUserEmail(name: string): {
     <div style="background:#0b1736;border-radius:10px;padding:20px">
       <div style="font:600 11px/1 Arial,sans-serif;color:#8aa6cd;letter-spacing:.12em;text-transform:uppercase">Commercial Score</div>
       <div style="font:500 15px/1.55 Arial,sans-serif;color:#fff;margin-top:10px">
-        Poproście kandydatów o wynik Commercial Score. To bezpłatna samoocena gotowości komercyjnej
+        Poproście potencjalnych partnerów o wynik Commercial Score. To bezpłatna samoocena gotowości komercyjnej
         klubu lub zawodnika w sześciu obszarach, w skali 0-100.
       </div>
       <a href="https://sportspacepro.pl/commercial-score" style="display:inline-block;margin-top:14px;font:600 14px/1 Arial,sans-serif;color:#fff;text-decoration:underline">sportspacepro.pl/commercial-score</a>
@@ -84,7 +84,7 @@ export function buildBriefUserEmail(name: string): {
     "Jak z niego korzystać:",
     ...steps.map((s, i) => `${i + 1}. ${s}`),
     "",
-    "Poproście kandydatów o wynik Commercial Score: https://sportspacepro.pl/commercial-score",
+    "Poproście potencjalnych partnerów o wynik Commercial Score: https://sportspacepro.pl/commercial-score",
     "",
     "Jeśli chcecie porozmawiać o wyborze partnera sportowego, odpisz na tego maila.",
     "",

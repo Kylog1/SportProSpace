@@ -270,7 +270,7 @@ const intro = [
     children: [run("Brief sponsoringowy marki", { bold: true, size: 52, color: NAVY_950 })],
   }),
   p(
-    "Dokument, który marka wypełnia u siebie, zanim poprosi klub, akademię, wydarzenie lub zawodnika o ofertę. Dzięki niemu każdy kandydat odpowiada na ten sam problem biznesowy, a nie przysyła cennika pakietów.",
+    "Dokument, który marka wypełnia u siebie, zanim poprosi klub, akademię, wydarzenie lub zawodnika o ofertę. Dzięki niemu każdy potencjalny partner odpowiada na ten sam problem biznesowy, a nie przysyła cennika pakietów.",
     { size: 22, color: MUTED, after: 240 }
   ),
   grid(
@@ -288,7 +288,7 @@ const intro = [
   new Paragraph({ keepNext: true, spacing: { after: 80 }, children: [run("Jak korzystać z tego wzoru", { bold: true, size: 24 })] }),
   ...[
     ["Wypełnijcie go wspólnie. ", "Marketing, sprzedaż i osoba, która podpisze umowę, przy jednym stole. Rozbieżności wychodzą wtedy przed rozmową z partnerem, a nie po niej."],
-    ["Wyślijcie tę samą wersję do kilku kandydatów. ", "Każdy odpowiada na te same pytania, więc propozycje da się uczciwie porównać."],
+    ["Wyślijcie tę samą wersję do kilku potencjalnych partnerów. ", "Każdy odpowiada na te same pytania, więc propozycje da się uczciwie porównać."],
     ["Oceńcie propozycje, zanim spojrzycie na cenę. ", "Służy do tego Karta oceny na ostatniej stronie."],
     ["Wróćcie do briefu po sezonie. ", "Cele i wskaźniki z sekcji 2 to punkt odniesienia do rozmowy o przedłużeniu umowy."],
   ].map(
@@ -343,7 +343,7 @@ const s2 = [
 
 const s3 = [
   sectionHeading("3", "Odbiorca: kogo chcemy poruszyć"),
-  why("każdy klub i każdy zawodnik ma inną publiczność. Kandydat, który wie, kogo szukacie, pokaże dane o właściwej grupie, a nie łączne zasięgi."),
+  why("każdy klub i każdy zawodnik ma inną publiczność. Partner, który wie, kogo szukacie, pokaże dane o właściwej grupie, a nie łączne zasięgi."),
   ...question("Kim jest odbiorca tej współpracy?", "B2C: wiek, miejsce zamieszkania, styl życia, zwyczaje zakupowe. B2B: branża, wielkość firmy, stanowisko decydenta"),
   ...question("Do kogo dziś nie docieracie innymi kanałami?", "Grupa, której brakuje w Waszych obecnych kampaniach"),
   ...checks("Chodzi głównie o:", ["obecnych klientów (lojalność, większe zakupy)", "nowych klientów", "jednych i drugich po równo"]),
@@ -355,13 +355,13 @@ const s3 = [
 
 const s4 = [
   sectionHeading("4", "Jakiego partnera szukamy"),
-  why("jasne kryteria oszczędzają czas obu stronom. Kandydat, który ich nie spełnia, odpadnie sam, zanim przygotuje propozycję."),
+  why("jasne kryteria oszczędzają czas obu stronom. Potencjalny partner, który ich nie spełnia, odpadnie sam, zanim przygotuje propozycję."),
   ...checks("Typ partnera:", ["klub", "akademia lub szkółka", "zawodniczka / zawodnik", "wydarzenie lub turniej", "liga lub związek sportowy", "jeszcze nie wiemy"]),
   ...checks("Skala działania partnera:", ["lokalna", "regionalna", "ogólnopolska", "międzynarodowa"]),
   new Paragraph({ keepNext: true, spacing: { before: 160, after: 60 }, children: [run("Dyscypliny", { bold: true })] }),
   grid([CONTENT_W / 2, CONTENT_W / 2], ["Bierzemy pod uwagę", "Wykluczamy"], [[F("Dyscypliny, które pasują do marki"), F("Dyscypliny, które odpadają, i dlaczego")]]),
   ...question("Jakie wartości partner musi z nami dzielić?", "np. praca z młodzieżą, fair play, innowacyjność, lokalność"),
-  ...question("Czerwone flagi, które wykluczają kandydata", "np. zaległości finansowe, konflikty z kibicami, kontrowersyjne wypowiedzi w mediach"),
+  ...question("Czerwone flagi, które wykluczają partnera", "np. zaległości finansowe, konflikty z kibicami, kontrowersyjne wypowiedzi w mediach"),
   new Table({
     width: { size: CONTENT_W, type: WidthType.DXA },
     columnWidths: [CONTENT_W],
@@ -373,9 +373,9 @@ const s4 = [
             borders: cellBorder(NAVY_800),
             margins: { top: 120, bottom: 120, left: 180, right: 180 },
             children: [
-              p([run("Poproście kandydatów o wynik Commercial Score", { bold: true, color: NAVY_800 })], { after: 60, before: 0 }),
+              p([run("Poproście potencjalnych partnerów o wynik Commercial Score", { bold: true, color: NAVY_800 })], { after: 60, before: 0 }),
               p(
-                "To bezpłatna samoocena gotowości komercyjnej klubu, organizacji lub zawodnika w sześciu obszarach: publiczność, aktywa komercyjne, pozycjonowanie i oferta, sprzedaż, aktywacja i pomiar, relacje B2B. Wynik 0–100 pozwala porównać kandydatów tą samą miarą, zanim zobaczycie ich propozycje. Kandydat wykonuje go w kilka minut na sportspacepro.pl/commercial-score.",
+                "To bezpłatna samoocena gotowości komercyjnej klubu, organizacji lub zawodnika w sześciu obszarach: publiczność, aktywa komercyjne, pozycjonowanie i oferta, sprzedaż, aktywacja i pomiar, relacje B2B. Wynik 0–100 pozwala porównać potencjalnych partnerów tą samą miarą, zanim zobaczycie ich propozycje. Klub lub zawodnik wykonuje go w kilka minut na sportspacepro.pl/commercial-score.",
                 { size: 19, after: 0 }
               ),
             ],
@@ -466,10 +466,10 @@ const s8 = [
     [CONTENT_W - 2800, 2800],
     ["Etap", "Termin"],
     [
-      ["Wysłanie briefu do kandydatów", F("data")],
-      ["Pytania od kandydatów", F("data")],
+      ["Wysłanie briefu do potencjalnych partnerów", F("data")],
+      ["Pytania od potencjalnych partnerów", F("data")],
       ["Termin nadesłania propozycji", F("data")],
-      ["Spotkania z wybranymi kandydatami", F("data")],
+      ["Spotkania z wybranymi partnerami", F("data")],
       ["Decyzja", F("data")],
       ["Start współpracy", F("data")],
     ]
@@ -498,12 +498,12 @@ const criteria = [
 const scorecard = [
   sectionHeading("Załącznik", "Karta oceny propozycji"),
   p(
-    "Ustalcie wagi, zanim otworzycie pierwszą propozycję; razem mają dać 100%. Każdy obszar oceńcie od 1 do 5. Wynik kandydata to suma (ocena × waga) podzielona przez 5; najwyżej 100 punktów. Cenę porównujcie dopiero po ocenie.",
+    "Ustalcie wagi, zanim otworzycie pierwszą propozycję; razem mają dać 100%. Każdy obszar oceńcie od 1 do 5. Wynik partnera to suma (ocena × waga) podzielona przez 5; najwyżej 100 punktów. Cenę porównujcie dopiero po ocenie.",
     { size: 19, color: MUTED, after: 160, keepNext: true }
   ),
   grid(
     [3238, 1000, 1800, 1800, 1800],
-    ["Obszar", "Waga", "Kandydat A", "Kandydat B", "Kandydat C"],
+    ["Obszar", "Waga", "Partner A", "Partner B", "Partner C"],
     [
       ["", "", F("nazwa"), F("nazwa"), F("nazwa")],
       ...criteria.map(([name, hint]) => [`${name}\n${hint}`, F("%"), F("1–5"), F("1–5"), F("1–5")]),
