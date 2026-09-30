@@ -15,6 +15,7 @@ export interface Article {
   featured: boolean;
   coverGradient: string; // Tailwind gradient classes (placeholder until real images)
   pdfUrl?: string; // Direct link to a downloadable PDF version (served from /public)
+  leadMagnet?: "brand-brief"; // Gated download rendered as a form under the article
 }
 
 export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
@@ -25,6 +26,86 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
 };
 
 export const articles: Article[] = [
+  {
+    slug: "brief-sponsoringowy-dla-marki-wzor",
+    title: "Brief sponsoringowy dla marki: jak kupić sponsoring sportowy, a nie logo na koszulce",
+    excerpt:
+      "Marka, która szuka partnera w sporcie, zwykle dostaje kilka ofert zbudowanych według tego samego cennika pakietów. Brief sponsoringowy odwraca kolejność rozmowy: najpierw problem biznesowy, potem propozycja. Omawiamy osiem sekcji dobrego briefu i udostępniamy edytowalny wzór.",
+    content: `
+## Dlaczego oferty sponsorskie wyglądają tak samo
+
+Dział marketingu, który daje znać, że szuka partnera sportowego, dostaje zwykle kilka ofert zbudowanych według jednego wzoru: historia klubu, liczba kibiców, zasięgi w mediach społecznościowych i cennik pakietów od brązowego po złoty. Trudno je porównać, bo każda liczy co innego. Jeszcze trudniej wyczytać z nich, co marka realnie z tego będzie miała.
+
+To nie jest wyłącznie wina klubów. Klub, który nie wie, po co marka wchodzi w sport, może tylko zgadywać. Najczęściej zgaduje, że chodzi o widoczność logo, bo to jedyne świadczenie, które da się wycenić bez rozmowy z drugą stroną.
+
+## Brief odwraca kolejność rozmowy
+
+W reklamie mało kto zamawia kampanię bez briefu dla agencji. W sponsoringu to wciąż rzadkość, choć mechanizm jest ten sam: zanim partner zaproponuje rozwiązanie, musi poznać problem. Brief sponsoringowy marki to kilkustronicowy dokument, który firma wypełnia u siebie i wysyła do kilku potencjalnych partnerów: klubów, akademii, organizatorów wydarzeń lub zawodników.
+
+Daje trzy rzeczy. Po pierwsze, zmusza zespół po stronie marki do uzgodnienia celu, zanim zacznie się rozmowa z kimkolwiek z zewnątrz. Po drugie, każdy potencjalny partner odpowiada na te same pytania, więc propozycje da się uczciwie porównać. Po trzecie, po sezonie jest do czego wrócić: cele i wskaźniki zapisane w briefie stają się punktem odniesienia w rozmowie o przedłużeniu umowy.
+
+## Co powinien zawierać brief sponsoringowy marki
+
+Nasz wzór ma osiem sekcji i kartę oceny propozycji. Poniżej krótko, co wpisać w każdą z nich i dlaczego.
+
+### 1. Punkt wyjścia: jaki problem ma rozwiązać sponsoring
+
+Dwa zdania o problemie biznesowym, z którym przychodzicie. „Chcemy budować wizerunek” to za mało. „Otwieramy sześć sklepów w regionie, w którym nikt nas nie zna” albo „brakuje nam techników w zakładzie w mniejszym mieście” to konkret, na który klub może odpowiedzieć konkretnym pomysłem. W tej sekcji warto też zapisać, co już próbowaliście i co robi w sporcie Wasza konkurencja.
+
+### 2. Cel i miara sukcesu
+
+Jeden cel główny i najwyżej jeden dodatkowy. Do tego tabela wskaźników: stan dziś, cel po sezonie, sposób pomiaru i to, kto dostarcza dane. Jeśli nie znacie stanu wyjściowego, zmierzcie go przed startem współpracy. Bez tego po sezonie nie będzie z czym porównać wyniku.
+
+### 3. Odbiorca: kogo chcecie poruszyć
+
+Kto jest odbiorcą tej konkretnej współpracy, do kogo nie docieracie innymi kanałami i jaka jest proporcja między konsumentami a firmami. Klub, który wie, że szukacie właścicieli małych firm w promieniu 30 km, pokaże dane o swojej strefie biznesowej zamiast łącznej liczby obserwujących.
+
+### 4. Jakiego partnera szukacie
+
+Typ partnera, skala działania, dyscypliny, które bierzecie pod uwagę i które wykluczacie, wspólne wartości i czerwone flagi. Ta sekcja oszczędza najwięcej czasu: klub lub zawodnik, który nie spełnia kryteriów, nie musi przygotowywać propozycji, a Wy nie musicie jej czytać.
+
+### 5. Co wnosicie do współpracy
+
+Widełki budżetu, rozdzielone na świadczenia partnera i aktywację po Waszej stronie. To rozróżnienie jest ważne: prawo do logo bez pieniędzy i ludzi na aktywację zwykle kończy się banerem, którego nikt nie zauważa. W tej sekcji wpisujecie też zasoby, które możecie dołożyć: bazę klientów, aplikację, produkty do samplingu, ambasadorów marki, pracowników.
+
+### 6. Czego oczekujecie od partnera
+
+Lista świadczeń podzielona na trzy grupy: musi być, mile widziane, niepotrzebne. Do tego pomysł na aktywację, jeśli już go macie, i wymagania dotyczące raportowania: jak często i co ma zawierać raport.
+
+### 7. Granice i zasady komunikacji
+
+Regulacje branżowe, kategorie i marki, obok których nie możecie się pojawiać, ton komunikacji, proces akceptacji treści i sytuacje, w których chcecie móc zakończyć współpracę. Te sprawy i tak wyjdą przy negocjowaniu umowy. Lepiej, żeby partner znał je od początku.
+
+### 8. Decyzja i harmonogram
+
+Terminy kolejnych etapów, osoby decyzyjne, obawy zarządu, na które propozycja musi odpowiedzieć, oraz lista materiałów, które chcecie dostać w odpowiedzi.
+
+### Załącznik: karta oceny propozycji
+
+Sześć obszarów oceny z wagami, które ustalacie przed otwarciem pierwszej propozycji. Każdego potencjalnego partnera oceniacie w skali od 1 do 5, a cenę porównujecie dopiero na końcu. Dzięki temu nie wybieracie najtańszej oferty tylko dlatego, że wszystkie wyglądały podobnie.
+
+## Jak porównać potencjalnych partnerów, zanim przyślą propozycje
+
+Najtrudniej ocenić to, czego nie widać w ofercie: czy klub lub zawodnik ma ludzi, którzy dowiozą aktywację, czy potrafi mierzyć efekty i czy zna swoją publiczność na tyle, żeby pokazać dane o właściwej grupie.
+
+Dlatego we wzorze briefu prosimy potencjalnych partnerów o wynik Commercial Score. To bezpłatne narzędzie Sport Space Pro, w którym klub, organizacja lub zawodnik ocenia swoją gotowość do współpracy z markami w sześciu obszarach: publiczność, aktywa komercyjne, pozycjonowanie i oferta, sprzedaż, aktywacja i pomiar oraz relacje B2B. Wynik od 0 do 100 nie zastąpi rozmowy, ale pokazuje, z kim warto rozmawiać najpierw i o co dopytać.
+
+[Zobacz, jak działa Commercial Score →](/commercial-score)
+
+## Pobierz wzór briefu
+
+Wzór jest w formacie Word, z polami do wpisania i polami wyboru. Możecie go dowolnie zmieniać: dodać logo, usunąć pytania, które Was nie dotyczą, dopisać własne. Wyślemy go na podany adres e-mail.
+    `,
+    category: "artykul",
+    tags: ["Sponsoring", "Marketing", "Brief sponsoringowy", "Commercial Score"],
+    author: "Zespół Sport Space Pro",
+    authorRole: "Dział Doradztwa",
+    publishedAt: "2026-09-30",
+    readTime: 7,
+    featured: true,
+    coverGradient: "from-navy-950 to-sky-600",
+    leadMagnet: "brand-brief",
+  },
   {
     slug: "padel-tenis-rynek-2026-self-audit-klubow",
     title: "Padel w Polsce rośnie szybciej niż kluby nadążają poznać swoich klientów",

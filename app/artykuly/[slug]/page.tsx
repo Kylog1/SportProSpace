@@ -13,14 +13,16 @@ import { ArticleCard } from "@/components/blog/ArticleCard";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { BriefDownloadForm, BRIEF_FORM_ID } from "@/components/brief/BriefDownloadForm";
 
 interface Props {
   params: { slug: string };
 }
 
-// Minimal inline markdown: turns `[label](https://url)` into a real link.
-// Content is otherwise plain text, so this only fires on lines that opt in.
-const LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/;
+// Minimal inline markdown: turns `[label](https://url)` or `[label](/path)`
+// into a real link. Content is otherwise plain text, so this only fires on
+// lines that opt in.
+const LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/;
 
 function renderParagraph(line: string, key: number) {
   const match = line.match(LINK_RE);
@@ -31,15 +33,21 @@ function renderParagraph(line: string, key: number) {
   const before = line.slice(0, idx);
   const after = line.slice(idx + full.length);
 
+  const className =
+    "font-semibold text-navy-800 underline underline-offset-2 hover:text-navy-950";
+
   return (
     <p key={key}>
       {before}
-      <a
-        href={url}
-        className="font-semibold text-navy-800 underline underline-offset-2 hover:text-navy-950"
-      >
-        {label}
-      </a>
+      {url.startsWith("/") ? (
+        <Link href={url} className={className}>
+          {label}
+        </Link>
+      ) : (
+        <a href={url} className={className}>
+          {label}
+        </a>
+      )}
       {after}
     </p>
   );
@@ -214,6 +222,26 @@ export default function ArticlePage({ params }: Props) {
                   </div>
                 )}
 
+                {/* Gated template CTA: jumps to the form below the article */}
+                {article.leadMagnet === "brand-brief" && (
+                  <div className="mt-6 flex flex-wrap items-center gap-3 rounded-xl border border-navy-200 bg-navy-50/60 p-4">
+                    <div className="flex-1">
+                      <div className="text-[13.5px] font-semibold text-navy-950">
+                        Wzór briefu sponsoringowego (.docx) za darmo
+                      </div>
+                      <div className="text-[12.5px] text-muted-foreground">
+                        Edytowalny plik Word z polami do wpisania. Wyślemy go na Twój e-mail.
+                      </div>
+                    </div>
+                    <Button asChild size="lg">
+                      <a href={`#${BRIEF_FORM_ID}`}>
+                        <Download />
+                        Pobierz wzór
+                      </a>
+                    </Button>
+                  </div>
+                )}
+
                 {/* Divider */}
                 <div className="mt-6 border-t border-navy-100 md:mt-8" />
 
@@ -222,53 +250,59 @@ export default function ArticlePage({ params }: Props) {
               {/* Body grid */}
               <div className="mx-auto mt-8 grid max-w-5xl gap-10 lg:grid-cols-[1fr_260px]">
                 {/* Main content */}
-                <div
-                  itemProp="articleBody"
-                  className="prose prose-navy max-w-none text-[16px] leading-[1.8] text-navy-900
-                    [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[22px] [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-navy-950
-                    [&_h3]:mb-3 [&_h3]:mt-7 [&_h3]:text-[18px] [&_h3]:font-semibold [&_h3]:text-navy-950
-                    [&_p]:mb-5 [&_p]:text-[15.5px] [&_p]:leading-relaxed [&_p]:text-navy-800
-                    [&_strong]:font-semibold [&_strong]:text-navy-950
-                    [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5
-                    [&_li]:text-[15.5px] [&_li]:text-navy-800"
-                >
-                  {article.content
-                    .trim()
-                    .split("\n")
-                    .map((line, i) => {
-                      if (line.startsWith("## "))
-                        return (
-                          <h2 key={i}>{line.replace("## ", "")}</h2>
-                        );
-                      if (line.startsWith("### "))
-                        return (
-                          <h3 key={i}>{line.replace("### ", "")}</h3>
-                        );
-                      if (line.startsWith("- "))
-                        return <li key={i}>{line.replace("- ", "")}</li>;
-                      if (line.trim() === "") return null;
-                      return renderParagraph(line, i);
-                    })}
+                <div className="min-w-0">
+                  <div
+                    itemProp="articleBody"
+                    className="prose prose-navy max-w-none text-[16px] leading-[1.8] text-navy-900
+                      [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:text-[22px] [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-navy-950
+                      [&_h3]:mb-3 [&_h3]:mt-7 [&_h3]:text-[18px] [&_h3]:font-semibold [&_h3]:text-navy-950
+                      [&_p]:mb-5 [&_p]:text-[15.5px] [&_p]:leading-relaxed [&_p]:text-navy-800
+                      [&_strong]:font-semibold [&_strong]:text-navy-950
+                      [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5
+                      [&_li]:text-[15.5px] [&_li]:text-navy-800"
+                  >
+                    {article.content
+                      .trim()
+                      .split("\n")
+                      .map((line, i) => {
+                        if (line.startsWith("## "))
+                          return (
+                            <h2 key={i}>{line.replace("## ", "")}</h2>
+                          );
+                        if (line.startsWith("### "))
+                          return (
+                            <h3 key={i}>{line.replace("### ", "")}</h3>
+                          );
+                        if (line.startsWith("- "))
+                          return <li key={i}>{line.replace("- ", "")}</li>;
+                        if (line.trim() === "") return null;
+                        return renderParagraph(line, i);
+                      })}
 
-                  {/* PDF download CTA (bottom) */}
-                  {article.pdfUrl && (
-                    <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-navy-200 bg-navy-50/60 p-4">
-                      <div className="flex-1">
-                        <div className="text-[13.5px] font-semibold text-navy-950">
-                          Pełny raport PDF do pobrania za darmo
+                    {/* PDF download CTA (bottom) */}
+                    {article.pdfUrl && (
+                      <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-navy-200 bg-navy-50/60 p-4">
+                        <div className="flex-1">
+                          <div className="text-[13.5px] font-semibold text-navy-950">
+                            Pełny raport PDF do pobrania za darmo
+                          </div>
+                          <div className="text-[12.5px] text-muted-foreground">
+                            Bez zostawiania danych - link otwiera się w nowej karcie.
+                          </div>
                         </div>
-                        <div className="text-[12.5px] text-muted-foreground">
-                          Bez zostawiania danych - link otwiera się w nowej karcie.
-                        </div>
+                        <Button asChild size="lg">
+                          <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
+                            <Download />
+                            Pobierz raport PDF
+                          </a>
+                        </Button>
                       </div>
-                      <Button asChild size="lg">
-                        <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
-                          <Download />
-                          Pobierz raport PDF
-                        </a>
-                      </Button>
-                    </div>
-                  )}
+                    )}
+                  </div>
+
+                  {/* Rendered outside articleBody so its descendant typography
+                      rules (p/h2 margins) don't reach into the form. */}
+                  {article.leadMagnet === "brand-brief" && <BriefDownloadForm />}
                 </div>
 
                 {/* Sidebar */}

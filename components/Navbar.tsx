@@ -6,7 +6,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// Self-Audit and Commercial Score sit under one "Narzędzia" item rather than as
+// The tools sit under one "Narzędzia" item rather than as
 // two more top-level links: eight flat items plus the CTA overflow the bar
 // between 1024 and 1200px, which is the most common laptop width.
 
@@ -20,6 +20,11 @@ const TOOLS = [
     href: "/commercial-score",
     label: "Commercial Score",
     note: "Ile jesteście warci dla marek",
+  },
+  {
+    href: "/brief-sponsoringowy",
+    label: "Brief sponsoringowy",
+    note: "Wzór dla marek szukających partnera",
   },
 ];
 
