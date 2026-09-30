@@ -4,13 +4,11 @@ import { useState } from "react";
 import { CheckCircle2, FileText, Loader2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BRIEF_STAGES, type BriefStage } from "@/lib/brief/stages";
+import { BRIEF_FORM_ID, BRIEF_STAGES, type BriefStage } from "@/lib/brief/stages";
 
 // Lead gate for the "Brief sponsoringowy marki" template. The file is emailed
 // rather than linked, so the address is confirmed and the template is not
 // sitting in /public for anyone to fetch around the form.
-
-export const BRIEF_FORM_ID = "pobierz-brief";
 
 export function BriefDownloadForm({ className }: { className?: string }) {
   const [name, setName] = useState("");

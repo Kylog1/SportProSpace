@@ -32,7 +32,6 @@ import {
   Table,
   TableCell,
   TableRow,
-  TabStopType,
   TextRun,
   VerticalAlign,
   WidthType,
@@ -109,7 +108,7 @@ function fieldBox(hint, lines = 2, width = CONTENT_W) {
     columnWidths: [width],
     rows: [
       new TableRow({
-        height: { value: 300 * lines + 160, rule: "atLeast" },
+        height: { value: 260 * lines + 100, rule: "atLeast" },
         children: [
           new TableCell({
             width: { size: width, type: WidthType.DXA },
@@ -124,9 +123,10 @@ function fieldBox(hint, lines = 2, width = CONTENT_W) {
   });
 }
 
-function sectionHeading(num, title) {
+function sectionHeading(num, title, { newPage = false } = {}) {
   return new Paragraph({
     heading: HeadingLevel.HEADING_1,
+    pageBreakBefore: newPage,
     keepNext: true,
     spacing: { before: 360, after: 120 },
     border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: NAVY_800, space: 6 } },
@@ -171,9 +171,9 @@ function tip(text) {
 }
 
 // Generic grid. `cells` are strings; header row is shaded navy.
-function grid(widths, header, rows, { center = [] } = {}) {
+function grid(widths, header, rows, { center = [], keepTogether = false } = {}) {
   const total = widths.reduce((a, b) => a + b, 0);
-  const mk = (text, i, isHeader) =>
+  const mk = (text, i, isHeader, isLast = false) =>
     new TableCell({
       width: { size: widths[i], type: WidthType.DXA },
       borders: cellBorder(isHeader ? NAVY_800 : FIELD_BORDER),
@@ -188,6 +188,10 @@ function grid(widths, header, rows, { center = [] } = {}) {
         new Paragraph({
           alignment: center.includes(i) ? AlignmentType.CENTER : AlignmentType.LEFT,
           spacing: { after: 0 },
+          // Word keeps a table on one page when every row but the last is
+          // "keep with next".
+          keepNext: keepTogether && !isLast,
+          keepLines: keepTogether,
           children: [
             run(text, {
               size: isHeader ? 18 : 19,
@@ -203,7 +207,10 @@ function grid(widths, header, rows, { center = [] } = {}) {
     columnWidths: widths,
     rows: [
       new TableRow({ tableHeader: true, children: header.map((h, i) => mk(h, i, true)) }),
-      ...rows.map((r) => new TableRow({ cantSplit: true, children: r.map((c, i) => mk(c, i, false)) })),
+      ...rows.map(
+        (r, ri) =>
+          new TableRow({ cantSplit: true, children: r.map((c, i) => mk(c, i, false, ri === rows.length - 1)) })
+      ),
     ],
   });
 }
@@ -234,29 +241,57 @@ const gap = (after = 120) => new Paragraph({ spacing: { after }, children: [] })
 
 const symbol = fs.readFileSync(path.join(here, "symbol.png"));
 
+// Header and footer are two-column borderless tables rather than a paragraph
+// with a right-aligned tab: several viewers (Pages, mobile previews, Google
+// Docs import) ignore the tab stop and run both halves together.
+function barTable(left, right, { rule = false } = {}) {
+  const leftW = Math.round(CONTENT_W * 0.66);
+  const cell = (children, width, align) =>
+    new TableCell({
+      width: { size: width, type: WidthType.DXA },
+      borders: {
+        ...noBorders(),
+        bottom: rule
+          ? { style: BorderStyle.SINGLE, size: 4, color: NAVY_100 }
+          : { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+      },
+      verticalAlign: VerticalAlign.CENTER,
+      margins: { top: 0, bottom: rule ? 80 : 0, left: 0, right: 0 },
+      children: [new Paragraph({ alignment: align, spacing: { after: 0 }, children })],
+    });
+  return new Table({
+    width: { size: CONTENT_W, type: WidthType.DXA },
+    columnWidths: [leftW, CONTENT_W - leftW],
+    rows: [
+      new TableRow({
+        children: [cell(left, leftW, AlignmentType.LEFT), cell(right, CONTENT_W - leftW, AlignmentType.RIGHT)],
+      }),
+    ],
+  });
+}
+
 const header = new Header({
   children: [
-    new Paragraph({
-      tabStops: [{ type: TabStopType.RIGHT, position: CONTENT_W }],
-      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: NAVY_100, space: 6 } },
-      children: [
+    barTable(
+      [
         new ImageRun({ type: "png", data: symbol, transformation: { width: 22, height: 22 } }),
-        run("  Sport Space Pro", { bold: true, size: 18, color: NAVY_950 }),
-        run("\tBrief sponsoringowy marki", { size: 16, color: MUTED }),
+        run("   Sport Space Pro", { bold: true, size: 18, color: NAVY_950 }),
       ],
-    }),
+      [run("Brief sponsoringowy marki", { size: 16, color: MUTED })],
+      { rule: true }
+    ),
+    new Paragraph({ spacing: { after: 0 }, children: [] }),
   ],
 });
 
+// Page number only: the total-pages field is not rendered by every viewer and
+// showed up as a dangling "6 /".
 const footer = new Footer({
   children: [
-    new Paragraph({
-      tabStops: [{ type: TabStopType.RIGHT, position: CONTENT_W }],
-      children: [
-        run("Wzór: Sport Space Pro · sportspacepro.pl · możesz go dowolnie zmieniać i używać w swojej firmie", { size: 15, color: MUTED }),
-        new TextRun({ children: ["\t", PageNumber.CURRENT, " / ", PageNumber.TOTAL_PAGES], size: 15, color: MUTED }),
-      ],
-    }),
+    barTable(
+      [run("Wzór: Sport Space Pro · sportspacepro.pl · możesz go dowolnie zmieniać i używać", { size: 15, color: MUTED })],
+      [new TextRun({ children: ["Strona ", PageNumber.CURRENT], size: 15, color: MUTED })]
+    ),
   ],
 });
 
@@ -496,7 +531,9 @@ const criteria = [
 ];
 
 const scorecard = [
-  sectionHeading("Załącznik", "Karta oceny propozycji"),
+  // The scorecard is used on its own (printed, passed around a meeting), so it
+  // always starts a fresh page and the whole table stays on it.
+  sectionHeading("Załącznik", "Karta oceny propozycji", { newPage: true }),
   p(
     "Ustalcie wagi, zanim otworzycie pierwszą propozycję; razem mają dać 100%. Każdy obszar oceńcie od 1 do 5. Wynik partnera to suma (ocena × waga) podzielona przez 5; najwyżej 100 punktów. Cenę porównujcie dopiero po ocenie.",
     { size: 19, color: MUTED, after: 160, keepNext: true }
@@ -510,7 +547,7 @@ const scorecard = [
       ["Wynik (0–100)", "100%", F("wynik"), F("wynik"), F("wynik")],
       ["Cena", "", F("kwota"), F("kwota"), F("kwota")],
     ],
-    { center: [1, 2, 3, 4] }
+    { center: [1, 2, 3, 4], keepTogether: true }
   ),
   ...question("Wnioski i decyzja", "Kogo wybieramy i dlaczego; o co dopytać przed podpisaniem umowy", { lines: 3 }),
   gap(200),
@@ -624,6 +661,21 @@ let xml = await zip.file("word/document.xml").async("string");
 xml = splitCriterionCells(toControls(xml));
 if (!/xmlns:w14=/.test(xml.slice(0, 3000))) throw new Error("w14 namespace missing on document root");
 zip.file("word/document.xml", xml);
+
+// docx-js leaves the PAGE field without a cached result, so viewers that don't
+// recalculate fields fall back to default formatting (a larger number next to
+// "Strona"). A cached "1" inside the formatted run keeps the size; Word and
+// LibreOffice replace it with the real page number.
+for (const name of Object.keys(zip.files).filter((n) => /^word\/footer\d+\.xml$/.test(n))) {
+  const footerXml = await zip.file(name).async("string");
+  zip.file(
+    name,
+    footerXml.replace(
+      '<w:fldChar w:fldCharType="separate"/><w:fldChar w:fldCharType="end"/>',
+      '<w:fldChar w:fldCharType="separate"/><w:t>1</w:t><w:fldChar w:fldCharType="end"/>'
+    )
+  );
+}
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
