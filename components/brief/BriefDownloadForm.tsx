@@ -12,7 +12,7 @@ import { BRIEF_STAGES, type BriefStage } from "@/lib/brief/stages";
 
 export const BRIEF_FORM_ID = "pobierz-brief";
 
-export function BriefDownloadForm() {
+export function BriefDownloadForm({ className }: { className?: string }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -60,7 +60,10 @@ export function BriefDownloadForm() {
   return (
     <section
       id={BRIEF_FORM_ID}
-      className="mt-10 scroll-mt-24 rounded-2xl border border-navy-200 bg-navy-50/60 p-6 sm:p-8"
+      className={cn(
+        "mt-10 scroll-mt-24 rounded-2xl border border-navy-200 bg-navy-50/60 p-6 sm:p-8",
+        className
+      )}
     >
       <div className="flex items-start gap-4">
         <div className="hidden size-12 shrink-0 items-center justify-center rounded-xl bg-navy-950 text-white sm:flex">
