@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/r-gol", "/helloworld"],
+        disallow: ["/api/", "/r-gol", "/helloworld", "/hillwood"],
       },
     ],
     sitemap: "https://sportspacepro.pl/sitemap.xml",
