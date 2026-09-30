@@ -13,7 +13,8 @@ import { ArticleCard } from "@/components/blog/ArticleCard";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { BriefDownloadForm, BRIEF_FORM_ID } from "@/components/brief/BriefDownloadForm";
+import { BriefDownloadForm } from "@/components/brief/BriefDownloadForm";
+import { BRIEF_FORM_ID } from "@/lib/brief/stages";
 
 interface Props {
   params: { slug: string };
