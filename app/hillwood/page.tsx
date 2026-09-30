@@ -195,12 +195,6 @@ function PunktWyjscia() {
             dodatkowym narzędziem do realizacji konkretnych celów.
           </p>
         </div>
-
-        <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-muted-foreground">
-          Powyższe opieramy na publicznej komunikacji Hillwood Polska. Jeżeli
-          któryś punkt wymaga korekty lub uzupełnienia, poprawimy go przed
-          dalszą rozmową.
-        </p>
       </div>
     </section>
   );
