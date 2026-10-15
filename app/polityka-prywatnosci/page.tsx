@@ -100,6 +100,13 @@ export default function PrivacyPolicyPage() {
                   przesłania wyniku na wskazany adres e-mail.
                 </li>
                 <li>
+                  <strong>Pobranie wzoru briefu sponsoringowego</strong>: imię
+                  i nazwisko, adres e-mail, nazwa firmy lub marki, stanowisko
+                  i numer telefonu (opcjonalnie) oraz informacja o etapie
+                  poszukiwania partnera sportowego. Dane te służą do
+                  przesłania wzoru na wskazany adres e-mail.
+                </li>
+                <li>
                   <strong>Zapis na powiadomienie o nowej dyscyplinie</strong>:
                   adres e-mail oraz wskazana dyscyplina sportu, w celu
                   poinformowania o dostępności Self-Audit dla danej
@@ -124,7 +131,8 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   art. 6 ust. 1 lit. a) RODO: w celu przesłania raportu
-                  Self-Audit lub wyniku Commercial Score oraz ewentualnego
+                  Self-Audit, wyniku Commercial Score lub wzoru briefu
+                  sponsoringowego oraz ewentualnego
                   kontaktu w sprawie badania, na podstawie zgody wyrażonej
                   w formularzu;
                 </li>
@@ -138,7 +146,7 @@ export default function PrivacyPolicyPage() {
               <h2>4. Okres przechowywania danych</h2>
               <p>
                 Dane przekazane w formularzu kontaktowym oraz w ramach
-                Self-Audit i Commercial Score przechowywane są przez czas niezbędny do
+                Self-Audit, Commercial Score i pobrania wzoru briefu przechowywane są przez czas niezbędny do
                 obsłużenia zapytania oraz (jeśli doszło do dalszej
                 współpracy) przez czas jej trwania, a następnie przez okres
                 wymagany przepisami prawa (np. podatkowymi) lub do momentu
@@ -157,7 +165,8 @@ export default function PrivacyPolicyPage() {
                 <li>
                   dostawcy usługi wysyłki wiadomości e-mail (Resend),
                   wykorzystywanej do przesyłania odpowiedzi na zapytania
-                  oraz raportów Self-Audit i wyników Commercial Score;
+                  oraz raportów Self-Audit, wyników Commercial Score i wzoru
+                  briefu sponsoringowego;
                 </li>
                 <li>
                   dostawcy usługi hostingu i infrastruktury (Vercel), na

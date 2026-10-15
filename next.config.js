@@ -46,6 +46,8 @@ const nextConfig = {
         "./lib/assessment/pdf-fonts/**/*",
         "./node_modules/pdfkit/js/data/**/*",
       ],
+      // The brief template is read from disk at runtime, not imported.
+      "/api/brief": ["./lib/brief/*.docx"],
     },
   },
 };
