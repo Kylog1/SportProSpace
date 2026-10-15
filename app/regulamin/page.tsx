@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LAST_UPDATED = "18 sierpnia 2026";
+const LAST_UPDATED = "7 września 2026";
 
 export default function TermsPage() {
   return (
@@ -90,6 +90,13 @@ export default function TermsPage() {
                   obszarów działania klubu lub organizacji sportowej, na
                   podstawie którego generowany jest raport w formacie PDF.
                 </li>
+                <li>
+                  <strong>Commercial Score</strong> to dostępne w Serwisie
+                  narzędzie służące do orientacyjnej oceny potencjału
+                  komercyjnego zawodnika lub organizacji sportowej, na
+                  podstawie którego wyliczany jest wynik w skali 0-100 wraz z
+                  podsumowaniem przesyłanym na wskazany adres e-mail.
+                </li>
               </ul>
 
               <h2>3. Zakres usług</h2>
@@ -109,6 +116,12 @@ export default function TermsPage() {
                   kwestionariusza dotyczącego wybranej dyscypliny sportu i
                   otrzymanie na wskazany adres e-mail raportu w formacie
                   PDF;
+                </li>
+                <li>
+                  narzędzie Commercial Score, pozwalające na wypełnienie
+                  kwestionariusza dotyczącego potencjału komercyjnego
+                  zawodnika lub organizacji sportowej i otrzymanie na
+                  wskazany adres e-mail wyniku wraz z podsumowaniem;
                 </li>
                 <li>
                   formularz zapisu na powiadomienie o dostępności Self-Audit
@@ -145,7 +158,7 @@ export default function TermsPage() {
                 zablokowaniem dostępu z danego adresu IP.
               </p>
 
-              <h2>5. Self-Audit i charakter raportów</h2>
+              <h2>5. Self-Audit, Commercial Score i charakter wyników</h2>
               <p>
                 Wynik Self-Audit oraz generowany na jego podstawie raport
                 PDF mają charakter orientacyjny i poglądowy. Opierają się
@@ -161,6 +174,29 @@ export default function TermsPage() {
                 satysfakcji, zgodnie z opisem przy formularzu. Zgoda ta
                 może być wycofana w każdym momencie poprzez kontakt na
                 adres{" "}
+                <a href="mailto:hello@sportspacepro.pl">
+                  hello@sportspacepro.pl
+                </a>
+                .
+              </p>
+              <p>
+                Wynik Commercial Score ma charakter orientacyjny i
+                poglądowy. Opiera się wyłącznie na odpowiedziach oraz
+                danych liczbowych (np. dotyczących zasięgu i publiczności)
+                podanych samodzielnie przez Użytkownika, nie jest
+                weryfikowany przez Usługodawcę i nie stanowi porady
+                prawnej, finansowej, doradczej ani wiążącej oceny
+                potencjału komercyjnego zawodnika lub organizacji.
+                Wyliczony wynik nie stanowi też gwarancji zainteresowania
+                ze strony marek ani zapewnienia współpracy komercyjnej.
+                Decyzje podjęte na podstawie wyniku Commercial Score
+                Użytkownik podejmuje na własną odpowiedzialność.
+              </p>
+              <p>
+                Wysłanie formularza Commercial Score wymaga zaznaczenia
+                zgody na otrzymanie wyniku na podany adres e-mail, zgodnie
+                z opisem przy formularzu. Zgoda ta może być wycofana w
+                każdym momencie poprzez kontakt na adres{" "}
                 <a href="mailto:hello@sportspacepro.pl">
                   hello@sportspacepro.pl
                 </a>

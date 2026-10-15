@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badge Preview — Sport Space Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f8fafc;
+      color: #172554;
+      padding: 48px 32px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #5e80b3;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 48px;
+      max-width: 1100px;
+    }
+    .variant {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #8aa6cd;
+      text-transform: uppercase;
+    }
+    .showcase-light {
+      background: white;
+      border: 1px solid #dbe5f1;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
+    .showcase-dark {
+      background: #172554;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
+    .showcase-mid {
+      background: #f0f4fa;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
+    img { display: block; }
+    .row {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>NPS Certificate Badge — Podgląd wariantów</h1>
+
+  <div class="grid">
+
+    <!-- WARIANT A: Pionowy badge -->
+    <div class="variant">
+      <div class="label">A — Pionowy badge (320×400)</div>
+      <div class="showcase-light">
+        <img src="certificate-web-badge.svg" width="160" height="200" alt="Pionowy badge">
+      </div>
+      <div class="showcase-mid">
+        <img src="certificate-web-badge.svg" width="160" height="200" alt="Pionowy badge na szarym tle">
+      </div>
+    </div>
+
+    <!-- WARIANT B: Poziomy badge -->
+    <div class="variant">
+      <div class="label">B — Poziomy badge (252×72)</div>
+      <div class="showcase-light">
+        <img src="nps-badge-horizontal.svg" width="252" height="72" alt="Poziomy badge">
+      </div>
+      <div class="showcase-dark">
+        <img src="nps-badge-horizontal.svg" width="252" height="72" alt="Poziomy badge na ciemnym tle">
+      </div>
+      <div class="showcase-mid">
+        <!-- Przykład użycia w stopce — małe logo + badge obok siebie -->
+        <div class="row">
+          <img src="nps-badge-horizontal.svg" width="200" height="57" alt="Mały badge poziomy">
+          <img src="nps-badge-horizontal.svg" width="160" height="46" alt="Bardzo mały badge">
+        </div>
+      </div>
+    </div>
+
+    <!-- WARIANT C: Okrągła pieczęć -->
+    <div class="variant">
+      <div class="label">C — Okrągła pieczęć (120×120)</div>
+      <div class="showcase-light">
+        <div class="row">
+          <img src="nps-seal.svg" width="120" height="120" alt="Pieczęć duża">
+          <img src="nps-seal.svg" width="80"  height="80"  alt="Pieczęć średnia">
+          <img src="nps-seal.svg" width="48"  height="48"  alt="Pieczęć mała">
+        </div>
+      </div>
+      <div class="showcase-dark">
+        <img src="nps-seal.svg" width="100" height="100" alt="Pieczęć na ciemnym tle">
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raben × Pogoń — pilot employer brandingowo-rekrutacyjny</title>
+<!--
+  PREZENTACJA: Raben × Pogoń Grodzisk Mazowiecki
+  - jeden plik, działa offline (bez zewnętrznych skryptów, fontów i API)
+  - nawigacja: ← → / spacja / PageUp PageDown / Home End, F = pełny ekran, O = przegląd slajdów, R = reset wyboru na slajdzie 4
+  - edycja: każdy slajd to osobna <section class="slide ...">; kolory na górze w :root
+  - eksport do PDF: Ctrl+P → "Zapisz jako PDF" (układ wydruku jest przygotowany)
+-->
+<style>
+:root{
+  --raben:#E1001A;      /* czerwień inspirowana identyfikacją Raben */
+  --claret:#A8141F;     /* burgund inspirowany barwami Pogoni */
+  --claret-dk:#8A0F19;
+  --ink:#12151B;
+  --ink-2:#1C212A;
+  --paper:#F7F4EF;
+  --paper-2:#ECE7DF;
+  --mute:#5B6270;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;transition:background .5s ease}
+button{font:inherit;cursor:pointer}
+
+/* ---------- scena 1920×1080 skalowana do okna ---------- */
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden}
+.slide{position:absolute;inset:0;padding:84px 120px 124px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s}
+.slide.active{opacity:1;visibility:visible;transition:opacity .55s ease}
+.dark{background:var(--ink);color:#fff;--fg2:rgba(255,255,255,.70);--card:rgba(255,255,255,.06);--cardline:rgba(255,255,255,.14)}
+.light{background:var(--paper);color:var(--ink);--fg2:var(--mute);--card:#fff;--cardline:rgba(18,21,27,.10)}
+.claret{background:var(--claret);color:#fff;--fg2:rgba(255,255,255,.78);--card:rgba(0,0,0,.20);--cardline:rgba(255,255,255,.18)}
+.dark::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 600px at 88% 8%,rgba(225,0,26,.20),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(168,20,31,.22),transparent 60%);pointer-events:none}
+.slide>*{position:relative}
+
+/* ---------- typografia ---------- */
+.eyebrow{display:flex;align-items:center;gap:16px;font-size:22px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--raben);margin-bottom:26px}
+.eyebrow::before{content:"";width:48px;height:3px;background:currentColor;border-radius:2px}
+.claret .eyebrow{color:#fff;opacity:.85}
+.dark .eyebrow{color:#FF4B5E}
+h1{font-size:106px;line-height:1.02;font-weight:800;letter-spacing:-.03em}
+h2{font-size:76px;line-height:1.05;font-weight:800;letter-spacing:-.025em}
+h3{font-size:38px;line-height:1.15;font-weight:750;letter-spacing:-.01em}
+.lead{font-size:32px;line-height:1.42;color:var(--fg2)}
+.accent{color:var(--raben)}
+.dark .accent{color:#FF4B5E}
+.claret .accent{color:#fff;text-decoration:underline;text-decoration-thickness:6px;text-underline-offset:10px}
+.small{font-size:20px;color:var(--fg2)}
+
+/* ---------- animacje wejścia ---------- */
+.r{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;transition-delay:0s}
+.slide.active .r{opacity:1;transform:none;transition-delay:calc(var(--d,0)*90ms + 180ms)}
+
+/* ---------- stopka sceny ---------- */
+#foot{position:absolute;left:120px;right:120px;bottom:42px;display:flex;justify-content:space-between;font-size:18px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;opacity:.5;z-index:5;pointer-events:none;color:var(--ink);transition:color .5s}
+#stage[data-theme=dark] #foot,#stage[data-theme=claret] #foot{color:#fff}
+
+/* ---------- slajd 1 ---------- */
+#s1{flex-direction:row;align-items:center;gap:40px}
+#s1 .copy{width:1060px}
+#s1 h1{margin:6px 0 30px}
+#s1 .sub{font-size:38px;line-height:1.3;font-weight:600;margin-bottom:34px;color:#fff}
+#s1 .goal{font-size:27px;line-height:1.45;color:var(--fg2);border-left:5px solid var(--raben);padding:4px 0 4px 26px;max-width:880px;margin-bottom:46px}
+.logos{display:flex;align-items:center;gap:26px}
+.logo-ph{width:214px;height:74px;border:2px dashed rgba(255,255,255,.35);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.18em;color:rgba(255,255,255,.55);font-weight:700;text-transform:uppercase}
+.logos .x{font-size:34px;opacity:.6}
+.by{margin-top:26px;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:600}
+#s10 .by{margin-top:18px}
+#s1 .viz{flex:1;display:flex;align-items:center;justify-content:center}
+#s1 svg{width:780px;height:780px;overflow:visible}
+
+/* ---------- slajd 2 ---------- */
+#s2 h2{font-size:72px;margin-bottom:38px}
+.s2grid{display:grid;grid-template-columns:1fr 600px;gap:44px;flex:1;min-height:0}
+.awards{display:flex;flex-direction:column;gap:24px}
+.award{flex:1;background:var(--card);border:1px solid var(--cardline);border-radius:24px;padding:30px 38px;display:flex;gap:34px;align-items:center;box-shadow:0 10px 30px rgba(18,21,27,.06)}
+.medal{flex:none;width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:800;line-height:1.05}
+.medal.gold{background:radial-gradient(circle at 30% 25%,#F6D77A,#C99A2E);color:#4A3406}
+.medal.gold b{font-size:54px}
+.medal.gold span{font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+.medal.silver{background:radial-gradient(circle at 30% 25%,#F4F4F4,#B5BBC4);color:#2C323C}
+.medal.silver span{font-size:16px;letter-spacing:.14em;text-transform:uppercase;padding:0 14px}
+.award h3{margin-bottom:6px;font-size:42px}
+.award .who{font-size:27px;font-weight:700;color:var(--raben);margin-bottom:8px}
+.award p.t{font-size:26px;line-height:1.4;color:var(--fg2)}
+.hiring{background:var(--ink);color:#fff;border-radius:24px;padding:40px 42px;display:flex;flex-direction:column}
+.hiring .k{font-size:18px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#FF4B5E;margin-bottom:18px}
+.hiring ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.hiring li{background:rgba(255,255,255,.08);border-radius:14px;padding:16px 20px;font-size:28px;font-weight:700}
+.hiring li small{display:block;font-size:19px;font-weight:500;color:rgba(255,255,255,.62);margin-top:3px}
+.hiring li.perk{background:var(--raben)}
+.hiring li.perk small{color:rgba(255,255,255,.85)}
+.hiring .tie{margin-top:auto;font-size:25px;line-height:1.4;color:rgba(255,255,255,.86);border-top:1px solid rgba(255,255,255,.18);padding-top:20px}
+.hiring .tie b{color:#fff}
+
+/* ---------- slajd 3 ---------- */
+#s3{flex-direction:row;gap:80px;align-items:center}
+#s3 .left{width:640px}
+#s3 h2{font-size:116px;margin-bottom:30px}
+#s3 ol{list-style:none;flex:1;display:flex;flex-direction:column;gap:18px}
+#s3 li{display:flex;gap:28px;align-items:center;background:var(--card);border:1px solid var(--cardline);border-radius:20px;padding:20px 30px;font-size:33px;line-height:1.28;font-weight:600}
+#s3 li i{flex:none;width:62px;height:62px;border-radius:50%;background:var(--raben);color:#fff;font-style:normal;font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center}
+
+/* ---------- slajd 4 ---------- */
+#s4 h2{margin-bottom:14px}
+#s4 .lead{margin-bottom:40px}
+.pcards{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;flex:1;min-height:0}
+.pcard{position:relative;background:var(--card);border:2px solid var(--cardline);border-radius:26px;padding:44px 36px;text-align:left;color:var(--ink);display:flex;flex-direction:column;gap:18px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;box-shadow:0 8px 24px rgba(18,21,27,.05)}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(18,21,27,.12)}
+.pcard svg{width:118px;height:118px;margin-bottom:10px;stroke:var(--claret);fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.pcard h3{font-size:44px}
+.pcard p{font-size:29px;line-height:1.4;color:var(--mute)}
+.pcard .rk{position:absolute;top:24px;right:24px;width:68px;height:68px;border-radius:50%;background:var(--raben);color:#fff;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.pcard[data-rank] {border-color:var(--raben);box-shadow:0 18px 44px rgba(225,0,26,.18)}
+.pcard[data-rank] .rk{transform:scale(1)}
+.hintline{margin-top:26px;font-size:21px;color:var(--mute);letter-spacing:.04em}
+
+/* ---------- slajd 5 ---------- */
+#s5 h2{margin-bottom:34px}
+.brk,.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.brk{margin-bottom:14px}
+.brk div{font-size:20px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding-bottom:10px;border-bottom:7px solid}
+.brk .w{grid-column:span 2;color:var(--claret);border-color:var(--claret)}
+.brk .rc{grid-column:span 2;color:var(--raben);border-color:var(--raben)}
+.steps{flex:1;min-height:0}
+.step{display:flex;flex-direction:column}
+.step .hd{height:112px;display:flex;align-items:center;gap:18px;padding:0 54px 0 30px;color:#fff;font-size:42px;font-weight:800;letter-spacing:.02em;clip-path:polygon(0 0,calc(100% - 40px) 0,100% 50%,calc(100% - 40px) 100%,0 100%);margin-right:-18px;position:relative;z-index:1}
+.step:nth-child(-n+2) .hd{background:var(--claret)}
+.step:nth-child(n+3) .hd{background:var(--raben)}
+.step .hd small{font-size:22px;font-weight:700;opacity:.7}
+.step .bd{margin-top:20px;background:var(--card);border:1px solid var(--cardline);border-radius:20px;padding:30px 28px 24px;flex:1;display:flex;flex-direction:column;gap:14px}
+.step .bd h4{font-size:32px;line-height:1.25;font-weight:750}
+.step .lb{font-size:17px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.step .bd p{font-size:26px;line-height:1.38}
+.step .bd .ms{margin-top:auto;border-top:1px dashed var(--cardline);padding-top:14px}
+.assume{margin-top:22px;display:flex;align-items:center;gap:14px;font-size:21px;color:var(--mute)}
+.assume b{background:var(--ink);color:#fff;padding:5px 14px;border-radius:8px;font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- slajd 6 ---------- */
+#s6 h2{margin-bottom:34px}
+.s6grid{display:grid;grid-template-columns:1fr 720px;gap:60px;flex:1;min-height:0}
+.soc{display:flex;flex-direction:column;gap:20px}
+.socrow{background:var(--card);border-radius:22px;padding:26px 34px;display:grid;grid-template-columns:230px 1fr 1fr;align-items:center;gap:20px;flex:1}
+.socrow .nm{font-size:29px;font-weight:800;letter-spacing:.02em}
+.socrow .num{font-size:66px;font-weight:800;line-height:1;letter-spacing:-.02em}
+.socrow .cap{font-size:20px;color:var(--fg2);margin-top:8px;letter-spacing:.04em}
+.socrow.sm{flex:none;padding:18px 34px}
+.socrow.sm .num{font-size:40px}
+.tv{background:#fff;color:var(--ink);border-radius:28px;padding:36px 44px;display:flex;flex-direction:column}
+.tv .tag{align-self:flex-start;background:var(--ink);color:#fff;font-weight:800;letter-spacing:.14em;font-size:18px;padding:7px 16px;border-radius:8px;margin-bottom:12px}
+.tv .big{font-size:150px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--claret)}
+.tv .big small{font-size:56px;letter-spacing:0;margin-left:10px}
+.tv .cap{font-size:25px;line-height:1.3;color:var(--mute);margin:6px 0 22px}
+.bars{display:flex;gap:34px;align-items:flex-end;flex:1}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bar .col{width:100%;border-radius:14px 14px 0 0;background:var(--claret);display:flex;align-items:flex-start;justify-content:center;padding-top:14px;color:#fff;font-weight:800;font-size:40px}
+.bar .col.b2{background:#C8404B}
+.bar span{margin-top:10px;font-size:21px;color:var(--mute);text-align:center;line-height:1.25}
+.takeaway{margin-top:26px;font-size:30px;font-weight:650;line-height:1.35}
+.src{margin-top:8px;font-size:17px;opacity:.7;letter-spacing:.04em}
+
+/* ---------- slajd 7 ---------- */
+#s7 h2{margin-bottom:34px}
+.dirs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;flex:1;min-height:0}
+.dir{background:var(--card);border:1px solid var(--cardline);border-radius:26px;padding:34px 34px 28px;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(18,21,27,.06)}
+.tagc{align-self:flex-start;font-size:16px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:6px 14px;border-radius:8px;color:#fff;margin-bottom:16px}
+.tagc.w{background:var(--claret)} .tagc.rc{background:var(--raben)} .tagc.mix{background:linear-gradient(90deg,var(--claret),var(--raben))}
+.dir h3{font-size:42px;margin-bottom:24px;min-height:98px}
+.dir dl{display:flex;flex-direction:column;gap:18px}
+.dir dt{font-size:17px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--raben);margin-bottom:3px}
+.dir dd{font-size:27px;line-height:1.35}
+.foot-note{margin-top:22px;font-size:21px;color:var(--mute)}
+
+/* ---------- slajd 8 ---------- */
+#s8 h2{font-size:70px;margin-bottom:12px}
+.pribbon{align-self:flex-start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 22px;font-size:21px;margin-bottom:14px;display:none}
+.pribbon b{color:#FF4B5E;margin-left:12px}
+.pribbon.on{display:block}
+.tl{display:grid;grid-template-columns:190px repeat(3,1fr);gap:16px;flex:1;min-height:0;grid-template-rows:auto 1fr 1fr .72fr;margin-top:14px}
+.tl .mh{padding:0 4px 12px;border-bottom:2px solid rgba(255,255,255,.2)}
+.tl .mh b{display:block;font-size:30px;font-weight:800}
+.tl .mh span{display:block;font-size:19px;color:rgba(255,255,255,.62);margin:2px 0 8px}
+.tl .mh em{font-style:normal;display:inline-block;font-size:18px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);padding:4px 12px;border-radius:8px}
+.tl .mh em::before{content:"◆ ";color:#FF4B5E}
+.tl .ln{display:flex;flex-direction:column;justify-content:center;font-size:19px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;position:relative;gap:10px}
+.tl .ln .lane-badge{display:none;font-size:14px;letter-spacing:.08em;background:#fff;color:var(--ink);padding:4px 9px;border-radius:6px;align-self:flex-start}
+.tl .ln.hl .lane-badge{display:inline-block}
+.tl .ln.w{color:#FF7A86}.tl .ln.rc{color:#FF4B5E}.tl .ln.m{color:rgba(255,255,255,.7)}
+.tl .cell{border-radius:16px;padding:18px 22px;font-size:23px;line-height:1.35;display:flex;align-items:center;font-weight:550;transition:box-shadow .3s}
+.tl .cell.w{background:var(--claret)}
+.tl .cell.rc{background:var(--raben)}
+.tl .cell.m{background:rgba(255,255,255,.09);border:1px dashed rgba(255,255,255,.28)}
+.tl .cell.hl{box-shadow:0 0 0 4px #fff}
+#s8 .foot-note{color:rgba(255,255,255,.7);margin-top:16px}
+
+/* ---------- slajd 9 ---------- */
+#s9 h2{margin-bottom:12px}
+#s9 .lead{margin-bottom:6px;font-size:29px}
+#s9 .pribbon{background:rgba(18,21,27,.06);border-color:rgba(18,21,27,.15);color:var(--ink)}
+#s9 .pribbon b{color:var(--raben)}
+.stairs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:end;flex:1;min-height:0;margin-top:14px}
+.stairc{border-radius:24px 24px 0 0;padding:30px 34px 26px;color:#fff;display:flex;flex-direction:column}
+.stairc:nth-child(1){height:60%;background:var(--ink-2);border-radius:24px 0 0 0}
+.stairc:nth-child(2){height:80%;background:var(--claret);border-radius:0}
+.stairc:nth-child(3){height:100%;background:var(--raben);border-radius:0 24px 0 0}
+.stairc .dur{font-size:62px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.stairc .dur small{font-size:22px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-left:10px;opacity:.8}
+.stairc .ttl{font-size:27px;font-weight:700;margin:8px 0 18px;opacity:.95}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:8px 14px;font-size:22px;line-height:1.25;font-weight:550}
+.chip.plus{border-style:dashed}
+.chip.hl{background:#fff;color:var(--ink);font-weight:700}
+.stairc .note{margin-top:auto;padding-top:12px;font-size:17px;opacity:.7}
+
+/* ---------- slajd 10 ---------- */
+#s10 h2{font-size:96px;margin-bottom:36px}
+.nsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:26px}
+.ns{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:40px 40px 44px}
+.ns .when{font-size:20px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FF4B5E;margin-bottom:12px}
+.ns p{font-size:36px;line-height:1.28;font-weight:650}
+.need{display:grid;grid-template-columns:420px 1fr;gap:34px;align-items:center;background:rgba(255,255,255,.07);border-radius:24px;padding:40px 44px}
+.need h3{font-size:40px}
+.need ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:18px 34px}
+.need li{font-size:29px;line-height:1.3;padding-left:34px;position:relative}
+.need li::before{content:"✓";position:absolute;left:0;color:#FF4B5E;font-weight:800}
+.close{margin-top:auto;font-size:52px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+
+/* ---------- UI (poza sceną) ---------- */
+#bar{position:fixed;left:0;top:0;height:6px;background:var(--raben);width:0;z-index:50;transition:width .4s ease}
+#ui{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(18,21,27,.82);backdrop-filter:blur(8px);color:#fff;padding:8px 10px;border-radius:999px;z-index:60;font-size:15px;opacity:0;transition:opacity .3s;pointer-events:none}
+body.ui-on #ui{opacity:1;pointer-events:auto}
+#ui button{background:rgba(255,255,255,.12);border:0;color:#fff;border-radius:999px;padding:8px 16px}
+#ui button:hover{background:rgba(255,255,255,.26)}
+#ui .cnt{padding:0 12px;opacity:.85;font-variant-numeric:tabular-nums}
+body:not(.ui-on){cursor:none}
+#overview{position:fixed;inset:0;background:rgba(18,21,27,.94);z-index:80;padding:5vh 5vw;overflow:auto;display:none}
+#overview.open{display:block}
+#overview h5{color:#fff;font-size:18px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px;font-weight:700;opacity:.7}
+.ovgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.ovgrid button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;border-radius:16px;padding:20px;text-align:left;font-size:20px;line-height:1.3}
+.ovgrid button:hover,.ovgrid button.cur{background:var(--raben);border-color:var(--raben)}
+.ovgrid button b{display:block;font-size:34px;margin-bottom:6px}
+
+/* ---------- wydruk / PDF ---------- */
+@page{size:1920px 1080px;margin:0}
+@media print{
+  html,body{height:auto;overflow:visible;background:#fff}
+  #stage{position:static;width:1920px;height:auto!important;transform:none!important;overflow:visible}
+  .slide{position:relative;opacity:1!important;visibility:visible!important;width:1920px;height:1080px;page-break-after:always;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .r{opacity:1!important;transform:none!important}
+  #bar,#ui,#overview,#foot{display:none!important}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<main id="stage" data-theme="dark">
+
+<!-- ================= 1. TYTUŁ ================= -->
+<section class="slide dark" id="s1" data-title="Raben × Pogoń" data-theme="dark">
+  <div class="copy">
+    <div class="eyebrow r">Raben × Pogoń Grodzisk Mazowiecki</div>
+    <h1 class="r" style="--d:1">Lokalna marka pracodawcy, która przyciąga ludzi</h1>
+    <p class="sub r" style="--d:2">Koncepcja 3-miesięcznego pilota, który łączy wizerunek pracodawcy z rekrutacją</p>
+    <p class="goal r" style="--d:3">Cel: sprawdzić, czy sport i lokalna społeczność mogą stać się dodatkowym kanałem dotarcia do kandydatów.</p>
+    <div class="logos r" style="--d:4">
+      <div class="logo-ph">Logo Raben</div><span class="x">×</span><div class="logo-ph">Logo Pogoń</div>
+    </div>
+    <div class="by r" style="--d:5">Przygotowane przez Sport Space Pro</div>
+  </div>
+  <div class="viz r" style="--d:2">
+    <svg viewBox="0 0 800 800" aria-label="Wizerunek i rekrutacja łączą się w pilocie">
+      <defs><clipPath id="lens"><circle cx="300" cy="400" r="190"/></clipPath></defs>
+      <g fill="none" stroke="rgba(255,255,255,.16)" stroke-width="2.5">
+        <rect x="20" y="130" width="760" height="540" rx="10"/>
+        <line x1="400" y1="130" x2="400" y2="670"/>
+        <circle cx="400" cy="400" r="86"/>
+        <rect x="20" y="290" width="120" height="220"/><rect x="660" y="290" width="120" height="220"/>
+      </g>
+      <circle cx="300" cy="400" r="190" fill="#A8141F" fill-opacity=".88"/>
+      <circle cx="500" cy="400" r="190" fill="#E1001A" fill-opacity=".88"/>
+      <circle cx="500" cy="400" r="190" fill="#fff" clip-path="url(#lens)"/>
+      <g font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="800" text-anchor="middle" fill="#fff">
+        <text x="208" y="395" font-size="19" letter-spacing="2.5">WIZERUNEK</text>
+        <text x="208" y="422" font-size="19" letter-spacing="2.5">PRACODAWCY</text>
+        <text x="595" y="408" font-size="19" letter-spacing="2.5">REKRUTACJA</text>
+        <text x="400" y="412" font-size="34" letter-spacing="3" fill="#12151B">PILOT</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= 2. PUNKT WYJŚCIA ================= -->
+<section class="slide light" id="s2" data-title="Wiemy, gdzie jesteście" data-theme="light">
+  <div class="eyebrow r">Punkt wyjścia</div>
+  <h2 class="r" style="--d:1">Wiemy, gdzie jesteście: <span class="accent">inwestujecie w ludzi</span></h2>
+  <div class="s2grid">
+    <div class="awards">
+      <article class="award r" style="--d:2">
+        <div class="medal gold"><b>I</b><span>miejsce</span></div>
+        <div>
+          <h3>Rozwój talentów w organizacji</h3>
+          <p class="who">Raben Management Services</p>
+          <p class="t">„Road Network Academy – From Internal Talent to International Impact”</p>
+        </div>
+      </article>
+      <article class="award r" style="--d:3">
+        <div class="medal silver"><span>Wyróż-<br>nienie</span></div>
+        <div>
+          <h3>Dobrostan pracowników</h3>
+          <p class="who">Raben Transport</p>
+          <p class="t">„Raben Wellbeing 365 – zdrowie, profilaktyka i bezpieczeństwo w centrum organizacji”</p>
+        </div>
+      </article>
+    </div>
+    <aside class="hiring r" style="--d:4">
+      <div class="k">Dziś szukacie</div>
+      <ul>
+        <li>Spedytor Międzynarodowy<small>Chlebnia · umowa o pracę</small></li>
+        <li>Dyspozytor Transportu<small>Chlebnia · umowa o pracę · praca zmianowa</small></li>
+        <li class="perk">Karta sportowa w obu ofertach<small>benefit, który łączy Raben ze sportem</small></li>
+      </ul>
+      <p class="tie">Sport już jest częścią Waszej propozycji dla pracowników. <b>Pogoń może dać tej historii lokalną scenę.</b></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= 3. PYTANIA ================= -->
+<section class="slide dark" id="s3" data-title="Zacznijmy od Was" data-theme="dark">
+  <div class="left">
+    <div class="eyebrow r">Rozmowa</div>
+    <h2 class="r" style="--d:1">Zacznijmy od&nbsp;Was</h2>
+    <p class="lead r" style="--d:2">Pięć pytań, które ustawią resztę spotkania. Wnioski wejdą do oferty.</p>
+  </div>
+  <ol>
+    <li class="r" style="--d:2"><i>1</i>Które role obsadzacie dziś najtrudniej i od jak dawna?</li>
+    <li class="r" style="--d:3"><i>2</i>Skąd przychodzą Wasi najlepsi kandydaci, a skąd nie?</li>
+    <li class="r" style="--d:4"><i>3</i>Czego brakuje: liczby kandydatów, ich jakości czy rozpoznawalności Raben w okolicy?</li>
+    <li class="r" style="--d:5"><i>4</i>Co o Raben mówią ludzie z Grodziska i okolic?</li>
+    <li class="r" style="--d:6"><i>5</i>Kto decyduje o pilocie i po czym poznacie, że się udał?</li>
+  </ol>
+</section>
+
+<!-- ================= 4. PRIORYTETY (interaktywny) ================= -->
+<section class="slide light" id="s4" data-title="Co jest najważniejsze?" data-theme="light">
+  <div class="eyebrow r">Priorytety</div>
+  <h2 class="r" style="--d:1">Co jest dla Was teraz <span class="accent">najważniejsze?</span></h2>
+  <p class="lead r" style="--d:2">Wybierzcie trzy karty, w kolejności ważności. Dalsza część prezentacji podkreśli to, co wskażecie.</p>
+  <div class="pcards">
+    <button class="pcard r" data-p="rekrutacja" style="--d:3">
+      <span class="rk"></span>
+      <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26"/><circle cx="32" cy="32" r="16"/><circle cx="32" cy="32" r="5" fill="currentColor"/></svg>
+      <h3>Rekrutacja tu i teraz</h3>
+      <p>Konkretne role, konkretni kandydaci z regionu.</p>
+    </button>
+    <button class="pcard r" data-p="marka" style="--d:4">
+      <span class="rk"></span>
+      <svg viewBox="0 0 64 64"><path d="M32 58C20 44 12 34 12 25a20 20 0 0 1 40 0c0 9-8 19-20 33z"/><circle cx="32" cy="25" r="7"/></svg>
+      <h3>Lokalna marka pracodawcy</h3>
+      <p>Żeby w okolicy wiedziano, że Raben to dobre miejsce pracy.</p>
+    </button>
+    <button class="pcard r" data-p="pracownicy" style="--d:5">
+      <span class="rk"></span>
+      <svg viewBox="0 0 64 64"><circle cx="22" cy="22" r="9"/><circle cx="43" cy="24" r="7"/><path d="M6 54c0-10 7-17 16-17s16 7 16 17M38 40c3-2 5-3 8-3 8 0 12 6 12 14"/></svg>
+      <h3>Zaangażowanie pracowników</h3>
+      <p>Duma z miejsca pracy, polecenia, mniejsza rotacja.</p>
+    </button>
+    <button class="pcard r" data-p="relacje" style="--d:6">
+      <span class="rk"></span>
+      <svg viewBox="0 0 64 64"><path d="M6 20h52v9a5 5 0 0 0 0 10v9H6v-9a5 5 0 0 0 0-10z"/><path d="M42 20v28" stroke-dasharray="4 5"/></svg>
+      <h3>Relacje z partnerami i klientami</h3>
+      <p>Bilety, hospitality, wspólne wydarzenia i networking.</p>
+    </button>
+  </div>
+  <div class="hintline r" style="--d:7">Kliknięcie ponownie cofa wybór</div>
+</section>
+
+<!-- ================= 5. MECHANIZM ================= -->
+<section class="slide light" id="s5" data-title="Jak to działa" data-theme="light">
+  <div class="eyebrow r">Mechanizm</div>
+  <h2 class="r" style="--d:1">Od poznania marki do <span class="accent">aplikacji</span></h2>
+  <div class="brk r" style="--d:2"><div class="w">Wizerunek</div><div class="rc">Rekrutacja</div></div>
+  <div class="steps">
+    <div class="step r" style="--d:3">
+      <div class="hd"><small>01</small>POZNAJ</div>
+      <div class="bd">
+        <h4>Kontakt z marką Raben w lokalnym kontekście</h4>
+        <div><div class="lb">Działania</div><p>Obecność Raben na meczach i w mediach Pogoni</p></div>
+        <div class="ms"><div class="lb">Pomiar</div><p>Zasięg, wyświetlenia wideo</p></div>
+      </div>
+    </div>
+    <div class="step r" style="--d:4">
+      <div class="hd"><small>02</small>ZAUFAJ</div>
+      <div class="bd">
+        <h4>Ludzie, stanowiska, realia pracy</h4>
+        <div><div class="lb">Działania</div><p>Seria „Poznaj ludzi Raben”: krótkie wideo z pracownikami</p></div>
+        <div class="ms"><div class="lb">Pomiar</div><p>Obejrzenia do końca, wejścia na stronę kariery</p></div>
+      </div>
+    </div>
+    <div class="step r" style="--d:5">
+      <div class="hd"><small>03</small>SPRAWDŹ</div>
+      <div class="bd">
+        <h4>Przejście do konkretnej oferty</h4>
+        <div><div class="lb">Działania</div><p>„Praca blisko Ciebie”: komunikat z linkiem lub QR do oferty</p></div>
+        <div class="ms"><div class="lb">Pomiar</div><p>Kliknięcia i skany z kodem źródła</p></div>
+      </div>
+    </div>
+    <div class="step r" style="--d:6">
+      <div class="hd"><small>04</small>APLIKUJ</div>
+      <div class="bd">
+        <h4>Przejście do formularza rekrutacyjnego</h4>
+        <div><div class="lb">Działania</div><p>Link i QR do oferty, pytanie „skąd wiesz o ofercie?”</p></div>
+        <div class="ms"><div class="lb">Pomiar</div><p>Aplikacje ze źródłem „Pogoń”</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="assume r" style="--d:7"><b>Założenia</b>Schemat do wspólnej weryfikacji, a nie potwierdzone wyniki.</div>
+</section>
+
+<!-- ================= 6. DANE POGONI ================= -->
+<section class="slide claret" id="s6" data-title="Zasięg Pogoni" data-theme="claret">
+  <div class="eyebrow r">Dlaczego Pogoń</div>
+  <h2 class="r" style="--d:1">Kanał, który <span class="accent">już dociera</span> do ludzi</h2>
+  <div class="s6grid">
+    <div class="soc">
+      <div class="socrow r" style="--d:2">
+        <div class="nm">Facebook</div>
+        <div><div class="num">20 000</div><div class="cap">obserwujących</div></div>
+        <div><div class="num">2,56 mln</div><div class="cap">zasięg postów miesięcznie</div></div>
+      </div>
+      <div class="socrow r" style="--d:3">
+        <div class="nm">Instagram</div>
+        <div><div class="num">7 244</div><div class="cap">obserwujących</div></div>
+        <div><div class="num">726 tys.</div><div class="cap">zasięg postów miesięcznie</div></div>
+      </div>
+      <div class="socrow sm r" style="--d:4">
+        <div class="nm">X (d. Twitter)</div>
+        <div><div class="num">3 019</div><div class="cap">obserwujących</div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="tv r" style="--d:3">
+      <div class="tag">TVP SPORT</div>
+      <div class="big">1,5<small>mln</small></div>
+      <div class="cap">widzów meczów Pogoni (łącznie)</div>
+      <div class="bars">
+        <div class="bar"><div class="col" style="height:100%">152 tys.</div><span>widzów meczu domowego</span></div>
+        <div class="bar"><div class="col b2" style="height:89.5%">136 tys.</div><span>widzów meczu wyjazdowego</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway r" style="--d:5">Raben wchodzi w gotową widownię: lokalną społeczność i medium, które dociera daleko poza stadion.</div>
+  <div class="src r" style="--d:6">Źródło: dane klubu Pogoń Grodzisk Mazowiecki</div>
+</section>
+
+<!-- ================= 7. TRZY KIERUNKI ================= -->
+<section class="slide light" id="s7" data-title="Trzy kierunki współpracy" data-theme="light">
+  <div class="eyebrow r">Pomysły do wyboru</div>
+  <h2 class="r" style="--d:1">Trzy kierunki współpracy</h2>
+  <div class="dirs">
+    <article class="dir r" style="--d:2">
+      <span class="tagc w">Wizerunek</span>
+      <h3>„Poznaj ludzi Raben”</h3>
+      <dl>
+        <div><dt>Cel</dt><dd>Wiarygodność pracodawcy</dd></div>
+        <div><dt>Działanie</dt><dd>Wideo z pracownikami i ich codzienną pracą w Chlebni</dd></div>
+        <div><dt>Miernik</dt><dd>Obejrzenia do końca, wejścia na stronę kariery</dd></div>
+        <div><dt>Korzyść dla Raben</dt><dd>Kandydat widzi ludzi, a nie slogan</dd></div>
+      </dl>
+    </article>
+    <article class="dir r" style="--d:3">
+      <span class="tagc rc">Rekrutacja</span>
+      <h3>„Praca blisko Ciebie”</h3>
+      <dl>
+        <div><dt>Cel</dt><dd>Kandydaci z okolicy, na konkretne role</dd></div>
+        <div><dt>Działanie</dt><dd>Lokalne komunikaty powiązane z ofertami: dyspozytor, spedytor</dd></div>
+        <div><dt>Miernik</dt><dd>Kliknięcia i aplikacje ze źródłem „Pogoń”</dd></div>
+        <div><dt>Korzyść dla Raben</dt><dd>Dodatkowy, mierzalny kanał obok portali</dd></div>
+      </dl>
+    </article>
+    <article class="dir r" style="--d:4">
+      <span class="tagc mix">Wizerunek + społeczność</span>
+      <h3>„Raben w lokalnej społeczności”</h3>
+      <dl>
+        <div><dt>Cel</dt><dd>Rozpoznawalność Raben jako pracodawcy w powiecie</dd></div>
+        <div><dt>Działanie</dt><dd>„Dzień Raben” na meczu: strefa, konkurs, zaproszenie pracowników</dd></div>
+        <div><dt>Miernik</dt><dd>Skany QR, rozmowy z kandydatami, udział pracowników</dd></div>
+        <div><dt>Korzyść dla Raben</dt><dd>Dumni pracownicy i pierwsze realne rozmowy</dd></div>
+      </dl>
+    </article>
+  </div>
+  <div class="foot-note r" style="--d:5">Szczegółowy zakres działań ustalimy wspólnie.</div>
+</section>
+
+<!-- ================= 8. PILOT 3 MIESIĄCE ================= -->
+<section class="slide dark" id="s8" data-title="Pilot 3 miesiące" data-theme="dark">
+  <div class="eyebrow r">Proponowany pilot</div>
+  <h2 class="r" style="--d:1">3 miesiące: jeden lejek, <span class="accent">dwa tory</span></h2>
+  <div class="pribbon r" style="--d:2" id="rib8"></div>
+  <div class="tl r" style="--d:3">
+    <div></div>
+    <div class="mh"><b>Miesiąc 1</b><span>Fundament · dni 1–30</span><em>dzień 14: KPI uzgodnione</em></div>
+    <div class="mh"><b>Miesiąc 2</b><span>Oferty w obiegu · dni 31–60</span><em>dzień 45: raport śródokresowy</em></div>
+    <div class="mh"><b>Miesiąc 3</b><span>Mecz i decyzja · dni 61–90</span><em>dzień 90: decyzja o dalszej drodze</em></div>
+
+    <div class="ln w" data-p="marka pracownicy">Wizerunek<span class="lane-badge"></span></div>
+    <div class="cell w" data-p="marka pracownicy">Pierwsze odcinki „Poznaj ludzi Raben”</div>
+    <div class="cell w" data-p="marka pracownicy">Kolejne odcinki, obecność Raben w mediach klubu</div>
+    <div class="cell w" data-p="pracownicy marka">„Dzień Raben” na meczu Pogoni</div>
+
+    <div class="ln rc" data-p="rekrutacja">Rekrutacja<span class="lane-badge"></span></div>
+    <div class="cell rc" data-p="rekrutacja">Role, grupy docelowe, ścieżka aplikacji (QR, UTM)</div>
+    <div class="cell rc" data-p="rekrutacja">Oferty lokalnie: dyspozytor, spedytor</div>
+    <div class="cell rc" data-p="rekrutacja">Oferty + QR na meczu, rozmowy z kandydatami</div>
+
+    <div class="ln m">Pomiar</div>
+    <div class="cell m">Punkt zerowy</div>
+    <div class="cell m">Raport z danymi i korekta kursu</div>
+    <div class="cell m">Raport końcowy i rekomendacja</div>
+  </div>
+  <div class="foot-note r" style="--d:4">Szczegółowy zakres działań, kanały i KPI ustalimy wspólnie na starcie.</div>
+</section>
+
+<!-- ================= 9. DRABINA ================= -->
+<section class="slide light" id="s9" data-title="Od pilota do stałej obecności" data-theme="light">
+  <div class="eyebrow r">Jeśli zadziała</div>
+  <h2 class="r" style="--d:1">Od pilota do <span class="accent">stałej obecności</span> marki</h2>
+  <p class="lead r" style="--d:2">Pilot sprawdza kanał. Employer branding działa kumulacyjnie, więc kolejne miesiące budują markę.</p>
+  <div class="pribbon r" style="--d:2" id="rib9"></div>
+  <div class="stairs">
+    <div class="stairc r" style="--d:3">
+      <div class="dur">3<small>mies. · pilot</small></div>
+      <div class="ttl">Testujemy kanał</div>
+      <div class="chips">
+        <span class="chip" data-p="marka pracownicy">Wideo z pracownikami</span>
+        <span class="chip" data-p="rekrutacja">Oferty lokalnie</span>
+        <span class="chip" data-p="pracownicy marka">Dzień Raben na meczu</span>
+        <span class="chip">Raport KPI</span>
+      </div>
+      <div class="note">Zakres wg ustaleń ze spotkania</div>
+    </div>
+    <div class="stairc r" style="--d:4">
+      <div class="dur">6<small>mies. · partnerstwo</small></div>
+      <div class="ttl">Budujemy rozpoznawalność</div>
+      <div class="chips">
+        <span class="chip plus" data-p="marka rekrutacja">Stała seria treści</span>
+        <span class="chip plus" data-p="pracownicy relacje">Bilety dla pracowników i klientów</span>
+        <span class="chip plus" data-p="relacje">Hospitality dla partnerów</span>
+        <span class="chip plus" data-p="marka">Banery i bandy LED</span>
+        <span class="chip plus" data-p="marka">Reklama w wideo klubu</span>
+      </div>
+      <div class="note">Elementy do potwierdzenia z klubem</div>
+    </div>
+    <div class="stairc r" style="--d:5">
+      <div class="dur">12<small>mies. · stała obecność</small></div>
+      <div class="ttl">Lokalny pracodawca pierwszego wyboru</div>
+      <div class="chips">
+        <span class="chip plus" data-p="marka">Ekspozycja w transmisjach TVP Sport</span>
+        <span class="chip plus" data-p="rekrutacja pracownicy">Konkursy partnerskie z klubem</span>
+        <span class="chip plus" data-p="marka">Wizerunek i herb klubu w komunikacji Raben</span>
+        <span class="chip plus" data-p="marka">Reklama audio na meczach</span>
+        <span class="chip plus" data-p="relacje pracownicy">Większa pula biletów VIP</span>
+      </div>
+      <div class="note">Elementy do potwierdzenia z klubem</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. NASTĘPNE KROKI ================= -->
+<section class="slide dark" id="s10" data-title="Następne kroki" data-theme="dark">
+  <div class="eyebrow r">Następne kroki</div>
+  <h2 class="r" style="--d:1">Co dalej?</h2>
+  <div class="nsteps">
+    <div class="ns r" style="--d:2"><div class="when">Dziś</div><p>Ustalamy priorytety, role do obsadzenia i wskaźniki sukcesu.</p></div>
+    <div class="ns r" style="--d:3"><div class="when">Po spotkaniu</div><p>Wysyłamy ofertę z zakresem pilota, harmonogramem i budżetem.</p></div>
+    <div class="ns r" style="--d:4"><div class="when">Start</div><p>Warsztat startowy z HR i marketingiem Raben, pierwsze treści w 2 tygodnie.</p></div>
+  </div>
+  <div class="need r" style="--d:5">
+    <h3>Czego potrzebujemy od Raben</h3>
+    <ul>
+      <li>Lista ról i ich priorytety</li>
+      <li>Osoba kontaktowa z HR</li>
+      <li>Zgoda na nagrania z pracownikami</li>
+      <li>Pole „skąd wiesz o ofercie” w formularzu</li>
+    </ul>
+  </div>
+  <div class="close r" style="--d:6">Sprawdźmy, czy Pogoń może być dla Raben <span class="accent">drogą do ludzi</span>.</div>
+  <div class="by r" style="--d:7">Sport Space Pro · sportspacepro.pl</div>
+</section>
+
+<div id="foot"><span>Raben × Pogoń · pilot 3 mies.</span><span id="cnt"></span></div>
+</main>
+
+<div id="ui">
+  <button id="prev" aria-label="Poprzedni slajd">←</button>
+  <span class="cnt" id="cnt2"></span>
+  <button id="next" aria-label="Następny slajd">→</button>
+  <button id="ov">Przegląd (O)</button>
+  <button id="fs">Pełny ekran (F)</button>
+</div>
+<div id="overview"><h5>Przegląd slajdów · Esc zamyka</h5><div class="ovgrid"></div></div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar');
+  var cur=0;
+
+  /* ---- skalowanie 1920×1080 do okna ---- */
+  function fit(){
+    var w=window.innerWidth,h=window.innerHeight,s=Math.min(w/1920,h/1080);
+    stage.style.transform='translate('+((w-1920*s)/2)+'px,'+((h-1080*s)/2)+'px) scale('+s+')';
+  }
+  window.addEventListener('resize',fit);fit();
+
+  /* ---- nawigacja ---- */
+  function pad(n){return (n<10?'0':'')+n}
+  function go(n,noHash){
+    n=Math.max(0,Math.min(slides.length-1,n));cur=n;
+    slides.forEach(function(s,k){s.classList.toggle('active',k===n)});
+    var sl=slides[n];
+    stage.setAttribute('data-theme',sl.getAttribute('data-theme'));
+    document.body.style.background=getComputedStyle(sl).backgroundColor;
+    bar.style.width=((n+1)/slides.length*100)+'%';
+    var t=pad(n+1)+' / '+pad(slides.length);
+    document.getElementById('cnt').textContent=t;
+    document.getElementById('cnt2').textContent=t;
+    if(!noHash){try{history.replaceState(null,'','#'+(n+1))}catch(e){}}
+    var cards=document.querySelectorAll('.ovgrid button');
+    cards.forEach(function(b,k){b.classList.toggle('cur',k===n)});
+  }
+  function next(){go(cur+1)} function prev(){go(cur-1)}
+
+  /* ---- pełny ekran ---- */
+  function toggleFS(){
+    try{
+      if(!document.fullscreenElement){(document.documentElement.requestFullscreen||function(){}).call(document.documentElement)}
+      else{document.exitFullscreen()}
+    }catch(e){}
+  }
+
+  /* ---- przegląd ---- */
+  var ov=document.getElementById('overview'),grid=ov.querySelector('.ovgrid');
+  slides.forEach(function(s,k){
+    var b=document.createElement('button');
+    b.innerHTML='<b>'+pad(k+1)+'</b>'+s.getAttribute('data-title');
+    b.addEventListener('click',function(){ov.classList.remove('open');go(k)});
+    grid.appendChild(b);
+  });
+  function toggleOv(){ov.classList.toggle('open')}
+
+  /* ---- klawisze ---- */
+  document.addEventListener('keydown',function(e){
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    var k=e.key;
+    if(k==='Escape'){ov.classList.remove('open');return}
+    if(ov.classList.contains('open')&&k!=='o'&&k!=='O')return;
+    if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '||k==='Enter'){e.preventDefault();next()}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'||k==='Backspace'){e.preventDefault();prev()}
+    else if(k==='Home'){go(0)} else if(k==='End'){go(slides.length-1)}
+    else if(k==='f'||k==='F'){toggleFS()}
+    else if(k==='o'||k==='O'){toggleOv()}
+    else if(k==='r'||k==='R'){rank=[];renderRank()}
+    showUI();
+  });
+  document.getElementById('prev').onclick=prev;document.getElementById('next').onclick=next;
+  document.getElementById('fs').onclick=toggleFS;document.getElementById('ov').onclick=toggleOv;
+
+  /* ---- dotyk ---- */
+  var tx=null;
+  document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;tx=null;
+    if(Math.abs(dx)>60){dx<0?next():prev()}
+  },{passive:true});
+
+  /* ---- pokazywanie / chowanie paska sterowania ---- */
+  var uiTimer;
+  function showUI(){document.body.classList.add('ui-on');clearTimeout(uiTimer);uiTimer=setTimeout(function(){document.body.classList.remove('ui-on')},2600)}
+  document.addEventListener('mousemove',showUI);
+
+  /* ---- slajd 4: wybór priorytetów, wpływa na slajdy 8 i 9 ---- */
+  var NAMES={rekrutacja:'Rekrutacja',marka:'Lokalna marka',pracownicy:'Zaangażowanie pracowników',relacje:'Relacje z partnerami'};
+  var rank=[];
+  var pcards=[].slice.call(document.querySelectorAll('.pcard'));
+  pcards.forEach(function(c){
+    c.addEventListener('click',function(){
+      var p=c.getAttribute('data-p'),ix=rank.indexOf(p);
+      if(ix>-1)rank.splice(ix,1);else if(rank.length<3)rank.push(p);
+      renderRank();
+    });
+  });
+  function best(el){
+    var ps=(el.getAttribute('data-p')||'').split(' '),b=99;
+    ps.forEach(function(p){var i=rank.indexOf(p);if(i>-1&&i<b)b=i});
+    return b;
+  }
+  function renderRank(){
+    pcards.forEach(function(c){
+      var i=rank.indexOf(c.getAttribute('data-p'));
+      if(i>-1){c.setAttribute('data-rank',i+1);c.querySelector('.rk').textContent=i+1}
+      else{c.removeAttribute('data-rank');c.querySelector('.rk').textContent=''}
+    });
+    ['rib8','rib9'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(!rank.length){el.classList.remove('on');el.innerHTML='';return}
+      el.classList.add('on');
+      el.innerHTML='Skrojone pod Wasze priorytety:'+rank.map(function(p,i){return '<b>'+(i+1)+'. '+NAMES[p]+'</b>'}).join('');
+    });
+    document.querySelectorAll('#s8 [data-p], #s9 [data-p]').forEach(function(el){
+      var b=best(el),on=b<2;
+      el.classList.toggle('hl',on);
+      var badge=el.querySelector('.lane-badge');
+      if(badge)badge.textContent=on?('Wasz priorytet #'+(b+1)):'';
+    });
+  }
+
+  /* ---- start ---- */
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(h)?0:h-1,true);
+  showUI();
+})();
+</script>
+</body>
+</html>
