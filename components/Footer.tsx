@@ -50,6 +50,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/kalkulator-phv" className="hover:text-navy-950">
+                  Kalkulator PHV
+                </Link>
+              </li>
+              <li>
                 <Link href="/artykuly" className="hover:text-navy-950">
                   Artykuły
                 </Link>

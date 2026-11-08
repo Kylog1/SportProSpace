@@ -5,28 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-// The tools sit under one "Narzędzia" item rather than as
-// two more top-level links: eight flat items plus the CTA overflow the bar
-// between 1024 and 1200px, which is the most common laptop width.
-
-const TOOLS = [
-  {
-    href: "/self-assessment",
-    label: "Self-Audit",
-    note: "Gdzie tracicie klientów",
-  },
-  {
-    href: "/commercial-score",
-    label: "Commercial Score",
-    note: "Ile jesteście warci dla marek",
-  },
-  {
-    href: "/brief-sponsoringowy",
-    label: "Brief sponsoringowy",
-    note: "Wzór dla marek szukających partnera",
-  },
-];
+import { TOOLS } from "@/lib/tools";
 
 const navItems = [
   { href: "/#doradztwo", label: "Doradztwo" },
@@ -85,9 +64,13 @@ export function Navbar() {
         )}
       >
         <div className="container flex flex-col gap-1 py-4">
-          <div className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-            Narzędzia
-          </div>
+          <Link
+            href="/narzedzia"
+            onClick={() => setOpen(false)}
+            className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground hover:text-navy-950"
+          >
+            Narzędzia: zobacz wszystkie
+          </Link>
           {TOOLS.map((tool) => (
             <Link
               key={tool.href}
@@ -157,18 +140,27 @@ function ToolsMenu() {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-haspopup="true"
-        onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
-      >
-        Narzędzia
-        <ChevronDown
-          className={cn("size-3.5 transition-transform", open && "rotate-180")}
-        />
-      </button>
+      <div className="inline-flex items-center gap-1">
+        <Link
+          href="/narzedzia"
+          onClick={() => setOpen(false)}
+          className="text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
+        >
+          Narzędzia
+        </Link>
+        <button
+          type="button"
+          aria-label="Pokaż listę narzędzi"
+          aria-expanded={open}
+          aria-haspopup="true"
+          onClick={() => setOpen((v) => !v)}
+          className="text-navy-700 transition-colors hover:text-navy-950"
+        >
+          <ChevronDown
+            className={cn("size-3.5 transition-transform", open && "rotate-180")}
+          />
+        </button>
+      </div>
 
       {open && (
         <div className="absolute left-0 top-full z-50 w-[268px] pt-3">
@@ -188,6 +180,13 @@ function ToolsMenu() {
                 </span>
               </Link>
             ))}
+            <Link
+              href="/narzedzia"
+              onClick={() => setOpen(false)}
+              className="mt-1 block rounded-lg border-t border-navy-100 px-3 py-2.5 text-[13.5px] font-medium text-navy-800 hover:bg-navy-50"
+            >
+              Zobacz wszystkie narzędzia
+            </Link>
           </div>
         </div>
       )}
