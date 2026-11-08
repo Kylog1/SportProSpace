@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { TOOLS } from "@/lib/tools";
 
 const navItems = [
   { href: "/#doradztwo", label: "Doradztwo" },
@@ -29,7 +28,12 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
-          <ToolsMenu />
+          <Link
+            href="/narzedzia"
+            className="text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
+          >
+            Narzędzia
+          </Link>
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -64,29 +68,8 @@ export function Navbar() {
         )}
       >
         <div className="container flex flex-col gap-1 py-4">
-          <Link
-            href="/narzedzia"
-            onClick={() => setOpen(false)}
-            className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground hover:text-navy-950"
-          >
-            Narzędzia: zobacz wszystkie
-          </Link>
-          {TOOLS.map((tool) => (
-            <Link
-              key={tool.href}
-              href={tool.href}
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2 text-[15px] font-medium text-navy-800 hover:bg-navy-50"
-            >
-              {tool.label}
-              <span className="block text-[12.5px] font-normal text-muted-foreground">
-                {tool.note}
-              </span>
-            </Link>
-          ))}
-
-          <div className="mt-2 border-t border-navy-100 pt-2">
-            {navItems.map((item) => (
+          <div>
+            {[{ href: "/narzedzia", label: "Narzędzia" }, ...navItems].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -108,88 +91,5 @@ export function Navbar() {
         </div>
       </div>
     </header>
-  );
-}
-
-function ToolsMenu() {
-  const [open, setOpen] = useState(false);
-  const wrap = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-
-    function onPointerDown(e: MouseEvent | TouchEvent) {
-      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
-    }
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-
-    document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
-
-  return (
-    <div
-      ref={wrap}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <div className="inline-flex items-center gap-1">
-        <Link
-          href="/narzedzia"
-          onClick={() => setOpen(false)}
-          className="text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
-        >
-          Narzędzia
-        </Link>
-        <button
-          type="button"
-          aria-label="Pokaż listę narzędzi"
-          aria-expanded={open}
-          aria-haspopup="true"
-          onClick={() => setOpen((v) => !v)}
-          className="text-navy-700 transition-colors hover:text-navy-950"
-        >
-          <ChevronDown
-            className={cn("size-3.5 transition-transform", open && "rotate-180")}
-          />
-        </button>
-      </div>
-
-      {open && (
-        <div className="absolute left-0 top-full z-50 w-[268px] pt-3">
-          <div className="overflow-hidden rounded-xl border border-navy-100 bg-white p-1.5 shadow-[0_12px_32px_-18px_rgba(15,23,42,0.35)]">
-            {TOOLS.map((tool) => (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-navy-50"
-              >
-                <span className="block text-[14px] font-medium text-navy-950">
-                  {tool.label}
-                </span>
-                <span className="block text-[12.5px] text-muted-foreground">
-                  {tool.note}
-                </span>
-              </Link>
-            ))}
-            <Link
-              href="/narzedzia"
-              onClick={() => setOpen(false)}
-              className="mt-1 block rounded-lg border-t border-navy-100 px-3 py-2.5 text-[13.5px] font-medium text-navy-800 hover:bg-navy-50"
-            >
-              Zobacz wszystkie narzędzia
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
   );
 }
