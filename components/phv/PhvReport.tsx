@@ -90,7 +90,7 @@ export function PhvReport({ r, onEdit }: { r: PhvResult; onEdit: () => void }) {
         </div>
         <div className="flex flex-wrap gap-2 print:hidden">
           <Button onClick={() => window.print()}>
-            <Printer className="mr-2 h-4 w-4" aria-hidden /> Zapisz PDF / drukuj
+            <Printer className="mr-2 h-4 w-4" aria-hidden /> Zapisz PDF
           </Button>
           <Button variant="outline" onClick={onEdit}>
             <PencilLine className="mr-2 h-4 w-4" aria-hidden /> Zmień dane
