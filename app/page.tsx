@@ -6,6 +6,7 @@ import { SelfAuditPromo } from "@/components/sections/SelfAuditPromo";
 import { CommercialScorePromo } from "@/components/sections/CommercialScorePromo";
 import { About } from "@/components/sections/About";
 import { Doradztwo } from "@/components/sections/Doradztwo";
+import AgentsPitch from "@/components/sections/AgentsPitch";
 import { CTASection } from "@/components/sections/CTASection";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
@@ -31,6 +32,12 @@ export default function Page() {
         </ErrorBoundary>
         <ErrorBoundary>
           <Doradztwo />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AgentsPitch
+            ctaHref="https://calendly.com/grzyb-krzysiek/new-meeting"
+            auditHref="/self-assessment"
+          />
         </ErrorBoundary>
         <ErrorBoundary>
           <CTASection />
