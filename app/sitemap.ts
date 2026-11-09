@@ -3,6 +3,9 @@ import { articles } from "@/lib/articles";
 
 const BASE_URL = "https://sportspacepro.pl";
 
+// Static pages carry no lastModified on purpose: `new Date()` would stamp every
+// page with the build time on each deploy, which tells crawlers that all pages
+// changed when they did not. Articles keep their real dates.
 export default function sitemap(): MetadataRoute.Sitemap {
   const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${BASE_URL}/artykuly/${article.slug}`,
@@ -14,92 +17,77 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/self-assessment`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/self-assessment/football`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/self-assessment/fitness`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/self-assessment/tennis-padel`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/commercial-score`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/commercial-score/zawodnik`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/commercial-score/organizacja`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/brief-sponsoringowy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/narzedzia`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/kalkulator-phv`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/artykuly`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/partnerzy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     ...articleEntries,
     {
       url: `${BASE_URL}/polityka-prywatnosci`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/regulamin`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,
     },

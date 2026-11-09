@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -8,6 +9,12 @@ import { Doradztwo } from "@/components/sections/Doradztwo";
 import AgentsPitch from "@/components/sections/AgentsPitch";
 import { CTASection } from "@/components/sections/CTASection";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+// Title and description come from the root layout; only the canonical URL is
+// set here, so the home page has one.
+export const metadata: Metadata = {
+  alternates: { canonical: "https://sportspacepro.pl" },
+};
 
 export default function Page() {
   return (
