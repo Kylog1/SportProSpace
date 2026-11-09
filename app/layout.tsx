@@ -42,7 +42,7 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: "Sport Space Pro - Growth & Experience Intelligence dla sportu",
   description:
-    "Pomagamy klubom i organizacjom sportowym (fitness, tenis i padel, golf, pływanie, piłka nożna) zrozumieć doświadczenie klientów i wykorzystać potencjał wzrostu. Badania, analiza danych, Self-Audit i automatyzacje AI.",
+    "Pomagamy klubom i organizacjom sportowym (fitness, tenis i padel, piłka nożna) zrozumieć doświadczenie klientów i wykorzystać potencjał wzrostu. Badania, analiza danych, Self-Audit i automatyzacje AI.",
   metadataBase: new URL("https://sportspacepro.pl"),
   verification: {
     google: "NEbz7XGlE1Uz6qw7iAjD_JceHCQjkbRssrfN_5YIMN4",

@@ -3,7 +3,6 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { JakDzialamy } from "@/components/sections/JakDzialamy";
 import { SelfAuditPromo } from "@/components/sections/SelfAuditPromo";
-import { CommercialScorePromo } from "@/components/sections/CommercialScorePromo";
 import { About } from "@/components/sections/About";
 import { Doradztwo } from "@/components/sections/Doradztwo";
 import AgentsPitch from "@/components/sections/AgentsPitch";
@@ -24,9 +23,10 @@ export default function Page() {
         <ErrorBoundary>
           <SelfAuditPromo />
         </ErrorBoundary>
-        <ErrorBoundary>
-          <CommercialScorePromo />
-        </ErrorBoundary>
+        {/* The "Nowe narzędzie" section (CommercialScorePromo) is hidden on
+            request. To bring it back, import it from
+            "@/components/sections/CommercialScorePromo" and render it here,
+            between SelfAuditPromo and About. */}
         <ErrorBoundary>
           <About />
         </ErrorBoundary>

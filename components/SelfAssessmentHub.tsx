@@ -7,9 +7,6 @@ import {
   CircleDot,
   Dumbbell,
   Target,
-  Flag,
-  Waves,
-  Users,
   MoreHorizontal,
   ShieldCheck,
   CheckCircle2,
@@ -26,9 +23,6 @@ const SPORT_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   football: CircleDot,
   fitness: Dumbbell,
   "tennis-padel": Target,
-  golf: Flag,
-  swimming: Waves,
-  "multi-sport": Users,
   other: MoreHorizontal,
 };
 

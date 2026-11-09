@@ -16,7 +16,7 @@ import {
 // header"): one state, no change on scroll. Menu order is unchanged.
 const navItems = [
   { href: "/narzedzia", label: "Narzędzia" },
-  { href: "/#doradztwo", label: "Doradztwo" },
+  { href: "/#doradztwo", label: "Oferta" },
   { href: "/#about", label: "O nas" },
   { href: "/#jak-dzialamy", label: "Jak działamy" },
   { href: "/artykuly", label: "Artykuły" },

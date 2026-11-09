@@ -22,7 +22,7 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Dla jakich dyscyplin jest dostępny Self-Audit?",
     answer:
-      "Obecnie dla piłki nożnej, fitness i siłowni oraz tenisa i padla. Golf, pływanie i kluby wielosekcyjne są w przygotowaniu - możesz zostać powiadomiony, gdy będą gotowe.",
+      "Obecnie dla piłki nożnej, fitness i siłowni oraz tenisa i padla.",
   },
   {
     question: "Czym różni się Self-Audit od Commercial Score?",
@@ -34,7 +34,7 @@ const FAQ_ITEMS: FaqItem[] = [
 export const metadata: Metadata = {
   title: "Self-Audit dla klubów i organizacji sportowych - Sport Space Pro",
   description:
-    "Sprawdź potencjał swojego klubu. Self-Audit dopasowany do dyscypliny: piłka nożna, fitness, tenis i padel, golf, pływanie i inne organizacje sportowe.",
+    "Sprawdź potencjał swojego klubu. Self-Audit dopasowany do dyscypliny: piłka nożna, fitness oraz tenis i padel.",
   alternates: {
     canonical: "https://sportspacepro.pl/self-assessment",
   },

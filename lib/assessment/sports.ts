@@ -35,22 +35,4 @@ export const SPORTS: SportEntry[] = [
     status: "available",
     href: "/self-assessment/tennis-padel",
   },
-  {
-    id: "golf",
-    label: "Golf",
-    note: "Kluby i akademie golfowe",
-    status: "coming-soon",
-  },
-  {
-    id: "swimming",
-    label: "Pływanie",
-    note: "Akademie i kluby pływackie",
-    status: "coming-soon",
-  },
-  {
-    id: "multi-sport",
-    label: "Kluby wielosekcyjne",
-    note: "Organizacje z wieloma dyscyplinami",
-    status: "coming-soon",
-  },
 ];

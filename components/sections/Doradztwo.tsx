@@ -72,7 +72,7 @@ export function Doradztwo() {
       <div className="container py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
-            Doradztwo
+            Oferta
           </span>
           <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
             Decyzje na podstawie liczb, nie przeczucia.

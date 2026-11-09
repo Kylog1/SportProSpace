@@ -4,9 +4,9 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-navy-100 bg-white">
-      <div className="container py-14">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
+      <div className="container py-10 md:py-14">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4 md:gap-10">
+          <div className="col-span-2">
             <div className="flex items-center">
               <span className="text-[17px] font-semibold tracking-tight text-navy-950">
                 Sport Space<span className="text-navy-800"> Pro</span>
@@ -21,19 +21,11 @@ export function Footer() {
 
           <div>
             <h4 className="text-[13px] font-semibold uppercase tracking-wider text-navy-950">
-              Platforma
+              Narzędzia
             </h4>
+            {/* The site sections (Oferta, Jak działamy, Artykuły, Partnerzy...)
+                are in the header menu, so the footer keeps only the tools. */}
             <ul className="mt-4 space-y-2.5 text-sm text-navy-700">
-              <li>
-                <Link href="/#jak-dzialamy" className="hover:text-navy-950">
-                  Jak działamy
-                </Link>
-              </li>
-              <li>
-                <Link href="/#dla-kogo" className="hover:text-navy-950">
-                  Dla kogo
-                </Link>
-              </li>
               <li>
                 <Link href="/self-assessment" className="hover:text-navy-950">
                   Self-Audit
@@ -52,16 +44,6 @@ export function Footer() {
               <li>
                 <Link href="/kalkulator-phv" className="hover:text-navy-950">
                   Kalkulator PHV
-                </Link>
-              </li>
-              <li>
-                <Link href="/artykuly" className="hover:text-navy-950">
-                  Artykuły
-                </Link>
-              </li>
-              <li>
-                <Link href="/partnerzy" className="hover:text-navy-950">
-                  Partnerzy
                 </Link>
               </li>
             </ul>
