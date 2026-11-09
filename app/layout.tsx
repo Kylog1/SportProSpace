@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Sport Space Pro - Growth & Experience Intelligence dla sportu",
   description:
-    "Pomagamy klubom i organizacjom sportowym (fitness, tenis i padel, golf, pływanie, piłka nożna) zrozumieć doświadczenie klientów i wykorzystać potencjał wzrostu. Self-Audit, badania i analiza danych.",
+    "Pomagamy klubom i organizacjom sportowym (fitness, tenis i padel, golf, pływanie, piłka nożna) zrozumieć doświadczenie klientów i wykorzystać potencjał wzrostu. Badania, analiza danych, Self-Audit i automatyzacje AI.",
   metadataBase: new URL("https://sportspacepro.pl"),
   verification: {
     google: "NEbz7XGlE1Uz6qw7iAjD_JceHCQjkbRssrfN_5YIMN4",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sport Space Pro - Growth & Experience Intelligence dla sportu",
     description:
-      "Lepsze doświadczenia. Większe zaangażowanie. Realny wzrost. Badania i Self-Audit dla klubów i organizacji sportowych różnych dyscyplin.",
+      "Lepsze doświadczenia. Większe zaangażowanie. Realny wzrost. Badania, Self-Audit i automatyzacje AI dla klubów i organizacji sportowych różnych dyscyplin.",
     type: "website",
   },
 };

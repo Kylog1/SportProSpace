@@ -14,8 +14,8 @@ export function Footer() {
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Growth &amp; Experience Intelligence dla klubów i organizacji
-              sportowych. Badania, analiza danych i Self-Audit dopasowane do
-              Twojej dyscypliny.
+              sportowych. Badania, analiza danych i automatyzacje AI dopasowane
+              do Twojej dyscypliny.
             </p>
           </div>
 

@@ -1,5 +1,4 @@
-import { cn } from "@/lib/utils";
-import { LineChart, Users, Trophy, FileSearch, Workflow } from "lucide-react";
+import { LineChart, Users, Trophy, Workflow } from "lucide-react";
 
 const pillars = [
   {
@@ -11,11 +10,6 @@ const pillars = [
     icon: Trophy,
     title: "Świat sportu od środka",
     desc: "Praca z klubami, akademiami i organizacjami sportowymi różnych dyscyplin. Rozumiemy specyfikę środowiska i jego interesariuszy.",
-  },
-  {
-    icon: FileSearch,
-    title: "Metodologia naukowa",
-    desc: "Łączymy badania ilościowe i jakościowe: ankiety segmentowe, IDI, analiza statystyczna, walidacja wewnętrzna.",
   },
   {
     icon: Users,
@@ -63,13 +57,10 @@ export function About() {
 
           <div className="md:col-span-1 lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2">
-              {pillars.map(({ icon: Icon, title, desc }, i) => (
+              {pillars.map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className={cn(
-                    "rounded-xl border border-navy-100 bg-white p-4 sm:p-6",
-                    i === pillars.length - 1 && "sm:col-span-2"
-                  )}
+                  className="rounded-xl border border-navy-100 bg-white p-4 sm:p-6"
                 >
                   <div className="flex size-10 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800">
                     <Icon className="size-5" />
