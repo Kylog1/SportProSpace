@@ -3,7 +3,7 @@ import {
   ArrowRight,
   Handshake,
   Building2,
-  LineChart,
+  Workflow,
   type LucideIcon,
 } from "lucide-react";
 
@@ -52,15 +52,16 @@ const offers: {
     ],
   },
   {
-    icon: LineChart,
-    name: "Dla Inwestorów",
+    icon: Workflow,
+    name: "Usługi AI dla organizacji i klubów sportowych",
     value:
-      "Wspieramy ocenę i due diligence aktywów sportowych na bazie realnych danych operacyjnych, nie deklaracji zarządu.",
+      "Budujemy ekosystem automatyzacji, który wspiera każdy dział klubu w codziennej pracy. Podejście AI i mobile first.",
     services: [
-      "Due diligence oparte na danych o klubie, członkach i kibicach",
-      "Analiza rynku i benchmarking konkurencyjny",
-      "Ocena potencjału wzrostu przychodów (retencja, sponsoring)",
-      "Wsparcie analityczne przy wycenie aktywów sportowych",
+      "Komunikacja z członkami, rodzicami i partnerami",
+      "Monitoring i analiza konkurencji",
+      "Proces sprzedaży i marketingu wspierany przez AI",
+      "Automatyzacja powtarzalnych zadań administracyjnych",
+      "Rozwiązania mobilne dla trenerów, rodziców i zarządu",
     ],
   },
 ];
@@ -77,9 +78,9 @@ export function Doradztwo() {
             Decyzje na podstawie liczb, nie przeczucia.
           </h2>
           <p className="mt-4 text-balance text-[16px] leading-relaxed text-muted-foreground">
-            Sport Space Pro łączy badania customer experience z twardymi danymi,
-            żeby kluby, operatorzy i inwestorzy podejmowali decyzje na podstawie
-            liczb, a nie przeczucia.
+            Sport Space Pro łączy badania customer experience z twardymi danymi
+            i automatyzacją, żeby kluby, operatorzy i organizacje sportowe
+            podejmowali decyzje na podstawie liczb, a nie przeczucia.
           </p>
         </div>
 
