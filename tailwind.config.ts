@@ -64,6 +64,22 @@ const config: Config = {
           900: "#172554",
           950: "#0b1736",
         },
+        // Dark hero + header palette. Namespaced on purpose: navy-*, primary,
+        // accent and the shadcn tokens stay untouched. Data colours carry
+        // meaning (see DESIGN.md, "Hero and header"): do not use them as
+        // decoration outside the hero.
+        space: {
+          bg: "#040b1c", // the night sky: hero and header background
+          glow: "#0a1e4a",
+          ink: "#eaf1ff", // text on the dark surface
+          "ink-2": "#9db0d3", // secondary text on the dark surface
+          blue: "#0b5bd3", // primary button fill
+          "blue-hi": "#3b8cff", // button border, third headline sentence
+          cyan: "#7fe6ff", // Commercial Score, LED boards, padel/tennis court
+          coral: "#ff7a59", // detractors, churn, exits
+          promoter: "#9cc8ff", // promoters, NPS
+          passive: "#4b6ba6", // passives
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,6 +89,20 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // Hero + header only. `font-display` stays an alias of Inter.
+        hero: ["var(--font-archivo)", '"Arial Black"', "Arial", "sans-serif"],
+        hud: [
+          "var(--font-martian)",
+          "ui-monospace",
+          '"Cascadia Mono"',
+          "Consolas",
+          "monospace",
+        ],
+        "hero-body": ["var(--font-instrument)", "system-ui", '"Segoe UI"', "sans-serif"],
+      },
+      spacing: {
+        // Side gutter shared by the header and the hero (see --hero-gutter).
+        gutter: "var(--hero-gutter)",
       },
       letterSpacing: {
         "tightest": "-0.04em",

@@ -526,7 +526,7 @@ export default function AgentsPitch({
             </div>
 
             {/* legenda */}
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[11px] text-slate-500">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500">
               {(Object.keys(PILLARS) as PillarId[]).map((p) => (
                 <span key={p} className="inline-flex items-center gap-1.5">
                   <span className={`h-1.5 w-4 rounded-full ${PILLARS[p].dot}`} aria-hidden />
@@ -569,7 +569,7 @@ export default function AgentsPitch({
             </ul>
 
             <div className="mt-5 rounded-lg bg-navy-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-navy-800">
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-navy-800">
                 Gra na danych
               </p>
               <p className="mt-1 text-sm text-slate-700">{selected.data}</p>
@@ -581,7 +581,7 @@ export default function AgentsPitch({
               </span>
               <span className="text-sm leading-snug text-slate-600">{selected.stat.label}</span>
             </div>
-            <p className="mt-1 text-[11px] text-slate-400">Dane przykładowe</p>
+            <p className="mt-1 text-xs text-slate-600">Dane przykładowe</p>
 
             {pillar && (
               <div className="mt-5 border-t border-navy-100 pt-5">

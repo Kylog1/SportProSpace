@@ -81,7 +81,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+48000000000" className="hover:text-navy-950">
+                <a href="tel:+48532413777" className="hover:text-navy-950">
                   +48 532 413 777
                 </a>
               </li>

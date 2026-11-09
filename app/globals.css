@@ -27,6 +27,9 @@
     --ring: 224 71% 33%;
 
     --radius: 0.625rem;
+
+    /* Side gutter of the dark header and the hero (72px at 1440). */
+    --hero-gutter: clamp(20px, 5vw, 72px);
   }
 
   * {
@@ -40,6 +43,28 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "cv11";
+  }
+}
+
+@layer components {
+  /* Night-sky background of the hero. Sits under the canvas so the section is
+     never blank while the canvas draws. */
+  .hero-glow {
+    background: radial-gradient(120% 90% at 78% 40%, #0a1e4a 0%, #040b1c 62%);
+  }
+
+  /* Darkens the left side behind the headline so the dots never lower its
+     contrast. Covers the top 640px of the hero only. */
+  .hero-scrim {
+    height: 640px;
+    background: linear-gradient(
+      90deg,
+      rgb(4 11 28 / 0.97) 0%,
+      rgb(4 11 28 / 0.82) 30%,
+      rgb(4 11 28 / 0) 58%
+    );
+    -webkit-mask-image: linear-gradient(black 72%, transparent);
+    mask-image: linear-gradient(black 72%, transparent);
   }
 }
 

@@ -14,6 +14,16 @@ colors:
   muted-slate: "#64748b"
   neutral-border: "#e5e7eb"
   focus-ring: "hsl(224 71% 33%)"
+  space-bg: "#040b1c"
+  space-glow: "#0a1e4a"
+  space-ink: "#eaf1ff"
+  space-ink-2: "#9db0d3"
+  space-blue: "#0b5bd3"
+  space-blue-hi: "#3b8cff"
+  space-cyan: "#7fe6ff"
+  space-coral: "#ff7a59"
+  space-promoter: "#9cc8ff"
+  space-passive: "#4b6ba6"
 typography:
   display:
     fontFamily: "Inter, system-ui, sans-serif"
@@ -135,6 +145,8 @@ components:
 
 # Design System: Sport Space Pro
 
+> **Scope.** This file describes the site as a whole, which is light, single-hue and flat. The **hero and the header** are a deliberate exception with their own visual language (dark, square, data-coloured), documented in [Hero and header](#hero-and-header). The named rules marked *(rest of the site)* below do not apply inside the hero and the header, and nowhere else.
+
 ## Overview
 
 **Creative North Star: "The Instrument Panel on White Paper"**
@@ -174,11 +186,11 @@ A single navy ramp doing every job — brand, emphasis, border, background tint 
 
 ### Named Rules
 
-**The Single-Hue Rule.** On marketing surfaces there is exactly one hue: navy. Every landing section ships navy plus white plus slate grey and nothing else. A new section that introduces a brand colour is off-system.
+**The Single-Hue Rule** *(rest of the site; the hero and header use the data colours, see below).* On marketing surfaces there is exactly one hue: navy. Every landing section ships navy plus white plus slate grey and nothing else. A new section that introduces a brand colour is off-system.
 
 **The Empty Accent Slot Rule.** `--accent` is set to the same value as `--primary` (`224 71% 33%`). There is no accent colour in this system — the slot exists and is filled with the primary. Do not build a component that relies on `accent` reading differently from `primary`, and do not invent a value for it without an explicit palette decision.
 
-**The Status-Only Colour Rule.** Emerald, amber, red/rose and violet appear only as raw Tailwind defaults in four files — the self-assessment scoring bands, the article-card category chips, the error boundary, and the contact form's success/error states. They are status signals, not palette members, and they are not tokenised. Keep them out of persuasive surfaces; if a status colour is needed on a new surface, it is being borrowed, not inherited.
+**The Status-Only Colour Rule** *(rest of the site; in the hero coral is a data colour for detractors, churn and exits, not a status).* Emerald, amber, red/rose and violet appear only as raw Tailwind defaults in four files — the self-assessment scoring bands, the article-card category chips, the error boundary, and the contact form's success/error states. They are status signals, not palette members, and they are not tokenised. Keep them out of persuasive surfaces; if a status colour is needed on a new surface, it is being borrowed, not inherited.
 
 ## Typography
 
@@ -198,11 +210,11 @@ A single navy ramp doing every job — brand, emphasis, border, background tint 
 
 ### Named Rules
 
-**The One Typeface Rule.** Inter is the whole type system. `font-display` is an alias of `font-sans`; treating it as a display face is a no-op. Any pairing would be a new decision, not an application of this one.
+**The One Typeface Rule** *(rest of the site; the hero and header add Archivo, Martian Mono and Instrument Sans).* Inter is the whole type system. `font-display` is an alias of `font-sans`; treating it as a display face is a no-op. Any pairing would be a new decision, not an application of this one.
 
 **The Tighten-As-You-Grow Rule.** Tracking tightens as type scales: normal at body, `-0.025em` at headline and title, `-0.04em` at the hero. Large type is never set at default tracking.
 
-**The Single Heading Weight Rule.** All headings are 600. There is no 700 and no light heading anywhere in the build; contrast between levels comes from size, not weight.
+**The Single Heading Weight Rule** *(rest of the site; the hero headline is 800).* All headings are 600. There is no 700 and no light heading anywhere in the build; contrast between levels comes from size, not weight.
 
 ## Layout
 
@@ -235,7 +247,7 @@ Atmospheric depth is handled separately from shadow: a `56px` graph-paper grid (
 
 ### Named Rules
 
-**The Flat-At-Rest Rule.** Surfaces carry a border, not a shadow, until they are hovered. The exception is the hero instrument, which is elevated by design.
+**The Flat-At-Rest Rule** *(rest of the site; hero elements are square and react with a hard shadow or glow on hover).* Surfaces carry a border, not a shadow, until they are hovered. The exception is the hero instrument, which is elevated by design.
 
 **The Long-Throw Rule.** Shadows are large-blur, negative-spread, low-opacity and slate-tinted (`rgba(15,23,42,α)`). No tight shadow, no black shadow, no offset in x.
 
@@ -251,7 +263,7 @@ Recurring silhouettes: the framed instrument (a 8px white padding frame around a
 
 **The Card Recipe Rule.** The house card is `border-radius: 12px` + `1px solid #dbe5f1` + `background: #fff` + 16px padding rising to 28px at `md`. It repeats in nearly every section, and a new card should be this card before it is anything else.
 
-**The Pill-or-Rectangle Rule.** Corners are either the radius ladder (6/8/12/16px) or fully round. Nothing in between, and nothing square.
+**The Pill-or-Rectangle Rule** *(rest of the site; hero and header elements have 0px corners).* Corners are either the radius ladder (6/8/12/16px) or fully round. Nothing in between, and nothing square.
 
 ## Components
 
@@ -280,10 +292,68 @@ Recurring silhouettes: the framed instrument (a 8px white padding frame around a
 The only form fields in the build live on the dark CTA panel, so the input style is inverted by default: 8px radius, `rgba(255,255,255,0.06)` fill, `rgba(255,255,255,0.15)` border, white 16px text, navy-200 placeholder at 50%. Focus brightens the fill to 10%, the border to 40%, and adds a 2px `rgba(255,255,255,0.20)` ring with no outline. Labels sit above at 12px/500 in navy-100 at 85%. Errors are announced as a `role="alert"` line in rose-200 beneath the fields, not as a border state. The submit button inverts the primary: white fill, Midnight Navy label.
 
 ### Navigation
-Sticky 64px header, white at 70–80% with `backdrop-blur-md` and a Hairline Navy underline. Wordmark is 17px/600 Midnight Navy with the second word in Signal Navy. Links are 14px/500 in navy-700, moving to Midnight Navy on hover, spaced 32px apart. The right cluster is ghost + primary at `sm` size. Below `md` the links collapse behind a 40px icon toggle into a white panel of full-width 15px rows with a Mist Navy hover wash, closing with a stacked outline + primary pair.
+The header is dark on every page and is described in [Hero and header](#hero-and-header). It is sticky and 64px tall; below `lg` the links collapse behind an icon toggle into a dark panel of full-width rows, closing with the primary button. (Before the hero redesign it was a white 70-80% bar with `backdrop-blur-md`.)
 
-### The Dashboard Instrument (signature)
-The hero's right column is a mockup report, and it is the system's signature component. A 16px-radius white frame with 8px padding and the Instrument shadow holds a 12px-radius inner panel bordered in Hairline Navy and washed white → Mist Navy/40%. Inside: a window bar (three 8px Edge Navy dots, a centred 11px report title, a right-aligned respondent count) over a hairline; a three-up row of stat tiles (10px uppercase label, 20px/600 Midnight Navy value, a small navy-700 delta); then two panels of horizontal meters — 6px pill tracks in Mist Navy with fills in Haze Navy for context series and Signal Navy for the emphasised series. It is the one place the system renders data, and its two-tone fill is how the palette encodes emphasis without a second colour. Per PRODUCT.md, the figures it shows are illustrative and must stay legible as such.
+### The Dashboard Instrument (signature, former hero)
+*The hero no longer uses this component (replaced by the "Trybuny" visualization, see Hero and header). Kept here as a record of the light-surface instrument.*
+
+The hero's right column was a mockup report, and it is the system's signature component. A 16px-radius white frame with 8px padding and the Instrument shadow holds a 12px-radius inner panel bordered in Hairline Navy and washed white → Mist Navy/40%. Inside: a window bar (three 8px Edge Navy dots, a centred 11px report title, a right-aligned respondent count) over a hairline; a three-up row of stat tiles (10px uppercase label, 20px/600 Midnight Navy value, a small navy-700 delta); then two panels of horizontal meters — 6px pill tracks in Mist Navy with fills in Haze Navy for context series and Signal Navy for the emphasised series. It is the one place the system renders data, and its two-tone fill is how the palette encodes emphasis without a second colour. Per PRODUCT.md, the figures it shows are illustrative and must stay legible as such.
+
+## Hero and header
+
+The hero ("Trybuny") and the header are a separate visual language, chosen on purpose: a dark night-sky surface, square elements and a set of **data colours**. It is scoped to the hero and the header. Nothing else on the site borrows from it, and the rules listed in the scope note at the top are narrowed to the rest of the site, not removed. The rules that the hero does not change still apply to it: no new uppercase eyebrows above headings, the section rhythm, shadow tint and direction, and the terminology in PRODUCT.md.
+
+### Tokens (`space-*` in Tailwind)
+
+| Token | Hex | Use |
+|---|---|---|
+| `space-bg` | `#040b1c` | hero and header background |
+| `space-glow` | `#0a1e4a` | background glow (`.hero-glow`) |
+| `space-ink` | `#eaf1ff` | text on the dark surface |
+| `space-ink-2` | `#9db0d3` | secondary text (about 8:1 on `space-bg`) |
+| `space-blue` | `#0b5bd3` | primary button fill |
+| `space-blue-hi` | `#3b8cff` | button border, third headline sentence, "Pro" in the wordmark |
+| `space-cyan` | `#7fe6ff` | Commercial Score, LED boards, padel/tennis court |
+| `space-coral` | `#ff7a59` | detractors, churn, exits |
+| `space-promoter` | `#9cc8ff` | promoters, NPS |
+| `space-passive` | `#4b6ba6` | passives |
+
+Tokens are namespaced so `navy-*`, `primary`, `accent` and the shadcn tokens are untouched. `--hero-gutter` (`clamp(20px, 5vw, 72px)`) is the side gutter shared by the header and the hero.
+
+### Typography
+
+- **Headline:** Archivo 800, `font-stretch: 118%`, `clamp(1.75rem, 1.1rem + 2.3vw, 3.25rem)`, line-height 1.04, tracking -0.03em. Each of the three sentences sits on its own line without wrapping from `lg`; below that it may wrap, and on phones the block reserves five lines so a late font load does not shift the page.
+- **Labels, buttons, chips, legend:** Martian Mono, 12-13px, uppercase for labels, tracking 0.1-0.16em. Nothing in the hero is below 12px.
+- **Sentence under the headline:** Instrument Sans, 17-18px, `space-ink-2`.
+- **Big numbers:** Archivo 800 at 118% width, 40px (32px below `lg`).
+- The wordmark is Archivo 800 at 125% width, uppercase, 0.12em tracking.
+- Fonts come from `next/font/google` (latin + latin-ext) and are exposed as `font-hero`, `font-hud` and `font-hero-body`. Inter and the `font-display` alias are unchanged and remain the font of the rest of the site.
+
+### Data colours
+
+The colours carry meaning and are not decoration. Promoters are light blue, passives are muted blue, detractors and churn are coral, Commercial Score is cyan. The top rule of each KPI cell uses the colour of the element it explains. Do not use `space-cyan`, `space-coral`, `space-promoter` or `space-passive` outside the hero, and do not use them for status.
+
+### The "Trybuny" visualization
+
+- A stadium seen from above, built from dots; every dot is one customer voice. Rings are rounded rectangles with aisles between the sectors.
+- Dot colours follow NPS and the shares come from percentiles, not chance, so they match the bar and the legend exactly (70 / 22 / 8). Detractors sit in a few clusters.
+- The pitch is football with a padel/tennis court on its centre (the net on the halfway line). No fitness, no discipline legend.
+- Cyan LED boards around the pitch are the Commercial Score; coral dots leaving the stands are churn.
+- Three chips tie the picture to the board: "TRYBUNY · NPS", "BANDY · COMMERCIAL SCORE", "WYJŚCIA · CHURN". No sector cards and no numbers that are not on the board.
+- Canvas 2D, drawn once per resize, DPR capped at 2, no animation. The stage is `aria-hidden`; the same information exists as text (KPI board as a `<dl>`, an sr-only description). Layout is "wide" from `lg` (full-hero background, bowl at the right edge, left side fading under a scrim) and "narrow" below (own block with soft top and bottom edges, bowl centred, no chips).
+
+### Buttons and the KPI board
+
+- Buttons are square (0px), 52px high (46px in the header), Martian Mono 13px uppercase. Primary: `space-blue` fill, 1.5px `space-blue-hi` border, white text. Secondary: 1.5px `space-ink`/50% border over `space-bg`/50%. Hover is a hard blue glow ring or a light wash, not a lift. Focus is a 2px `space-cyan` outline at 4px offset. They are local class strings (`components/sections/hero/space-button.ts`), not a variant of the shadcn Button.
+- The KPI board is a bordered `space-bg` panel with three cells (three rows below `lg`): NPS, Commercial Score, Churn, each with a 3px coloured top rule, a big number, a 5px bar and a note.
+
+### Header
+
+Dark (`space-bg`, 95% with blur), `space-ink` text, labels in Martian Mono uppercase at 0.12em (0.16em from 1440px), one square primary button ("Umów rozmowę", from 1280px). Sticky, one state, no change on scroll. The hamburger breakpoint stays at `lg`.
+
+### Illustrative data
+
+Every number in the hero is illustrative and must be labelled so, visibly: the legend ends with "dane przykładowe" in 12px `space-ink-2` and is never shortened to an asterisk. NPS = % promoters - % detractors and retention = 100 - churn, and all numbers live in `components/sections/hero/hero-sample-data.ts`, the only place to change them. Do not add client names, logos, quotes or a count of surveyed clubs. Per PRODUCT.md, use "Net Promoter Score" in running text; the hero keeps the short "NPS" on chips and labels (with the full name for assistive technology).
 
 ## Do's and Don'ts
 
@@ -294,10 +364,11 @@ The hero's right column is a mockup report, and it is the system's signature com
 - **Do** reserve Signal Navy for the element that carries the decision — one primary button, one emphasised phrase, one filled meter per view.
 - **Do** pair every hover lift with the Lift shadow and a 2px rise, and give every interactive element a `focus-visible` ring at 2px offset.
 - **Do** keep decorative texture to the established devices: the 56px ink grid at 4%, the masked fade, the blurred navy bloom.
-- **Do** invert to the navy gradient panel only where the page asks for commitment.
+- **Do** invert to the navy gradient panel only where the page asks for commitment (outside the hero, which is dark by design).
 - **Do** tighten tracking as type grows (`-0.025em` at headline, `-0.04em` at hero) and keep all headings at weight 600.
 
 ### Don't:
+- **Don't** carry the hero language (space-* colours, square corners, Martian Mono, weight 800) onto other sections. It belongs to the hero and the header.
 - **Don't** treat `accent` as a distinct colour — it is a duplicate of `primary` in the current tokens, and any component that assumes a second brand colour will render as if it has none.
 - **Don't** reach for `font-display` expecting a second typeface; it resolves to Inter like everything else.
 - **Don't** pull emerald, amber, red or violet into persuasive or navigational surfaces. They exist only as untokenised status signals in the assessment result, category chips, error boundary and form feedback.

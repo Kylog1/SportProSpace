@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Archivo,
+  Inter,
+  Instrument_Sans,
+  Martian_Mono,
+} from "next/font/google";
 // The /next entry point (not /react) groups page views by route pattern, so
 // article pages report as /artykuly/[slug] instead of one row per slug.
 import { Analytics } from "@vercel/analytics/next";
@@ -8,6 +13,29 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Hero + header only (see DESIGN.md, "Hero and header"). Inter stays the font
+// of the rest of the site. Archivo is used on its width axis (font-stretch) for
+// the headline and the big numbers, Martian Mono for labels, buttons and chips,
+// Instrument Sans for the sentence under the headline.
+const archivo = Archivo({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const martianMono = Martian_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-martian",
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-instrument",
   display: "swap",
 });
 
@@ -52,7 +80,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" className={inter.variable}>
+    <html
+      lang="pl"
+      className={`${inter.variable} ${archivo.variable} ${martianMono.variable} ${instrumentSans.variable}`}
+    >
       <body className="min-h-screen bg-background font-sans">
         <script
           type="application/ld+json"

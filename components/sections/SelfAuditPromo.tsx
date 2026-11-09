@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 // Carries the "Dla kogo" list that used to be its own section above. That
 // section was a second copy of the /self-assessment hub - same six disciplines,
@@ -9,14 +10,19 @@ import { Button } from "@/components/ui/button";
 // telling a visitor the audit is built for their sport before they click.
 //
 // The id is kept because the footer links to /#dla-kogo.
+//
+// The chips are links, so they look like links: an arrow, a hover state and a
+// visible focus ring. Disciplines without their own audit yet (status
+// "coming-soon" in lib/assessment/sports.ts) lead to the hub, where the visitor
+// can ask to be told when it is ready, and say so on the chip.
 
-const disciplines = [
+const disciplines: { label: string; href: string; soon?: true }[] = [
   { label: "Piłka nożna", href: "/self-assessment/football" },
   { label: "Fitness i wellness", href: "/self-assessment/fitness" },
   { label: "Tenis i padel", href: "/self-assessment/tennis-padel" },
-  { label: "Golf", href: "/self-assessment" },
-  { label: "Pływanie", href: "/self-assessment" },
-  { label: "Kluby wielosekcyjne", href: "/self-assessment" },
+  { label: "Golf", href: "/self-assessment", soon: true },
+  { label: "Pływanie", href: "/self-assessment", soon: true },
+  { label: "Kluby wielosekcyjne", href: "/self-assessment", soon: true },
 ];
 
 export function SelfAuditPromo() {
@@ -52,7 +58,7 @@ export function SelfAuditPromo() {
             </p>
 
             <div className="mt-8">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy-200/70">
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-200/70">
                 Dla kogo
               </div>
               <div className="mt-3 flex flex-wrap justify-center gap-2">
@@ -60,9 +66,24 @@ export function SelfAuditPromo() {
                   <Link
                     key={d.label}
                     href={d.href}
-                    className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-[13px] font-medium text-navy-100 transition-colors hover:border-white/50 hover:bg-white/10 hover:text-white"
+                    className={cn(
+                      "group inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+                      d.soon
+                        ? "border-dashed border-white/30 text-navy-100/80 hover:border-white/60 hover:bg-white/10 hover:text-white"
+                        : "border-white/20 bg-white/5 text-navy-100 hover:border-white/50 hover:bg-white/10 hover:text-white"
+                    )}
                   >
                     {d.label}
+                    {d.soon ? (
+                      <span className="text-xs font-normal text-navy-200/80 group-hover:text-white">
+                        wkrótce
+                      </span>
+                    ) : (
+                      <ArrowUpRight
+                        aria-hidden
+                        className="size-3.5 opacity-60 transition-opacity group-hover:opacity-100"
+                      />
+                    )}
                   </Link>
                 ))}
               </div>

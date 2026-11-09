@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { trackMeetingBooked } from "@/lib/analytics";
+import { CALENDLY_URL } from "@/lib/links";
 import { cn } from "@/lib/utils";
+import {
+  spaceButton,
+  spaceButtonPrimary,
+  spaceButtonSm,
+} from "@/components/sections/hero/space-button";
 
+// The header is dark on every page, in the hero's language (DESIGN.md, "Hero and
+// header"): one state, no change on scroll. Menu order is unchanged.
 const navItems = [
+  { href: "/narzedzia", label: "Narzędzia" },
   { href: "/#doradztwo", label: "Doradztwo" },
   { href: "/#about", label: "O nas" },
   { href: "/#jak-dzialamy", label: "Jak działamy" },
@@ -15,47 +24,70 @@ const navItems = [
   { href: "/#contact", label: "Kontakt" },
 ];
 
+const focusRing =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-space-cyan";
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy-100/80 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <span className="text-[17px] font-semibold tracking-tight text-navy-950">
-            Sport Space<span className="text-navy-800"> Pro</span>
-          </span>
+    <header className="sticky top-0 z-50 border-b border-space-ink-2/20 bg-space-bg/95 text-space-ink backdrop-blur-md">
+      <div className="flex h-16 items-center justify-between gap-6 px-gutter">
+        <Link
+          href="/"
+          className={cn(
+            "whitespace-nowrap font-hero text-[13px] font-extrabold uppercase tracking-[0.12em] [font-stretch:125%]",
+            focusRing
+          )}
+        >
+          Sport Space<span className="text-space-blue-hi"> Pro</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
-          <Link
-            href="/narzedzia"
-            className="text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
-          >
-            Narzędzia
-          </Link>
+        {/* Seven Martian Mono labels are wide, so the spacing steps up with the
+            viewport and the header button (also in the hero) joins at 1280px. */}
+        <nav
+          aria-label="Główna nawigacja"
+          className="hidden items-center gap-5 lg:flex min-[1280px]:gap-6 2xl:gap-8"
+        >
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[14px] font-medium text-navy-700 transition-colors hover:text-navy-950"
+              className={cn(
+                "whitespace-nowrap font-hud text-xs font-medium uppercase tracking-[0.12em] text-space-ink transition-colors hover:text-space-promoter 2xl:text-[12.5px] 2xl:tracking-[0.16em]",
+                focusRing
+              )}
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
-          <Button asChild size="sm">
-            <Link href="/commercial-score">Sprawdź swój potencjał</Link>
-          </Button>
+        <div className="hidden items-center min-[1280px]:flex">
+          <Link
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackMeetingBooked("navbar")}
+            className={cn(spaceButton, spaceButtonSm, spaceButtonPrimary)}
+          >
+            Umów rozmowę
+            <ArrowUpRight
+              aria-hidden="true"
+              className="size-3.5"
+              strokeWidth={2.2}
+            />
+          </Link>
         </div>
 
         <button
           aria-label="Menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-10 items-center justify-center rounded-md text-navy-900 hover:bg-navy-50 lg:hidden"
+          className={cn(
+            "inline-flex size-11 items-center justify-center text-space-ink hover:bg-space-ink/10 lg:hidden",
+            focusRing
+          )}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -63,30 +95,45 @@ export function Navbar() {
 
       <div
         className={cn(
-          "border-t border-navy-100 bg-white lg:hidden",
+          "border-t border-space-ink-2/20 bg-space-bg lg:hidden",
           open ? "block" : "hidden"
         )}
       >
-        <div className="container flex flex-col gap-1 py-4">
+        <div className="flex flex-col gap-1 px-gutter py-4">
           <div>
-            {[{ href: "/narzedzia", label: "Narzędzia" }, ...navItems].map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-[15px] font-medium text-navy-800 hover:bg-navy-50"
+                className={cn(
+                  "block px-3 py-3 font-hud text-[13px] font-medium uppercase tracking-[0.14em] text-space-ink hover:bg-space-ink/10",
+                  focusRing
+                )}
               >
                 {item.label}
               </Link>
             ))}
           </div>
 
-          <div className="mt-2 flex flex-col gap-2 px-3">
-            <Button asChild size="sm">
-              <Link href="/commercial-score" onClick={() => setOpen(false)}>
-                Sprawdź swój potencjał
-              </Link>
-            </Button>
+          <div className="mt-3 flex flex-col gap-2 px-3">
+            <Link
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackMeetingBooked("navbar");
+                setOpen(false);
+              }}
+              className={cn(spaceButton, spaceButtonPrimary, "w-full")}
+            >
+              Umów rozmowę
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-3.5"
+                strokeWidth={2.2}
+              />
+            </Link>
           </div>
         </div>
       </div>

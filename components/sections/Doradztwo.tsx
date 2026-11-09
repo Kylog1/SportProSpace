@@ -84,11 +84,14 @@ export function Doradztwo() {
           </p>
         </div>
 
+        {/* From md up each card is a subgrid over the same five rows (icon, title,
+            description, list, optional CTA), so a title that wraps to two lines
+            or a card with an extra box no longer shifts the others out of line. */}
         <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
           {offers.map(({ icon: Icon, name, value, services, cta }) => (
             <div
               key={name}
-              className="flex flex-col rounded-xl border border-navy-100 bg-white p-6"
+              className="flex flex-col rounded-xl border border-navy-100 bg-white p-6 md:row-span-5 md:grid md:grid-rows-subgrid md:gap-y-0"
             >
               <div className="flex size-10 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800">
                 <Icon className="size-5" />
@@ -113,7 +116,7 @@ export function Doradztwo() {
                 ))}
               </ul>
               {cta && (
-                <div className="mt-auto pt-5">
+                <div className="pt-5">
                   <div className="rounded-lg border border-navy-100 bg-navy-50/60 p-4">
                     <p className="text-[12.5px] leading-relaxed text-muted-foreground">
                       {cta.note}
