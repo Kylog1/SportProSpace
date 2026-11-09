@@ -1,4 +1,5 @@
-import { LineChart, Users, Trophy, FileSearch } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { LineChart, Users, Trophy, FileSearch, Workflow } from "lucide-react";
 
 const pillars = [
   {
@@ -21,6 +22,11 @@ const pillars = [
     title: "Niezależność",
     desc: "Działamy poza strukturami klubów. Anonimowość respondentów to fundament wiarygodności i jakości danych.",
   },
+  {
+    icon: Workflow,
+    title: "AI i mobile first",
+    desc: "Budujemy ekosystem automatyzacji dla działów klubu: komunikacji, analizy konkurencji, sprzedaży i marketingu. Rozwiązania projektujemy z myślą o telefonie.",
+  },
 ];
 
 
@@ -34,11 +40,13 @@ export function About() {
               O nas
             </span>
             <h2 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-navy-950 md:text-4xl">
-              Łączymy badania rynku ze światem klubów i organizacji sportowych.
+              Łączymy badania rynku i AI ze światem klubów i organizacji
+              sportowych.
             </h2>
             <p className="mt-5 text-[15.5px] leading-relaxed text-muted-foreground">
-              Sport Space Pro powstał na styku dwóch dyscyplin: badań
-              doświadczenia klienta i pracy operacyjnej w sporcie.
+              Sport Space Pro powstał na styku trzech obszarów: badań
+              doświadczenia klienta, pracy operacyjnej w sporcie i automatyzacji
+              opartej na AI.
             </p>
             <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
               Wiemy, jak projektować badania, których wyniki są używane,
@@ -46,15 +54,22 @@ export function About() {
               i menadżerów, a rekomendacje przekładają się na decyzje
               operacyjne i strategiczne.
             </p>
+            <p className="mt-4 text-[15.5px] leading-relaxed text-muted-foreground">
+              Tam, gdzie dane pokazują problem, pomagamy go rozwiązać: budujemy
+              automatyzacje, które odciążają ludzi w klubie w codziennej pracy.
+            </p>
 
           </div>
 
           <div className="md:col-span-1 lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2">
-              {pillars.map(({ icon: Icon, title, desc }) => (
+              {pillars.map(({ icon: Icon, title, desc }, i) => (
                 <div
                   key={title}
-                  className="rounded-xl border border-navy-100 bg-white p-4 sm:p-6"
+                  className={cn(
+                    "rounded-xl border border-navy-100 bg-white p-4 sm:p-6",
+                    i === pillars.length - 1 && "sm:col-span-2"
+                  )}
                 >
                   <div className="flex size-10 items-center justify-center rounded-lg border border-navy-100 bg-navy-50 text-navy-800">
                     <Icon className="size-5" />
