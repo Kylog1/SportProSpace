@@ -1,10 +1,29 @@
 import type { ReactNode } from "react";
-import { Printer, PencilLine, PlayCircle } from "lucide-react";
+import { FileText, PencilLine, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { bySex, cm, dec, dmy, nom, signed, type PhvResult } from "@/lib/phv/calc";
 import { DISCLAIMER, PHASES, PROTEIN_FOODS, SOURCES, VIDEOS, type VideoCode } from "@/lib/phv/content";
 import { PhvChart } from "./PhvChart";
+
+// Otwiera sam raport w czystej karcie. Wszystko dzieje się w przeglądarce:
+// kopiujemy to, co widać na ekranie, do nowego okna. Bez adresu z danymi i bez zapisu.
+function openReport() {
+  const root = document.getElementById("phv-report");
+  if (!root) return;
+  const win = window.open("", "_blank");
+  if (!win) return;
+  const clone = root.cloneNode(true) as HTMLElement;
+  clone.querySelectorAll("[data-report-hide]").forEach((el) => el.remove());
+  const styles = Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'))
+    .map((l) => `<link rel="stylesheet" href="${l.href}">`)
+    .join("");
+  win.document.open();
+  win.document.write(
+    `<!doctype html><html lang="pl" class="${document.documentElement.className}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Raport PHV</title>${styles}</head><body class="${document.body.className} bg-white"><main style="max-width:56rem;margin:0 auto;padding:1.5rem 1rem 3rem">${clone.outerHTML}</main></body></html>`,
+  );
+  win.document.close();
+}
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -88,9 +107,9 @@ export function PhvReport({ r, onEdit }: { r: PhvResult; onEdit: () => void }) {
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap gap-2 print:hidden">
-          <Button onClick={() => window.print()}>
-            <Printer className="mr-2 h-4 w-4" aria-hidden /> Zapisz PDF
+        <div className="flex flex-wrap gap-2 print:hidden" data-report-hide>
+          <Button onClick={openReport}>
+            <FileText className="mr-2 h-4 w-4" aria-hidden /> Otwórz raport
           </Button>
           <Button variant="outline" onClick={onEdit}>
             <PencilLine className="mr-2 h-4 w-4" aria-hidden /> Zmień dane
