@@ -12,6 +12,14 @@ import {
   buildFitnessUserEmail,
 } from "@/lib/assessment/fitness-emails";
 import { TENNIS_PADEL_CONFIG } from "@/lib/assessment/tennis-padel";
+import { TENNIS_PADEL_LOSS_CONFIG } from "@/lib/assessment/tennis-padel-loss-config";
+import {
+  computeTennisPadelLoss,
+  lossQuestionIds,
+  validateVenueInputs,
+  type AgentAnswers,
+  type LossResult,
+} from "@/lib/assessment/tennis-padel-loss";
 import { generateTennisPadelPDF } from "@/lib/assessment/tennis-padel-pdf";
 import {
   buildTennisPadelAdminEmail,
@@ -65,12 +73,37 @@ const FitnessSchema = z.object({
   answers: FitnessAnswersSchema,
 });
 
+// "Ile klub traci" block (Tennis & Padel only). Shape is checked here, ranges by
+// validateVenueInputs, which reads the same limits as the quiz. Optional so a
+// page opened before this block shipped can still submit; the report then
+// simply has no empty-hours section.
+const OccupancyChoiceSchema = z.enum(
+  TENNIS_PADEL_LOSS_CONFIG.occupancy.options.map((o) => o.id) as [
+    string,
+    ...string[],
+  ]
+);
+const VenueSchema = z.object({
+  courts: z.number(),
+  openHoursPerDay: z.number(),
+  peakHoursPerDay: z.number(),
+  offPeakPricePln: z.number(),
+  occupancyChoice: OccupancyChoiceSchema,
+});
+const AgentAnswersSchema = answersSchemaFor(
+  TENNIS_PADEL_LOSS_CONFIG.agents.map((a) => a.id)
+);
+
 // One shared audit for both disciplines, `sport` records which one the
 // visitor actually picked, so results can be analysed separately later.
+// `answers` holds only the scored questions; the new blocks travel in
+// `venue` and `agentAnswers` so they cannot leak into the 0-100 score.
 const TennisPadelSchema = z.object({
   ...BaseFields,
   sport: z.enum(["tennis", "padel"]),
   answers: TennisPadelAnswersSchema,
+  venue: VenueSchema.optional(),
+  agentAnswers: AgentAnswersSchema.optional(),
 });
 
 function safeFilename(s: string): string {
@@ -120,7 +153,8 @@ export async function POST(req: Request) {
   const questionIds = isFitness
     ? FITNESS_CONFIG.questions.map((q) => q.id)
     : isTennisPadel
-    ? TENNIS_PADEL_CONFIG.questions.map((q) => q.id)
+    ? // numbered as in the quiz: Blocks A and B come first
+      [...lossQuestionIds(), ...TENNIS_PADEL_CONFIG.questions.map((q) => q.id)]
     : QUESTIONS.map((q) => q.id);
 
   const parsed = isFitness
@@ -170,6 +204,31 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   }
 
+  // Tennis & Padel: recompute the empty-hours figures on the server from the raw
+  // inputs, whatever the browser calculated.
+  let loss: LossResult | undefined;
+  if ("venue" in parsed.data || "agentAnswers" in parsed.data) {
+    const venueRaw = "venue" in parsed.data ? parsed.data.venue : undefined;
+    const agentsRaw =
+      "agentAnswers" in parsed.data ? parsed.data.agentAnswers : undefined;
+    if (venueRaw || agentsRaw) {
+      if (!venueRaw || !agentsRaw) {
+        return NextResponse.json(
+          { error: "Niepełne dane o obiekcie. Wróć do ankiety i uzupełnij." },
+          { status: 400 }
+        );
+      }
+      const venueCheck = validateVenueInputs({
+        ...venueRaw,
+        occupancyChoice: venueRaw.occupancyChoice as LossResult["inputs"]["occupancyChoice"],
+      });
+      if (!venueCheck.ok) {
+        return NextResponse.json({ error: venueCheck.error }, { status: 400 });
+      }
+      loss = computeTennisPadelLoss(venueCheck.value, agentsRaw as AgentAnswers);
+    }
+  }
+
   // Score, report and emails are per-discipline. Football keeps its raw
   // 12-60 scale; Fitness and Tennis & Padel report a normalised 0-100 score.
   const scoreValue = isFitness
@@ -188,7 +247,7 @@ export async function POST(req: Request) {
     pdfBuffer = isFitness
       ? await generateFitnessPDF({ name, email, organization, answers })
       : isTennisPadel
-      ? await generateTennisPadelPDF({ name, email, organization, answers })
+      ? await generateTennisPadelPDF({ name, email, organization, answers, loss })
       : await generateAssessmentPDF({ name, email, organization, answers });
   } catch (err) {
     console.error("[submit-assessment] PDF generation failed:", err);
@@ -211,7 +270,7 @@ export async function POST(req: Request) {
   const userEmail = isFitness
     ? buildFitnessUserEmail({ name, organization, answers })
     : isTennisPadel
-    ? buildTennisPadelUserEmail({ name, organization, answers })
+    ? buildTennisPadelUserEmail({ name, organization, answers, loss })
     : buildUserEmail({ name, organization, answers });
 
   // (2) Admin notification, to hello@sportspacepro.pl
@@ -228,6 +287,7 @@ export async function POST(req: Request) {
     ? buildTennisPadelAdminEmail({
         ...adminPayload,
         discipline: sport as "tennis" | "padel",
+        loss,
       })
     : buildAdminEmail(adminPayload);
 

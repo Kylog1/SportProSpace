@@ -14,13 +14,16 @@ import {
   Anchor,
   TrendingUp,
   Lightbulb,
+  Building2,
+  CalendarClock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { QuizBlock } from "@/components/assessment/QuizBlock";
+import { QuizBlock, type QuizQuestion } from "@/components/assessment/QuizBlock";
 import { LeadForm } from "@/components/assessment/LeadForm";
 import { ScoreGauge } from "@/components/assessment/ScoreGauge";
+import { EmptyHoursResult } from "@/components/assessment/EmptyHoursResult";
 import {
   trackSelfAuditStarted,
   trackAuditCompleted,
@@ -37,9 +40,21 @@ import {
   getMaturityLevel,
   weakestCategories,
 } from "@/lib/assessment/types";
+import { TENNIS_PADEL_LOSS_CONFIG } from "@/lib/assessment/tennis-padel-loss-config";
+import {
+  agentAnswersFromAnswers,
+  computeTennisPadelLoss,
+  fieldContextFromAnswers,
+  pickAnswers,
+  staleAnswerIds,
+  validateNumberField,
+  venueFromAnswers,
+  type LossResult,
+} from "@/lib/assessment/tennis-padel-loss";
 
 const CALENDLY_URL = "https://calendly.com/grzyb-krzysiek/new-meeting";
 const C = TENNIS_PADEL_CONFIG;
+const L = TENNIS_PADEL_LOSS_CONFIG;
 
 type Discipline = "tennis" | "padel";
 
@@ -55,38 +70,104 @@ const CATEGORY_ICONS: Record<TennisPadelCategoryId, ComponentType<{ className?: 
   insight: Lightbulb,
 };
 
-const GROUPS = C.categories.map((c) => ({
-  id: c.id,
-  label: c.label,
-  icon: CATEGORY_ICONS[c.id],
+// Quiz order: Block A (facts about the venue), Block B (1-5 scale, one agent per
+// question), then the original scored questions. Blocks A and B are configured in
+// lib/assessment/tennis-padel-loss-config.ts.
+const GROUPS = [
+  { id: L.groups.venue.id, label: L.groups.venue.label, icon: Building2 },
+  { id: L.groups.practice.id, label: L.groups.practice.label, icon: CalendarClock },
+  ...C.categories.map((c) => ({
+    id: c.id as string,
+    label: c.label,
+    icon: CATEGORY_ICONS[c.id],
+  })),
+];
+
+const VENUE_QUESTIONS: QuizQuestion[] = [
+  ...L.numberFields.map(
+    (f): QuizQuestion => ({
+      id: f.questionId,
+      group: L.groups.venue.id,
+      text: f.text,
+      number: {
+        placeholder: f.placeholder,
+        unit: f.unit,
+        hint: f.hint,
+        parse: (raw, answers) => {
+          const check = validateNumberField(f.id, raw, fieldContextFromAnswers(answers));
+          return check.ok ? { value: check.value } : { error: check.error };
+        },
+      },
+    })
+  ),
+  {
+    id: L.occupancy.questionId,
+    group: L.groups.venue.id,
+    text: L.occupancy.text,
+    options: L.occupancy.options.map((o) => ({
+      value: o.value,
+      label: o.label,
+      sub: o.sub,
+    })),
+  },
+];
+
+const AGENT_QUESTIONS: QuizQuestion[] = L.agents.map((a) => ({
+  id: a.questionId,
+  group: L.groups.practice.id,
+  text: a.question,
+  options: a.options,
 }));
 
-const QUIZ_QUESTIONS = C.questions.map((q) => ({
+const CORE_QUESTIONS: QuizQuestion[] = C.questions.map((q) => ({
   id: q.id,
   group: q.category,
   text: q.text,
 }));
+
+const QUIZ_QUESTIONS: QuizQuestion[] = [
+  ...VENUE_QUESTIONS,
+  ...AGENT_QUESTIONS,
+  ...CORE_QUESTIONS,
+];
+const CORE_IDS = CORE_QUESTIONS.map((q) => q.id);
+const QUIZ_IDS = QUIZ_QUESTIONS.map((q) => q.id);
 
 type Step = "intro" | "quiz" | "teaser" | "form" | "results";
 
 export function TennisPadelAssessment() {
   const [step, setStep] = useState<Step>("intro");
   const [discipline, setDiscipline] = useState<Discipline>("tennis");
+  // Every quiz answer. Blocks A and B live here too, but the 0-100 score is
+  // computed from the original scored questions only (see `coreAnswers`).
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [currentQ, setCurrentQ] = useState(0);
   const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
 
   const totalAnswered = Object.keys(answers).length;
-  const score = useMemo(() => overallScore(C, answers), [answers]);
+  const coreAnswers = useMemo(() => pickAnswers(answers, CORE_IDS), [answers]);
+  const score = useMemo(() => overallScore(C, coreAnswers), [coreAnswers]);
   const level = getMaturityLevel(C, score);
-  const progress = Math.round((totalAnswered / C.questions.length) * 100);
+  const progress = Math.round((totalAnswered / QUIZ_QUESTIONS.length) * 100);
+  const loss = useMemo<LossResult | null>(() => {
+    const venue = venueFromAnswers(answers);
+    const agents = agentAnswersFromAnswers(answers);
+    return venue && agents ? computeTennisPadelLoss(venue, agents) : null;
+  }, [answers]);
 
   function setAnswer(qid: string, value: number) {
-    setAnswers((prev) => ({ ...prev, [qid]: value }));
+    setAnswers((prev) => {
+      const nextAnswers = { ...prev, [qid]: value };
+      // e.g. opening hours lowered below an earlier peak answer: ask for it again
+      for (const stale of staleAnswerIds(prev, qid, value)) {
+        delete nextAnswers[stale];
+      }
+      return nextAnswers;
+    });
   }
 
   function next() {
-    if (currentQ < C.questions.length - 1) {
+    if (currentQ < QUIZ_QUESTIONS.length - 1) {
       setCurrentQ((i) => i + 1);
     } else {
       setStep("teaser");
@@ -158,7 +239,7 @@ export function TennisPadelAssessment() {
             scrollTop();
           }}
           onBack={() => {
-            setCurrentQ(C.questions.length - 1);
+            setCurrentQ(QUIZ_QUESTIONS.length - 1);
             setStep("quiz");
             scrollTop();
           }}
@@ -168,9 +249,15 @@ export function TennisPadelAssessment() {
       {step === "form" && (
         <LeadForm
           answers={answers}
-          questionIds={C.questions.map((q) => q.id)}
+          questionIds={QUIZ_IDS}
+          submitAnswers={coreAnswers}
+          extraPayload={
+            loss
+              ? { venue: loss.inputs, agentAnswers: loss.agentAnswers }
+              : undefined
+          }
           sport={discipline}
-          reportDescription="Wynik i pełny raport PDF (Tennis & Padel Growth Score, wyniki 6 obszarów i największe szanse) wyślemy na podany adres email. Po wysłaniu zobaczysz też wynik tutaj, na stronie."
+          reportDescription="Wyliczenie pustych godzin na kortach i pełny raport PDF (Tennis & Padel Growth Score, wyniki 6 obszarów i największe szanse) wyślemy na podany adres email. Po wysłaniu zobaczysz też wynik tutaj, na stronie."
           chipScore={`${score} / 100`}
           chipLevel={level.name}
           onBack={(targetIdx) => {
@@ -188,7 +275,8 @@ export function TennisPadelAssessment() {
 
       {step === "results" && (
         <ResultsBlock
-          answers={answers}
+          answers={coreAnswers}
+          loss={loss}
           score={score}
           levelName={level.name}
           levelDescription={level.description}
@@ -237,9 +325,11 @@ function IntroBlock({
           </h1>
 
           <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-            18 pytań o procesy, nie o opinie. W kilka minut pokazuje, jak
-            wygląda ścieżka klienta w Waszym klubie - od pierwszej rezerwacji,
-            przez pierwsze tygodnie, po rezygnację lub rozwój współpracy.
+            {QUIZ_QUESTIONS.length} pytań: kilka liczb o obiekcie, kilka o
+            codziennej pracy klubu i {CORE_QUESTIONS.length} o procesach, nie o
+            opinie. W kilka minut pokazuje, ile godzin na kortach stoi pustych
+            poza szczytem i jak wygląda ścieżka klienta w Waszym klubie, od
+            pierwszej rezerwacji po rezygnację.
           </p>
 
           {/* Discipline toggle, one shared audit, tags the lead as tennis/padel */}
@@ -276,7 +366,11 @@ function IntroBlock({
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
             <span className="inline-flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-navy-800" />
-              18 pytań, ~5 minut
+              {QUIZ_QUESTIONS.length} pytań, ok. 7 minut
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-navy-800" />
+              Ile tracicie na pustych godzinach
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-navy-800" />
@@ -421,6 +515,7 @@ function TeaserBlock({
 
 function ResultsBlock({
   answers,
+  loss,
   score,
   levelName,
   levelDescription,
@@ -428,6 +523,7 @@ function ResultsBlock({
   onReset,
 }: {
   answers: Record<string, number>;
+  loss: LossResult | null;
   score: number;
   levelName: string;
   levelDescription: string;
@@ -438,6 +534,8 @@ function ResultsBlock({
   const top3 = weakestCategories(C, answers, 3);
   const biggest = top3[0];
   const biggestCopy = C.categories.find((c) => c.id === biggest.id)!.opportunity;
+  // With the empty-hours section on top, that one carries the page's h1.
+  const LevelHeading = loss ? "h2" : "h1";
 
   return (
     <>
@@ -455,6 +553,8 @@ function ResultsBlock({
         </section>
       )}
 
+      {loss && <EmptyHoursResult result={loss} />}
+
       {/* Header */}
       <section className="border-b border-navy-100 bg-white">
         <div className="container py-12 md:py-16">
@@ -470,10 +570,10 @@ function ResultsBlock({
               </Button>
             </div>
 
-            <h1 className="mt-5 text-balance text-[34px] font-semibold leading-[1.08] tracking-tightest text-navy-950 sm:text-[42px]">
+            <LevelHeading className="mt-5 text-balance text-[34px] font-semibold leading-[1.08] tracking-tightest text-navy-950 sm:text-[42px]">
               Wasz poziom dojrzałości:{" "}
               <span className="text-navy-800">{levelName}</span>
-            </h1>
+            </LevelHeading>
             <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
               {levelDescription}
             </p>

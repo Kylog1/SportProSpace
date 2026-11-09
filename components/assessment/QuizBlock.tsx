@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, type ComponentType } from "react";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +28,24 @@ export type QuizQuestion = {
    * options naming what actually exists do not.
    */
   options?: QuizScaleOption[];
+  /**
+   * When set, the question is answered with a number typed into a field
+   * instead of a card. Used by the Tennis & Padel "ile klub traci" block.
+   */
+  number?: QuizNumberSpec;
+};
+
+export type QuizNumberSpec = {
+  placeholder: string;
+  /** Shown inside the field, right side, e.g. "zł". */
+  unit?: string;
+  /** Shown under the field. */
+  hint?: string;
+  /** Turns the typed text into a number, or into a message for the person. */
+  parse: (
+    raw: string,
+    answers: Record<string, number>
+  ) => { value: number } | { error: string };
 };
 
 export type QuizScaleOption = {
@@ -100,7 +118,10 @@ export function QuizBlock({
 
           {/* Question card */}
           <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.18)] sm:p-8">
-            <h2 className="text-balance text-[22px] font-semibold leading-snug tracking-tight text-navy-950 sm:text-[26px]">
+            <h2
+              id={q.number ? `${q.id}-label` : undefined}
+              className="text-balance text-[22px] font-semibold leading-snug tracking-tight text-navy-950 sm:text-[26px]"
+            >
               {q.text}
             </h2>
             {q.hint && (
@@ -109,6 +130,19 @@ export function QuizBlock({
               </p>
             )}
 
+            {q.number ? (
+              <NumberAnswer
+                key={q.id}
+                qid={q.id}
+                spec={q.number}
+                saved={value}
+                answers={answers}
+                onSubmit={(v) => {
+                  onAnswer(q.id, v);
+                  onNext();
+                }}
+              />
+            ) : (
             <div className="mt-7 grid gap-2.5">
               {(q.options ?? scale).map((opt) => {
                 const active = value === opt.value;
@@ -154,6 +188,7 @@ export function QuizBlock({
                 );
               })}
             </div>
+            )}
           </div>
 
           {/* Nav */}
@@ -167,11 +202,117 @@ export function QuizBlock({
               Wstecz
             </Button>
             <p className="text-[12px] text-muted-foreground">
-              Kliknij odpowiedź, aby przejść dalej
+              {q.number
+                ? "Wpisz liczbę i kliknij Dalej"
+                : "Kliknij odpowiedź, aby przejść dalej"}
             </p>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+// Numeric answer: same card, a large field instead of the option cards. It has
+// no default value on purpose, so nobody clicks through without reading.
+function NumberAnswer({
+  qid,
+  spec,
+  saved,
+  answers,
+  onSubmit,
+}: {
+  qid: string;
+  spec: QuizNumberSpec;
+  saved: number | undefined;
+  answers: Record<string, number>;
+  onSubmit: (value: number) => void;
+}) {
+  const [draft, setDraft] = useState(
+    saved != null ? String(saved).replace(".", ",") : ""
+  );
+  const [error, setError] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus({ preventScroll: true });
+  }, []);
+
+  function submit() {
+    const result = spec.parse(draft, answers);
+    if ("error" in result) {
+      setError(result.error);
+      inputRef.current?.focus();
+      return;
+    }
+    setError(null);
+    onSubmit(result.value);
+  }
+
+  const errorId = `${qid}-error`;
+  const hintId = `${qid}-hint`;
+
+  return (
+    <div className="mt-7">
+      <div className="relative max-w-sm">
+        <input
+          ref={inputRef}
+          type="text"
+          inputMode="decimal"
+          autoComplete="off"
+          enterKeyHint="next"
+          value={draft}
+          placeholder={spec.placeholder}
+          aria-labelledby={`${qid}-label`}
+          aria-describedby={
+            [error ? errorId : null, spec.hint ? hintId : null]
+              .filter(Boolean)
+              .join(" ") || undefined
+          }
+          aria-invalid={error ? true : undefined}
+          onChange={(e) => {
+            setDraft(e.target.value);
+            if (error) setError(null);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          className={cn(
+            "block w-full rounded-lg border bg-white px-4 py-3.5 text-[20px] font-semibold text-navy-950 outline-none transition-colors placeholder:font-normal placeholder:text-navy-300 focus:ring-2",
+            spec.unit && "pr-14",
+            error
+              ? "border-red-400 focus:border-red-600 focus:ring-red-600/20"
+              : "border-navy-200 focus:border-navy-800 focus:ring-navy-800/20"
+          )}
+        />
+        {spec.unit && (
+          <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[15px] font-medium text-muted-foreground">
+            {spec.unit}
+          </span>
+        )}
+      </div>
+
+      {error && (
+        <p id={errorId} role="alert" className="mt-2 text-[13px] text-red-700">
+          {error}
+        </p>
+      )}
+      {spec.hint && (
+        <p
+          id={hintId}
+          className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground"
+        >
+          {spec.hint}
+        </p>
+      )}
+
+      <Button size="lg" className="mt-6" onClick={submit}>
+        Dalej
+        <ArrowRight />
+      </Button>
+    </div>
   );
 }

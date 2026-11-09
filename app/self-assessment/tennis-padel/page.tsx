@@ -6,7 +6,7 @@ import { TennisPadelAssessment } from "@/components/TennisPadelAssessment";
 export const metadata: Metadata = {
   title: "Self-Audit dla klubów tenisowych i padlowych - Sport Space Pro",
   description:
-    "18 pytań o procesy, nie o opinie. Sprawdź w kilka minut, gdzie Wasz klub tenisowy lub padlowy traci potencjał wzrostu, od pierwszej rezerwacji po rezygnację. Wynik 0-100 i Top 3 obszary do poprawy.",
+    "Policz, ile godzin na kortach stoi pustych poza szczytem i ile to kosztuje, a potem sprawdź w 16 pytaniach o procesy, gdzie Wasz klub traci potencjał wzrostu. Wynik 0-100, Top 3 obszary do poprawy i agenci AI na start.",
   alternates: {
     canonical: "https://sportspacepro.pl/self-assessment/tennis-padel",
   },

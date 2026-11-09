@@ -26,9 +26,16 @@ import {
   weakestCategories,
   scaleLabelFor,
 } from "./types";
+import {
+  buildLossCopy,
+  describeVenueAnswers,
+  partsToText,
+  type LossResult,
+} from "./tennis-padel-loss";
 
 const C = TENNIS_PADEL_CONFIG;
-const TOTAL_PAGES = 2;
+/** Score + opportunities. The empty-hours page, when present, comes first. */
+const SCORE_PAGES = 2;
 
 const LEVEL_COLOR: Record<string, string> = {
   reaktywny: "#dc2626",
@@ -43,6 +50,8 @@ export type GenerateTennisPadelPdfInput = {
   email: string;
   organization: string;
   answers: Record<string, number>;
+  /** Empty-hours calculation; without it the report keeps its original two pages. */
+  loss?: LossResult;
 };
 
 export function generateTennisPadelPDF(
@@ -78,8 +87,19 @@ export function generateTennisPadelPDF(
         C.categories.find((c) => c.id === biggest.id)?.opportunity ?? "";
       const tierColor = LEVEL_COLOR[level.id] ?? COLORS.navy;
 
+      const pageOffset = input.loss ? 1 : 0;
+      const totalPages = SCORE_PAGES + pageOffset;
+
       // ════════════════════════════════════════════════════════════════
-      // PAGE 1 - Wynik
+      // Puste godziny na kortach (only when the club filled in Blocks A and B)
+      // ════════════════════════════════════════════════════════════════
+      if (input.loss) {
+        drawLossPage(doc, input.loss, input.organization, totalPages);
+        doc.addPage();
+      }
+
+      // ════════════════════════════════════════════════════════════════
+      // Wynik
       // ════════════════════════════════════════════════════════════════
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
 
@@ -166,10 +186,10 @@ export function generateTennisPadelPDF(
         y += 40;
       }
 
-      drawFooter(doc, 1, TOTAL_PAGES);
+      drawFooter(doc, 1 + pageOffset, totalPages);
 
       // ════════════════════════════════════════════════════════════════
-      // PAGE 2 - Szanse
+      // Szanse
       // ════════════════════════════════════════════════════════════════
       doc.addPage();
       doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
@@ -248,11 +268,143 @@ export function generateTennisPadelPDF(
           { width: CW - 40, lineGap: 2 }
         );
 
-      drawFooter(doc, 2, TOTAL_PAGES);
+      drawFooter(doc, 2 + pageOffset, totalPages);
 
       doc.end();
     } catch (err) {
       reject(err);
     }
   });
+}
+
+// ────────────────────────────────────────────────────────────────────
+// Empty-hours page. Same figures and wording as the result screen
+// (buildLossCopy), laid out for A4. Positions follow measured text
+// heights, so a long list of agents pushes the rest down instead of
+// overlapping it.
+// ────────────────────────────────────────────────────────────────────
+
+/** Amounts keep their non-breaking spaces, so "1 296 000 zł" never splits across lines. */
+function pdfText(s: string): string {
+  return s;
+}
+
+function drawLossPage(
+  doc: PDFKit.PDFDocument,
+  loss: LossResult,
+  organization: string,
+  totalPages: number
+) {
+  const copy = buildLossCopy(loss);
+
+  doc.rect(0, 0, W, H).fillColor(COLORS.white).fillOpacity(1).fill();
+  drawHeader(
+    doc,
+    "Puste godziny na kortach",
+    `${organization} - ${formatDateTodayPL()}`
+  );
+
+  let y = 120;
+
+  // Headline block
+  const headline = pdfText(partsToText(copy.headline));
+  const untapped = copy.untappedLine ? pdfText(partsToText(copy.untappedLine)) : null;
+  const innerW = CW - 40;
+  doc.font(FONT_BOLD).fontSize(17);
+  const headlineH = doc.heightOfString(headline, { width: innerW, lineGap: 2 });
+  doc.font(FONT_BOLD).fontSize(13);
+  const untappedH = untapped ? doc.heightOfString(untapped, { width: innerW }) : 0;
+  const blockH = 14 + 18 + headlineH + (untapped ? 10 + untappedH : 0) + 16;
+
+  doc.rect(ML, y, CW, blockH).fillColor(COLORS.cardBg).fillOpacity(1).fill();
+  doc.rect(ML, y, 4, blockH).fillColor(COLORS.navy).fillOpacity(1).fill();
+  doc.font(FONT_REG).fontSize(9).fillColor(COLORS.muted).fillOpacity(1)
+    .text("PUSTE GODZINY POZA SZCZYTEM", ML + 20, y + 16);
+  doc.font(FONT_BOLD).fontSize(17).fillColor(COLORS.navy).fillOpacity(1)
+    .text(headline, ML + 20, y + 34, { width: innerW, lineGap: 2 });
+  if (untapped) {
+    doc.font(FONT_BOLD).fontSize(13).fillColor(COLORS.text).fillOpacity(1)
+      .text(untapped, ML + 20, y + 32 + headlineH + 10, { width: innerW });
+  }
+  y += blockH + 16;
+
+  // What we assumed and how much of it is recoverable
+  const body = copy.paragraph ?? copy.noOffPeakBody;
+  if (body) {
+    const text = typeof body === "string" ? body : pdfText(partsToText(body));
+    doc.font(FONT_REG).fontSize(10.5).fillColor(COLORS.muted).fillOpacity(1)
+      .text(text, ML, y, { width: CW, lineGap: 2 });
+    y += doc.heightOfString(text, { width: CW, lineGap: 2 }) + 12;
+  }
+
+  if (copy.unknownNote) {
+    doc.font(FONT_REG).fontSize(9.5);
+    const noteH = doc.heightOfString(copy.unknownNote, { width: CW - 28, lineGap: 2 });
+    doc.rect(ML, y, CW, noteH + 16).fillColor(COLORS.cardBg).fillOpacity(1).fill();
+    doc.rect(ML, y, 4, noteH + 16).fillColor(COLORS.reactive).fillOpacity(1).fill();
+    doc.font(FONT_REG).fontSize(9.5).fillColor(COLORS.text).fillOpacity(1)
+      .text(copy.unknownNote, ML + 18, y + 8, { width: CW - 28, lineGap: 2 });
+    y += noteH + 16 + 12;
+  }
+
+  const inputs = pdfText(
+    "Dane, na których liczymy: " +
+      describeVenueAnswers(loss)
+        .map((r) => `${r.label.toLowerCase()}: ${r.value}`)
+        .join("; ") +
+      "."
+  );
+  doc.font(FONT_REG).fontSize(8.5).fillColor(COLORS.faint).fillOpacity(1)
+    .text(inputs, ML, y, { width: CW, lineGap: 2 });
+  y += doc.heightOfString(inputs, { width: CW, lineGap: 2 }) + 18;
+
+  // Agents to start with
+  doc.font(FONT_BOLD).fontSize(12).fillColor(COLORS.text).fillOpacity(1)
+    .text(copy.agentsTitle, ML, y);
+  y += 20;
+
+  if (loss.agents.length === 0) {
+    const none = copy.agentsNone ?? "";
+    doc.font(FONT_REG).fontSize(10).fillColor(COLORS.muted).fillOpacity(1)
+      .text(none, ML, y, { width: CW, lineGap: 2 });
+    y += doc.heightOfString(none, { width: CW, lineGap: 2 }) + 14;
+  }
+  loss.agents.forEach((agent, i) => {
+    const description = agent.description.charAt(0).toUpperCase() + agent.description.slice(1);
+    doc.font(FONT_REG).fontSize(9);
+    const descH = doc.heightOfString(description, { width: CW - 66, lineGap: 1 });
+    const cardH = Math.max(40, 9 + 15 + descH + 8);
+    doc.rect(ML, y, CW, cardH).fillColor(COLORS.cardBg).fillOpacity(1).fill();
+    doc.save().circle(ML + 22, y + cardH / 2, 11)
+      .fillColor(COLORS.navy).fillOpacity(1).fill().restore();
+    doc.font(FONT_BOLD).fontSize(10).fillColor(COLORS.white).fillOpacity(1)
+      .text(`${i + 1}`, ML + 17, y + cardH / 2 - 5, { width: 10, align: "center" });
+    doc.font(FONT_BOLD).fontSize(11).fillColor(COLORS.text).fillOpacity(1)
+      .text(agent.name, ML + 44, y + 9);
+    doc.font(FONT_REG).fontSize(9).fillColor(COLORS.muted).fillOpacity(1)
+      .text(description, ML + 44, y + 24, { width: CW - 66, lineGap: 1 });
+    y += cardH + 6;
+  });
+
+  y += 6;
+
+  // Call to action
+  doc.font(FONT_REG).fontSize(9.5);
+  const captionH = doc.heightOfString(copy.ctaCaption, { width: CW - 40, lineGap: 2 });
+  const ctaH = 16 + 16 + 4 + captionH + 14;
+  doc.rect(ML, y, CW, ctaH).fillColor(COLORS.navyDeep).fillOpacity(1).fill();
+  doc.font(FONT_BOLD).fontSize(12).fillColor(COLORS.white).fillOpacity(1)
+    .text(copy.ctaLabel, ML + 20, y + 16, {
+      width: CW - 40,
+      link: copy.ctaUrl,
+      underline: true,
+    });
+  doc.font(FONT_REG).fontSize(9.5).fillColor(COLORS.white).fillOpacity(0.9)
+    .text(copy.ctaCaption, ML + 20, y + 16 + 16 + 4, { width: CW - 40, lineGap: 2 });
+  y += ctaH + 8;
+
+  doc.font(FONT_REG).fontSize(8.5).fillColor(COLORS.faint).fillOpacity(1)
+    .text(copy.disclaimer, ML, y, { width: CW });
+
+  drawFooter(doc, 1, totalPages);
 }

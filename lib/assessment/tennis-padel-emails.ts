@@ -10,6 +10,17 @@ import {
   getMaturityLevel,
   weakestCategories,
 } from "./types";
+import {
+  buildLossCopy,
+  describeAgentAnswers,
+  describeVenueAnswers,
+  formatInt,
+  formatPln,
+  formatRange,
+  partsToText,
+  type LossResult,
+  type TextPart,
+} from "./tennis-padel-loss";
 
 const C = TENNIS_PADEL_CONFIG;
 
@@ -24,10 +35,73 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#039;");
 }
 
+/** Text parts to HTML, the inserted figures in bold. */
+function partsToHtml(parts: TextPart[]): string {
+  return parts
+    .map((p) => (p.value ? `<strong>${escapeHtml(p.text)}</strong>` : escapeHtml(p.text)))
+    .join("");
+}
+
+/** "Puste godziny na kortach" block of the e-mail to the club. */
+function lossUserHtml(loss: LossResult): string {
+  const copy = buildLossCopy(loss);
+  const agents =
+    loss.agents.length > 0
+      ? `<ol style="font-size:14.5px;line-height:1.7;margin:0 0 6px;padding:0;list-style:none;">${loss.agents
+          .map(
+            (a, i) =>
+              `<li style="margin-bottom:6px;"><strong>${i + 1}. ${escapeHtml(a.name)}:</strong> ${escapeHtml(a.description)}</li>`
+          )
+          .join("")}</ol>`
+      : `<p style="font-size:14.5px;line-height:1.65;margin:0 0 6px;">${escapeHtml(copy.agentsNone ?? "")}</p>`;
+
+  return `
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:20px;border-radius:6px;margin:24px 0;">
+    <div style="font-size:12px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Puste godziny na kortach</div>
+    <div style="font-size:17px;font-weight:600;line-height:1.45;color:#0f172a;">${partsToHtml(copy.headline)}</div>
+    ${copy.untappedLine ? `<div style="font-size:15px;line-height:1.6;margin-top:8px;">${partsToHtml(copy.untappedLine)}</div>` : ""}
+    ${copy.paragraph ? `<p style="font-size:14px;line-height:1.65;margin:12px 0 0;color:#334155;">${partsToHtml(copy.paragraph)}</p>` : ""}
+    ${copy.noOffPeakBody ? `<p style="font-size:14px;line-height:1.65;margin:12px 0 0;color:#334155;">${escapeHtml(copy.noOffPeakBody)}</p>` : ""}
+    ${copy.unknownNote ? `<p style="font-size:13px;line-height:1.6;margin:12px 0 0;color:#64748b;">${escapeHtml(copy.unknownNote)}</p>` : ""}
+  </div>
+
+  <p style="font-size:15px;line-height:1.65;margin:0 0 10px;"><strong>${escapeHtml(copy.agentsTitle)}:</strong></p>
+  ${agents}
+  <p style="font-size:14px;line-height:1.65;margin:14px 0 4px;">
+    <a href="${escapeHtml(copy.ctaUrl)}" style="color:#1e3a8a;font-weight:600;">${escapeHtml(copy.ctaLabel)} &rarr;</a><br />
+    <span style="color:#64748b;">${escapeHtml(copy.ctaCaption)}</span>
+  </p>
+  <p style="font-size:12px;line-height:1.6;color:#64748b;margin:0 0 24px;">${escapeHtml(copy.disclaimer)}</p>`;
+}
+
+function lossUserText(loss: LossResult): string[] {
+  const copy = buildLossCopy(loss);
+  return [
+    `Puste godziny na kortach`,
+    partsToText(copy.headline),
+    copy.untappedLine ? partsToText(copy.untappedLine) : null,
+    copy.paragraph ? partsToText(copy.paragraph) : null,
+    copy.noOffPeakBody,
+    copy.unknownNote,
+    ``,
+    `${copy.agentsTitle}:`,
+    ...(loss.agents.length > 0
+      ? loss.agents.map((a, i) => `${i + 1}. ${a.name}: ${a.description}`)
+      : [copy.agentsNone ?? ""]),
+    ``,
+    `${copy.ctaLabel}: ${copy.ctaUrl}`,
+    copy.ctaCaption,
+    copy.disclaimer,
+    ``,
+  ].filter((line): line is string => line !== null);
+}
+
 export type TennisPadelUserEmailInput = {
   name: string;
   organization: string;
   answers: Record<string, number>;
+  /** Empty-hours calculation; absent for submissions without the new block. */
+  loss?: LossResult;
 };
 
 export function buildTennisPadelUserEmail(input: TennisPadelUserEmailInput): {
@@ -62,7 +136,7 @@ export function buildTennisPadelUserEmail(input: TennisPadelUserEmailInput): {
     Dziękuję za wypełnienie Self-Auditu dla <strong>${escapeHtml(input.organization)}</strong>.
     Pełny raport PDF znajdziesz w załączniku tej wiadomości.
   </p>
-
+${input.loss ? lossUserHtml(input.loss) : ""}
   <div style="background:#f8fafc;border-left:4px solid #1e3a8a;padding:20px;border-radius:6px;margin:24px 0;">
     <div style="font-size:12px;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">${escapeHtml(C.scoreLabel)}</div>
     <div style="font-size:32px;font-weight:700;color:#1e3a8a;line-height:1;">
@@ -97,6 +171,7 @@ export function buildTennisPadelUserEmail(input: TennisPadelUserEmailInput): {
     `Dziękuję za wypełnienie Self-Auditu dla ${input.organization}.`,
     `Pełny raport PDF znajdziesz w załączniku.`,
     ``,
+    ...(input.loss ? lossUserText(input.loss) : []),
     `${C.scoreLabel}: ${score}/100`,
     `Poziom: ${level.name}`,
     `${level.description}`,
@@ -117,7 +192,93 @@ export type TennisPadelAdminEmailInput = {
   phone?: string;
   discipline: Discipline;
   answers: Record<string, number>;
+  /** Empty-hours calculation; absent for submissions without the new block. */
+  loss?: LossResult;
 };
+
+const ADMIN_LABEL = "padding:5px 12px;color:#64748b;font-size:13px;";
+const ADMIN_VALUE = "padding:5px 12px;font-size:13px;";
+const ADMIN_TABLE =
+  "width:100%;border-collapse:collapse;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;margin-bottom:18px;";
+const ADMIN_HEADING =
+  "font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;";
+
+function adminRows(rows: { label: string; value: string }[]): string {
+  return rows
+    .map(
+      (r, i) =>
+        `<tr${i % 2 === 1 ? ' style="background:#f8fafc;"' : ""}><td style="${ADMIN_LABEL}">${escapeHtml(r.label)}</td><td style="${ADMIN_VALUE}">${escapeHtml(r.value)}</td></tr>`
+    )
+    .join("");
+}
+
+function lossFigures(loss: LossResult): { label: string; value: string }[] {
+  return [
+    { label: "Godziny poza szczytem dziennie", value: `${formatInt(loss.offPeakHoursPerDay)} h` },
+    { label: "Godziny kortowe poza szczytem / mies.", value: formatInt(loss.offPeakCapacity) },
+    { label: "Puste godziny kortowe / mies.", value: `ok. ${formatInt(loss.emptyHours)}` },
+    { label: "Niewykorzystany potencjał / mies.", value: `ok. ${formatPln(loss.untappedValue)}` },
+    {
+      label: "Do odzyskania / mies. (+5-10 pp)",
+      value: loss.recoverHighCapped
+        ? `${formatPln(loss.recoverLow)} (górna granica obcięta do +5 pp, obłożenie już wysokie)`
+        : formatRange(loss.recoverLow, loss.recoverHigh),
+    },
+    {
+      label: "Do odzyskania / rok",
+      value: loss.recoverHighCapped
+        ? formatPln(loss.yearlyLow)
+        : formatRange(loss.yearlyLow, loss.yearlyHigh),
+    },
+    { label: "Obłożenie nieznane", value: loss.occupancyUnknown ? "tak (przyjęto 30%)" : "nie" },
+  ];
+}
+
+/** Everything the club entered about its venue, the figures we calculated, and the agents we recommended. */
+function lossAdminHtml(loss: LossResult): string {
+  const answered = describeAgentAnswers(loss);
+  return `
+  <div style="${ADMIN_HEADING}">Dane o obiekcie (Blok A)</div>
+  <table style="${ADMIN_TABLE}"><tbody>${adminRows(describeVenueAnswers(loss))}</tbody></table>
+
+  <div style="${ADMIN_HEADING}">Wyliczenie pustych godzin</div>
+  <table style="${ADMIN_TABLE}"><tbody>${adminRows(lossFigures(loss))}</tbody></table>
+
+  <div style="${ADMIN_HEADING}">Praktyki klubu (Blok B, skala 1-5)</div>
+  <table style="${ADMIN_TABLE}"><tbody>${adminRows(
+    answered.map((a) => ({ label: `${a.agent} (${a.score}/5)`, value: a.answer }))
+  )}</tbody></table>
+
+  <div style="${ADMIN_HEADING}">Rekomendowani agenci</div>
+  <ol style="font-size:13.5px;line-height:1.7;margin:0 0 18px;padding-left:20px;">
+    ${
+      loss.agents.length > 0
+        ? loss.agents
+            .map((a) => `<li>${escapeHtml(a.name)} (odpowiedź ${a.score}/5)</li>`)
+            .join("")
+        : "<li>brak, wszystkie odpowiedzi 5/5</li>"
+    }
+  </ol>`;
+}
+
+function lossAdminText(loss: LossResult): string[] {
+  return [
+    `Dane o obiekcie (Blok A):`,
+    ...describeVenueAnswers(loss).map((r) => `- ${r.label}: ${r.value}`),
+    ``,
+    `Wyliczenie pustych godzin:`,
+    ...lossFigures(loss).map((r) => `- ${r.label}: ${r.value}`),
+    ``,
+    `Praktyki klubu (Blok B, skala 1-5):`,
+    ...describeAgentAnswers(loss).map((a) => `- ${a.agent} (${a.score}/5): ${a.answer}`),
+    ``,
+    `Rekomendowani agenci:`,
+    ...(loss.agents.length > 0
+      ? loss.agents.map((a, i) => `${i + 1}. ${a.name} (odpowiedź ${a.score}/5)`)
+      : [`brak, wszystkie odpowiedzi 5/5`]),
+    ``,
+  ];
+}
 
 export function buildTennisPadelAdminEmail(input: TennisPadelAdminEmailInput): {
   subject: string;
@@ -129,7 +290,10 @@ export function buildTennisPadelAdminEmail(input: TennisPadelAdminEmailInput): {
   const cats = categoryScores(C, input.answers);
   const top3 = weakestCategories(C, input.answers, 3);
 
-  const subject = `Nowy lead (Self-Audit Tennis & Padel) - ${input.organization} - ${level.name} (${score}/100)`;
+  const lossSubject = input.loss?.hasOffPeak
+    ? ` - puste godziny ok. ${formatInt(input.loss.emptyHours)} (${formatPln(input.loss.untappedValue)})`
+    : "";
+  const subject = `Nowy lead (Self-Audit Tennis & Padel) - ${input.organization} - ${level.name} (${score}/100)${lossSubject}`;
 
   const catRows = cats
     .map(
@@ -162,6 +326,7 @@ export function buildTennisPadelAdminEmail(input: TennisPadelAdminEmailInput): {
     </tbody>
   </table>
 
+${input.loss ? lossAdminHtml(input.loss) : ""}
   <div style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Wyniki obszarów</div>
   <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;margin-bottom:18px;">
     <tbody>${catRows}</tbody>
@@ -184,6 +349,7 @@ export function buildTennisPadelAdminEmail(input: TennisPadelAdminEmailInput): {
     input.phone ? `Telefon: ${input.phone}` : null,
     `Dyscyplina: ${input.discipline}`,
     ``,
+    ...(input.loss ? lossAdminText(input.loss) : []),
     `Wyniki obszarów:`,
     ...cats.map((c) => `- ${c.label}: ${c.score}/100`),
     ``,

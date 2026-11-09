@@ -117,10 +117,12 @@ export function categoryScores<TId extends string>(
 /**
  * Overall score, derived from the raw total.
  *
- * This is mathematically identical to the unweighted mean of the category
- * scores: every category holds the same number of questions, so
+ * When every category holds the same number of questions (Fitness: 6 x 3) this
+ * is mathematically identical to the unweighted mean of the category scores:
  *   mean(((Ci - 3) / 12) * 100) === ((T - 18) / 72) * 100
  * Deriving it from the total avoids compounding per-category rounding.
+ * Tennis & Padel has two categories of 2 questions, so there every question
+ * weighs the same and the overall score is no longer the mean of the bars.
  */
 export function overallScore<TId extends string>(
   config: SportConfig<TId>,

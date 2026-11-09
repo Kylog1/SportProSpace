@@ -12,6 +12,8 @@ import { Badge } from "@/components/ui/badge";
 export function LeadForm({
   answers,
   questionIds,
+  submitAnswers,
+  extraPayload,
   sport,
   reportDescription,
   chipScore,
@@ -22,6 +24,10 @@ export function LeadForm({
   answers: Record<string, number>;
   /** Every question that must be answered before submitting, in order. */
   questionIds: string[];
+  /** What is sent as `answers`. Defaults to `answers`; Tennis & Padel sends only its scored questions. */
+  submitAnswers?: Record<string, number>;
+  /** Extra fields merged into the request body (e.g. the venue data). */
+  extraPayload?: Record<string, unknown>;
   /** Sent to the API so leads can be segmented by discipline. */
   sport: string;
   /** Sentence describing what the emailed report contains. */
@@ -81,8 +87,9 @@ export function LeadForm({
           phone,
           consent,
           website,
-          answers,
+          answers: submitAnswers ?? answers,
           sport,
+          ...extraPayload,
         }),
       });
       const data = await res.json().catch(() => ({}));

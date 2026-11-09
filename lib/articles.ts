@@ -136,7 +136,7 @@ Sensowne pytania dotyczą tego, co dzieje się z klientem w pierwszych tygodniac
 
 Sport Space Pro przygotował krótką samoocenę, która sprawdza właśnie to: nie opinię właściciela o własnym klubie, tylko konkretne procesy i działania. Sprawdza je w sześciu obszarach: od pierwszego kontaktu z potencjalnym klientem, przez pierwsze 30-90 dni i bieżącą aktywność, po utrzymanie, rozwój wartości klienta i sposób pracy z feedbackiem.
 
-To 18 pytań i około 5 minut. Na końcu klub dostaje Tennis & Padel Growth Score, wynik od 0 do 100, oraz jeden z pięciu poziomów dojrzałości: od reaktywnego, gdzie działania zależą głównie od pojedynczych osób i bieżących problemów, po dojrzały, gdzie decyzje są systematycznie oparte na danych. Pełny raport PDF z wynikami w każdym z sześciu obszarów i Top 3 obszarami do poprawy trafia na maila.
+To 26 pytań i około 7 minut: najpierw kilka liczb o obiekcie, z których wychodzi, ile godzin na kortach stoi pustych poza szczytem i ile to kosztuje, potem kilka pytań o codzienną pracę klubu i 16 o procesach. Na końcu klub dostaje Tennis & Padel Growth Score, wynik od 0 do 100, oraz jeden z pięciu poziomów dojrzałości: od reaktywnego, gdzie działania zależą głównie od pojedynczych osób i bieżących problemów, po dojrzały, gdzie decyzje są systematycznie oparte na danych. Pełny raport PDF z wynikami w każdym z sześciu obszarów i Top 3 obszarami do poprawy trafia na maila.
 
 To nie audyt prowadzony przez zewnętrzną firmę. To narzędzie, które pozwala zarządowi klubu zatrzymać się na kilka minut i sprawdzić, czy odpowiedzi na te pytania rzeczywiście zna, czy tylko w nie wierzy.
 

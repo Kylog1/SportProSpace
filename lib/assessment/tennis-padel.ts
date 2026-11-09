@@ -1,6 +1,10 @@
 // Tennis & Padel Self-Audit configuration.
-// 18 questions across 6 categories, scored 0-100. See lib/assessment/types.ts
-// for the shared engine this plugs into. Structure mirrors lib/assessment/fitness.ts.
+// 16 questions across 6 categories, scored 0-100. See lib/assessment/types.ts
+// for the shared engine this plugs into. Structure mirrors lib/assessment/fitness.ts,
+// except that ENGAGE and RETAIN have 2 questions each: en2 and re3 were removed
+// (2026-11-09) as duplicates of re2 and en3, and of the "ile klub traci" block
+// (tennis-padel-loss-config.ts). The overall score is computed from the raw total,
+// so the categories no longer weigh the same.
 
 import {
   SHARED_SCALE,
@@ -103,11 +107,6 @@ const questions: QuestionDef<TennisPadelCategoryId>[] = [
     text: "Czy regularnie monitorujecie częstotliwość korzystania z kortów, zajęć lub innych aktywności przez klientów?",
   },
   {
-    id: "en2",
-    category: "engage",
-    text: "Czy potraficie zidentyfikować klientów, których aktywność zaczyna wyraźnie spadać?",
-  },
-  {
     id: "en3",
     category: "engage",
     text: "Czy macie określony sposób reagowania na spadek aktywności klienta?",
@@ -122,11 +121,6 @@ const questions: QuestionDef<TennisPadelCategoryId>[] = [
     id: "re2",
     category: "retain",
     text: "Czy potraficie wskazać klientów najbardziej narażonych na odejście lub zaprzestanie korzystania z klubu?",
-  },
-  {
-    id: "re3",
-    category: "retain",
-    text: "Czy podejmujecie konkretne działania, aby zatrzymać lub reaktywować klientów zagrożonych odejściem?",
   },
   // 5. EXPAND
   {
