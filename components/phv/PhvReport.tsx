@@ -1,12 +1,9 @@
-"use client";
-
-import { useState, type ReactNode } from "react";
-import { FileDown, PencilLine, PlayCircle } from "lucide-react";
+import type { ReactNode } from "react";
+import { Printer, PencilLine, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { bySex, cm, dec, dmy, nom, signed, type PhvResult } from "@/lib/phv/calc";
 import { DISCLAIMER, PHASES, PROTEIN_FOODS, SOURCES, VIDEOS, type VideoCode } from "@/lib/phv/content";
-import { openReportPdf } from "@/lib/phv/pdf";
 import { PhvChart } from "./PhvChart";
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
@@ -39,23 +36,6 @@ function VideoLinks({ code }: { code: VideoCode }) {
 }
 
 export function PhvReport({ r, onEdit }: { r: PhvResult; onEdit: () => void }) {
-  const [busy, setBusy] = useState(false);
-  const [pdfError, setPdfError] = useState(false);
-
-  async function savePdf() {
-    const root = document.getElementById("phv-report");
-    if (!root || busy) return;
-    setBusy(true);
-    setPdfError(false);
-    try {
-      await openReportPdf(root, "kalkulator-phv.pdf");
-    } catch {
-      setPdfError(true);
-    } finally {
-      setBusy(false);
-    }
-  }
-
   const p = PHASES[r.phaseId];
   const notes: string[] = [];
   const bestLo = bySex(r, 12, 9);
@@ -79,6 +59,14 @@ export function PhvReport({ r, onEdit }: { r: PhvResult; onEdit: () => void }) {
 
   return (
     <article id="phv-report" className="flex flex-col gap-6 text-[15px] leading-relaxed text-navy-950">
+      {/* Wydruk: tylko raport, bez nawigacji i stopki strony */}
+      <style>{`@media print{
+        body *{visibility:hidden!important}
+        #phv-report,#phv-report *{visibility:visible!important}
+        #phv-report{position:absolute;left:0;top:0;width:100%;padding:0 8mm;font-size:12px}
+        #phv-report *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      }`}</style>
+
       {/* Nagłówek */}
       <header className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center gap-2">
@@ -100,14 +88,13 @@ export function PhvReport({ r, onEdit }: { r: PhvResult; onEdit: () => void }) {
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-2" data-pdf-hide>
-          <Button onClick={savePdf} disabled={busy}>
-            <FileDown className="mr-2 h-4 w-4" aria-hidden /> {busy ? "Tworzę PDF…" : "Zapisz PDF"}
+        <div className="flex flex-wrap gap-2 print:hidden">
+          <Button onClick={() => window.print()}>
+            <Printer className="mr-2 h-4 w-4" aria-hidden /> Zapisz PDF
           </Button>
           <Button variant="outline" onClick={onEdit}>
             <PencilLine className="mr-2 h-4 w-4" aria-hidden /> Zmień dane
           </Button>
-          {pdfError && <span className="text-sm text-red-700">Nie udało się utworzyć PDF. Spróbuj ponownie.</span>}
         </div>
       </header>
 
