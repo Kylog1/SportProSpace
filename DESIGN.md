@@ -325,7 +325,7 @@ Tokens are namespaced so `navy-*`, `primary`, `accent` and the shadcn tokens are
 - **Headline:** Archivo 800, `font-stretch: 118%`, `clamp(1.75rem, 1.1rem + 2.3vw, 3.25rem)`, line-height 1.04, tracking -0.03em. Each of the three sentences sits on its own line without wrapping from `lg`; below that it may wrap, and on phones the block reserves five lines so a late font load does not shift the page.
 - **Labels, buttons, chips, legend:** Martian Mono, 12-13px, uppercase for labels, tracking 0.1-0.16em. Nothing in the hero is below 12px.
 - **Sentence under the headline:** Instrument Sans, 17-18px, `space-ink-2`.
-- **Big numbers:** Archivo 800 at 118% width, 40px (32px below `lg`).
+- **Big numbers:** Archivo 800 at 118% width, 40px.
 - The wordmark is Archivo 800 at 125% width, uppercase, 0.12em tracking.
 - Fonts come from `next/font/google` (latin + latin-ext) and are exposed as `font-hero`, `font-hud` and `font-hero-body`. Inter and the `font-display` alias are unchanged and remain the font of the rest of the site.
 
@@ -340,12 +340,12 @@ The colours carry meaning and are not decoration. Promoters are light blue, pass
 - The pitch is football with a padel/tennis court on its centre (the net on the halfway line). No fitness, no discipline legend.
 - Cyan LED boards around the pitch are the Commercial Score; coral dots leaving the stands are churn.
 - Three chips tie the picture to the board: "TRYBUNY · NPS", "BANDY · COMMERCIAL SCORE", "WYJŚCIA · CHURN". No sector cards and no numbers that are not on the board.
-- Canvas 2D, drawn once per resize, DPR capped at 2, no animation. The stage is `aria-hidden`; the same information exists as text (KPI board as a `<dl>`, an sr-only description). Layout is "wide" from `lg` (full-hero background, bowl at the right edge, left side fading under a scrim) and "narrow" below (own block with soft top and bottom edges, bowl centred, no chips).
+- Canvas 2D, drawn once per resize, DPR capped at 2, no animation. The stage is `aria-hidden`; the same information exists as text (KPI board as a `<dl>`, an sr-only description). The visualization, the KPI board and the legend exist from `lg` (1024px) only: full-hero background, bowl at the right edge, left side fading under a scrim. Below `lg` (phones and portrait tablets) they are hidden and the hero is just the copy (headline, sentence, two buttons), which also means no "dane przykładowe" notice is needed there. The hidden canvas is never drawn. The canvas code still has a "narrow" layout (centred bowl, no chips) that is currently unused; bring the stage back on small screens by removing `hidden` from the stage, the KPI wrapper and the sr-only description in `Hero.tsx`.
 
 ### Buttons and the KPI board
 
 - Buttons are square (0px), 52px high (46px in the header), Martian Mono 13px uppercase. Primary: `space-blue` fill, 1.5px `space-blue-hi` border, white text. Secondary: 1.5px `space-ink`/50% border over `space-bg`/50%. Hover is a hard blue glow ring or a light wash, not a lift. Focus is a 2px `space-cyan` outline at 4px offset. They are local class strings (`components/sections/hero/space-button.ts`), not a variant of the shadcn Button.
-- The KPI board is a bordered `space-bg` panel with three cells (three rows below `lg`): NPS, Commercial Score, Churn, each with a 3px coloured top rule, a big number, a 5px bar and a note.
+- The KPI board (desktop only) is a bordered `space-bg` panel with three cells: NPS, Commercial Score, Churn, each with a 3px coloured top rule, a big number, a 5px bar and a note.
 
 ### Header
 

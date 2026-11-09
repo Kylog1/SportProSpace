@@ -31,7 +31,7 @@ export function Hero() {
     >
       {/* Copy. On desktop the hero is a fixed-height band and the copy is
           centred in the space above the scoreboard. */}
-      <div className="relative z-10 px-gutter pb-6 pt-10 lg:flex lg:min-h-[clamp(700px,88svh,860px)] lg:items-center lg:pb-44 lg:pt-12">
+      <div className="relative z-10 px-gutter pb-12 pt-10 lg:flex lg:min-h-[clamp(700px,88svh,860px)] lg:items-center lg:pb-44 lg:pt-12">
         <div className="flex max-w-[820px] flex-col items-start gap-7">
           {/* On phones the headline always takes five lines in Archivo, but the
               fallback font fits it in four, so the block reserves five lines.
@@ -81,15 +81,16 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Stage: behind the copy on desktop, its own block on small screens,
-          where its top and bottom edges fade out instead of ending in a seam. */}
-      <HeroStadiumCanvas className="relative h-[min(112vw,520px)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] lg:absolute lg:inset-0 lg:z-0 lg:h-auto lg:[-webkit-mask-image:none] lg:[mask-image:none]" />
+      {/* Desktop only (from 1024px): the stadium, the scoreboard and the legend
+          are hidden on phones and tablets, where the hero is just the copy.
+          A hidden stage is never drawn: the canvas skips zero-size containers. */}
+      <HeroStadiumCanvas className="hidden lg:absolute lg:inset-0 lg:z-0 lg:block" />
       <div
         aria-hidden="true"
         className="hero-scrim pointer-events-none absolute inset-x-0 top-0 z-[1] hidden lg:block"
       />
 
-      <p className="sr-only">
+      <p className="sr-only max-lg:hidden">
         Przykładowa wizualizacja: stadion, na którym każdy punkt na trybunach to
         głos jednego klienta. Jasnoniebieskie punkty to promotorzy, przygaszone
         niebieskie to neutralni, koralowe to krytycy. W środku boisko do piłki
@@ -98,9 +99,12 @@ export function Hero() {
         churn. Wszystkie liczby są przykładowe.
       </p>
 
-      {/* Scoreboard and legend (with the "dane przykładowe" notice). */}
-      <HeroKpiBoard className="relative z-10 px-gutter pt-4 lg:absolute lg:bottom-12 lg:right-gutter lg:w-[576px] lg:px-0 lg:pt-0" />
-      <HeroSampleLegend className="relative z-10 mx-gutter my-3 lg:absolute lg:bottom-2.5 lg:right-gutter lg:z-10 lg:m-0" />
+      {/* Scoreboard and legend (with the "dane przykładowe" notice). `contents`
+          keeps both positioned against the section on desktop. */}
+      <div className="hidden lg:contents">
+        <HeroKpiBoard className="absolute bottom-12 right-gutter z-10 w-[576px]" />
+        <HeroSampleLegend className="absolute bottom-2.5 right-gutter z-10" />
+      </div>
     </section>
   );
 }
