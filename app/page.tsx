@@ -21,11 +21,11 @@ export default function Page() {
     <>
       <Navbar />
       <main>
+        {/* Sections follow the header menu: Narzędzia (the free tools), Oferta
+            (with the AI team, which is part of it), O nas, Jak działamy, then
+            Kontakt. Artykuły and Partnerzy are separate pages. */}
         <ErrorBoundary>
           <Hero />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <JakDzialamy />
         </ErrorBoundary>
         <ErrorBoundary>
           <SelfAuditPromo />
@@ -33,10 +33,7 @@ export default function Page() {
         {/* The "Nowe narzędzie" section (CommercialScorePromo) is hidden on
             request. To bring it back, import it from
             "@/components/sections/CommercialScorePromo" and render it here,
-            between SelfAuditPromo and About. */}
-        <ErrorBoundary>
-          <About />
-        </ErrorBoundary>
+            between SelfAuditPromo and Doradztwo (it is a second tool). */}
         <ErrorBoundary>
           <Doradztwo />
         </ErrorBoundary>
@@ -45,6 +42,12 @@ export default function Page() {
             ctaHref="https://calendly.com/grzyb-krzysiek/new-meeting"
             auditHref="/self-assessment"
           />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <About />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <JakDzialamy />
         </ErrorBoundary>
         <ErrorBoundary>
           <CTASection />

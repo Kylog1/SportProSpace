@@ -342,7 +342,7 @@ export default function AgentsPitch({
   const selPillar = PILLARS[selected.pillar];
 
   return (
-    <section id="druzyna-ai" className="bg-white py-20 sm:py-24">
+    <section id="druzyna-ai" className="border-b border-navy-100 bg-white py-20 sm:py-24">
       <style>{`
         @keyframes sspPass { to { stroke-dashoffset: -8; } }
         .ssp-pass { animation: sspPass 0.9s linear infinite; }
