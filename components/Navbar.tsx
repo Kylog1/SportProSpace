@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import { trackMeetingBooked } from "@/lib/analytics";
-import { CALENDLY_URL } from "@/lib/links";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   spaceButton,
@@ -13,7 +11,8 @@ import {
 } from "@/components/sections/hero/space-button";
 
 // The header is dark on every page, in the hero's language (DESIGN.md, "Hero and
-// header"): one state, no change on scroll. Menu order is unchanged.
+// header"): one state, no change on scroll. "Kontakt" is the header button, not
+// a menu item, so the menu stays short.
 const navItems = [
   { href: "/narzedzia", label: "Narzędzia" },
   { href: "/#doradztwo", label: "Oferta" },
@@ -21,7 +20,6 @@ const navItems = [
   { href: "/#jak-dzialamy", label: "Jak działamy" },
   { href: "/artykuly", label: "Artykuły" },
   { href: "/partnerzy", label: "Partnerzy" },
-  { href: "/#contact", label: "Kontakt" },
 ];
 
 const focusRing =
@@ -43,18 +41,18 @@ export function Navbar() {
           Sport Space<span className="text-space-blue-hi"> Pro</span>
         </Link>
 
-        {/* Seven Martian Mono labels are wide, so the spacing steps up with the
-            viewport and the header button (also in the hero) joins at 1280px. */}
+        {/* Menu links are Inter, like the rest of the site (the monospaced
+            uppercase of the hero stays on its buttons and labels). */}
         <nav
           aria-label="Główna nawigacja"
-          className="hidden items-center gap-5 lg:flex min-[1280px]:gap-6 2xl:gap-8"
+          className="hidden items-center gap-6 lg:flex xl:gap-8"
         >
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "whitespace-nowrap font-hud text-xs font-medium uppercase tracking-[0.12em] text-space-ink transition-colors hover:text-space-promoter 2xl:text-[12.5px] 2xl:tracking-[0.16em]",
+                "whitespace-nowrap font-sans text-[14px] font-medium text-space-ink transition-colors hover:text-space-promoter",
                 focusRing
               )}
             >
@@ -63,20 +61,12 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center min-[1280px]:flex">
+        <div className="hidden items-center lg:flex">
           <Link
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackMeetingBooked("navbar")}
+            href="/#contact"
             className={cn(spaceButton, spaceButtonSm, spaceButtonPrimary)}
           >
-            Umów rozmowę
-            <ArrowUpRight
-              aria-hidden="true"
-              className="size-3.5"
-              strokeWidth={2.2}
-            />
+            Kontakt
           </Link>
         </div>
 
@@ -107,7 +97,7 @@ export function Navbar() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "block px-3 py-3 font-hud text-[13px] font-medium uppercase tracking-[0.14em] text-space-ink hover:bg-space-ink/10",
+                  "block px-3 py-3 font-sans text-[15px] font-medium text-space-ink hover:bg-space-ink/10",
                   focusRing
                 )}
               >
@@ -118,21 +108,11 @@ export function Navbar() {
 
           <div className="mt-3 flex flex-col gap-2 px-3">
             <Link
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                trackMeetingBooked("navbar");
-                setOpen(false);
-              }}
+              href="/#contact"
+              onClick={() => setOpen(false)}
               className={cn(spaceButton, spaceButtonPrimary, "w-full")}
             >
-              Umów rozmowę
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-3.5"
-                strokeWidth={2.2}
-              />
+              Kontakt
             </Link>
           </div>
         </div>

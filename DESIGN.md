@@ -349,7 +349,7 @@ The colours carry meaning and are not decoration. Promoters are light blue, pass
 
 ### Header
 
-Dark (`space-bg`, 95% with blur), `space-ink` text, labels in Martian Mono uppercase at 0.12em (0.16em from 1440px), one square primary button ("Umów rozmowę", from 1280px). Sticky, one state, no change on scroll. The hamburger breakpoint stays at `lg`.
+Dark (`space-bg`, 95% with blur), `space-ink` text. Menu links are **Inter 14px / 500, normal case** (15px in the mobile panel), the same family as the rest of the site, so the header does not change voice between the home page and the sub-pages; Martian Mono uppercase was tried for them and dropped because it made the six-item menu long and slow to read. The wordmark is Archivo. One square primary button ("Kontakt", leading to the contact section `/#contact`, from 1024px; in the mobile panel it closes the menu). The menu has six items (Narzędzia, Oferta, O nas, Jak działamy, Artykuły, Partnerzy); "Kontakt" is the button, not a menu item. Sticky, one state, no change on scroll. The hamburger breakpoint stays at `lg`.
 
 ### Illustrative data
 
