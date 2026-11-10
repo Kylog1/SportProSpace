@@ -137,7 +137,7 @@ type Step = "intro" | "quiz" | "teaser" | "form" | "results";
 
 export function TennisPadelAssessment() {
   const [step, setStep] = useState<Step>("intro");
-  const [discipline, setDiscipline] = useState<Discipline>("tennis");
+  const [discipline, setDiscipline] = useState<Discipline>("padel");
   // Every quiz answer. Blocks A and B live here too, but the 0-100 score is
   // computed from the original scored questions only (see `coreAnswers`).
   const [answers, setAnswers] = useState<Record<string, number>>({});
